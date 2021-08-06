@@ -1,0 +1,45 @@
+---
+sidebar: sidebar 
+permalink: task_encrypting_volumes.html 
+keywords: encrypt, encryption, data, volumes, netapp volume encryption, volume encryption, nve, key managers, kmip, key management servers, license, ssl certificates, nae, netapp aggregate encryption 
+summary: Cloud Volumes ONTAP は、外部キー管理ツールを使用して、 NetApp Volume Encryption （ NVE ）と NetApp Aggregate Encryption （ NAE ）の両方をサポートします。外部キー管理ツールを設定すると、 NVE と NAE はデフォルトで有効になります。 
+---
+= ネットアップの暗号化ソリューションによるボリュームの暗号化
+:toc: macro
+:hardbreaks:
+:toc: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Cloud Volumes ONTAP は、外部キー管理ツールを使用して、 NetApp Volume Encryption （ NVE ）と NetApp Aggregate Encryption （ NAE ）の両方をサポートします。NVE と NAE は、（ FIPS ） 140-2 に準拠したボリュームの保管データ暗号化を可能にするソフトウェアベースのソリューションです。 link:concept_security.html["これらの暗号化ソリューションの詳細については、こちらをご覧ください"]。
+
+Cloud Volumes ONTAP 9.7 以降では、外部キー管理ツールの設定後に新しいアグリゲートでデフォルトで NAE が有効になります。NAE アグリゲートに含まれない新しいボリュームでは、 NVE がデフォルトで有効になります（たとえば、外部キー管理ツールを設定する前に作成された既存のアグリゲートがある場合）。
+
+Cloud Volumes ONTAP はオンボードキー管理をサポートしていません。
+
+Cloud Volumes ONTAP システムがネットアップサポートに登録されている必要があります。Cloud Manager 3.7.1 以降では、ネットアップサポートに登録されている各 Cloud Volumes ONTAP システムに NetApp Volume Encryption ライセンスが自動的にインストールされます。
+
+* link:task_adding_nss_accounts.html["Cloud Manager へのネットアップサポートサイトのアカウントの追加"]
+* link:task_registering.html["従量課金制システムの登録"]
+
+
+
+NOTE: Cloud Manager は、中国地域のシステムに NVE ライセンスをインストールしません。
+
+.手順
+. でサポートされているキー管理ツールのリストを確認します http://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool で確認できます"^]。
++
+
+TIP: Key Managers * ソリューションを検索します。
+
+. link:task_connecting_to_otc.html["Cloud Volumes ONTAP CLI に接続します"^]。
+. SSL 証明書をインストールして、外部キー管理サーバに接続します。
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-DD718B42-038D-4009-84FF-20BBD6530BC2.html["ONTAP 9 ネットアップ暗号化パワーガイド：外部キー管理の設定"^]
+
+

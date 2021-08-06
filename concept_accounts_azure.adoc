@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: concept_accounts_azure.html 
+keywords: cloud provider accounts, azure, azure accounts, service principal, multiple accounts, permissions, policy, policies, subscriptions, credentials 
+summary: Cloud Manager では、 Cloud Volumes ONTAP の導入時に使用する Azure クレデンシャルを選択できます。すべての Cloud Volumes ONTAP システムは、初期の Azure クレデンシャルを使用して導入することも、クレデンシャルを追加することもできます。 
+---
+= Azure のクレデンシャルと権限
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager では、 Cloud Volumes ONTAP の導入時に使用する Azure クレデンシャルを選択できます。すべての Cloud Volumes ONTAP システムは、初期の Azure クレデンシャルを使用して導入することも、クレデンシャルを追加することもできます。
+
+
+
+== Azure の初期クレデンシャル
+
+Cloud Manager から Connector を導入する場合は、 Connector 仮想マシンの導入権限を持つ Azure アカウントを使用する必要があります。必要な権限は、に表示されます https://mysupport.netapp.com/site/info/cloud-manager-policies["Azure の Connector 導入ポリシー"^]。
+
+Cloud Manager が Azure に Connector 仮想マシンを導入すると、が有効になります https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["システムによって割り当てられた管理 ID"^] 仮想マシンで、カスタムロールを作成して仮想マシンに割り当てます。Cloud Manager に、その Azure サブスクリプション内のリソースとプロセスを管理する権限が付与されます。 link:reference_permissions.html#what-cloud-manager-does-with-azure-permissions["Cloud Manager での権限の使用方法を確認します。"]。
+
+image:diagram_permissions_initial_azure.png["クラウドセントラルの導入クラウドマネージャを Azure のアカウントとサブスクリプションに導入した場合の概念を示すイメージ。システムによって割り当てられた管理対象 ID が有効になり、カスタムロールが Cloud Manager 仮想マシンに割り当てられます。"]
+
+Cloud Volumes ONTAP 用の新しい作業環境を作成すると、 Cloud Manager でデフォルトで次の Azure クレデンシャルが選択されます。
+
+image:screenshot_accounts_select_azure.gif["Details & Credentials ページに Switch Account オプションを示すスクリーンショット。"]
+
+
+
+== マネージド ID 向けの Azure サブスクリプションが追加されました
+
+管理対象 ID は、 Connector を起動したサブスクリプションに関連付けられます。別の Azure サブスクリプションを選択する場合は、が必要です link:task_adding_azure_accounts.html#associating-additional-azure-subscriptions-with-a-managed-identity["管理対象 ID をこれらのサブスクリプションに関連付けます"]。
+
+
+
+== Azure の追加クレデンシャル
+
+別の Azure クレデンシャルを使用して Cloud Volumes ONTAP を導入する場合は、必要な権限をに付与する必要があります link:task_adding_azure_accounts.html["Azure Active でサービスプリンシパルを作成およびセットアップする ディレクトリ"] を Azure アカウントごとに用意します。次の図は、 2 つの追加アカウントを示しています。各アカウントには、権限を提供するサービスプリンシパルとカスタムロールが設定されています。
+
+image:diagram_permissions_multiple_azure.png["「 Azure の最初のアカウントを示す概念図。カスタムのロールと管理対象 ID を使用して権限を付与します。また、カスタムのロールとサービスプリンシパルを使用して権限を付与するもう 1 つのアカウントも含まれます。」"]
+
+そのあとで link:task_adding_azure_accounts.html#adding-azure-accounts-to-cloud-manager["Cloud Manager にアカウントのクレデンシャルを追加します"] AD サービスプリンシパルの詳細を指定します。
+
+クレデンシャルを追加したら、新しい作業環境を作成するときにクレデンシャルに切り替えることができます。
+
+image:screenshot_accounts_switch_azure.gif["[ 詳細と資格情報 ] ページで [ アカウントの切り替え ] をクリックした後に、クラウドプロバイダアカウントを選択する方法を示すスクリーンショット。"]
+
+.市場への導入とオンプレミスの導入についてはどうでしょうか。
+****
+上記のセクションでは、 NetApp Cloud Central のコネクタで推奨される導入方法について説明します。から Azure に Connector を導入することもできます link:task_launching_azure_mktp.html["Azure Marketplace で入手できます"]を使用できます 。
+
+Marketplace を使用する場合も、アクセス許可は同じ方法で提供されます。コネクタの管理 ID を手動で作成してセットアップし、追加のアカウントに権限を付与するだけで済みます。
+
+オンプレミス環境では、 Connector の管理対象 ID を設定することはできませんが、サービスプリンシパルを使用して追加のアカウントの場合と同様に権限を設定できます。
+
+****

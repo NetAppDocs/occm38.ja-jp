@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: reference_aws_support.html 
+keywords: aws, amazon, s3, support, regions, storage classes 
+summary: Cloud Tiering は、複数の S3 ストレージクラスとほとんどのリージョンをサポートしています。 
+---
+= サポートされている S3 ストレージクラスとリージョン
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Tiering は、複数の S3 ストレージクラスとほとんどのリージョンをサポートしています。
+
+
+
+== サポートされている S3 ストレージクラス
+
+Cloud Tiering を使用すると、ライフサイクルルールを適用して、データを _Standard_storage クラスから別のストレージクラスに 30 日後に移行できます。次のストレージクラスから選択できます。
+
+* 標準的なアクセス頻度は低い
+* 1 ゾーン -IA
+* インテリジェント
+
+
+Standard を選択した場合、データはそのストレージクラスに残ります。
+
+https://aws.amazon.com/s3/storage-classes/["S3 ストレージクラスについて説明します"^]。
+
+
+
+== サポートされている AWS リージョン
+
+Cloud Tiering は、次の AWS リージョンをサポートしています。
+
+
+
+==== アジア太平洋地域
+
+* ムンバイ
+* ソウル
+* シンガポール
+* シドニー
+* 東京
+
+
+
+
+==== ヨーロッパ
+
+* フランクフルト
+* アイルランド
+* ロンドン
+* パリ
+* ストッケホルム
+
+
+
+
+==== 北米
+
+* カナダセントラル
+* GovCloud （ US-West ）– ONTAP 9.3 以降
+* 米国東部（ N（バージニア州）
+* 米国東部（オハイオ州）
+* US West （ Nカリフォルニア）
+* US West （オレゴン州）
+
+
+
+
+==== 南米
+
+* サンパウロ
+

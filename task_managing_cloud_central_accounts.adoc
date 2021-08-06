@@ -1,0 +1,182 @@
+---
+sidebar: sidebar 
+permalink: task_managing_cloud_central_accounts.html 
+keywords: account settings, workspaces, Connector, account admin, workspace admin, users, associate, disassociate, add user, add users, user management, administer, user, management, remove user, remove users, remove, delete, account, user account, user accounts, add workspace, setup workspace, workspace, Connector, manage Connector, manage workspace, associate Connector 
+summary: 初期セットアップの実行後、ユーザー、ワークスペース、コネクタ、およびサブスクリプションの管理が必要になる場合があります。 
+---
+= ユーザ、ワークスペース、コネクタ、およびサブスクリプションの管理
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+link:task_setting_up_cloud_central_accounts.html["初期セットアップを実行したあと"]では、後でユーザー、ワークスペース、コネクタ、およびサブスクリプションを管理することによって、アカウント設定の管理が必要になる場合があります。
+
+link:concept_cloud_central_accounts.html["Cloud Central アカウントの仕組みの詳細については、こちらをご覧ください"]。
+
+
+
+== ユーザを追加する
+
+Cloud Central ユーザを Cloud Central アカウントに関連付けて、これらのユーザが Cloud Manager で作業環境を作成および管理できるようにします。
+
+.手順
+. ユーザーがまだ行っていない場合は、にアクセスするようにユーザーに依頼します https://cloud.netapp.com["NetApp Cloud Central"^] 登録してください。
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックします。
++
+image:screenshot_account_settings_menu.gif["Cloud Manager の上部のバナーにあるアカウント設定オプションを示すスクリーンショット。"]
+
+. 現在選択されているアカウントの横にある ［ * アカウントの管理 * ］ をクリックします。
++
+image:screenshot_manage_account_settings.gif["「アカウント」ドロップダウンから利用できる「アカウント設定の管理」オプションを示すスクリーンショット。"]
+
+. [ ユーザー ] タブで、 [ ユーザーの関連付け ] をクリックします。
+. ユーザの E メールアドレスを入力し、ユーザのロールを選択します。
++
+** * アカウント管理者 * ： Cloud Manager で任意の操作を実行できます。
+** * ワークスペース管理者 * ：割り当てられたワークスペースでリソースを作成および管理できます。
+** * Compliance Viewer * ：アクセス権を持つワークスペースについてのみ、コンプライアンス情報を表示し、レポートを生成できます。
+
+
+. Workspace Admin または Compliance Viewer を選択した場合は、 1 つ以上のワークスペースを選択してそのユーザーに関連付けます。
++
+image:screenshot_associate_user.gif["ロールと関連するワークスペースを選択してユーザを関連付ける方法を示すスクリーンショット。"]
+
+. [ ユーザーの関連付け ] をクリックします。
+
+
+ユーザには、 NetApp Cloud Central の「 Account Association 」というタイトルの E メールが送信されます。 E メールには、 Cloud Manager にアクセスするために必要な情報が記載されています。
+
+
+
+== ユーザの削除
+
+ユーザの関連付けを解除すると、 Cloud Central アカウント内のリソースにアクセスできなくなります。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
++
+image:screenshot_manage_account_settings.gif["「アカウント」ドロップダウンから利用できる「アカウント設定の管理」オプションを示すスクリーンショット。"]
+
+. [ ユーザー ] タブで、ユーザーに対応する行のアクションメニューをクリックします。
++
+image:screenshot_associate_user_workspace.gif["ユーザテーブルでユーザの名前にカーソルを合わせたときに使用できる操作メニューを示すスクリーンショット。"]
+
+. [ ユーザーの関連付けを解除（ Disassociate User ） ] をクリックし、 [ 関連付けを解除（ Disassociate ） ] をクリックして
+
+
+ユーザはこの Cloud Central アカウントのリソースにアクセスできなくなります。
+
+
+
+== ワークスペース管理者のワークスペースの管理
+
+ワークスペース管理者は、いつでもワークスペースに関連付けたり、ワークスペースと関連付けを解除したりできます。ユーザーを関連付けると、ワークスペース内の作業環境を作成して表示できます。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
++
+image:screenshot_manage_account_settings.gif["「アカウント」ドロップダウンから利用できる「アカウント設定の管理」オプションを示すスクリーンショット。"]
+
+. [ ユーザー ] タブで、ユーザーに対応する行のアクションメニューをクリックします。
++
+image:screenshot_associate_user_workspace.gif["ユーザテーブルでユーザの名前にカーソルを合わせたときに使用できる操作メニューを示すスクリーンショット。"]
+
+. * ワークスペースの管理 * をクリックします。
+. ユーザーに関連付けるワークスペースを選択し、 * 適用 * をクリックします。
+
+
+コネクタがワークスペースにも関連付けられていれば、ユーザは Cloud Manager からこれらのワークスペースにアクセスできるようになりました。
+
+
+
+== ワークスペースの管理
+
+ワークスペースの作成、名前の変更、および削除により、ワークスペースを管理します。ワークスペースにリソースが含まれている場合、ワークスペースは削除できません。空である必要があります。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
+. [* ワークスペース * ] をクリックします。
+. 次のいずれかのオプションを選択します。
++
+** 新しいワークスペースを作成するには、 * 新しいワークスペースを追加 * をクリックします。
+** * 名前変更 * をクリックして、ワークスペースの名前を変更します。
+** ワークスペースを削除するには、 * 削除 * をクリックします。
+
+
+
+
+
+
+== コネクタのワークスペースを管理する
+
+ワークスペース管理者が Cloud Manager からワークスペースにアクセスできるように、コネクタをワークスペースに関連付ける必要があります。
+
+アカウント管理者のみがいる場合は、コネクタをワークスペースに関連付ける必要はありません。アカウント管理者は、デフォルトで Cloud Manager のすべてのワークスペースにアクセスできます。
+
+link:concept_cloud_central_accounts.html#users-workspaces-and-service-connectors["ユーザー、ワークスペース、コネクターの詳細をご覧ください"]。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
+. コネクター（ * Connector ）をクリックします。
+. 関連付けるコネクタの * ワークスペースの管理 * をクリックします。
+. コネクタに関連付けるワークスペースを選択し、 * 適用 * をクリックします。
+
+
+
+
+== サブスクリプションの管理
+
+クラウドプロバイダのマーケットプレイスからサブスクライブすると、各サブスクリプションはアカウント設定ウィジェットから利用できます。サブスクリプションの名前を変更したり、 1 つまたは複数のアカウントからサブスクリプションの関連付けを解除したりすることができます。
+
+たとえば、 2 つのアカウントがあり、それぞれが別々のサブスクリプションで課金されるとします。いずれかのアカウントとサブスクリプションの関連付けを解除することで、 Cloud Volume ONTAP 作業環境の作成時にそのアカウントのユーザが誤って誤ったサブスクリプションを選択しないようにすることができます。
+
+link:concept_cloud_central_accounts.html["サブスクリプションの詳細については、こちらをご覧ください"]。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
+. [ サブスクリプション ] をクリックします。
++
+現在表示しているアカウントに関連付けられている月額プランのみが表示されます。
+
+. 管理するサブスクリプションに対応する行のアクションメニューをクリックします。
++
+image:screenshot_subscription_menu.gif["サブスクリプションのアクションメニューのスクリーンショット。"]
+
+. サブスクリプションの名前を変更するか、サブスクリプションに関連付けられているアカウントを管理するかを選択します。
+
+
+
+
+== アカウント名を変更する
+
+アカウント名はいつでも変更して、わかりやすい名前に変更してください。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
+. 「 * 概要 * 」タブで、アカウント名の横にある編集アイコンをクリックします。
+. 新しいアカウント名を入力し、 * 保存 * をクリックします。
+
+
+
+
+== SaaS プラットフォームを有効または無効にします
+
+会社のセキュリティポリシーに準拠するために必要な場合を除き、 SaaS プラットフォームを無効にすることはお勧めしません。SaaS プラットフォームを無効にすると、ネットアップの統合クラウドサービスを使用できなくなります。
+
+SaaS プラットフォームを無効にすると、 Cloud Manager から次のサービスを使用できなくなります。
+
+* クラウドコンプライアンス
+* Kubernetes
+* クラウド階層化
+* グローバルファイルキャッシュ
+* 監視（ Cloud Insights ）
+
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
+. [*Overview*] タブで、 [SaaS プラットフォームの使用 ] を有効にするオプションを切り替えます。
+

@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task_licensing_cloud_tiering.html 
+keywords: subscribe, trial, marketplace, subscription, paygo, pay, pay as you go, aws, tiering, cloud tiering 
+summary: 従量課金制のサブスクリプション、 FabricPool という ONTAP 階層化ライセンス、またはその両方を組み合わせて使用して、クラウド階層化の料金を支払うことができます。従量課金制の場合は、コールドデータの階層化先となるクラウドプロバイダのマーケットプレイスから登録する必要があります。すべての市場から登録する必要はありません。 
+---
+= Cloud Tiering のライセンスをセットアップ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+従量課金制のサブスクリプション、 FabricPool _ という ONTAP 階層化ライセンス、またはその両方を組み合わせて使用して、クラウド階層化の料金を支払うことができます。従量課金制の場合は、コールドデータの階層化先となるクラウドプロバイダのマーケットプレイスから登録する必要があります。すべての市場から登録する必要はありません。
+
+さらに読む前に、いくつかのメモを記入してください。
+
+* クラスタに FabricPool ライセンスがすでにインストールされている場合は、すべて設定されます。他に必要な操作はありません。
+* クラウドプロバイダのマーケットプレイスで Cloud Manager サブスクリプションにすでに登録している場合は、 Cloud Tiering も自動的にサブスクライブされます。Cloud Tiering * Licensing * タブにアクティブなサブスクリプションが表示されます。再度サブスクライブする必要はありません。
+* データを StorageGRID に階層化する場合、料金は発生しません。BYOL ライセンスでも PAYGO 登録も必要ありません。
+
+
+link:concept_cloud_tiering.html["Cloud Tiering のライセンスの仕組みをご確認ください"]。
+
+
+
+== AWS Marketplace からのサブスクライブ
+
+AWS Marketplace で Cloud Tiering を登録して、 ONTAP クラスタから AWS S3 へのデータ階層化の従量課金制サブスクリプションを設定できます。
+
+[[subscribe-aws]]
+.手順
+. Cloud Manager で、 * Tiering > Licensing * をクリックします。
+. AWS Marketplace で * Subscribe * をクリックし、 * Continue * をクリックします。
+. AWS Marketplace でサブスクライブし、 Cloud Central にログインし直して登録を完了します。
++
+次のビデオは、プロセスを示しています。
+
++
+video::video_subscribing_aws_tiering.mp4[width=848,height=480]
+
+
+
+
+== Azure Marketplace からのサブスクライブ
+
+Azure Marketplace から Cloud Tiering をサブスクライブして、 ONTAP クラスタから Azure Blob ストレージへのデータ階層化の従量課金制サブスクリプションを設定できます。
+
+[[subscribe-azure]]
+.手順
+. Cloud Manager で、 * Tiering > Licensing * をクリックします。
+. Azure Marketplace で * Subscribe * をクリックし、 * Continue * をクリックします。
+. Azure Marketplace でサブスクライブし、 Cloud Central にログインして登録を完了します。
++
+次のビデオは、プロセスを示しています。
+
++
+video::video_subscribing_azure_tiering.mp4[width=848,height=480]
+
+
+
+
+== GCP Marketplace から配信登録する
+
+GCP Marketplace から Cloud Tiering に登録すると、 ONTAP クラスタから Google Cloud ストレージへのデータ階層化の従量課金制サブスクリプションを設定できます。
+
+.手順
+. Cloud Manager で、 * Tiering > Licensing * をクリックします。
+. [GCP Marketplace] の下の [*Subscribe*] をクリックし、 [* Continue * ] をクリックします
+. GCP Marketplace から登録し、 Cloud Central にログインして登録を完了します。
++
+[[subscribe-gCP]] 次のビデオは、このプロセスを示しています。
+
++
+video::video_subscribing_gcp_tiering.mp4[width=848,height=480]
+
+
+
+
+== ONTAP に階層化ライセンスを追加する
+
+ネットアップから ONTAP FabricPool ライセンスを購入して、お客様所有のライセンスを使用することができます。
+
+.手順
+. FabricPool ライセンスをお持ちでない場合は、 mailto:ng-cloud-tiering@netapp.com ?subject=Licensing [ 購入についてお問い合わせください ] をご覧ください。
+. Cloud Manager で、 * Tiering > Licensing * をクリックします。
+. クラスタリストテーブルで、オンプレミスの ONTAP クラスタのライセンスのアクティブ化（ BYOL ） * をクリックします。
++
+image:screenshot_activate_license.gif["オンプレミスクラスタのライセンスをアクティブ化できる [ ライセンス ] ページのスクリーンショット。"]
+
+. ライセンスのシリアル番号を入力し、シリアル番号に関連付けられているネットアップサポートサイトのアカウントを入力します。
+. ライセンスの有効化 * をクリックします。
+
+
+Cloud Tiering を使用すると、ライセンスが登録され、クラスタにインストールされます。
+
+あとで追加のアドオン容量を購入した場合、クラスタ上のライセンスは新しい容量で自動的に更新されます。新しいネットアップライセンスファイル（ NLF ）をクラスタに適用する必要はありません。

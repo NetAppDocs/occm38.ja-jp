@@ -1,0 +1,90 @@
+---
+sidebar: sidebar 
+permalink: concept_ha_azure.html 
+keywords: high availability, HA, concepts, understanding, overview, takeover, giveback, rpo, rto, nondisruptive, ha pairs, node, nodes, recovery point objective, recovery time objective, nas, nfs, cifs, iscsi, mpio, alua, failover, failure, azure, shared storage, active, passive, load balancer, availability set, storage accounts, page blobs 
+summary: Cloud Volumes ONTAP ハイアベイラビリティ（ HA ）ペアは、クラウド環境で障害が発生した場合にエンタープライズクラスの信頼性と継続的な運用を実現します。Azure では、 2 つのノード間でストレージが共有されます。 
+---
+= Azure のハイアベイラビリティペア
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP ハイアベイラビリティ（ HA ）ペアは、クラウド環境で障害が発生した場合にエンタープライズクラスの信頼性と継続的な運用を実現します。Azure では、 2 つのノード間でストレージが共有されます。
+
+
+
+== HA コンポーネント
+
+Azure の Cloud Volumes ONTAP HA 構成には、次のコンポーネントが含まれています。
+
+image:diagram_ha_azure.png["「ロードバランサが Cloud Manager とクライアントからの受信トラフィックを管理する概念図。可用性セットに含まれる 2 つの Cloud Volumes ONTAP ノード、ブートデータ用の SSD ディスク、および顧客データ用のページ Blob 」"]
+
+Cloud Manager で導入される Azure コンポーネントは次のとおりです。
+
+Azure Standard Load Balancer の略:: ロードバランサは、 Cloud Volumes ONTAP HA ペアへの着信トラフィックを管理します。
+可用性セット:: 可用性セットは、ノードが異なる障害になっていることを確認し、ドメインを更新します。
+ディスク:: お客様のデータは Premium Storage ページの BLOB にあります。各ノードがもう一方のノードのストレージにアクセスできます。には追加のストレージも必要です link:reference_default_configs.html#boot-and-root-data-for-cloud-volumes-ontap["ブート、ルート、およびコアのデータ"]。
+ストレージアカウント::
++
+--
+* 管理対象ディスクにはストレージアカウントが 1 つ必要です。
+* ストレージ・アカウントあたりのディスク容量の上限に達しているため ' プレミアム・ストレージ・ページ・ブロブには 1 つ以上のストレージ・アカウントが必要です
++
+https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets["Azure のドキュメント：「 Azure Storage スケーラビリティー and performance targets for storage accounts"^]。
+
+* Azure BLOB ストレージへのデータ階層化には 1 つのストレージアカウントが必要です。
+* Cloud Volumes ONTAP 9.7 以降では、 Cloud Manager で HA ペア用に作成するストレージアカウントを汎用 v2 のストレージアカウントに使用できます。
+* 作業環境の作成時に、 Cloud Volumes ONTAP 9.7 HA ペアから Azure ストレージアカウントへの HTTPS 接続を有効にすることができます。このオプションを有効にすると、書き込みパフォーマンスに影響する可能性があります。作業環境の作成後に設定を変更することはできません。
+
+
+--
+
+
+
+
+== RPO と RTO
+
+HA 構成では、次のようにデータの高可用性が維持されます。
+
+* RPO （ Recovery Point Objective ：目標復旧時点）は 0 秒です。データはトランザクション的に整合性が保たれ、データ損失は発生しません。
+* RTO （目標復旧時間）は 60 秒です。システム停止が発生した場合は、 60 秒以内にデータを利用できるようにする必要があります。
+
+
+
+
+== ストレージのテイクオーバーとギブバック
+
+物理 ONTAP クラスタと同様に、 Azure HA ペアのストレージはノード間で共有されます。パートナーのストレージに接続することで、 _TAKEOVER_中 に各ノードがもう一方のストレージにアクセスできるようになります。ネットワークパスのフェイルオーバーメカニズムにより、クライアントとホストは稼働しているノードと引き続き通信できます。ノードがオンラインに戻ったときに、 partner_ギ ブバック _storage を提供します。
+
+NAS 構成の場合は、障害の発生時にデータ IP アドレスが HA ノード間で自動的に移行されます。
+
+iSCSI の場合、 ONTAP はマルチパス I/O （ MPIO ）と非対称論理ユニットアクセス（ ALUA ）を使用して、アクティブ最適化パスと非最適化パス間のパスフェイルオーバーを管理します。
+
+
+NOTE: ALUA をサポートする具体的なホスト構成については、を参照してください http://mysupport.netapp.com/matrix["NetApp Interoperability Matrix Tool で確認できます"^] およびお使いのホストオペレーティングシステムに対応した Host Utilities の『 Installation and Setup Guide 』を参照してください。
+
+
+
+== ストレージ構成
+
+HA ペアは、アクティブ / アクティブ構成として使用できます。アクティブ / アクティブ構成では、両方のノードがクライアントにデータを提供します。アクティブ / パッシブ構成では、パッシブノードは、アクティブノードのストレージをテイクオーバーした場合にのみデータ要求に応答します。
+
+
+
+== HA の制限事項
+
+Azure の Cloud Volumes ONTAP HA ペアに影響を及ぼす制限事項を次に示します。
+
+* HA ペアは、 Cloud Volumes ONTAP の Standard 、 Premium 、および BYOL でサポートされています。Explore はサポートされていません。
+* NFSv4 はサポートされていません。NFSv3 がサポートされています。
+* 一部のリージョンでは HA ペアがサポートされません。
++
+https://cloud.netapp.com/cloud-volumes-global-regions["サポートされる Azure リージョンの一覧を参照してください"^]。
+
+
+
+link:task_deploying_otc_azure.html["Azure に HA システムを導入する方法をご確認ください"]。

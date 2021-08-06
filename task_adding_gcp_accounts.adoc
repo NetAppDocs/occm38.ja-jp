@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task_adding_gcp_accounts.html 
+keywords: permissions, gcp, data tiering, tiering, setup, requirements, account for data tiering, account for tiering, interoperable, interoperability, interoperable storage access keys, access keys 
+summary: Cloud Volumes ONTAP 9.6 システムでデータ階層化に使用されるコネクタ VM インスタンスとストレージアクセスキーに関連付けられているクレデンシャルは、 Cloud Manager から 2 種類の Google Cloud Platform クレデンシャルを管理できます。 
+---
+= Cloud Manager の GCP クレデンシャルとサブスクリプションの管理
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager から管理できる Google Cloud Platform のクレデンシャルには、 Cloud Volumes ONTAP 9.6 システムで使用される Connector VM インスタンスとストレージアクセスキーに関連付けられたクレデンシャルの 2 種類があります link:concept_data_tiering.html["データの階層化"]。
+
+
+
+== Marketplace サブスクリプションと GCP クレデンシャルの関連付け
+
+GCP に Connector を導入すると、 Cloud Manager は Connector VM インスタンスに関連付けられたデフォルトのクレデンシャルセットを作成します。Cloud Manager で Cloud Volumes ONTAP の導入に使用するクレデンシャルを指定します。
+
+これらの資格情報に関連付けられている Marketplace サブスクリプションは、いつでも変更できます。サブスクリプションを使用すると、従量課金制の Cloud Volumes ONTAP システムを作成し、他のネットアップクラウドサービスを使用できます。
+
+.手順
+. Cloud Manager コンソールの右上にある設定アイコンをクリックし、 * クレデンシャル * を選択します。
+. 資格情報のセットにカーソルを合わせ、アクションメニューをクリックします。
+. メニューから、 * サブスクリプションを関連付ける * をクリックします。
++
+image:screenshot_gcp_add_subscription.gif["資格情報ページのスクリーンショット。メニューから GCP 資格情報にサブスクリプションを追加できます。"]
+
+. ダウンリストから Google Cloud プロジェクトとサブスクリプションを選択するか、 * サブスクリプションの追加 * をクリックして、手順に従って新しいサブスクリプションを作成します。
++
+image:screenshot_gcp_associate.gif["Google Cloud の資格情報に対して選択された Google Cloud プロジェクトとサブスクリプションのスクリーンショット。"]
+
+. [ 関連付け（ Associate ） ] をクリックします。
+
+
+
+
+== でのデータ階層化のための GCP アカウントの設定と追加 Cloud Volumes ONTAP 9.6
+
+Cloud Volumes ONTAP 9.6 を有効にする場合は のシステム link:concept_data_tiering.html["データの階層化"]、 Storage Admin の権限があるサービスアカウントのストレージアクセスキーを Cloud Manager に提供する必要があります。Cloud Manager は、アクセスキーを使用して Cloud Storage バケットをセットアップおよび管理し、データを階層化します。
+
+
+TIP: Cloud Volumes ONTAP 9.7 でデータ階層化を使用する場合は、の手順 4 を実行します link:task_getting_started_gcp.html["Google Cloud Platform での Cloud Volumes ONTAP の使用を開始する"]。
+
+
+
+=== Google のサービスアカウントとアクセスキーを設定する クラウドストレージ
+
+サービスアカウントを使用すると、 Cloud Manager でデータの階層化に使用する Cloud Storage バケットを認証してアクセスできます。キーは、 Google Cloud Storage がリクエストを発行しているユーザーを認識できるようにするために必要です。
+
+.手順
+. GCP IAM コンソールを開き、を開きます https://cloud.google.com/iam/docs/creating-custom-roles#creating_a_custom_role["Storage Admin ロールを持つサービスアカウントを作成します"^]。
++
+image:screenshot_gcp_service_account_role.gif["サービスアカウントの Storage Admin ロールの選択を示す GCP IAM コンソールのスクリーンショット。"]
+
+. に進みます https://console.cloud.google.com/storage/settings["GCP Storage Settings （ GCP ストレージ設定）"^]。
+. プロンプトが表示されたら、プロジェクトを選択します。
+. [*Interoperability *] タブをクリックします。
+. まだ有効にしていない場合は、 * 相互運用アクセスを有効にする * をクリックします。
+. [ サービスアカウントのアクセスキー *] で、 [ サービスアカウントのキーの作成 *] をクリックします。
+. 手順 1 で作成したサービスアカウントを選択します。
++
+image:screenshot_gcp_access_key.gif["新しいアクセスキー用に選択したサービスアカウントを示す GCP ストレージコンソールのスクリーンショット。"]
+
+. [ キーの作成 *] をクリックします。
+. アクセスキーとシークレットをコピーします。
++
+データ階層化用の GCP アカウントを追加する場合は、 Cloud Manager でこの情報を入力する必要があります。
+
+
+
+
+
+=== Cloud Manager に GCP アカウントを追加する
+
+サービスアカウントのアクセスキーが作成されたら、そのアクセスキーを Cloud Manager に追加できます。
+
+Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
+
+.手順
+. Cloud Manager コンソールの右上にある設定アイコンをクリックし、 * クレデンシャル * を選択します。
++
+image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にある設定アイコンを示すスクリーンショット。"]
+
+. [ 資格情報の追加 ] をクリックし、 [* Google Cloud * ] を選択します。
+. サービスアカウントのアクセスキーとシークレットを入力します。
++
+これらのキーを使用して、 Cloud Manager でデータ階層化用の Cloud Storage バケットを設定できます。
+
+. ポリシーの要件が満たされていることを確認し、 * アカウントの作成 * をクリックします。
+
+
+Cloud Volumes ONTAP 9.6 システムでは、ボリュームを作成、変更、またはレプリケートするときに、個々のボリュームでデータ階層化を有効にできるようになりました。詳細については、を参照してください link:task_tiering.html["使用頻度の低いデータを低コストのオブジェクトストレージに階層化"]。
+
+ただし、事前に、 Cloud Volumes ONTAP が存在するサブネットがプライベート Google アクセス用に構成されていることを確認してください。手順については、を参照してください https://cloud.google.com/vpc/docs/configure-private-google-access["Google Cloud のドキュメント：「 Configuring Private Google Access"^]。

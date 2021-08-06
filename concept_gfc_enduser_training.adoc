@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: concept_gfc_enduser_training.html 
+keywords: global file cache, training 
+summary: グローバルファイルキャッシュを介して共有ファイルにアクセスするためのベストプラクティスについて、ユーザーにトレーニングを行います。 
+---
+= エンドユーザトレーニング
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+グローバルファイルキャッシュを介して共有ファイルにアクセスするためのベストプラクティスについて、ユーザーにトレーニングを行います。
+
+これは、グローバルファイルキャッシュの展開の最終フェーズであり、エンドユーザーの実装フェーズです。
+
+エンドユーザのオンボーディングプロセスを準備して合理化するには、以下の電子メールテンプレートを使用して、エンドユーザに「中央データ」環境での作業の意味を説明します。これにより、ユーザーはグローバルファイルキャッシュソリューションのすべての利点を活用できます。また、必要に応じて「トレーニング」ユーザに共有できるビデオも公開しています。
+
+次のリソースをカスタマイズしてエンドユーザーに転送し、ロールアウトの準備をします。
+
+* ユーザートレーニングのビデオlink:https://www.youtube.com/watch?v=RYvhnTz4bEA["エンドユーザ向けトレーニングビデオ"^]
+* 電子メールテンプレートlink:https://repo.cloudsync.netapp.com/gfc/Global%20File%20Cache%20Onboarding%20Email.emltpl["MAC メールテンプレート（ .emltpl)"]
++
+link:https://docs.netapp.com/us-en/occm/media/Global_File_Cache_Onboarding_Email.msg["Windows 電子メールテンプレート (.msg)"]
+
+* オンボーディングコミュニケーションlink:https://repo.cloudsync.netapp.com/gfc/Global%20File%20Cache%20Customer%20Onboarding%20-%20Draft.docx["Word 文書 (.docx)"]
+
+
+の第 12 章を参照してください link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["『 NetApp Global File Cache User Guide 』を参照してください"^] を参照してください。

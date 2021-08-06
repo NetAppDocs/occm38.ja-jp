@@ -1,0 +1,77 @@
+---
+sidebar: sidebar 
+permalink: task_connecting_to_otc.html 
+keywords: system manager, connecting, cli, command, command line, connect, shell, interface 
+summary: Cloud Volumes ONTAP の高度な管理を実行する必要がある場合は、 OnCommand System Manager またはコマンドラインインターフェイスを使用します。 
+---
+= Cloud Volumes ONTAP に接続しています
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+Cloud Volumes ONTAP の高度な管理を実行する必要がある場合は、 OnCommand System Manager またはコマンドラインインターフェイスを使用します。
+
+
+
+== System Manager に接続しています
+
+一部の Cloud Volumes ONTAP タスクを System Manager から実行する必要が生じることがあります。 System Manager は、 Cloud Volumes ONTAP システム上で稼働するブラウザベースの管理ツールです。たとえば、 LUN を作成する場合は、 System Manager を使用する必要があります。
+
+Cloud Manager にアクセスするコンピュータは、 Cloud Volumes ONTAP にネットワーク接続している必要があります。たとえば、 AWS または Azure の Jump ホストから Cloud Manager にログインする必要がある場合があります。
+
+
+NOTE: 複数の AWS 可用性ゾーンに導入されている場合、 Cloud Volumes ONTAP HA 構成では、クラスタ管理インターフェイスにフローティング IP アドレスが使用されます。つまり、外部ルーティングは使用できません。同じルーティングドメインの一部であるホストから接続する必要があります。
+
+.手順
+. [ 作業環境 ] ページで、 System Manager で管理する Cloud Volumes ONTAP システムをダブルクリックします。
+. メニューアイコンをクリックし、 * Advanced > System Manager * をクリックします。
+. [* 起動 * ] をクリックします。
++
+System Manager が新しいブラウザタブにロードされます。
+
+. ログイン画面で、 [ ユーザー名 ] フィールドに「 * admin * 」と入力し、作業環境の作成時に指定したパスワードを入力して、 [ * サインイン * ] をクリックします。
+
+
+System Manager コンソールがロードされます。これで、 Cloud Volumes ONTAP の管理に使用できるようになりました。
+
+
+
+== Cloud Volumes ONTAP CLI に接続しています
+
+Cloud Volumes ONTAP CLI を使用すると、すべての管理コマンドを実行できます。高度なタスクを実行する場合や、 CLI を使用する場合に適しています。Secure Shell （ SSH ）を使用して CLI に接続できます。
+
+SSH を使用して Cloud Volumes に接続するホスト ONTAP は、 Cloud Volumes ONTAP にネットワーク接続している必要があります。たとえば、 AWS または Azure の Jump ホストから SSH を使用する必要がある場合があります。
+
+
+NOTE: 複数の AZS に導入されている場合、 Cloud Volumes ONTAP HA 構成では、クラスタ管理インターフェイスにフローティング IP アドレスが使用されます。これは、外部ルーティングが使用できないことを意味します。同じルーティングドメインの一部であるホストから接続する必要があります。
+
+.手順
+. Cloud Manager で、クラスタ管理インターフェイスの IP アドレスを特定します。
++
+.. [ 作業環境 ] ページで、 Cloud Volumes ONTAP システムを選択します。
+.. 右側のペインに表示されるクラスタ管理 IP アドレスをコピーします。
+
+
+. SSH を使用して、 admin アカウントを使用してクラスタ管理インターフェイスの IP アドレスに接続します。
++
+* 例 *
+
++
+次の図は、 PuTTY を使用した例を示しています。
+
++
+image:screenshot_cli2.gif["スクリーンショット：ポート 22 の宛先 admin@192.168.11.5 を表示します。"]
+
+. ログインプロンプトで、 admin アカウントのパスワードを入力します。
++
+* 例 *
+
++
+....
+Password: ********
+COT2::>
+....
+

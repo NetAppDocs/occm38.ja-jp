@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: task_managing_state.html 
+keywords: schedule, schedules, scheduling, shutdowns, shut down, restart, stop, stopping, turn off, weekday, weekend 
+summary: Cloud Manager から Cloud Volumes ONTAP を停止して起動し、クラウドコンピューティングコストを管理できます。 
+---
+= Cloud Volumes ONTAP の状態の管理
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager から Cloud Volumes ONTAP を停止して起動し、クラウドコンピューティングコストを管理できます。
+
+
+
+== Cloud Volumes ONTAP の自動シャットダウンのスケジュール設定
+
+特定の時間間隔で Cloud Volumes ONTAP をシャットダウンして、コンピューティングコストを削減できます。これを手動で行う代わりに、 Cloud Manager を設定して、システムを自動的にシャットダウンし、特定の時間に再起動することができます。
+
+Cloud Volumes ONTAP システムの自動シャットダウンをスケジュールする際、アクティブなデータ転送が実行中の場合のシャットダウンは延期されます。転送が完了すると、 Cloud Manager によってシステムがシャットダウンされます。
+
+このタスクでは、 HA ペアの両方のノードの自動シャットダウンをスケジューリングします。
+
+.手順
+. 作業環境で、時計アイコンをクリックします。
++
+image:screenshot_shutdown_icon.gif["スクリーンショット：自動シャットダウンページをロードするアイコンが表示されます。"]
+
+. シャットダウンスケジュールを指定します。
++
+.. システムを毎日、平日、週末、またはこれら 3 つのオプションの組み合わせでシャットダウンするかどうかを選択します。
+.. システムをオフにするタイミングと、オフにする期間を指定します。
++
+* 例 *
+
++
+次の図は、毎週土曜日の午前 0 時にシステムをシャットダウンするように Cloud Manager に指示するスケジュールを示しています48 時間。Cloud Manager は、毎週月曜日の午前 0 時にシステムを再起動します
+
++
+image:screenshot_shutdown.gif["スクリーンショット：毎週週末の午前 12 時に 48 時間、 Cloud Volumes ONTAP をシャットダウンするシャットダウンスケジュールを示しています。"]
+
+
+
+. [ 保存（ Save ） ] をクリックします。
+
+
+Cloud Manager はスケジュールを保存します。時計アイコンが変化して、スケジュールが設定されたことを示します。 image:screenshot_shutdown_icon_scheduled.gif["スクリーンショット：スケジュールの定義後に自動シャットダウンアイコンが表示されます。"]
+
+
+
+== Cloud Volumes ONTAP を停止しています
+
+Cloud Volumes ONTAP を停止すると、計算コストの発生を抑えることができ、ルートディスクとブートディスクの Snapshot が作成されます。これはトラブルシューティングに役立ちます。
+
+HA ペアを停止すると、 Cloud Manager は両方のノードをシャットダウンします。
+
+.手順
+. 作業環境で、 * 電源オフ * アイコンをクリックします。
++
+image:screenshot_otc_turn_off.gif["スクリーンショット： Cloud Volumes ONTAP システムをオフにするアイコンが表示されます。"]
+
+. Snapshot を作成するオプションを有効にしておくと、システムのリカバリが可能になります。
+. [ オフにする *] をクリックします。
++
+システムの停止には、最大数分かかる場合があります。システムは、後で [ 作業環境 ] ページから再起動できます。
+
+

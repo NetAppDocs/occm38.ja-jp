@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: concept_cvs_aws.html 
+keywords: cloud volumes service for aws, cloud volumes, cloud volumes service subscription, access key, secret key 
+summary: NetApp Cloud Volumes Service for AWS は、 NFS や SMB 経由で NAS ボリュームにオールフラッシュのパフォーマンスを提供するクラウドネイティブのファイルサービスです。このサービスを使用すると、従来型アプリケーションを含むあらゆるワークロードを AWS クラウドで実行できます。 
+---
+= Cloud Volumes Service for AWS の詳細については、こちらをご覧ください
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Cloud Volumes Service for AWS は、 NFS や SMB 経由で NAS ボリュームにオールフラッシュのパフォーマンスを提供するクラウドネイティブのファイルサービスです。このサービスを使用すると、従来型アプリケーションを含むあらゆるワークロードを AWS クラウドで実行できます。
+
+
+
+== Cloud Volumes Service for AWS を使用するメリット
+
+Cloud Volumes Service for AWS には次のようなメリットがあります。
+
+* フルマネージドサービス。ストレージデバイスの構成や管理は不要です
+* NFSv3 、 NFSv4.1 、および SMB 3.0 / 3.1.1 NAS プロトコルがサポートされます
+* Linux インスタンスと Windows Elastic Container Service （ ECS ）インスタンスへのセキュアなアクセス。以下のサポートが含まれます。
++
+** Amazon Linux 2 、 Red Hat Enterprise Linux 7.5 、 SLES 12 SP3 、および Ubuntu 16.04 LTS
+** Windows Server 2008 R2 、 Windows Server 2012 R2 、および Windows Server 2016
+
+
+* バンドル価格と従量課金制のいずれかを選択できます
+
+
+
+
+== コスト
+
+Cloud Volumes Service for AWS で作成されたボリュームには、 Cloud Manager ではなくサービスへのサブスクリプションに基づいて料金が発生します。
+
+Cloud Manager から Cloud Volumes Service for AWS のリージョンまたはボリュームを検出する料金は発生しません。
+
+
+
+== 始める前に
+
+* Cloud Manager では、既存の Cloud Volumes Service for AWS サブスクリプションとボリュームを検出できます。を参照してください https://docs.netapp.com/us-en/cloud_volumes/aws/media/cvs_aws_account_setup.pdf["『 NetApp Cloud Volumes Service for AWS Account Setup Guide 』を参照してください"^] 月額プランをまだ設定していない場合は、Cloud Manager で AWS のサブスクリプションとボリュームを追加するには、リージョンごとに次のセットアッププロセスを実行する必要があります。
+* Cloud Manager に提供するためには、 Cloud Volumes API のキーとシークレットキーを取得する必要があります。 https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html#finding-the-api-url-api-key-and-secret-key["手順については、 Cloud Volumes Service for AWS のドキュメントを参照してください"^]。
+
+
+
+
+== クイックスタート
+
+これらの手順をすばやく開始するか、次のセクションで詳細を確認してください。
+
+
+
+==== 構成がサポートされていることを確認します
+
+[role="quick-margin-para"]
+AWS を Cloud Volumes Service 用にセットアップしておきます のいずれかに登録しておく必要があります https://aws.amazon.com/marketplace/search/results?x=0&y=0&searchTerms=netapp+cloud+volumes+service["AWS Marketplace で提供されているネットアップの Cloud Volumes Service ソリューション"^]。
+
+
+
+==== Cloud Volumes Service for AWS サブスクリプションを追加します
+
+[role="quick-margin-para"]
+Cloud Volumes Service for AWS のサブスクリプションに基づいて、ボリュームの作業環境を作成する必要があります。
+
+
+
+==== クラウドボリュームを作成
+
+[role="quick-margin-para"]
+このサブスクリプション用の既存のクラウドボリュームは、新しい作業環境に表示されます。定義しない場合は、 Cloud Manager から新しいボリュームを作成します。
+
+
+
+==== クラウドボリュームをマウント
+
+[role="quick-margin-para"]
+ユーザがストレージの使用を開始できるように、新しいクラウドボリュームを AWS インスタンスにマウントします。
+
+
+
+== サポートを受ける
+
+サービスに関する一般的な質問については、 Cloud Manager のチャットを使用してください。
+
+クラウドボリュームに関連するテクニカルサポートの問題については、 Cloud Volumes Service ユーザーインタフェースの「サポート」タブにある 20 桁の「 930 」シリアル番号を使用してください。このサポート ID は、 Web チケットを開くとき、またはサポートに電話するときに使用します。Cloud Volumes Service のシリアル番号は、必ず Cloud Volumes Service のユーザインターフェイスから有効にしてください。 https://docs.netapp.com/us-en/cloud_volumes/aws/task_activating_support_entitlement.html["ここでは、これらの手順について説明します"^]。
+
+
+
+== 制限
+
+* Cloud Manager では、 Cloud Volumes Service ボリュームを使用する場合の作業環境間のデータレプリケーションはサポートされません。
+* Cloud Manager から Cloud Volumes Service for AWS サブスクリプションを削除することはできません。これは、 Cloud Volumes Service for AWS インターフェイスでのみ実行できます。
+
+
+
+
+== 関連リンク
+
+* https://cloud.netapp.com/cloud-volumes-service-for-aws["NetApp Cloud Central ： Cloud Volumes Service for AWS"^]
+* https://docs.netapp.com/us-en/cloud_volumes/aws/["NetApp Cloud Volumes Service for AWS のドキュメント"^]
+

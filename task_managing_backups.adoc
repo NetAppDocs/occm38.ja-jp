@@ -1,0 +1,144 @@
+---
+sidebar: sidebar 
+permalink: task_managing_backups.html 
+keywords: restoring, restore, restore volumes, Backup to Cloud, cloud backup service, backup schedule, change schedule, change backup schedule, modify schedule, modify backup schedule, retention, backup retention, delete, delete backups, deleting, deleting backups, disable, disable backups, turn off backups, disable backup to cloud, turn off backup to cloud 
+summary: Cloud Volumes ONTAP システムとオンプレミス ONTAP システムのバックアップの管理では、バックアップスケジュールの変更、ボリュームのリストア、バックアップの削除などを行います。 
+---
+= Cloud Volumes ONTAP システムとオンプレミスの ONTAP システムのバックアップの管理
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP システムとオンプレミス ONTAP システムのバックアップの管理では、バックアップスケジュールの変更、ボリュームのリストア、バックアップの削除などを行います。
+
+
+
+== スケジュールとバックアップの保持期間を変更する
+
+デフォルトポリシーでは、毎日ボリュームがバックアップされ、各ボリュームの最新の 30 個のバックアップコピーが保持されます。週単位または月単位のバックアップに変更したり、保持するバックアップコピーの数を変更したりできます。また、 3 カ月、 1 年、 7 年のバックアップをスケジュールするシステム定義のポリシーを選択することもできます。
+
+
+TIP: バックアップポリシーの変更は、スケジュールの変更後に作成される新しいボリュームにのみ反映されます。既存のボリュームのスケジュールには影響しません。
+
+.手順
+. 作業環境を選択します。
+. をクリックします image:screenshot_gallery_options.gif["[ 詳細 ] アイコン"] をクリックし、 * バックアップ設定 * を選択します。
++
+image:screenshot_backup_settings_button.png["作業環境を選択した後に使用できる [ バックアップ設定 ] ボタンを示すスクリーンショット。"]
+
+. _ バックアップ設定ページ _ で、をクリックします image:screenshot_horizontal_more_button.gif["[ 詳細 ] アイコン"] 作業環境では、 * バックアップポリシーの変更 * を選択します。
++
+image:screenshot_backup_modify_policy.png["作業環境を選択した後に使用できる [ バックアップ設定 ] ボタンを示すスクリーンショット。"]
+
+. バックアップポリシーの変更ページで、スケジュールとバックアップの保持期間を変更し、 * 保存 * をクリックします。
++
+image:screenshot_backup_modify_policy_page.png["クラウドへのバックアップ設定を示すスクリーンショット。バックアップのスケジュールとバックアップの保持設定を変更できます。"]
+
+
+
+
+
+== ボリュームのバックアップの開始と停止
+
+ボリュームのバックアップコピーが不要で、バックアップの格納コストを抑える必要がない場合は、ボリュームのバックアップを停止できます。新しいボリュームがバックアップ中でない場合は、バックアップリストに追加することもできます。
+
+.手順
+. 作業環境を選択します。
+. をクリックします image:screenshot_gallery_options.gif["[ 詳細 ] アイコン"] をクリックし、 * バックアップ設定 * を選択します。
++
+image:screenshot_backup_settings_button.png["作業環境を選択した後に使用できる [ バックアップ設定 ] ボタンを示すスクリーンショット。"]
+
+. _ バックアップ設定ページ _ で、をクリックします image:screenshot_horizontal_more_button.gif["[ 詳細 ] アイコン"] 作業環境では、 * ボリュームの管理 * を選択します。
++
+image:screenshot_backup_manage_volumes.png["[ バックアップ設定 ] ページの [ ボリュームの管理 ] ボタンを示すスクリーンショット。"]
+
+. バックアップを開始するボリュームのチェックボックスを選択し、バックアップを停止するボリュームのチェックボックスを選択解除します。
++
+image:screenshot_backup_manage_volumes_page.png["ボリュームの管理ページでは、ボリュームを選択または選択解除できます。"]
+
+
+
+* 注意： * ボリュームのバックアップを停止すると、バックアップが停止します オブジェクトの料金はクラウドプロバイダが継続的に負担します を除いて、バックアップが使用する容量のストレージコスト あなた <<Deleting backups,バックアップを削除します>>。
+
+
+
+== バックアップからのボリュームのリストア
+
+バックアップからデータをリストアすると、 Cloud Manager はバックアップのデータを使用して _new_volume を作成します。データは、同じ作業環境内のボリューム、またはソース作業環境と同じクラウドアカウントにある別の作業環境にリストアできます。バックアップには Snapshot が含まれていないため、新しくリストアしたボリュームも含まれません。
+
+
+TIP: オンプレミスの ONTAP システムで作成されたバックアップは、バックアップが配置されたクラウドプロバイダを使用する Cloud Volumes ONTAP システムにのみリストアできます。
+
+.手順
+. 作業環境を選択します。
+. をクリックします image:screenshot_gallery_options.gif["[ 詳細 ] アイコン"] をクリックし、 * View Backups * を選択します。
++
+image:screenshot_view_backups_selection.png["作業環境の View Backups ボタンを選択した場合のスクリーンショット"]
+
+. リストアするボリュームの行を選択し、 * バックアップリストの表示 * をクリックします。
++
+image:screenshot_backup_to_s3_volume.gif["バックアップと復元タブのスクリーンショット。バックアップがあるボリュームを示しています。"]
+
+. リストアするバックアップを検索し、 * Restore * アイコンをクリックします。
++
+image:screenshot_backup_to_s3_restore_icon.gif["ボリュームを選択したあとのバックアップのリストアアイコンのスクリーンショット。"]
+
+. 新しい volume_page にリストアバックアップを記入します。
++
+.. ボリュームのリストア先となる作業環境を選択します。
+.. ボリュームの名前を入力します。
+.. [* リストア ] をクリックします。
++
+image:screenshot_backup_to_s3_restore_options.gif["リストアオプションを示すスクリーンショット：リストア先の作業環境、ボリュームの名前、およびボリューム情報が表示されています。"]
+
+
+
+
+
+Cloud Manager は、選択したバックアップに基づいて新しいボリュームを作成します。可能です link:task_managing_storage.html#managing-existing-volumes["この新しいボリュームを管理します"^] 必要に応じて。
+
+
+
+== バックアップを削除する
+
+クラウドにバックアップを使用すると、特定のボリュームのすべてのバックアップを削除できます。individual backups を削除することはできません。
+
+この処理は、バックアップが不要になった場合やソースボリュームを削除したあとにすべてのバックアップを削除する場合に実行します。
+
+
+IMPORTANT: バックアップがある Cloud Volumes ONTAP またはオンプレミスの ONTAP システムを削除する場合は、システムを削除する前にバックアップを削除しておく必要があります。システムを削除しても Backup to Cloud はバックアップを自動的に削除しません。また、システムを削除した後でバックアップを削除するための UI で現在サポートされていません。
+
+.手順
+. Cloud Manager の上部で、 * Backup * をクリックします。
+. ボリュームリストからボリュームを探し、 * バックアップリストの表示 * をクリックします。
+. をクリックします image:screenshot_horizontal_more_button.gif["[ 詳細 ] アイコン"] をクリックし、 * すべてのバックアップを削除 * を選択します。
++
+image:screenshot_delete_all_backups.png["ボリュームのすべてのバックアップを削除するには、 [Delete All Backups] ボタンを選択したスクリーンショット。"]
+
+. 確認ダイアログボックスで、 * 削除 * をクリックします。
+
+
+
+
+== クラウドへのバックアップを無効にしてい
+
+作業環境で Backup to Cloud を無効にすると、システム上の各ボリュームのバックアップが無効になり、ボリュームをリストアすることもできなくなります。既存のバックアップは削除されません。
+
+バックアップを削除しないかぎり、バックアップで使用する容量のオブジェクトストレージのコストは引き続きクラウドプロバイダから請求されます。
+
+.手順
+. 作業環境を選択します。
+. をクリックします image:screenshot_gallery_options.gif["[ 詳細 ] アイコン"] をクリックし、 * バックアップ設定 * を選択します。
++
+image:screenshot_backup_settings_button.png["作業環境を選択した後に使用できる [ バックアップ設定 ] ボタンを示すスクリーンショット。"]
+
+. _ バックアップ設定ページ _ で、をクリックします image:screenshot_horizontal_more_button.gif["[ 詳細 ] アイコン"] 作業環境では、 * クラウドへのバックアップを非アクティブ化 * を選択します。
++
+image:screenshot_disable_backups.png["作業環境のバックアップを非アクティブ化ボタンのスクリーンショット。"]
+
+. 確認ダイアログボックスで、 * Deactivate * をクリックします。
+

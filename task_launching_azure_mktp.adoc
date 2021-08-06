@@ -1,0 +1,125 @@
+---
+sidebar: sidebar 
+permalink: task_launching_azure_mktp.html 
+keywords: install, installation, installing, marketplace, azure, deploy, virtual machine, permissions, deploy connector in azure, install connector in azure 
+summary: Cloud Manager からコネクタを直接作成することを推奨しますが、必要に応じて Azure Marketplace からコネクタを起動できます。Connector の作成とセットアップが完了すると、新しい作業環境を作成するときに、 Cloud Manager によって自動的に Connector が使用されます。 
+---
+= Azure Marketplace からコネクタを作成する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager からコネクタを直接作成することを推奨しますが、必要に応じて Azure Marketplace からコネクタを起動できます。Connector の作成とセットアップが完了すると、新しい作業環境を作成するときに、 Cloud Manager によって自動的に Connector が使用されます。
+
+
+
+== Azure でコネクタを作成する
+
+Azure Marketplace のイメージを使用して Azure に Connector を導入し、コネクタにログインして Cloud Central アカウントを指定します。
+
+.手順
+. https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-oncommand-cloud-manager["Cloud Manager の Azure Marketplace ページにアクセスします。"^]。
+. [* Get it Now* ( 今すぐ取得 )] をクリックし、 [* Continue * ( 続行 )] をクリックします。
+. Azure ポータルで、 * Create * をクリックし、手順に従って仮想マシンを設定します。
++
+VM を設定する際には、次の点に注意してください。
+
++
+** Cloud Manager は、 HDD または SSD ディスクのいずれかで最適なパフォーマンスを実現できます。
+** CPU と RAM の要件を満たす VM サイズを選択します。DS3 v2 を推奨します。
++
+link:reference_cloud_mgr_reqs.html["VM の要件を確認します"]。
+
+** ネットワークセキュリティグループの場合、コネクタには、 SSH 、 HTTP 、および HTTPS を使用したインバウンド接続が必要です。
++
+link:reference_networking_cloud_manager.html#rules-for-the-connector-in-azure["コネクタのセキュリティグループルールの詳細については、こちらを参照してください"]。
+
+** [* 管理（ * Management ） ] で、 [ * オン * （ * on * ） ] を選択して、コネクターに割り当てられた管理 ID * を有効にします。
++
+管理対象の ID を使用すると、 Connector 仮想マシンはクレデンシャルを指定せずに自身を Azure Active Directory に識別できるため、この設定は重要です。 https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["Azure リソース用の管理対象 ID の詳細については、こちらをご覧ください"^]。
+
+
+
+. [* Review + create * （レビュー + 作成） ] ページで選択内容を確認し、 [* Create * （作成） ] をクリックして展開を開始します。
++
+指定した設定で仮想マシンが展開されます。仮想マシンと Connector ソフトウェアが起動するまでの所要時間は約 5 分です。
+
+. Connector 仮想マシンに接続されているホストから Web ブラウザを開き、次の URL を入力します。
++
+http://_ipaddress_:80[]
+
+. ログイン後、コネクタを設定します。
++
+.. コネクタに関連付ける Cloud Central アカウントを指定します。
++
+link:concept_cloud_central_accounts.html["Cloud Central アカウントについて詳しくは、こちらをご覧ください"]。
+
+.. システムの名前を入力します。
++
+image:screenshot_set_up_cloud_manager.gif["Cloud Manager のセットアップ画面のスクリーンショット。 Cloud Central アカウントを選択してシステムに名前を付けることができます。"]
+
+
+
+
+
+これでコネクタがインストールされ、セットアップされました。Cloud Volumes ONTAP を Azure に導入するには、 Azure の権限を付与する必要があります。
+
+
+
+== Azure 権限を付与しています
+
+Azure にコネクタを導入したら、を有効にしておく必要があります https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["システムによって割り当てられた管理 ID"^]。カスタムロールを作成し、そのロールを Connector 仮想マシンに割り当てて、 1 つ以上のサブスクリプションに必要な Azure 権限を付与する必要があります。
+
+.手順
+. Cloud Manager ポリシーを使用してカスタムロールを作成します。
++
+.. をダウンロードします https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager Azure ポリシー"^]。
+.. 割り当て可能なスコープに Azure サブスクリプション ID を追加して、 JSON ファイルを変更します。
++
+ユーザが Cloud Volumes ONTAP システムを作成する Azure サブスクリプションごとに ID を追加する必要があります。
+
++
+* 例 *
+
++
+「譲渡対象」：「 / 契約 / D333AF45-0D07-4154-943D-C25FBZZZZ 」、「 / 契約 / 契約 /54B91999-B3E6-4599-908E-416E0ZZZZ 」、「 / 契約 /E471C-3B42-4AE7-9B59-CE5BBZZZZ 」
+
+.. JSON ファイルを使用して、 Azure でカスタムロールを作成します。
++
+次の例は、 Azure CLI 2.0 を使用してカスタムロールを作成する方法を示しています。
+
++
+「 az role definition create -- role-definition C ： \Policy_for _cloud_Manager_azure_3.8.7.json 」という名前で作成します
+
++
+これで、 Connector 仮想マシンに割り当てることができる Cloud Manager Operator というカスタムロールが作成されます。
+
+
+
+. 1 つ以上のサブスクリプションのロールを Connector 仮想マシンに割り当てます。
++
+.. [ サブスクリプション ] サービスを開き、 Cloud Volumes ONTAP システムを展開するサブスクリプションを選択します。
+.. 「 * アクセスコントロール（ IAM ） * 」をクリックします。
+.. [ * 追加 *>* 役割の割り当ての追加 * ] をクリックして、権限を追加します。
++
+*** Cloud Manager Operator * ロールを選択します。
++
+
+NOTE: Cloud Manager Operator は、で指定されたデフォルトの名前です https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager ポリシー"]。ロールに別の名前を選択した場合は、代わりにその名前を選択します。
+
+*** 仮想マシン * へのアクセスを割り当てます。
+*** Connector 仮想マシンが作成されたサブスクリプションを選択します。
+*** Connector 仮想マシンを選択します。
+*** [ 保存（ Save ） ] をクリックします。
+
+
+.. 追加のサブスクリプションから Cloud Volumes ONTAP を導入する場合は、そのサブスクリプションに切り替えてから、これらの手順を繰り返します。
+
+
+
+
+Connector には、パブリッククラウド環境内のリソースとプロセスを管理するために必要な権限が付与されました。Cloud Manager は、新しい作業環境の作成時にこのコネクタを自動的に使用します。ただし、コネクタが複数ある場合は、が必要です link:task_managing_connectors.html["スイッチを切り替えます"]。

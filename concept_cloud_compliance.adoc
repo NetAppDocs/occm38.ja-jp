@@ -1,0 +1,162 @@
+---
+sidebar: sidebar 
+permalink: concept_cloud_compliance.html 
+keywords: artificial intelligence, ai, compliance, cloud compliance, dsar, personal data, personal information, sensitive, personal sensitive data, gdpr, hipaa, scans, scanning, azure netapp files, cloud volumes ontap, Amazon S3, database 
+summary: Cloud Compliance は、 Cloud Manager 用のデータプライバシーとコンプライアンスのサービスで、ボリューム、 Amazon S3 バケット、およびデータベースをスキャンして、これらのファイルに格納されている個人データと機密データを特定します。人工知能（ AI ）ベースのテクノロジを使用したクラウドコンプライアンスは、データの状況を把握し、機密データを特定するのに役立ちます。 
+---
+= Cloud Compliance の詳細をご確認ください
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Compliance は、 Cloud Manager 用のデータプライバシーとコンプライアンスのサービスで、ボリューム、 Amazon S3 バケット、およびデータベースをスキャンして、これらのファイルに格納されている個人データと機密データを特定します。人工知能（ AI ）ベースのテクノロジを使用したクラウドコンプライアンスは、データの状況を把握し、機密データを特定するのに役立ちます。
+
+https://cloud.netapp.com/cloud-compliance["Cloud Compliance のユースケースを紹介します"^]。
+
+
+
+== の機能
+
+Cloud Compliance には、コンプライアンスの取り組みに役立つツールがいくつか用意されています。Cloud Compliance を使用すると、次のことができます。
+
+* 個人識別情報（ PII ）の識別
+* GDPR 、 CCPA 、 PCI 、 HIPAA の各プライバシー規制の要件に応じて、さまざまな機密情報の範囲を特定します
+* データサブジェクトアクセス要求への応答（ dsar ）
+
+
+
+
+== サポートされている作業環境とデータソース
+
+Cloud Compliance では、次の種類のデータソースからデータをスキャンできます。
+
+* AWS の Cloud Volumes ONTAP
+* Azure の Cloud Volumes ONTAP
+* Azure NetApp Files の特長
+* Amazon S3
+* データベースはどこにあってもかまいません （データベースがに存在する必要はありません サクキヨウカンキヨウ
+
+
+* 注： Azure NetApp Files については、 Cloud Compliance は Cloud Manager と同じリージョンにあるすべてのボリュームをスキャンできます。
+
+
+
+== コスト
+
+* Cloud Compliance の使用コストは、スキャンするデータの量によって異なります。2020 年 10 月 7 日時点で、 Cloud Compliance が Cloud Manager ワークスペースでスキャンする最初の 1TB のデータは無料です。これには、 Cloud Volumes ONTAP ボリューム、 Azure NetApp Files ボリューム、 Amazon S3 バケット、データベーススキーマのデータが含まれます。その後もデータのスキャンを続行するには、 AWS または Azure Marketplace へのサブスクリプションが必要です。を参照してください https://cloud.netapp.com/cloud-compliance#pricing["価格設定"^] を参照してください。
++
+link:task_deploy_cloud_compliance.html#subscribing-to-the-cloud-compliance-service["登録方法については、こちらをご覧ください"^]。
+
+* Cloud Compliance をインストールするにはクラウドインスタンスを導入する必要があるため、導入先のクラウドプロバイダから料金が発生します。を参照してください <<The Cloud Compliance instance,各クラウドに導入されるインスタンスのタイプ プロバイダ>>
+* Cloud Compliance では、コネクタを導入しておく必要があります。多くの場合、 Cloud Manager で他のストレージとサービスを使用しているため、すでにコネクタが用意されています。Connector インスタンスを使用すると、導入先のクラウドプロバイダから料金が発生します。を参照してください link:reference_cloud_mgr_reqs.html["クラウドプロバイダごとに導入されるインスタンスのタイプ"^]。
+
+
+
+
+=== データ転送コスト
+
+データ転送のコストは設定によって異なります。Cloud Compliance インスタンスとデータソースが同じアベイラビリティゾーンとリージョンにある場合、データ転送コストは発生しません。ただし、 Cloud Volumes ONTAP クラスタや S3 バケットなどのデータソースが _different _Availability Zone またはリージョンにある場合は、クラウドプロバイダにデータ転送コストが請求されます。詳細については、次のリンクを参照してください。
+
+* https://aws.amazon.com/ec2/pricing/on-demand/["AWS ： Amazon EC2 価格設定"^]
+* https://azure.microsoft.com/en-us/pricing/details/bandwidth/["Microsoft Azure ： Bandwidth Pricing Details 』"^]
+
+
+
+
+== Cloud Compliance の仕組み
+
+Cloud Compliance の仕組みは次のとおりです。
+
+. Cloud Manager に Cloud Compliance のインスタンスを導入します。
+. この機能は、 1 つ以上の作業環境、またはデータベースで有効にします。
+. Cloud Compliance は、 AI のラーニングプロセスを使用してデータをスキャンします。
+. Cloud Manager では、 [* コンプライアンス ] をクリックし、提供されたダッシュボードツールとレポートツールを使用してコンプライアンスを強化します。
+
+
+
+
+== Cloud Compliance インスタンス
+
+Cloud Compliance を有効にすると、 Cloud Manager はコネクタと同じサブネットに Cloud Compliance インスタンスを導入します。 link:concept_connectors.html["コネクタの詳細については、こちらをご覧ください。"^]
+
+
+NOTE: コネクタがオンプレミスにインストールされている場合は、要求内の最初の Cloud Volumes ONTAP システムと同じ VPC または VNet にクラウド準拠インスタンスを導入します。
+
+image:diagram_cloud_compliance_instance.png["クラウドプロバイダで実行されている Cloud Manager インスタンスと Cloud Compliance インスタンスを示す図。"]
+
+インスタンスについては、次の点に注意してください。
+
+* Azure では、 Cloud Compliance は 512 GB ディスクの Standard_D16s_v3 VM で実行されます。
+* AWS では、 Cloud Compliance は m5.Medin インスタンスで 500GB の gp2 ディスクを使用して実行されます。
++
+m5.mcd を使用できない地域では、代わりに m4.mcd インスタンスに対して Cloud Compliance を実行します。
+
++
+
+NOTE: インスタンス / VM タイプの変更やサイズ変更はサポートされていません。表示されるサイズを使用する必要があります。
+
+* インスタンスの名前は _CloudCompliancy_with で、生成されたハッシュ（ UUID ）を連結しています。例： _CloudCompliion-16bb6564-38ad-40802-9a92-36f5fd2f71c7_
+* 1 つのコネクタに導入される Cloud Compliance インスタンスは 1 つだけです。
+* Cloud Compliance ソフトウェアのアップグレードは自動化されているため、心配する必要はありません。
+
+
+
+TIP: Cloud Compliance はデータを継続的にスキャンするため、インスタンスは常に実行されている状態にしておく必要があります。
+
+
+
+== スキャンの動作
+
+Cloud Compliance を有効にして、スキャンするボリューム、バケット、またはデータベーススキーマを選択すると、データのスキャンがただちに開始され、個人データと機密データが識別されます。組織のデータをマッピングし、各ファイルを分類して、データ内のエンティティと定義済みパターンを特定して抽出します。スキャンの結果は、個人情報、機密性の高い個人情報、およびデータカテゴリのインデックスです。
+
+Cloud Compliance は、 NFS ボリュームと CIFS ボリュームをマウントすることで、他のクライアントと同様にデータに接続します。NFS ボリュームには読み取り専用で自動的にアクセスされますが、 CIFS ボリュームをスキャンするためには Active Directory のクレデンシャルを指定する必要があります。
+
+image:diagram_cloud_compliance_scan.png["クラウドプロバイダで実行されている Cloud Manager インスタンスと Cloud Compliance インスタンスを示す図。Cloud Compliance インスタンスは、 NFS ボリューム、 CIFS ボリューム、 S3 バケット、およびデータベースに接続してスキャンします。"]
+
+初回スキャン後、 Cloud Compliance は各ボリュームを継続的にスキャンして差分変更を検出し、インスタンスの実行を維持することが重要な理由です。
+
+でスキャンを有効または無効にできます link:task_getting_started_compliance.html#enabling-and-disabling-compliance-scans-on-volumes["ボリュームレベル"^]、で 、および 。
+
+
+
+== Cloud Compliance がインデックス化する情報
+
+Cloud Compliance は、非構造化データ（ファイル）を収集してインデックスを作成し、カテゴリを割り当てます。Cloud Compliance インデックスに含まれるデータは次のとおりです。
+
+標準メタデータ:: Cloud Compliance は、ファイルタイプ、サイズ、作成日、変更日など、ファイルに関する標準のメタデータを収集します。
+個人データ:: メールアドレス、識別番号、クレジットカード番号など、個人を特定できる情報。 link:task_controlling_private_data.html#personal-data["個人データの詳細については、こちらをご覧ください"^]。
+機密性の高い個人データ:: GDPR やその他のプライバシー規制で定義されている、健康データ、民族的起源、政治的見解などの機密情報の特殊な種類。 link:task_controlling_private_data.html#sensitive-personal-data["機密性の高い個人データの詳細をご覧ください"^]。
+カテゴリ:: Cloud Compliance は、スキャンしたデータをさまざまなタイプのカテゴリに分類します。カテゴリは、各ファイルのコンテンツとメタデータの AI 分析に基づくトピックです。 link:task_controlling_private_data.html#categories["カテゴリの詳細については、こちらをご覧ください"^]。
+名前エンティティ認識:: Cloud Compliance は、 AI を使用して、ドキュメントから自然な人物の名前を抽出します。 link:task_responding_to_dsar.html["データ主体のアクセスリクエストへの対応について説明します"^]。
+
+
+
+
+== ネットワークの概要
+
+Cloud Manager によって、コネクタインスタンスからのインバウンド HTTP 接続を有効にするセキュリティグループとともに Cloud Compliance インスタンスが導入されます。
+
+Cloud Manager を SaaS モードで使用する場合、 Cloud Manager への接続には HTTPS が使用され、ブラウザと Cloud Compliance インスタンスの間で送信されるプライベートデータはエンドツーエンドの暗号化によって保護されるため、ネットアップとサードパーティが読み取ることはできません。
+
+何らかの理由で SaaS ユーザインターフェイスの代わりにローカルユーザインターフェイスを使用する必要がある場合でも、ローカルユーザインターフェイスを使用できます link:task_managing_connectors.html#accessing-the-local-ui["ローカル UI にアクセスします"^]。
+
+アウトバウンドルールは完全にオープンです。Cloud Compliance ソフトウェアのインストールとアップグレード、および使用状況の指標の送信には、インターネットアクセスが必要です。
+
+ネットワーク要件が厳しい場合は、 link:task_deploy_cloud_compliance.html#reviewing-prerequisites["Cloud Compliance が連絡するエンドポイントについて説明します"^]。
+
+
+
+== コンプライアンス情報へのユーザアクセス
+
+各ユーザには、 Cloud Manager 内と Cloud Compliance 内で異なる機能が割り当てられています。
+
+* * アカウント管理者 * は、コンプライアンス設定を管理し、すべての作業環境のコンプライアンス情報を表示できます。
+* * ワークスペース管理者 * は、アクセス権を持つシステムのコンプライアンス設定を管理し、コンプライアンス情報を表示することができます。ワークスペース管理者が Cloud Manager の作業環境にアクセスできない場合、作業環境のコンプライアンス情報は [ コンプライアンス ] タブに表示されません。
+* Cloud Compliance Viewer * ロールを持つユーザーは、コンプライアンス情報を表示し、アクセス権限を持つシステムのレポートを生成することのみができます。これらのユーザは、ボリューム、バケット、またはデータベーススキーマのスキャンを有効または無効にすることはできません。
+
+
+link:reference_user_roles.html["Cloud Manager のロールに関する詳細情報"^] そして方法 。

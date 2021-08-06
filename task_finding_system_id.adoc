@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: task_finding_system_id.html 
+keywords: system id, id, cloud manager system id 
+summary: 作業の開始を支援するために、ネットアップの担当者から Cloud Manager システムを識別するシステム ID の入力を求められる場合があります。この ID は通常、ライセンスの取得やトラブルシューティングの目的で使用されます。 
+---
+= Cloud Manager システム ID を確認する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+作業を開始する際に、ネットアップの担当者から Cloud Manager システム ID の入力を求められることがあります。この ID は通常、ライセンスの取得やトラブルシューティングの目的で使用されます。
+
+Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
+
+.手順
+. Cloud Manager コンソールの右上にある設定アイコンをクリックします。
++
+image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にある設定アイコンを示すスクリーンショット。"]
+
+. サポートダッシュボード * をクリックします。
++
+システム ID が右上に表示されます。
+
++
+* 例 *
+
++
+image:screenshot_system_id.gif["サポートダッシュボードに表示される Cloud Manager のシステム ID を示すスクリーンショット。"]
+
+

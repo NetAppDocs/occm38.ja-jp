@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: task_configuring_proxy.html 
+keywords: proxy, proxy server, proxy, internet 
+summary: インターネットへのすべての HTTP 通信にプロキシサーバを使用するように社内ポリシーで指示されている場合は、そのプロキシサーバを使用するように Cloud Manager を設定する必要があります。プロキシサーバは、クラウドまたはネットワークに配置できます。 
+---
+= プロキシサーバを使用するためのコネクタの設定
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+インターネットへのすべての HTTP 通信にプロキシサーバを使用するように企業のポリシーで指定されている場合は、そのプロキシサーバを使用するようにコネクタを設定する必要があります。プロキシサーバは、クラウドまたはネットワークに配置できます。
+
+プロキシサーバ、そのコネクタ、および管理対象の Cloud Volumes ONTAP システム（ HA メディエーターを含む）を使用するようにコネクタを設定すると、すべてのでプロキシサーバが使用されます。
+
+.手順
+. https://docs.netapp.com/us-en/occm/task_logging_in.html["Cloud Manager SaaS インターフェイスにログインします"^] コネクターインスタンスへのネットワーク接続を持つマシンから。
++
+コネクタにパブリック IP アドレスがない場合は、 VPN 接続が必要です。そうでない場合は、コネクタと同じネットワークにあるジャンプホストから接続する必要があります。
+
+. [* コネクタ * （ Connector * ） ] ドロップダウンをクリックし、特定のコネクターの [ ローカル UI へ移動（ * Go to local UI * ） ] をクリックする。
++
+image:screenshot_connector_local_ui.gif["ヘッダーのコネクターアイコンとローカル UI へ移動アクションを示すスクリーンショット。"]
+
++
+コネクタで実行されている Cloud Manager インターフェイスが新しいブラウザタブに表示されます。
+
+. Cloud Manager コンソールの右上にある設定アイコンをクリックし、 * Cloud Manager 設定 * を選択します。
++
+image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にある設定アイコンを示すスクリーンショット。"]
+
+. HTTP プロキシで、構文を使用してサーバを入力します http://_address:port_[]をクリックして、サーバーの基本認証が必要な場合はユーザー名とパスワードを指定し、 * 保存 * をクリックします。
++
+
+NOTE: Cloud Manager では、 @ 文字を含むパスワードはサポートされていません。
+
+
+
+プロキシサーバを指定すると、 AutoSupport メッセージの送信時にプロキシサーバを使用するように、新しい Cloud Volumes ONTAP システムが自動的に設定されます。ユーザが Cloud Volumes ONTAP システムを作成する前にプロキシサーバを指定しなかった場合は、 System Manager を使用して、各システムの AutoSupport オプションでプロキシサーバを手動で設定する必要があります。

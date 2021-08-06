@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: task_logging_in.html 
+keywords: logging in, log in, sign in, signing in, cloud central, netapp cloud central, user account 
+summary: Cloud Manager のインターフェイスには、 SaaS ベースのユーザがアクセスできます にアクセスしてインターフェイスを設定します https://cloudmanager.netapp.com[]。 
+---
+= Cloud Manager にログインしています
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager のインターフェイスには、 SaaS ベースのユーザがアクセスできます にアクセスしてインターフェイスを設定します https://cloudmanager.netapp.com[]。
+
+.手順
+. Web ブラウザを開き、に進みます https://cloudmanager.netapp.com[]。
+. NetApp Cloud Central のクレデンシャルを使用してログインします。
++
+image:screenshot_login.gif["Cloud Central のログイン画面。"]
+
+

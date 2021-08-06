@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: concept_cvs_gcp.html 
+keywords: cloud volumes service for gcp, google cloud, cloud volumes, cloud volumes service subscription 
+summary: NetApp Cloud Volumes Service for Google Cloud を使用すると、マルチプロトコルワークロードを迅速に追加できるだけでなく、 Windows ベースと UNIX ベースの両方のアプリケーションを構築、導入することができます。 
+---
+= Cloud Volumes Service for Google Cloud の詳細をご覧ください
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Cloud Volumes Service for Google Cloud を使用すると、マルチプロトコルワークロードを迅速に追加できるだけでなく、 Windows ベースと UNIX ベースの両方のアプリケーションを構築、導入することができます。
+
+
+
+== 主な機能：
+
+* オンプレミスと Google Cloud 間でデータを移行
+* ボリュームを 1 から 100TiB に数秒でプロビジョニング
+* マルチプロトコルのサポート（ NFS または SMB ボリュームを作成できます）
+* 自動化された効率的なスナップショットでデータを保護します。
+* 迅速なクローニングでアプリケーション開発を高速化
+
+
+
+
+== コスト
+
+Cloud Volumes Service for Google Cloud で作成されたボリュームには、 Cloud Manager ではなくサービスへのサブスクリプションが課金されます。
+
+link:https://console.cloud.google.com/marketplace/product/endpoints/cloudvolumesgcp-api.netapp.com?q=cloud%20volumes%20service["価格を確認"^]
+
+Cloud Volumes Service for Google Cloud のリージョンまたはボリュームを Cloud Manager から検出する場合、料金は発生しません。
+
+
+
+== サポートされている地域
+
+link:https://cloud.google.com/solutions/partners/netapp-cloud-volumes/regional-availability["サポートされている Google Cloud リージョンを表示します。"^]
+
+
+
+== 始める前に
+
+Cloud Manager では、既存の Cloud Volumes Service for GCP サブスクリプションとボリュームを検出できます。を参照してください https://cloud.google.com/solutions/partners/netapp-cloud-volumes/["NetApp Cloud Volumes Service for Google Cloud のドキュメント"^] 月額プランをまだ設定していない場合は、
+
+
+
+== サポートを受ける
+
+Cloud Manager の Cloud Volumes Service 処理に関する一般的な質問については、 Cloud Manager のチャットを使用してください。
+
+Cloud Volumes Service for Google Cloud に関する一般的な質問については、ネットアップの Google Cloud チームに gcinfo@netapp.com まで E メールでお問い合わせください。
+
+クラウドボリュームに関連する技術的な問題については、 Google Cloud Console を使用してテクニカルサポートケースを作成できます。を参照してください link:https://cloud.google.com/solutions/partners/netapp-cloud-volumes/support["サポートを受ける"^] を参照してください。
+
+
+
+== 制限
+
+* Cloud Manager では、 Cloud Volumes Service ボリュームを使用する場合の作業環境間のデータレプリケーションはサポートされません。
+* Cloud Manager から Cloud Volumes Service for Google Cloud サブスクリプションを削除することはできません。これは、 Google Cloud Console からのみ実行できます。
+
+
+
+
+== 関連リンク
+
+* https://cloud.netapp.com/cloud-volumes-service-for-gcp["NetApp Cloud Central ： Cloud Volumes Service for Google Cloud"^]
+* https://cloud.google.com/solutions/partners/netapp-cloud-volumes/["NetApp Cloud Volumes Service for Google Cloud のドキュメント"^]
+

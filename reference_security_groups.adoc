@@ -1,0 +1,448 @@
+---
+sidebar: sidebar 
+permalink: reference_security_groups.html 
+keywords: security group, security groups, rules, ports, aws, inbound, outbound, rules 
+summary: Cloud Manager は、 Cloud Manager と Cloud Volumes ONTAP が正常に動作するために必要なインバウンドルールとアウトバウンドルールを含む AWS セキュリティグループを作成します。テスト目的または独自のポートを使用する必要がある場合には、ポートを参照してください。 
+---
+= AWS のセキュリティグループルール
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager で作成される AWS セキュリティグループには、コネクタと Cloud Volumes ONTAP が正常に動作するために必要なインバウンドとアウトバウンドのルールが含まれています。テスト目的でポートを参照したり、独自のセキュリティグループを使用したりする場合に使用します。
+
+
+
+== Cloud Volumes ONTAP のルール
+
+Cloud Volumes ONTAP のセキュリティグループには、インバウンドルールとアウトバウンドルールの両方が必要です。
+
+
+
+=== インバウンドルール
+
+定義済みセキュリティグループのインバウンドルールの送信元は 0.0.0.0/0 です。
+
+[cols="10,10,80"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| すべての ICMP | すべて | インスタンスの ping を実行します 
+
+
+| HTTP | 80 | クラスタ管理 LIF の IP アドレスを使用した System Manager Web コンソールへの HTTP アクセス 
+
+
+| HTTPS | 443 | クラスタ管理 LIF の IP アドレスを使用した System Manager Web コンソールへの HTTPS アクセス 
+
+
+| SSH | 22 | クラスタ管理 LIF またはノード管理 LIF の IP アドレスへの SSH アクセス 
+
+
+| TCP | 111 | NFS のリモートプロシージャコール 
+
+
+| TCP | 139 | CIFS の NetBIOS サービスセッション 
+
+
+| TCP | 161-162 | 簡易ネットワーク管理プロトコル 
+
+
+| TCP | 445 | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| TCP | 635 | NFS マウント 
+
+
+| TCP | 749 | Kerberos 
+
+
+| TCP | 2049 | NFS サーバデーモン 
+
+
+| TCP | 3260 | iSCSI データ LIF を介した iSCSI アクセス 
+
+
+| TCP | 4045 | NFS ロックデーモン 
+
+
+| TCP | 4046 | NFS のネットワークステータスモニタ 
+
+
+| TCP | 10000 | NDMP を使用したバックアップ 
+
+
+| TCP | 11104 | SnapMirror のクラスタ間通信セッションの管理 
+
+
+| TCP | 11105 | クラスタ間 LIF を使用した SnapMirror データ転送 
+
+
+| UDP | 111 | NFS のリモートプロシージャコール 
+
+
+| UDP | 161-162 | 簡易ネットワーク管理プロトコル 
+
+
+| UDP | 635 | NFS マウント 
+
+
+| UDP | 2049 | NFS サーバデーモン 
+
+
+| UDP | 4045 | NFS ロックデーモン 
+
+
+| UDP | 4046 | NFS のネットワークステータスモニタ 
+
+
+| UDP | 4049 | NFS rquotad プロトコル 
+|===
+
+
+=== アウトバウンドルール
+
+Cloud Volumes 用の事前定義済みセキュリティグループ ONTAP は、すべての発信トラフィックをオープンします。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+==== 基本的なアウトバウンドルール
+
+Cloud Volumes ONTAP 用の定義済みセキュリティグループには、次のアウトバウンドルールが含まれています。
+
+[cols="20,20,60"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| すべての ICMP | すべて | すべての発信トラフィック 
+
+
+| すべての TCP | すべて | すべての発信トラフィック 
+
+
+| すべての UDP | すべて | すべての発信トラフィック 
+|===
+
+
+==== 高度なアウトバウンドルール
+
+発信トラフィックに厳格なルールが必要な場合は、次の情報を使用して、 Cloud Volumes ONTAP による発信通信に必要なポートのみを開くことができます。
+
+
+NOTE: source は、 Cloud Volumes ONTAP システムのインターフェイス（ IP アドレス）です。
+
+[cols="10,10,6,20,20,34"]
+|===
+| サービス | プロトコル | ポート | ソース | 宛先 | 目的 
+
+
+.18+| Active Directory | TCP | 88 | ノード管理 LIF | Active Directory フォレスト | Kerberos V 認証 
+
+
+| UDP | 137 | ノード管理 LIF | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| UDP | 138 | ノード管理 LIF | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| TCP | 139 | ノード管理 LIF | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| TCP および UDP | 389 | ノード管理 LIF | Active Directory フォレスト | LDAP 
+
+
+| TCP | 445 | ノード管理 LIF | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| TCP | 464 | ノード管理 LIF | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| UDP | 464 | ノード管理 LIF | Active Directory フォレスト | Kerberos キー管理 
+
+
+| TCP | 749 | ノード管理 LIF | Active Directory フォレスト | Kerberos V Change & Set Password （ RPCSEC_GSS ） 
+
+
+| TCP | 88 | データ LIF （ NFS 、 CIFS 、 iSCSI ） | Active Directory フォレスト | Kerberos V 認証 
+
+
+| UDP | 137 | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| UDP | 138 | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| TCP | 139 | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| TCP および UDP | 389 | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | LDAP 
+
+
+| TCP | 445 | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| TCP | 464 | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| UDP | 464 | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos キー管理 
+
+
+| TCP | 749 | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos V Change & Set Password （ RPCSEC_GSS ） 
+
+
+| S3 へのバックアップ | TCP | 5010 | クラスタ間 LIF | バックアップエンドポイントまたはリストアエンドポイント | S3 へのバックアップ処理とリストア処理 フィーチャー（ Feature ） 
+
+
+.3+| クラスタ | すべてのトラフィック | すべてのトラフィック | 1 つのノード上のすべての LIF | もう一方のノードのすべての LIF | クラスタ間通信（ Cloud Volumes ONTAP HA のみ） 
+
+
+| TCP | 3000 | ノード管理 LIF | HA メディエータ | ZAPI コール（ Cloud Volumes ONTAP HA のみ） 
+
+
+| ICMP | 1. | ノード管理 LIF | HA メディエータ | キープアライブ（ Cloud Volumes ONTAP HA のみ） 
+
+
+| DHCP | UDP | 68 | ノード管理 LIF | DHCP | 初回セットアップ用の DHCP クライアント 
+
+
+| DHCP | UDP | 67 | ノード管理 LIF | DHCP | DHCP サーバ 
+
+
+| DNS | UDP | 53 | ノード管理 LIF とデータ LIF （ NFS 、 CIFS ） | DNS | DNS 
+
+
+| NDMP | TCP | 18600 ～ 18699 | ノード管理 LIF | 宛先サーバ | NDMP コピー 
+
+
+| SMTP | TCP | 25 | ノード管理 LIF | メールサーバ | SMTP アラート。 AutoSupport に使用できます 
+
+
+.4+| SNMP | TCP | 161 | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| UDP | 161 | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| TCP | 162 | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| UDP | 162 | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+.2+| SnapMirror | TCP | 11104 | クラスタ間 LIF | ONTAP クラスタ間 LIF | SnapMirror のクラスタ間通信セッションの管理 
+
+
+| TCP | 11105 | クラスタ間 LIF | ONTAP クラスタ間 LIF | SnapMirror によるデータ転送 
+
+
+| syslog | UDP | 514 | ノード管理 LIF | syslog サーバ | syslog 転送メッセージ 
+|===
+
+
+== HA Mediator 外部セキュリティグループのルール
+
+Cloud Volumes ONTAP HA Mediator 用に事前定義された外部セキュリティグループには、次のインバウンドルールとアウトバウンドルールが含まれています。
+
+
+
+=== インバウンドルール
+
+インバウンドルールの送信元は 0.0.0.0/0 です。
+
+[cols="20,20,60"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| SSH | 22 | HA メディエータへの SSH 接続 
+
+
+| TCP | 3000 | コネクタからの RESTful API アクセス 
+|===
+
+
+=== アウトバウンドルール
+
+HA メディエータの定義済みセキュリティグループは、すべての発信トラフィックを開きます。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+==== 基本的なアウトバウンドルール
+
+HA Mediator 用の定義済みセキュリティグループには、次のアウトバウンドルールが含まれます。
+
+[cols="20,20,60"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| すべての TCP | すべて | すべての発信トラフィック 
+
+
+| すべての UDP | すべて | すべての発信トラフィック 
+|===
+
+
+==== 高度なアウトバウンドルール
+
+発信トラフィックに厳格なルールが必要な場合は、次の情報を使用して、 HA メディエータによる発信通信に必要なポートだけを開くことができます。
+
+[cols="10,10,30,40"]
+|===
+| プロトコル | ポート | 宛先 | 目的 
+
+
+| HTTP | 80 | コネクタの IP アドレス | メディエーターのアップグレードをダウンロードします 
+
+
+| HTTPS | 443 | AWS API サービス | ストレージのフェイルオーバーを支援します 
+
+
+| UDP | 53 | AWS API サービス | ストレージのフェイルオーバーを支援します 
+|===
+
+NOTE: ポート 443 および 53 を開く代わりに、ターゲットサブネットから AWS EC2 サービスへのインターフェイス VPC エンドポイントを作成できます。
+
+
+
+== HA Mediator 内部セキュリティグループのルール
+
+Cloud Volumes ONTAP HA Mediator 用に事前定義された内部セキュリティグループには、次のルールが含まれています。Cloud Manager は常にこのセキュリティグループを作成します。独自のオプションはありません。
+
+
+
+=== インバウンドルール
+
+事前定義されたセキュリティグループには、次の着信ルールが含まれています。
+
+[cols="20,20,60"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| すべてのトラフィック | すべて | HA メディエータと HA ノード間の通信 
+|===
+
+
+=== アウトバウンドルール
+
+定義済みのセキュリティグループには、次の発信ルールが含まれます。
+
+[cols="20,20,60"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| すべてのトラフィック | すべて | HA メディエータと HA ノード間の通信 
+|===
+
+
+== コネクタのルール
+
+コネクタのセキュリティグループには、インバウンドとアウトバウンドの両方のルールが必要です。
+
+
+
+=== インバウンドルール
+
+定義済みセキュリティグループのインバウンドルールの送信元は 0.0.0.0/0 です。
+
+[cols="10,10,80"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| SSH | 22 | コネクタホストへの SSH アクセスを提供します 
+
+
+| HTTP | 80 | クライアント Web ブラウザからローカルへの HTTP アクセスを提供します Cloud Compliance からのユーザインターフェイスと接続 
+
+
+| HTTPS | 443 | クライアント Web ブラウザからローカルへの HTTPS アクセスを提供します ユーザインターフェイス 
+
+
+| TCP | 3128 | AWS ネットワークで NAT やプロキシを使用していない場合に、 Cloud Compliance インスタンスにインターネットアクセスを提供します 
+|===
+
+
+=== アウトバウンドルール
+
+コネクタの事前定義されたセキュリティグループは、すべての発信トラフィックを開きます。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+==== 基本的なアウトバウンドルール
+
+コネクタの事前定義されたセキュリティグループには、次のアウトバウンドルールが含まれています。
+
+[cols="20,20,60"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| すべての TCP | すべて | すべての発信トラフィック 
+
+
+| すべての UDP | すべて | すべての発信トラフィック 
+|===
+
+
+==== 高度なアウトバウンドルール
+
+発信トラフィックに固定ルールが必要な場合は、次の情報を使用して、コネクタによる発信通信に必要なポートだけを開くことができます。
+
+
+NOTE: 送信元 IP アドレスは、コネクタホストです。
+
+[cols="5*"]
+|===
+| サービス | プロトコル | ポート | 宛先 | 目的 
+
+
+.9+| Active Directory | TCP | 88 | Active Directory フォレスト | Kerberos V 認証 
+
+
+| TCP | 139 | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| TCP | 389 | Active Directory フォレスト | LDAP 
+
+
+| TCP | 445 | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| TCP | 464 | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| TCP | 749 | Active Directory フォレスト | Active Directory Kerberos v の変更とパスワードの設定（ RPCSEC_GSS ） 
+
+
+| UDP | 137 | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| UDP | 138 | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| UDP | 464 | Active Directory フォレスト | Kerberos キー管理 
+
+
+| API コールと AutoSupport | HTTPS | 443 | アウトバウンドインターネットおよび ONTAP クラスタ管理 LIF | AWS および ONTAP への API コール、およびネットアップへの AutoSupport メッセージの送信 
+
+
+.2+| API コール | TCP | 3000 | ONTAP クラスタ管理 LIF | ONTAP への API コール 
+
+
+| TCP | 8088 | S3 へのバックアップ | S3 へのバックアップを API で呼び出します 
+
+
+| DNS | UDP | 53 | DNS | Cloud Manager による DNS 解決に使用されます 
+
+
+| クラウドコンプライアンス | HTTP | 80 | Cloud Compliance インスタンス | Cloud Volumes ONTAP 向けクラウドコンプライアンス 
+|===

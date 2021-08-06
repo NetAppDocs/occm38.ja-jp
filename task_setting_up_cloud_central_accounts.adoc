@@ -1,0 +1,120 @@
+---
+sidebar: sidebar 
+permalink: task_setting_up_cloud_central_accounts.html 
+keywords: account settings, workspaces, Connector, account admin, workspace admin, users, associate, disassociate, add user, add users, user management, administer, user, management, account, user account, user accounts, create workspace, add workspace, setup workspace, workspace, Connector, manage Connector, manage workspace, associate Connector 
+summary: Cloud Manager に初めてログインするときは、 NetApp Cloud Central アカウントを作成するように求められます。このアカウントはマルチテナンシーに対応しており、分離されたワークスペースでユーザやリソースを整理することができます。 
+---
+= Cloud Central アカウントでのワークスペースとユーザのセットアップ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager に初めてログインするときは、 _NetApp Cloud Central アカウント _ を作成するように求められます。このアカウントはマルチテナンシーを提供し、分離されたワークスペース内でユーザとリソースを整理することができます。
+
+link:concept_cloud_central_accounts.html["Cloud Central アカウントの仕組みの詳細については、こちらをご覧ください"]。
+
+Cloud Central アカウントを設定して、ユーザが Cloud Manager にアクセスしてワークスペース内の作業環境にアクセスできるようにします。1 人のユーザを追加するか、複数のユーザとワークスペースを追加するだけです。
+
+
+
+== ワークスペースの追加
+
+Cloud Manager のワークスペースを使用すると、作業環境のセットを他の作業環境や他のユーザから分離できます。たとえば、 2 つのワークスペースを作成し、各ワークスペースに別々のユーザーを関連付けることができます。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックします。
++
+image:screenshot_account_settings_menu.gif["Cloud Manager の上部のバナーにあるアカウント設定オプションを示すスクリーンショット。"]
+
+. 現在選択されているアカウントの横にある ［ * アカウントの管理 * ］ をクリックします。
++
+image:screenshot_manage_account_settings.gif["「アカウント」ドロップダウンから利用できる「アカウント設定の管理」オプションを示すスクリーンショット。"]
+
+. [* ワークスペース * ] をクリックします。
+. [ 新規ワークスペースの追加 ] をクリックします。
+. ワークスペースの名前を入力し、 * 追加 * をクリックします。
+
+
+ワークスペース管理者がこのワークスペースにアクセスする必要がある場合は、ユーザーを関連付ける必要があります。また、ワークスペース管理者がコネクタを使用できるように、コネクタをワークスペースに関連付ける必要があります。
+
+
+
+== ユーザを追加する
+
+Cloud Central ユーザを Cloud Central アカウントに関連付けて、これらのユーザが Cloud Manager で作業環境を作成および管理できるようにします。
+
+.手順
+. ユーザーがまだ行っていない場合は、にアクセスするようにユーザーに依頼します https://cloud.netapp.com["NetApp Cloud Central"^] 登録してください。
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
++
+image:screenshot_manage_account_settings.gif["「アカウント」ドロップダウンから利用できる「アカウント設定の管理」オプションを示すスクリーンショット。"]
+
+. [ ユーザー ] タブで、 [ ユーザーの関連付け ] をクリックします。
+. ユーザの E メールアドレスを入力し、ユーザのロールを選択します。
++
+** * アカウント管理者 * ： Cloud Manager で任意の操作を実行できます。
+** * ワークスペース管理者 * ：割り当てられたワークスペースでリソースを作成および管理できます。
+** * Compliance Viewer * ：アクセス権を持つワークスペースについてのみ、コンプライアンス情報を表示し、レポートを生成できます。
+
+
+. Workspace Admin または Compliance Viewer を選択した場合は、 1 つ以上のワークスペースを選択してそのユーザーに関連付けます。
++
+image:screenshot_associate_user.gif["ロールと関連するワークスペースを選択してユーザを関連付ける方法を示すスクリーンショット。"]
+
+. [ ユーザーの関連付け ] をクリックします。
+
+
+ユーザには、 NetApp Cloud Central の「 Account Association 」というタイトルの E メールが送信されます。 E メールには、 Cloud Manager にアクセスするために必要な情報が記載されています。
+
+
+
+== ワークスペース管理者とワークスペースの関連付け
+
+ワークスペース管理者は、いつでも追加のワークスペースに関連付けることができます。ユーザーを関連付けると、ワークスペース内の作業環境を作成して表示できます。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
++
+image:screenshot_manage_account_settings.gif["「アカウント」ドロップダウンから利用できる「アカウント設定の管理」オプションを示すスクリーンショット。"]
+
+. [ ユーザー ] タブで、ユーザーに対応する行のアクションメニューをクリックします。
++
+image:screenshot_associate_user_workspace.gif["ユーザテーブルでユーザの名前にカーソルを合わせたときに使用できる操作メニューを示すスクリーンショット。"]
+
+. * ワークスペースの管理 * をクリックします。
+. 1 つ以上のワークスペースを選択し、 * 適用 * をクリックします。
+
+
+コネクタがワークスペースにも関連付けられていれば、ユーザは Cloud Manager からこれらのワークスペースにアクセスできるようになりました。
+
+
+
+== ワークスペースへのコネクタの関連付け
+
+ワークスペース管理者がコネクタを使用して Cloud Volumes ONTAP システムを作成できるように、コネクタをワークスペースに関連付ける必要があります。
+
+アカウント管理者のみがいる場合は、コネクタをワークスペースに関連付ける必要はありません。アカウント管理者は、デフォルトで Cloud Manager のすべてのワークスペースにアクセスできます。
+
+link:concept_cloud_central_accounts.html#users-workspaces-and-service-connectors["ユーザー、ワークスペース、コネクターの詳細をご覧ください"]。
+
+.手順
+. Cloud Manager の上部で、 * Account * ドロップダウンをクリックし、 * Manage Account * をクリックします。
++
+image:screenshot_manage_account_settings.gif["「アカウント」ドロップダウンから利用できる「アカウント設定の管理」オプションを示すスクリーンショット。"]
+
+. コネクター（ * Connector ）をクリックします。
+. 関連付けるコネクタの * ワークスペースの管理 * をクリックします。
+. 1 つ以上のワークスペースを選択し、 * 適用 * をクリックします。
+
+
+ワークスペース管理者は、これらのコネクタを使用して Cloud Volumes ONTAP システムを作成できるようになりました。
+
+
+
+== 次の手順
+
+アカウントの設定が完了したので、ユーザーの削除、ワークスペース、コネクタ、およびサブスクリプションの管理によって、いつでもアカウントを管理できます。 link:task_managing_cloud_central_accounts.html["詳細はこちら。"]。

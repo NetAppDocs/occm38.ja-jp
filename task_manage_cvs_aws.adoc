@@ -1,0 +1,351 @@
+---
+sidebar: sidebar 
+permalink: task_manage_cvs_aws.html 
+keywords: cloud volumes service for aws, cloud volumes, create cloud volumes, discover cloud volumes service for aws, delete cloud volumes, cloud volumes service subscription, discover cloud volumes service subscription, access key, secret key, discover region, service level, allowed clients, create snapshots 
+summary: Cloud Manager では、 Cloud Volumes Service for AWS サブスクリプションに基づいてクラウドボリュームを作成できます。すでに作成したクラウドボリュームを Cloud Volumes Service インターフェイスから検出して、作業環境に追加することもできます。 
+---
+= Cloud Volumes Service for AWS を管理する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager では、に基づいてクラウドボリュームを作成できます 。 https://cloud.netapp.com/cloud-volumes-service-for-aws["Cloud Volumes Service for AWS"^] サブスクリプション。すでに作成したクラウドボリュームを Cloud Volumes Service インターフェイスから検出して、作業環境に追加することもできます。
+
+
+
+== Cloud Volumes Service for AWS サブスクリプションを追加します
+
+Cloud Volumes Service ユーザインターフェイスからすでにボリュームを作成しているかどうかに関係なく、 Cloud Volumes Service for AWS にサインアップしてまだボリュームを持っていない場合は、まず AWS サブスクリプションに基づいてボリュームの作業環境を作成します。
+
+このサブスクリプション用のクラウドボリュームがすでに存在する場合は、ボリュームが新しい作業環境に自動的に追加されます。AWS サブスクリプション用のクラウドボリュームをまだ追加していない場合は、新しい作業環境の作成後に追加します。
+
+
+TIP: 複数の AWS リージョンにサブスクリプションとボリュームが含まれている場合は、リージョンごとにこのタスクを実行する必要があります。
+
+各地域でサブスクリプションを追加する場合は、次の情報を入手しておく必要があります。
+
+* Cloud Volumes API のキーとシークレットキー： https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html#finding-the-api-url-api-key-and-secret-key["取得するには、 Cloud Volumes Service for AWS のドキュメントを参照してください この情報"^]。
+* サブスクリプションが作成された AWS リージョン。
+
+
+.手順
+. Cloud Manager で、新しい作業環境を追加し、場所として「 * Amazon Web Services * 」を選択して、「 * Continue * 」をクリックします。
+. 「 * Cloud Volumes Service * 」を選択し、「 * Continue * 」をクリックします。
++
+image:screenshot_add_cvs_aws_working_env.png["クラウドの作業環境を追加するスクリーンショット Volumes Service for AWS サブスクリプション"]
+
+. Cloud Volumes Service サブスクリプションに関する情報を入力します。
++
+.. 使用する作業環境名を入力します。
+.. Cloud Volumes Service の API キーとシークレットキーを入力します。
+.. クラウドボリュームを配置する AWS リージョンとその導入先を選択します。
+.. [ 追加（ Add ） ] をクリックします。
++
+image:screenshot_add_cvs_aws_credentials.png["Cloud Volumes Service のクレデンシャルを追加するスクリーンショット AWS サブスクリプションの場合"]
+
+
+
+
+
+Cloud Manager の作業環境のページに Cloud Volumes Service for AWS の設定が表示されます。
+
+image:screenshot_cvs_aws_cloud.gif["Cloud Volumes Service for AWS の作業環境のページ上のスクリーンショット。"]
+
+このサブスクリプション用のクラウドボリュームがすでに存在する場合は、新しい作業環境にボリュームが自動的に追加されます。Cloud Manager からクラウドボリュームを追加することができます。
+
+このサブスクリプションにクラウドボリュームが存在しない場合は、ここで作成できます。
+
+
+
+== クラウドボリュームを作成
+
+Cloud Volumes Service 作業環境にすでにボリュームが存在する構成の場合は、次の手順で新しいボリュームを追加できます。
+
+ボリュームが存在しない構成では、 Cloud Volumes Service for AWS サブスクリプションのセットアップ後に、 Cloud Manager から直接最初のボリュームを作成できます。これまでは、最初のボリュームを Cloud Volumes Service ユーザインターフェイスで直接作成する必要がありました。
+
+.作業を開始する前に
+* AWS で SMB を使用する場合は、 DNS と Active Directory を設定しておく必要があります。
+* SMB ボリュームを作成する場合は、接続可能な Windows Active Directory サーバが必要です。この情報は、ボリュームの作成時に入力します。また、管理者ユーザが指定された Organizational Unit （ OU ；組織単位）パスでマシンアカウントを作成できることを確認してください。
+* この情報は、新しいリージョン / 作業環境で最初のボリュームを作成するときに必要になります。
++
+** AWS アカウント ID ：ダッシュを使用しない 12 桁の Amazon アカウント ID 。アカウント ID を確認するには、こちらを参照してください link:https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html["AWS のトピック"^]。
+** Classless Inter-Domain Routing （ CIDR ）ブロック：未使用の IPv4 CIDR ブロック。ネットワークプレフィックスの範囲は /16 ~ /28 である必要があり、またプライベートネットワーク用に予約された範囲内である必要があります（ RFC 1918 ）。VPC CIDR の割り当てと重複するネットワークは選択しないでください。
+
+
+
+
+.手順
+. 新しい作業環境を選択し、 * 新しいボリュームの追加 * をクリックします。
+. リージョン内の作業環境に最初のボリュームを追加する場合は、 AWS ネットワーク情報を追加する必要があります。
++
+.. リージョンの IPv4 範囲（ CIDR ）を入力します。
+.. Cloud Volumes アカウントを AWS アカウントに接続するために、 12 桁の AWS アカウント ID （ダッシュなし）を入力します。
+.. [* Continue （続行） ] をクリックします
++
+image:screenshot_cvs_aws_network_setup.png["追加するネットワークセットアップページのスクリーンショット CIDR と AWS アカウント ID"]
+
+
+
+. 仮想インターフェイスの受け入れページでは、ボリュームを追加したあとでその手順を実行して準備する必要がある手順について説明します。[* Continue * （続行） ] をもう一度クリックします。
+. 詳細とタグページで、ボリュームの詳細を入力します。
++
+.. ボリュームの名前を入力します。
+.. 100GiB ~ 90,000GiB の範囲でサイズを指定します（ 88 TiB に相当）。
++
+link:reference_cvs_service_levels_and_quotas.html#allocated-capacity["割り当て容量に関する詳細情報"^]。
+
+.. サービスレベルとして、 Standard 、 Premium 、または Extreme を指定します。
++
+link:reference_cvs_service_levels_and_quotas.html#service-levels["サービスレベルの詳細については、こちらをご覧ください"^]。
+
+.. 必要に応じて、 1 つ以上のタグ名を入力してボリュームを分類します。
+.. [* Continue （続行） ] をクリックします
++
+image:screenshot_cvs_vol_details_page.png["ボリュームの詳細ページのスクリーンショットで、名前、サイズ、およびサービスレベルを指定します"]
+
+
+
+. プロトコルページで、 NFS 、 SMB 、またはデュアルプロトコルを選択し、詳細を定義します。NFS と SMB の必須のエントリは、以下の個別のセクションに表示されます。
+. ボリュームパスフィールドで、ボリュームのマウント時に表示されるボリュームエクスポートの名前を指定します。
+. デュアルプロトコルを選択した場合は、 NTFS または UNIX を選択してセキュリティ形式を選択できます。セキュリティ形式は、使用するファイル権限の種類と権限の変更方法に影響します。
++
+** UNIX では NFSv3 モードビットが使用され、 NFS クライアントのみが権限を変更できます。
+** NTFS では NTFS ACL が使用され、 SMB クライアントのみが権限を変更できます。
+
+
+. NFS の場合：
++
+.. NFS Version フィールドで、要件に応じて NFSv3 、 NFSv4.1 、またはその両方を選択します。
+.. 必要に応じて、エクスポートポリシーを作成して、ボリュームにアクセスできるクライアントを特定することができます。を指定します。
++
+*** IP アドレスまたは Classless Inter-Domain Routing （ CIDR ）を使用して、許可するクライアントを設定します。
+*** アクセス権は読み取り / 書き込みまたは読み取り専用です。
+*** ユーザに使用するアクセスプロトコル（ボリュームで NFSv3 と NFSv4.1 の両方のアクセスが許可されている場合はプロトコル）。
+*** 追加のエクスポートポリシールールを定義する場合は、「 * + エクスポートポリシールールの追加」をクリックします。
++
+次の図は、 NFS プロトコルの [Volume] ページの設定を示しています。
+
++
+image:screenshot_cvs_nfs_details.png["NFS Cloud Volumes Service ボリュームについて入力されたボリュームページを示すスクリーンショット。"]
+
+
+
+
+
+. SMB の場合：
++
+.. SMB セッション暗号化を有効にするには、 SMB Protocol Encryption のチェックボックスをオンにします。
+.. 既存の Windows Active Directory サーバとボリュームを統合するには、 Active Directory セクションのフィールドを設定します。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNS プライマリ IP アドレス | SMB サーバの名前解決を提供する DNS サーバの IP アドレス。複数のサーバを参照する場合は、カンマを使用して IP アドレスを区切ります。たとえば、 172.31.25.223 、 172.31.2.74 のようになります。 
+
+
+| 参加する Active Directory ドメイン | SMB サーバを参加させる Active Directory （ AD ）ドメインの FQDN 。AWS Managed Microsoft AD を使用する場合は、「 Directory DNS name 」フィールドの値を使用します。 
+
+
+| SMB サーバの NetBIOS 名 | 作成する SMB サーバの NetBIOS 名を指定します。 
+
+
+| ドメインへの参加を許可されたクレデンシャル | AD ドメイン内の指定した組織単位（ OU ）にコンピュータを追加するための十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| 組織単位 | SMB サーバに関連付ける AD ドメイン内の組織単位。デフォルトでは、 Windows Active Directory サーバに接続するための CN=Computers が選択されます。AWS Managed Microsoft AD を Cloud Volumes Service の AD サーバとして設定する場合は、このフィールドに「 * OU=computers 、 OU=corp * 」と入力します。 
+|===
++
+次の図は、 SMB プロトコルの [Volume] ページの設定を示しています。
+
++
+image:screenshot_cvs_smb_details.png["SMB Cloud Volumes Service ボリュームについて設定されたボリュームページを示すスクリーンショット。"]
+
++
+
+TIP: クラウドボリュームが Windows Active Directory サーバと正しく統合されるようにするには、 AWS セキュリティグループ設定に関するガイダンスに従う必要があります。を参照してください link:reference_security_groups_windows_ad_servers.html["Windows AD サーバ用の AWS セキュリティグループの設定"^] を参照してください。
+
+
+
+. 既存のボリュームの Snapshot に基づいてこのボリュームを作成する場合は、 Snapshot Name ドロップダウンリストから Snapshot を選択します。
+. Snapshot ポリシーページでは、 Cloud Volumes Service を有効にして、スケジュールに基づいてボリュームの Snapshot コピーを作成できます。この処理はこの段階で実行することも、あとでボリュームを編集して Snapshot ポリシーを定義することもできます。
++
+を参照してください link:task_manage_cloud_volumes_snapshots.html#create_or_modify_a_snapshot_policy["Snapshot ポリシーを作成しています"^] Snapshot 機能の詳細については、を参照してください。
+
+. [ ボリュームの追加 ] をクリックします。
+
+
+新しいボリュームが作業環境に追加されます。
+
+この AWS サブスクリプションで最初に作成されたボリュームの場合は、 AWS の管理コンソールを起動して、この AWS リージョンで使用される 2 つの仮想インターフェイスを受け入れ、すべてのクラウドボリュームを接続する必要があります。を参照してください https://docs.netapp.com/us-en/cloud_volumes/aws/media/cvs_aws_account_setup.pdf["『 NetApp Cloud Volumes Service for AWS Account Setup Guide 』を参照してください"^] を参照してください。
+
+[Add Volume] ボタンをクリックしてから 10 分以内にインターフェイスを受け入れる必要があります。そうしないと、システムがタイムアウトする場合があります。この場合は、 cvs-support@netapp.com に AWS のお客様 ID とネットアップのシリアル番号を E メールで送信してください。サポートが問題を解決し、オンボーディングプロセスを再開できます。
+
+次に、に進みます link:task_manage_cvs_aws.html#mount-the-cloud-volume["クラウドボリュームをマウント"]。
+
+
+
+== クラウドボリュームをマウント
+
+クラウドボリュームは AWS インスタンスにマウントできます。現在、クラウドボリュームは、 Linux および UNIX クライアントでは NFSv3 と NFSv4.1 、 Windows クライアントでは SMB 3.0 および 3.1.1 をサポートしています。
+
+* 注： * クライアントがサポートしているハイライトされたプロトコル / ダイアレクトを使用してください。
+
+.手順
+. 作業環境を開きます。
+. ボリュームにカーソルを合わせ、 * ボリュームをマウント * をクリックします。
++
+NFS ボリュームと SMB ボリュームには、そのプロトコルのマウント手順が表示されます。デュアルプロトコルボリュームは、両方の手順を提供します。
+
+. コマンドにカーソルを合わせてクリップボードにコピーすると、この処理が簡単になります。コマンドの最後にデスティネーションのディレクトリ / マウントポイントを追加するだけです。
++
+* nfs の例： *
+
++
+image:screenshot_cvs_aws_nfs_mount.png["NFS ボリュームのマウント手順"]
+
++
+rsize' および wsize オプションで定義された最大 I/O サイズは 1048576 ですが、ほとんどのユースケースでは 65536 が推奨されています。
+
++
+「 rs=<nfs_version>` 」オプションで指定した場合を除き、 Linux クライアントのデフォルトは NFSv4.1 です。
+
++
+* SMB の例： *
+
++
+image:screenshot_cvs_aws_smb_mount.png["SMB ボリュームのマウント手順"]
+
+. SSH または RDP クライアントを使用して Amazon Elastic Compute Cloud （ EC2 ）インスタンスに接続し、インスタンスのマウント手順に従います。
++
+マウント手順の手順が完了すると、クラウドボリュームが AWS インスタンスにマウントされました。
+
+
+
+
+
+== 既存のボリュームの管理
+
+既存のボリュームは、ストレージのニーズの変化に応じて管理できます。ボリュームを表示、編集、リストア、および削除できます。
+
+.手順
+. 作業環境を開きます。
+. ボリュームにカーソルを合わせます。
++
+image:screenshot_cvs_aws_volume_hover_menu.png["ボリュームのホバーメニューのスクリーンショット をクリックしてください"]
+
+. ボリュームの管理：
++
+[cols="30,70"]
+|===
+| タスク | アクション 
+
+
+| ボリュームに関する情報を表示します | ボリュームを選択し、 * 情報 * をクリックします。 
+
+
+| ボリュームの編集（ Snapshot ポリシーを含む）  a| 
+.. ボリュームを選択し、 * 編集 * をクリックします。
+.. ボリュームのプロパティを変更し、 * Update * をクリックします。
+
+
+
+
+| NFS または SMB マウントコマンドを取得します  a| 
+.. ボリュームを選択し、 * ボリュームのマウント * をクリックします。
+.. コマンドをコピーするには、 [* コピー（ Copy * ） ] をクリックします。
+
+
+
+
+| オンデマンドで Snapshot コピーを作成します  a| 
+.. ボリュームを選択し、 * Snapshot コピーの作成 * をクリックします。
+.. 必要に応じてスナップショット名を変更し、 * 作成 * をクリックします。
+
+
+
+
+| ボリュームを Snapshot コピーの内容で置き換えます  a| 
+.. ボリュームを選択し、 * ボリュームをスナップショットに戻す * をクリックします。
+.. Snapshot コピーを選択し、 * Revert * をクリックします。
+
+
+
+
+| Snapshot コピーを削除します  a| 
+.. ボリュームを選択し、 * Snapshot コピーの削除 * をクリックします。
+.. 削除する Snapshot コピーを選択し、 * Delete * をクリックします。
+.. 再度 * Delete * をクリックして確定します。
+
+
+
+
+| ボリュームを削除します  a| 
+.. ボリュームをすべてのクライアントからアンマウントします。
++
+*** Linux クライアントでは 'umount' コマンドを使用します
+*** Windows クライアントでは、 [ ネットワークドライブの切断 ] をクリックします。
+
+
+.. ボリュームを選択し、 * 削除 * をクリックします。
+.. 再度 * Delete * をクリックして確定します。
+
+
+|===
+
+
+
+
+== Cloud Volumes Service を Cloud Manager から削除
+
+Cloud Manager から Cloud Volumes Service for AWS サブスクリプションと既存のすべてのボリュームを削除できます。ボリュームは削除されず、 Cloud Manager インターフェイスから削除されます。
+
+.手順
+. 作業環境を開きます。
++
+image:screenshot_cvs_aws_remove.png["Cloud Volumes Service を Cloud Manager から削除するオプションを選択するスクリーンショット。"]
+
+. をクリックします image:screenshot_gallery_options.gif[""] ボタンをクリックし、「 Cloud Volumes Service の削除」をクリックします。
+. 確認ダイアログボックスで、 * 削除 * をクリックします。
+
+
+
+
+== Active Directory の設定を管理します
+
+DNS サーバまたは Active Directory ドメインを変更した場合、クライアントに引き続きストレージを提供できるように、 Cloud Volumes Services で SMB サーバを変更する必要があります。
+
+不要になった Active Directory へのリンクを削除することもできます。
+
+.手順
+. 作業環境を開きます。
+. をクリックします image:screenshot_gallery_options.gif[""] ボタンをクリックし、 * Active Directory の管理 * をクリックします。
+. Active Directory が設定されていない場合は、ここで追加できます。設定済みの場合は、を使用して設定を変更したり削除したりできます image:screenshot_gallery_options.gif[""] ボタンを押します。
+. 参加する Active Directory の設定を指定します。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNS プライマリ IP アドレス | SMB サーバの名前解決を提供する DNS サーバの IP アドレス。複数のサーバを参照する場合は、カンマを使用して IP アドレスを区切ります。たとえば、 172.31.25.223 、 172.31.2.74 のようになります。 
+
+
+| 参加する Active Directory ドメイン | SMB サーバを参加させる Active Directory （ AD ）ドメインの FQDN 。AWS Managed Microsoft AD を使用する場合は、「 Directory DNS name 」フィールドの値を使用します。 
+
+
+| SMB サーバの NetBIOS 名 | 作成する SMB サーバの NetBIOS 名を指定します。 
+
+
+| ドメインへの参加を許可されたクレデンシャル | AD ドメイン内の指定した組織単位（ OU ）にコンピュータを追加するための十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| 組織単位 | SMB サーバに関連付ける AD ドメイン内の組織単位。デフォルトでは、 Windows Active Directory サーバに接続するための CN=Computers が選択されます。AWS Managed Microsoft AD を Cloud Volumes Service の AD サーバとして設定する場合は、このフィールドに「 * OU=computers 、 OU=corp * 」と入力します。 
+|===
+. [ 保存（ Save ） ] をクリックして、設定を保存します。
+

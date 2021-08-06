@@ -1,0 +1,186 @@
+---
+sidebar: sidebar 
+permalink: task_getting_started_monitoring.html 
+keywords: monitoring, cloud insights, tenant, acquisition unit, iops, throughput, latency, performance, cloud volumes ontap performance, volume performance 
+summary: Cloud Volumes ONTAP のパフォーマンスの監視を開始するには、いくつかの手順を実行します。 
+---
+= AWS で Cloud Volumes ONTAP を監視しています
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP のパフォーマンスの監視を開始するには、いくつかの手順を実行します。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== 構成がサポートされていることを確認します
+
+[role="quick-margin-para"]
+AWS に Cloud Manager 3.8.4 以降を新規インストールしている必要があります。 AWS に Cloud Volumes ONTAP がインストールされている必要があります。また、 Cloud Insights の新規のお客様である必要があります。
+
+
+
+==== 新規または既存のシステムで監視を有効にします
+
+* 新しい作業環境：作業環境を作成するときは、必ず監視を有効にしてください（デフォルトで有効になっています）。
+* 既存の作業環境：作業環境を選択し、 * 監視の開始 * をクリックします。
+
+
+
+
+==== パフォーマンスデータを表示します
+
+[role="quick-margin-para"]
+「 * Monitoring 」をクリックし、ボリュームのパフォーマンスデータを表示します。
+
+
+
+==== Cloud Insights に登録します
+
+[role="quick-margin-para"]
+30 日間の無償トライアルの終了前にサブスクライブすると、 Cloud Manager と Cloud Insights で引き続きパフォーマンスデータを確認できます。 https://docs.netapp.com/us-en/cloudinsights/concept_subscribing_to_cloud_insights.html["登録方法については、こちらをご覧ください"^]。
+
+
+
+== 要件
+
+以下の要件を読み、サポートされている構成になっていることを確認してください。
+
+サポートされる Cloud Manager のバージョン:: Cloud Manager 3.8.4 以降の新規インストールが必要です。Monitoring サービスを有効にするには新しいインフラストラクチャが必要なため、新規インストールが必要です。このインフラは、 Cloud Manager 3.3.8 の新規インストールから利用できます。 4
+サポートされる Cloud Volumes ONTAP のバージョン:: AWS 内の任意のバージョンの Cloud Volumes ONTAP 。
+Cloud Insights の要件:: Cloud Insights の新規のお客様である必要があります。Cloud Insights テナントがすでにある場合は、監視はサポートされません。
+Cloud Central の E メールアドレス:: Cloud Central ユーザアカウントの E メールアドレスは、業務用 E メールアドレスである必要があります。Cloud Insights テナントの作成時には、 Gmail や Hotmail などの無料のメールドメインはサポートされていません。
+Acquisition Unit のネットワーク::
++
+--
+Acquisition Unit は、 Cloud Insights との通信に次の 2 つのエンドポイントを使用します。Acquisition Unit サーバと Cloud Insights の間にファイアウォールがある場合は、ファイアウォールルールを設定する際に次のエンドポイントが必要です。
+
+....
+https://aulogin.<Cloud Insights Domain>
+https://<your-tenant-ID>.<Cloud Insights Domain>
+....
+例：
+
+....
+https://aulogin.c01.cloudinsights.netapp.com
+https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+....
+Cloud Insights ドメインとテナント ID の特定についてサポートが必要な場合は、製品内チャットでお問い合わせください。
+
+--
+コネクタのネットワーク::
++
+--
+....
+https://<your-short-tenant-ID>.<Cloud Insights Domain>
+....
+例：
+
+....
+https://abcd12345.c01.cloudinsights.netapp.com
+....
+テナントホストの URL の特定についてサポートが必要な場合は、製品内のチャットでお問い合わせください。
+
+--
+
+
+
+
+== 新しいシステムで監視を有効にします
+
+監視サービスは、作業環境ウィザードではデフォルトで有効になっています。このオプションは必ず有効にしておいてください。
+
+.手順
+. [ Cloud Volumes ONTAP の作成 *] をクリックします。
+. クラウドプロバイダとして Amazon Web Services を選択し、シングルノードまたは HA システムを選択します。
+. [ 詳細と資格情報 ] ページに入力します。
+. [ サービス ] ページで、サービスを有効のままにして、 [* 続行 ] をクリックします。
++
+image:screenshot_monitoring.gif["作業環境ウィザードから有効にできる監視サービスのスクリーンショット。"]
+
+
+
+
+
+== 既存のシステムで監視を有効にする
+
+作業環境からいつでも監視を有効にできます。
+
+.手順
+. Cloud Manager の上部で、 * 作業環境 * をクリックします。
+. 作業環境を選択します。
+. 右側のペインで、 * モニタリングの開始 * をクリックします。
++
+image:screenshot_enable_monitoring.gif["[ 作業環境を選択した後に [ 作業環境 ] タブで使用できる [ 監視を有効にする ] アイコンを示すスクリーンショット。"]
+
+
+
+
+
+== ボリュームを監視する
+
+各ボリュームの IOPS 、スループット、レイテンシを表示してパフォーマンスを監視します。
+
+.手順
+. Cloud Manager の上部で、 * Monitoring * をクリックします。
+. ダッシュボードの内容をフィルタして必要な情報を取得します。
++
+** 特定の作業環境を選択します。
+** 別の期間を選択してください。
+** 特定の SVM を選択します。
+** 特定のボリュームを検索します。
++
+次の図は、これらの各オプションを示しています。
+
++
+image:screenshot_filter_options.gif["ダッシュボードのコンテンツのフィルタリングに使用できるオプションを示す Monitoring （監視）タブのスクリーンショット。"]
+
+
+
+. 表内のボリュームをクリックして行を展開し、 IOPS 、スループット、レイテンシのタイムラインを確認します。
++
+image:screenshot_vol_performance.gif["ボリュームのパフォーマンスデータのスクリーンショット。"]
+
+. データを使用してパフォーマンスの問題を特定し、ユーザやアプリケーションへの影響を最小限に抑えます。
+
+
+
+
+== Cloud Insights から詳細情報を入手する
+
+Cloud Manager の Monitoring （監視）タブには、ボリュームの基本的なパフォーマンスデータが表示されます。ブラウザから Cloud Insights Web インターフェイスにアクセスして、より詳細な監視を実行したり、 Cloud Volumes ONTAP システムのアラートを設定したりできます。
+
+.手順
+. Cloud Manager の上部で、 * Monitoring * をクリックします。
+. [*Cloud Insights *] リンクをクリックします。
++
+image:screenshot_cloud_insights.gif["監視タブの右上にある Cloud Insights リンクを示すスクリーンショット。"]
+
+
+
+Cloud Insights がブラウザの新しいタブで開きます。サポートが必要な場合は、を参照してください https://docs.netapp.com/us-en/cloudinsights["Cloud Insights のドキュメント"^]。
+
+
+
+== 監視を無効にします
+
+Cloud Volumes ONTAP の監視が不要になった場合は、いつでも無効にすることができます。
+
+
+NOTE: それぞれの作業環境で監視を無効にした場合は、 EC2 インスタンスを手動で削除する必要があります。インスタンスの名前は _AcquisitionUnit_ で、生成されたハッシュ（ UUID ）が連結されます。例： _AcquisitionUnit - FANFqeH_
+
+.手順
+. Cloud Manager の上部で、 * 作業環境 * をクリックします。
+. 作業環境を選択します。
+. 右側のペインで、をクリックします image:screenshot_gallery_options.gif["に表示されるオプションアイコンのスクリーンショット 作業環境を選択した後のサービスペイン"] アイコンをクリックし、 * スキャンを非アクティブ化 * を選択します。
+

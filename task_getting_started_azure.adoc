@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: task_getting_started_azure.html 
+keywords: microsoft, azure, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, marketplace, virtual machine, vnet, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, permissions, custom role, role, json, permissions, virtual machine, video, connectivity, internet, outbound, endpoint, connection, networks, vpn, replicating, policy, iam, setupasservice, sign up, cloud manager, cloud volumes ontap, cloud ontap, subscription, create 
+summary: いくつかの手順で、 Cloud Volumes ONTAP for Azure を使い始めましょう。 
+---
+= Cloud Volumes ONTAP for Azure での作業の開始
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+いくつかの手順で、 Cloud Volumes ONTAP for Azure を使い始めましょう。
+
+
+
+==== コネクタを作成します
+
+[role="quick-margin-para"]
+を持っていなければ link:concept_connectors.html["コネクタ"] ただし、アカウント管理者がアカウントを作成する必要があります。 。
+
+[role="quick-margin-para"]
+最初の Cloud Volumes ONTAP 作業環境を作成する際、まだコネクタがない場合は、 Cloud Manager からコネクタの導入を求められます。
+
+
+
+==== 構成を計画
+
+[role="quick-margin-para"]
+Cloud Manager には、ワークロードの要件に応じた事前設定パッケージが用意されています。または、独自の設定を作成することもできます。独自の設定を選択する場合は、使用可能なオプションを理解しておく必要があります。 link:task_planning_your_config_azure.html["詳細はこちら。"]。
+
+
+
+==== ネットワークをセットアップします
+
+. VNet とサブネットがコネクタと Cloud Volumes ONTAP 間の接続をサポートすることを確認します。
+. ターゲット VNet からのアウトバウンドインターネットアクセスを有効にして、コネクタと Cloud Volumes ONTAP が複数のエンドポイントに接続できるようにします。
++
+コネクタはアウトバウンドのインターネットアクセスがないと Cloud Volumes ONTAP を管理できないため、この手順は重要です。アウトバウンド接続を制限する必要がある場合は、のエンドポイントのリストを参照してください link:reference_networking_azure.html["コネクタと Cloud Volumes ONTAP"]。
+
+
+
+[role="quick-margin-para"]
+link:reference_networking_azure.html["ネットワーク要件の詳細については、こちらをご覧ください"]。
+
+
+
+==== Cloud Manager を使用して Cloud Volumes ONTAP を起動します
+
+[role="quick-margin-para"]
+[ 作業環境の追加 ] をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を実行します。 link:task_deploying_otc_azure.html["詳細な手順を参照してください"]。
+
+.関連リンク
+* link:concept_evaluating.html["評価中"]
+* link:task_creating_connectors_azure.html["Cloud Manager からコネクタを作成します"]
+* link:task_launching_azure_mktp.html["Azure Marketplace からコネクタを作成する"]
+* link:task_installing_linux.html["Linux ホストへの Connector ソフトウェアのインストール"]
+* link:reference_permissions.html#what-cloud-manager-does-with-azure-permissions["クラウドマネージャーが Azure の権限で行うこと"]
+

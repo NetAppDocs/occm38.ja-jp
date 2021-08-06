@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: task_deleting_working_env.html 
+keywords: terminate, delete, working environment, remove, cloudformation 
+summary: Cloud Volumes ONTAP システムは、 AWS や Azure からではなく、 Cloud Manager から削除することをお勧めします。 
+---
+= Cloud Volumes ONTAP 作業環境を削除する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP システムは、クラウドプロバイダのコンソールからではなく、 Cloud Manager から削除することを推奨します。たとえば、 AWS からライセンスが有効な Cloud Volumes ONTAP インスタンスを終了すると、別のインスタンスでこのライセンスキーを使用できなくなります。ライセンスをリリースするには、作業環境を Cloud Manager から削除する必要があります。
+
+作業環境を削除すると、 Cloud Manager はインスタンスを終了し、ディスクとスナップショットを削除します。
+
+
+IMPORTANT: Cloud Volumes ONTAP インスタンスでは、 AWS からの偶発的な終了を防止するために、終端保護が有効になっています。ただし、 AWS から Cloud Volumes ONTAP インスタンスを終了する場合は、 AWS CloudFormation コンソールに移動して、インスタンスのスタックを削除する必要があります。スタック名は、作業環境の名前です。
+
+.手順
+. 作業環境で、メニューアイコンをクリックし、 * 削除 * をクリックします。
+. 作業環境の名前を入力し、 * 削除 * をクリックします。
++
+作業環境を削除するには、最大 5 分かかります。
+
+

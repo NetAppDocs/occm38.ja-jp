@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: concept_compute.html 
+keywords: concepts, how cloud analyzer works, compute, compute costs, compute savings 
+summary: Spot の Cloud Analyzer サービスを利用すると、クラウドコンピューティング関連のコストを高度に分析し、削減できる可能性があることを特定できます。 
+---
+= コンピューティングサービスの詳細については、こちらをご覧ください
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+を活用して https://spot.io/products/cloud-analyzer/["SPOT の Cloud Analyzer サービス"^]Cloud Manager を使用すると、クラウドコンピューティング関連のコストを高水準で分析し、削減可能なコストを特定することができます。
+
+Cloud Analyzer は、高度な分析を使用してクラウドコストを可視化し、分析するクラウドインフラ管理ソリューションです。ここでは、これらのコストを最適化する方法を示し、数回クリックするだけで、 Spot の継続的な最適化製品ポートフォリオを使用して最適化を実装できます。
+
+
+
+== の機能
+
+* 月の現在のコスト、月あたりの予測コスト、および節約損失を表示するコスト分析
+* 推定される追加の削減額を含む、アカウント別の支出効率のビュー
+* 詳細については、スポットの Cloud Analyzer へのリンクを参照してください すべてのアカウントの支出について
+
+
+
+
+== サポートされているクラウドプロバイダ
+
+このサービスは AWS でサポートされています。
+
+
+
+== コスト
+
+Cloud Manager でこのサービスを使用するコストは発生しません。
+
+
+
+== Cloud Analyzer と Cloud Manager の相互運用性
+
+Cloud Analyzer と Cloud Manager の統合の概要は次のようになります。
+
+. [ * Compute * ] をクリックして、 AWS マスター支払いアカウントを接続します。
+. ネットアップでは、お客様の環境を次のように設定し
++
+.. Spot プラットフォームで組織を作成します。
+.. お客様を歓迎する E メールを Spot に送信します。
++
+Cloud Central と Cloud Manager で使用するのと同じシングルサインオンクレデンシャルを使用して、スポットサービスにログインできます。
+
+.. Cloud Analyzer が AWS アカウントデータの処理を開始します。
+
+
+. Cloud Manager のコンピューティングページが更新され、情報に基づいて、クラウドの過去、現在、将来のコストに関する分析情報が表示されます。
+. 任意のタイミングで [* Get Full Analysis] をクリックすると、 Spot の Cloud Analyzer が表示され、クラウド関連の支出と削減効果を詳細に分析できます。
+
+
+
+
+== データセキュリティ
+
+Cloud Analyzer データは保存中に暗号化され、どのアカウントのクレデンシャルも保存されません。

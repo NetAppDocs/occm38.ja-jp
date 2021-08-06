@@ -1,0 +1,195 @@
+---
+sidebar: sidebar 
+permalink: faq_cloud_compliance.html 
+keywords: faq, frequently asked questions, questions 
+summary: この FAQ は、質問に対する簡単な回答を探している場合に役立ちます。 
+---
+= Cloud Compliance についての FAQ です
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+この FAQ は、質問に対する簡単な回答を探している場合に役立ちます。
+
+
+
+== クラウドコンプライアンスとは
+
+クラウドコンプライアンスとは、人工知能（ AI ）ベースのテクノロジを使用して、組織が Azure NetApp Files 構成、 AWS または Azure でホストされる Cloud Volumes ONTAP システム、 Amazon S3 バケット、データベース全体にわたってデータコンテキストを把握し、機密データを特定できるよう支援するクラウドソリューションです。
+
+Cloud Compliance では、データプライバシーや機密性に関する新しいデータコンプライアンス規制（ GDPR 、 CCPA 、 HIPAA など）に対処するための事前定義されたパラメータ（機密情報の種類やカテゴリなど）が提供されます。
+
+
+
+== Cloud Compliance を使用すべき理由
+
+Cloud Compliance では、データを通じて次のことを支援できます。
+
+* データコンプライアンスやプライバシーの規制に準拠
+* データ保持ポリシーに準拠
+* GDPR 、 CCPA 、 HIPAA 、その他のデータプライバシー規制の要件に応じて、データ主体に応じて特定のデータを容易に検索し、レポートを作成できます。
+
+
+
+
+== Cloud Compliance の一般的なユースケースを教えてください。
+
+* 個人識別情報（ PII ）を識別します。
+* GDPR および CCPA のプライバシー規制の要件に応じて、さまざまな機密情報の範囲を特定します。
+* データプライバシーに関する新しい規制や今後の規制に対応できます。
+
+
+https://cloud.netapp.com/cloud-compliance["Cloud Compliance のユースケースについて詳しくは、こちらをご覧ください"^]。
+
+
+
+== Cloud Compliance でスキャンできるデータの種類を教えてください。
+
+Cloud Compliance では、 Cloud Volumes ONTAP と Azure NetApp Files で管理されている NFS プロトコルと CIFS プロトコルを介した非構造化データのスキャンがサポートされます。Cloud Compliance では、 Amazon S3 バケットに格納されているデータもスキャンできます。
+
+また、 Cloud Compliance では、場所を問わずにデータベースをスキャンでき、 Cloud Manager で管理する必要はありません。
+
+link:concept_cloud_compliance.html#how-scans-work["スキャンの仕組みを説明します"]。
+
+
+
+== サポートされているクラウドプロバイダを教えてください。
+
+Cloud Compliance は、 Cloud Manager の一部として機能し、現在は AWS と Azure をサポートしています。これにより、異なるクラウドプロバイダ間で統一されたプライバシー可視性を実現できます。Google Cloud Platform （ GCP ）のサポートがまもなく追加されます。
+
+
+
+== Cloud Compliance へのアクセス方法
+
+Cloud Compliance の運用と管理には Cloud Manager を使用します。Cloud Compliance 機能には、 Cloud Manager の * Compliance * タブからアクセスできます。
+
+
+
+== Cloud Compliance の仕組み
+
+Cloud Compliance では、 Cloud Manager システムやストレージシステムと並行して、もう 1 つの人工知能レイヤを導入します。次に、ボリューム、バケット、およびデータベースのデータをスキャンし、見つかったデータ分析のインデックスを作成します。
+
+link:concept_cloud_compliance.html["Cloud Compliance の仕組みをご覧ください"]。
+
+
+
+== クラウドのコンプライアンスコストはいくらですか？
+
+Cloud Compliance の使用コストは、スキャンするデータの量によって異なります。Cloud Compliance が Cloud Manager ワークスペースでスキャンする最初の 1TB のデータは無料です。その後もデータのスキャンを続行するには、 AWS または Azure Marketplace へのサブスクリプションが必要です。を参照してください https://cloud.netapp.com/cloud-compliance#pricing["価格設定"^] を参照してください。
+
+
+
+== Cloud Compliance はどのくらいの頻度でデータをスキャンしますか？
+
+データが頻繁に変更されるため、 Cloud Compliance はデータに影響を与えることなくデータを継続的にスキャンします。データの初回スキャンには時間がかかる場合がありますが、その後のスキャンでは差分変更のみがスキャンされるため、システムのスキャン時間が短縮されます。
+
+link:concept_cloud_compliance.html#how-scans-work["スキャンの仕組みを説明します"]。
+
+
+
+== Cloud Compliance はレポートを提供しますか。
+
+はい。Cloud Compliance から提供される情報は、組織内の他の関係者にも関係があるため、レポートを作成して分析情報を共有することができます。
+
+Cloud Compliance で使用できるレポートは次のとおりです。
+
+プライバシーリスクアセスメントレポート:: データからプライバシーに関する情報を収集し、プライバシーリスクスコアを取得します。 link:task_generating_compliance_reports.html["詳細はこちら。"]。
+Data Subject Access Request レポート:: データサブジェクトの特定の名前または個人 ID に関する情報を含むすべてのファイルのレポートを抽出できます。 link:task_responding_to_dsar.html["詳細はこちら。"]。
+PCI DSS レポート:: クレジットカード情報のファイルへの配布を識別するのに役立ちます。 link:task_generating_compliance_reports.html["詳細はこちら。"]。
+HIPAA レポート:: 健常性情報がファイルにどのように分散されているかを確認できます。 link:task_generating_compliance_reports.html["詳細はこちら。"]。
+特定の情報タイプに関するレポート:: 個人データや機密性の高い個人データを含む、特定されたファイルの詳細を含むレポートを利用できます。カテゴリおよびファイルタイプ別に分類されたファイルを表示することもできます。 link:task_controlling_private_data.html["詳細はこちら。"]。
+
+
+
+
+== クラウドコンプライアンスに必要なインスタンスまたは VM のタイプはどれですか？
+
+* Azure では、 Cloud Compliance は 512 GB ディスクの Standard_D16s_v3 VM で実行されます。
+* AWS では、 Cloud Compliance は m5.Medin インスタンスで 500GB の gp2 ディスクを使用して実行されます。
++
+m5.mcd を使用できない地域では、代わりに m4.mcd インスタンスに対して Cloud Compliance を実行します。
+
+
+
+
+NOTE: インスタンス / VM タイプの変更やサイズ変更はサポートされていません。指定したデフォルトサイズを使用する必要があります。
+
+link:concept_cloud_compliance.html["Cloud Compliance の仕組みをご覧ください"]。
+
+
+
+== スキャンのパフォーマンスは変化しますか？
+
+スキャンパフォーマンスは、クラウド環境のネットワーク帯域幅と平均ファイルサイズによって異なります。
+
+
+
+== サポートされているファイルタイプはどれですか。
+
+Cloud Compliance は、すべてのファイルをスキャンしてカテゴリやメタデータに関する分析情報を取得し、ダッシュボードのファイルタイプセクションにすべてのファイルタイプを表示します。
+
+Cloud Compliance が個人識別情報（ PII ）を検出した場合、または dsar 検索を実行した場合は、 .pdf 、 .DOCX 、 .DOC 、 .PPTX 、 .XLS 、 .XLSX 、 .csv 、 .TXT 、 .RTF 、および .json のファイル形式のみがサポートされます。
+
+
+
+== Cloud Compliance を有効にする方法
+
+まず、 Cloud Manager に Cloud Compliance のインスタンスを導入する必要があります。インスタンスの実行が完了したら、既存の作業環境およびデータベースでインスタンスを有効にするか、 * Compliance * タブから、または特定の作業環境を選択できます。
+
+link:task_getting_started_compliance.html["開始方法をご確認ください"]。
+
+
+NOTE: Cloud Compliance をアクティブにすると、最初のスキャンがすぐに開始されます。コンプライアンスの結果はすぐ後に表示されます。
+
+
+
+== Cloud Compliance を無効にする方法
+
+個々の作業環境を選択したら、作業環境のページで Cloud Compliance を無効にすることができます。
+
+link:task_managing_compliance.html["詳細はこちら。"]。
+
+
+NOTE: Cloud Compliance インスタンスを完全に削除するには、クラウドプロバイダのポータルから Cloud Compliance インスタンスを手動で削除します。
+
+
+
+== Cloud Volumes ONTAP でデータ階層化が有効になっている場合はどうなりますか。
+
+コールドデータをオブジェクトストレージに階層化する Cloud Volumes ONTAP システムでは、クラウド準拠を有効にすることができます。データの階層化が有効になっている場合、 Cloud Compliance は、ディスクに格納されているすべてのデータと、オブジェクトストレージに階層化されたコールドデータをスキャンします。
+
+コンプライアンススキャンはコールドデータを加熱しません -- コールドデータを保存し ' オブジェクトストレージに階層化します
+
+
+
+== クラウドコンプライアンスを使用してオンプレミスの ONTAP ストレージをスキャンできますか。
+
+オンプレミスの ONTAP 作業環境から直接データをスキャンすることはできません。しかし、オンプレミスの NFS または CIFS データを Cloud Volumes ONTAP 作業環境にレプリケートし、それらのボリュームで準拠をアクティブ化することで、オンプレミスの ONTAP データをスキャンすることができます。Cloud Volumes Service などのクラウドサービスを追加して、クラウドコンプライアンスをサポートする予定です。 
+
+link:task_scanning_onprem.html["詳細はこちら。"]。
+
+
+
+== Cloud Compliance から組織に通知を送信できますか？
+
+いいえ。ただし、組織内で共有できるステータスレポートはダウンロードできます。
+
+
+
+== 組織のニーズに合わせてサービスをカスタマイズできますか。
+
+Cloud Compliance は、設定不要でデータを分析します。これらの分析情報を抽出して、組織のニーズに活用できます。
+
+
+
+== クラウドコンプライアンス情報を特定のユーザに制限できますか。
+
+はい。 Cloud Compliance は Cloud Manager に完全に統合されています。Cloud Manager ユーザは、ワークスペースの権限に基づいて表示可能な作業環境の情報のみを表示できます。
+
+また、特定のユーザに、 Cloud Compliance のスキャン結果の表示のみを許可し、 Cloud Compliance の設定を管理する機能を付与しない場合は、 _Cloud Compliance Viewer_role というユーザを割り当てることができます。
+
+link:concept_cloud_compliance.html#user-access-to-compliance-information["詳細はこちら。"]。

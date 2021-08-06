@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: concept_evaluating.html 
+keywords: free trial, evaluation, evaluate, eval license, evaluation license, 30-day trial, 30 day trial, 30 day free trial 
+summary: Cloud Volumes ONTAP は、ソフトウェアの代金を支払う前に評価できます。最も一般的な方法は、 PAYGO バージョンの最初の Cloud Volumes ONTAP システムを起動して 30 日間の無償トライアルを入手することです。BYOL の評価ライセンスもオプションです。 
+---
+= 評価中
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP は、ソフトウェアの代金を支払う前に評価できます。最も一般的な方法は、 PAYGO バージョンの最初の Cloud Volumes ONTAP システムを起動して 30 日間の無償トライアルを入手することです。BYOL の評価ライセンスもオプションです。
+
+コンセプトの実証のサポートが必要な場合は、にお問い合わせください https://cloud.netapp.com/contact-cds["営業チーム"^] または、から利用できるチャットオプションを使用して、連絡してください さらに、 Cloud Manager からも実行できます。
+
+
+
+== PAYGO の 30 日間無償トライアル
+
+Cloud Volumes ONTAP の料金をお支払いの場合は、 30 日間の無償トライアルをご利用いただけます。Cloud Volumes ONTAP の 30 日間の無償トライアルを Cloud Manager から開始するには、支払い担当者のアカウントで最初の Cloud Volumes ONTAP システムを作成します。
+
+たとえば、時間単位のソフトウェアライセンス料は発生しませんが、クラウドプロバイダからインフラ料金が請求されます。
+
+無料トライアルは、有効期限が切れると、自動的に 1 時間単位の有料サブスクリプションに変換されます。期限内にインスタンスを終了した場合、次に展開するインスタンスは無料トライアルの一部ではありません（ 30 日以内に展開された場合でも）。
+
+従量課金制の試用版はクラウドプロバイダから提供され、いかなる手段によっても拡張することはできません。
+
+
+
+== BYOL の評価ライセンス
+
+BYOL の評価ライセンスは、ネットアップから期間ライセンスを購入することで Cloud Volumes ONTAP の支払いを検討しているお客様向けのオプションです。評価用ライセンスは、アカウントチーム、セールスエンジニア、またはパートナーから入手できます。
+
+評価キーは 30 日間有効で、作成日に関係なく、 30 日間ごとに複数回使用できます。
+
+30 日が経過すると毎日シャットダウンが発生するため、先に計画することをお勧めします。インプレースアップグレードの評価ライセンスの上に新しい BYOL ライセンスを適用できます（シングルノードシステムの再起動が必要です）。ホストされているデータは、トライアル期間の終了時に削除されません。
+
+
+TIP: 評価用ライセンスを使用している場合は、 Cloud Volumes ONTAP ソフトウェアをアップグレードできません。

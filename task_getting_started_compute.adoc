@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_getting_started_compute.html 
+keywords: compute, cloud insights, cloud analyzer, connect cloud analyzer, connect master payer account, connect payer account, aws payer account 
+summary: 任意の Cloud Analyzer からクラウドコンピューティングコストを詳細に分析するには、いくつかの手順を実行します。 
+---
+= クラウドコンピューティングコストの最適化を始めましょう
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AWS アカウントを接続し、分析結果を確認して、クラウドコンピューティングのコストを最適化しましょう。
+
+
+
+== Cloud Analyzer を AWS アカウントに接続します
+
+[ * Compute * ] をクリックして、 AWS 支払いアカウントに接続します。
+
+.手順
+. [ * 計算（ Compute ） ] をクリックする。
+. Add AWS Credentials to Start * をクリックします。
+. ページの手順に従って AWS アカウントを接続します。
++
+.. AWS マスター支払いアカウントにログインします。
+.. AWS アカウントのコストと使用状況に関するレポートを設定します。
+.. CloudFormation テンプレートを実行します。
+.. スポットロール配線を貼り付けます。
++
+https://help.spot.io/cloud-analyzer/connect-your-aws-account-2/["これらの手順の詳細を確認してください"^]。
+
++
+image:screenshot_compute_add_account.gif["接続ページで使用可能な各フィールドを示すスクリーンショット。"]
+
+
+
+
+
+Cloud Analyzer が AWS アカウントデータの処理を開始します。複数のアカウントがある場合、 Cloud Analyzer はマスター支払いアカウントの下にあるすべてのリンクされたアカウントの読み取り専用機能で開始します。これらのアカウントの節約の可能性に関する詳細を確認するには、これらのアカウントを接続する必要があります。このプロセスの詳細については、以下のセクションを参照してください。
+
+
+
+== コンピューティングコストを分析
+
+Cloud Analyzer でアカウントデータが処理されると、過去、現在、将来のクラウドコストに関する分析情報が [ コンピューティング ] タブに表示されます。
+
+image:screenshot_compute_dashboard.gif["Cloud Manager のコスト分析ページを示すスクリーンショット。このページには、以下のテキストに記載されている情報が含まれています。"]
+
+月から日までのコスト:: 現在の月の初めから現在までのワークロードの総コスト。
+コストの予測:: 使用パターンの分析に基づいて月の終わりに予測されたコスト。
+先週の未達成の節約:: スポットインスタンスと予約の最適化を使用して、過去 7 日間に達成された削減効果。
+上位の AWS アカウントによる効率化::
++
+--
+各アカウントには、現在の削減量とその他の削減量に基づく削減率が割り当てられます。推定される追加の削減量は、 SPOT インスタンスと予約済みインスタンスを利用してさらに節約できる量を示します。
+
+アカウントをさらに最適化するには、次の操作を実行します。
+
+* * 詳細を表示 * ： Spot の Cloud Analyzer でコスト最適化の機会を確認します。
+* * 接続 * ：管理されていないアカウントを接続します。アカウントを接続するウィザードが表示されます。
+
+
+--
+上位の AWS アカウント:: これは、コスト別の上位 10 件のアカウントを示す棒グラフです。グラフは過去 30 日間の支出アクティビティに基づいています。
+
+
+https://help.spot.io/cloud-analyzer/cost-analysis/["で利用できる [ コスト分析 ] ページの詳細については、を参照してください Spot の Cloud Analyzer の略"^]。
+
+
+
+== 詳細な分析と推奨事項については、 Cloud Analyzer を参照してください
+
+任意の時点で * フル解析を取得 * をクリックすると、チャートと解析、詳細な推奨事項、ユースケースの最適化の内訳（コンテナ、 EL可塑 性アプリケーション、予約）などにアクセスできます。
+
+Cloud Analyzer に表示される内容の例を次に示します。
+
+image:screenshot_compute_dashboard_spot.gif["スポットの Cloud Analyzer の [ コスト分析 ] ページを示すスクリーンショット。"]
+
+* https://spot.io/products/cloud-analyzer/["詳細については、 Cloud Analyzer の製品ページをご覧ください 機能について"^]。
+* https://help.spot.io/cloud-analyzer/["Cloud の使用方法については、 Spot のドキュメントを参照してください 分析装置"^]。
+

@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: task_sync_quick_start.html 
+keywords: quick start, overview, deploying, getting started, get started, signing up, free trial 
+summary: Cloud Sync サービスを開始するには、いくつかの手順を実行します。 
+---
+= Cloud Sync のクイックスタート
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+Cloud Sync サービスを開始するには、いくつかの手順を実行します。
+
+
+
+==== ソースとターゲットを準備します
+
+[role="quick-margin-para"]
+ソースとターゲットがサポートされ、セットアップされていることを確認します。最も重要な要件は、データブローカーとソースとターゲットの間の接続を確認することです。 link:reference_sync_requirements.html["詳細はこちら。"]。
+
+
+
+==== ネットアップデータブローカーの設置場所を準備します
+
+[role="quick-margin-para"]
+ネットアップのデータブローカーソフトウェアは、ソースからターゲットへデータを同期します（これを「 a_sync relationship_ 」と呼びます）。データブローカーは、 AWS 、 Azure 、 Google クラウドプラットフォーム、または社内で実行できます。データブローカーが Cloud Sync サービスと通信し、他のいくつかのサービスやリポジトリと通信できるように、ポート 443 を介したアウトバウンドインターネット接続が必要です。 link:reference_sync_networking.html["エンドポイントのリストを表示します。"]。
+
+[role="quick-margin-para"]
+Cloud Sync では、同期関係を作成する際のインストールプロセスをガイドします。同期関係を作成すると、クラウドにデータブローカーを導入したり、独自の Linux ホスト用のインストールスクリプトをダウンロードしたりできます。
+
+* link:task_sync_installing_aws.html["AWS のインストールを確認します"]
+* link:task_sync_installing_azure.html["Azure のインストールを確認します"]
+* link:task_sync_installing_gcp.html["GCP のインストールを確認します"]
+* link:task_sync_installing_linux.html["Linux ホストのインストールを確認します"]
+
+
+
+
+==== 最初の同期関係を作成します
+
+[role="quick-margin-para"]
+にログインします https://cloudmanager.netapp.com/["クラウドマネージャ"^]をクリックし、 * 同期 * をクリックして、ソースとターゲットの選択をドラッグアンドドロップします。プロンプトに従ってセットアップを完了します。 link:task_sync_creating_relationships.html["詳細はこちら。"]。
+
+
+
+==== 無料トライアルが終了したら、同期関係の料金をお支払いください
+
+[role="quick-margin-para"]
+AWS または Azure から従量課金制または年間の支払いを申し込むことができます。または、ネットアップから直接ライセンスを購入することもできます。Cloud Sync のライセンス設定ページに移動して設定します。 link:task_sync_licensing.html["詳細はこちら。"]。

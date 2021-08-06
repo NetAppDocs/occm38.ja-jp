@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: task_viewing_amazon_s3.html 
+keywords: s3 buckets, s3 storage, s3 working environment, amazon s3 buckets, amazon s3 working environment 
+summary: Connector を AWS にインストールすると、 Cloud Manager は、その Connector がインストールされている AWS アカウントにある Amazon S3 バケットに関する情報を自動的に検出できます。 
+---
+= Amazon S3 バケットの表示
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Connector を AWS にインストールすると、 Cloud Manager は、その Connector がインストールされている AWS アカウントにある Amazon S3 バケットに関する情報を自動的に検出できます。
+
+リージョン、アクセスレベル、ストレージクラス、バケットが Cloud Volumes ONTAP でバックアップに使用されているかデータの階層化に使用されているかなど、 S3 バケットの詳細を確認できます。また、 Cloud Compliance で S3 バケットをスキャンすることもできます。
+
+.手順
+. link:task_creating_connectors_aws.html["コネクタを取り付ける"] Amazon S3 バケットを表示する AWS アカウントで実行します。
++
+しばらくすると、 Amazon S3 の作業環境が自動的に表示されます。
+
++
+image:screenshot_s3_we.gif["Amazon S3 作業環境のスクリーンショット。"]
+
+. 作業環境をクリックし、右ペインからアクションを選択します。
++
+image:screenshot_s3_actions.gif["Amazon S3 作業環境を選択したあとの操作ペインを示すスクリーンショット。このペインには、 S3 に関する情報（バケットとリージョンの数）が表示されます。このペインには、順守の有効化とバケットの表示の 2 つのアクションもあります。"]
+
+. S3 バケットをスキャンして個人データおよび機密データを検索するには、 * コンプライアンスを有効にする * をクリックします。
++
+詳細については、を参照してください link:task_scanning_s3.html["Cloud Compliance for Amazon S3 の利用を開始してください"]。
+
+. AWS アカウントの S3 バケットの詳細を表示するには、 * バケットの表示 * をクリックします。
++
+image:screenshot_amazon_s3.gif["Amazon S3 作業環境の詳細を示すスクリーンショット。バケットの総数とリージョンの総数、アクティブなサービスを使用するバケットの数、各 S3 バケットの詳細を示す表を示しています。"]
+
+

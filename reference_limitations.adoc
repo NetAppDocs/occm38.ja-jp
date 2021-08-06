@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: reference_limitations.html 
+keywords: limitations, active directory, ad, iscsi, key managers, ip address, govcloud, cloud manager, Cloud Volumes ONTAP, days, 14 days, running, Connectors should remain running 
+summary: 既知の制限事項は、このリリースの製品でサポートされていないプラットフォーム、デバイス、機能、または製品と正しく相互運用できない機能を特定します。これらの制限事項を慎重に確認してください 
+---
+= 既知の制限
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+既知の制限事項は、このリリースの製品でサポートされていないプラットフォーム、デバイス、機能、または製品と正しく相互運用できない機能を特定します。これらの制限事項を慎重に確認してください
+
+
+
+== コネクタは動作したままにしてください
+
+コネクタは常時稼働している必要があります。有効にするサービスの継続的な健常性と運用性にとって重要です。
+
+たとえば、 Cloud Volumes ONTAP PAYGO システムの正常性と運用においては、コネクタが重要な要素です。コネクタの電源がオフの場合、 Cloud Volumes ONTAP PAYGO システムは、コネクタとの通信を 14 日以上失った後にシャットダウンします。
+
+
+
+== 政府機関では SaaS プラットフォームが無効になっています
+
+コネクタを AWS GovCloud リージョン、 Azure Government リージョン、または Azure DoD リージョンに導入した場合、 Cloud Manager へのアクセスはコネクタのホスト IP アドレスからのみ可能です。SaaS プラットフォームへのアクセスは、アカウント全体で無効になります。
+
+つまり、エンドユーザの内部 VPC / VNet にアクセスできる特権ユーザのみが Cloud Manager の UI または API を使用できます。
+
+また、次のサービスが Cloud Manager から利用できないことも意味します。
+
+* クラウドコンプライアンス
+* Kubernetes
+* クラウド階層化
+* グローバルファイルキャッシュ
+* 監視（ Cloud Insights ）
+
+
+これらのサービスを使用するには、 SaaS プラットフォームが必要です。
+
+
+
+== 共有 Linux ホストはサポートされません
+
+コネクタは、他のアプリケーションと共有されているホストではサポートされていません。専用のホストである必要があります。
+
+
+
+== Cloud Manager では FlexGroup ボリュームはサポートされません
+
+Cloud Volumes ONTAP では FlexGroup ボリュームがサポートされますが、 Cloud Manager ではサポートされません。System Manager または CLI から FlexGroup ボリュームを作成する場合は、 Cloud Manager の容量管理モードを手動に設定する必要があります。FlexGroup ボリュームで自動モードが適切に機能しない可能性があります。

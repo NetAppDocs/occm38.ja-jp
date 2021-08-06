@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_sync_licensing.html 
+keywords: license, subscription, registering, subscribing, subscribing in aws, subscribing in azure, subscribing to aws, subscribing to azure, aws marketplace, azure marketplace, netapp license, byol license, purchase a license, license settings, pay for relationships, paygo, annual, pay-as-you-go 
+summary: 14 日間の無料トライアル終了後に、同期関係の料金を支払う方法は 2 通りあります。最初のオプションは従量課金制です。2 つ目の選択肢は、ネットアップから直接ライセンスを購入することです。 
+---
+= 無料トライアルの終了後に同期関係の料金を支払う
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+14 日間の無料トライアル終了後に、同期関係の料金を支払う方法は 2 通りあります。最初のオプションは、 AWS または Azure から従量課金制または年払いのいずれかを購読することです。2 つ目の選択肢は、ネットアップから直接ライセンスを購入することです。
+
+AWS または Azure サブスクリプションを使用して、ネットアップのライセンスを使用できます。たとえば、 25 の同期関係がある場合は、ライセンスを使用して最初の 20 の同期関係に料金を支払い、残りの 5 つの同期関係を持つ AWS または Azure から従量課金制で支払うことができます。
+
+link:concept_cloud_sync.html["ライセンスの仕組みについては、こちらをご覧ください。"]。
+
+.無料トライアルの終了後すぐに支払いをしない場合はどうすればよいですか？
+****
+追加の関係を作成することはできません。既存の関係は削除されませんが、ライセンスを登録または入力するまでは変更を加えることはできません。
+
+****
+
+
+== AWS からの登録
+
+AWS を使用すると、従量課金制または年払いが可能です。
+
+.従量課金制の手順
+. [ 同期 ] 、 [ ライセンス ] の順にクリックします。
+. 「 * AWS * 」を選択します
+. [*Subscribe*] をクリックし、 [* Continue *] をクリックします。
+. AWS Marketplace から登録し、 Cloud Sync サービスに再度ログインして登録を完了します。
++
+次のビデオは、プロセスを示しています。
+
++
+video::video_cloud_sync_registering.mp4[width=848,height=480]
+
+
+.年間の支払い手順
+. https://aws.amazon.com/marketplace/pp/B06XX5V3M2["AWS Marketplace ページに移動します。"^]。
+. [* 購読の続行 *] をクリックします。
+. 契約オプションを選択し、 * 契約の作成 * をクリックします。
+
+
+
+
+== Azure からのサブスクリプション
+
+Azure では、従量課金制または年間の支払いが可能です。
+
+関連するサブスクリプションの投稿者または所有者権限を持つ Azure ユーザーアカウント。
+
+.手順
+. [ 同期 ] 、 [ ライセンス ] の順にクリックします。
+. 「 * Azure * 」を選択します。
+. [*Subscribe*] をクリックし、 [* Continue *] をクリックします。
+. Azure ポータルで、 * 作成 * をクリックし、オプションを選択して * サブスクライブ * をクリックします。
++
+「毎月 * 」を選択すると、時間単位で支払います。または、「毎年」を選択すると、前払いした 1 年分の料金が支払われます。
+
+. 展開が完了したら、通知ポップアップで SaaS リソースの名前をクリックします。
+. 「アカウントの設定」をクリックして Cloud Sync に戻ります。
++
+次のビデオは、プロセスを示しています。
+
++
+video::video_cloud_sync_registering_azure.mp4[width=848,height=480]
+
+
+
+
+== ネットアップからライセンスを購入し、 Cloud Sync に追加する
+
+同期関係の料金を事前に支払うには、 1 つ以上のライセンスを購入して Cloud Sync サービスに追加する必要があります。
+
+.手順
+. mailto ： ng-cloudsync-contact@netapp.com ？ subject= Cloud %20Sync%20Service%20-%20BYOL %20License%20Purchase%20Request までにライセンスを購入してください。 [Contacting NetApp] 。
+. Cloud Manager で、 * Sync > Licensing * をクリックします。
+. [ ライセンスの追加 ] をクリックして、ライセンスを追加します。
+

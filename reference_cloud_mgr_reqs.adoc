@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: reference_cloud_mgr_reqs.html 
+keywords: configurations, ec2, vm, ports, ram, operating system, os, host, requirement, requirements, hypervisor, disk, space, mysql, centos, rhel, red hat, cpu, disk space, 3306 
+summary: コネクタソフトウェアは、特定のオペレーティングシステム要件、 RAM 要件、ポート要件などを満たすホストで実行する必要があります。 
+---
+= Connector ホストの要件
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+コネクタソフトウェアは、特定のオペレーティングシステム要件、 RAM 要件、ポート要件などを満たすホストで実行する必要があります。
+
+専用のホストが必要です:: 他のアプリケーションと共有しているホストでは、このコネクタはサポートされていません。専用のホストである必要があります。
+CPU:: 4 コアまたは 4 個の vCPU
+RAM:: 14 GB
+AWS EC2 インスタンスタイプ:: 上記の CPU と RAM の要件を満たすインスタンスタイプ。コネクタを Cloud Manager から直接導入する場合は、 t3.xlarge を使用してインスタンスタイプを指定することを推奨します。
+Azure VM サイズ:: 上記の CPU と RAM の要件を満たすインスタンスタイプ。Cloud Manager からコネクタを直接導入する場合は、 DS3 v2 を推奨し、この VM サイズを使用します。
+GCP マシンタイプ:: 上記の CPU と RAM の要件を満たすインスタンスタイプ。Cloud Manager からコネクタを直接導入する場合は、 n1-standard-4 を使用することを推奨します。
+サポートされているオペレーティングシステム::
++
+--
+* CentOS 7.6
+* CentOS 7.7
+* Red Hat Enterprise Linux 7.6
+* Red Hat Enterprise Linux 7.7
++
+Red Hat Enterprise Linux システムは、 Red Hat サブスクリプション管理に登録する必要があります。登録されていない場合、 Connector のインストール中に必要なサードパーティ製ソフトウェアを更新するためのリポジトリにアクセスできません。
+
++
+Connector は、これらのオペレーティングシステムの英語版でサポートされています。
+
+
+
+--
+ハイパーバイザー:: 認定済みのベアメタルハイパーバイザーまたはホスト型ハイパーバイザー CentOS または Red Hat Enterprise Linux を実行しますhttps://access.redhat.com/certified-hypervisors["Red Hat ソリューション：「 Which hypervisors are certified to run Red Hat Enterprise Linux ？」"^]
+/opt のディスクスペース:: 100GB のスペースが使用可能である必要があります
+アウトバウンドインターネットアクセス:: コネクターをインストールし、パブリッククラウド環境内でリソースとプロセスを管理するには、アウトバウンドインターネットアクセスが必要です。エンドポイントのリストについては、を参照してください link:reference_networking_cloud_manager.html["コネクタのネットワーク要件"]。
+

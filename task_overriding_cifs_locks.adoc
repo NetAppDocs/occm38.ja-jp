@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: task_overriding_cifs_locks.html 
+keywords: CIFS locks, azure maintenance, maintenance events, cifs sessions, storage failover 
+summary: アカウント管理者は、 Cloud Manager で設定を有効にして、 Azure メンテナンスイベント時の Cloud Volumes ONTAP ストレージフェイルオーバーの問題を回避できます。この設定を有効にすると、 Cloud Volumes ONTAP は CIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。 
+---
+= Azure での Cloud Volumes ONTAP HA の CIFS ロックの無効化
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+アカウント管理者は、 Cloud Manager で設定を有効にして、 Azure メンテナンスイベント時の Cloud Volumes ONTAP ストレージフェイルオーバーの問題を回避できます。この設定を有効にすると、 Cloud Volumes ONTAP は CIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。
+
+Microsoft Azure では、仮想マシンに対して定期的なメンテナンスイベントをスケジュールします。Cloud Volumes ONTAP HA ペアのノードでメンテナンスイベントが発生すると、 HA ペアでストレージのテイクオーバーが開始されます。このメンテナンスイベントの間にアクティブな CIFS セッションがあると、 CIFS ファイルがロックされてストレージフェイルオーバーを実行できなくなる可能性があります。
+
+この設定を有効にすると、 Cloud Volumes ONTAP でロックが拒否され、アクティブな CIFS セッションがリセットされます。その結果、これらのメンテナンスイベントの間は HA ペアでストレージフェイルオーバーを実行できます。
+
+
+IMPORTANT: このプロセスは、 CIFS クライアントの処理を中断する可能性があります。CIFS クライアントからコミットされていないデータは失われる可能性があります。
+
+Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
+
+.手順
+. Cloud Manager コンソールの右上にある設定アイコンをクリックし、 * Cloud Manager 設定 * を選択します。
++
+image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にある設定アイコンを示すスクリーンショット。"]
+
+. HA CIFS lock* で、チェックボックスを選択し、 * Save * をクリックします。
+

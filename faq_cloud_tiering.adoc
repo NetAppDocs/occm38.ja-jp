@@ -1,0 +1,185 @@
+---
+sidebar: sidebar 
+permalink: faq_cloud_tiering.html 
+keywords: faq, questions, requirements, service connector, object store, object storage, aws, azure, bucket, cluster, aggregate, s3, storage class, standard, inactive data reporting, auto, volume tiering policy, policy, tiering policy, snapshot, cold, inactive, infrequent 
+summary: この FAQ は、質問に対する簡単な回答を探している場合に役立ちます。 
+---
+= Cloud Tiering Technical FAQ 』を参照してください
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+この FAQ は、質問に対する簡単な回答を探している場合に役立ちます。
+
+
+
+== ONTAP
+
+ONTAP に関連する質問を次に示します。
+
+
+
+=== ONTAP クラスタの要件を教えてください。
+
+コールドデータの階層化先によって異なります。以下を参照してください。
+
+* link:task_tiering_onprem_aws.html#preparing-your-ontap-clusters["オンプレミスの ONTAP クラスタから Amazon S3 へデータを階層化する"]
+* link:task_tiering_onprem_azure.html#preparing-your-ontap-clusters["オンプレミスの ONTAP クラスタから Azure BLOB ストレージへデータを階層化する"]
+* link:task_tiering_onprem_gcp.html#preparing-your-ontap-clusters["オンプレミスの ONTAP クラスタから Google Cloud Storage へデータを階層化する"]
+* link:task_tiering_onprem_storagegrid.html#preparing-your-ontap-clusters["オンプレミスの ONTAP クラスタから StorageGRID へデータを階層化する"]
+
+
+
+
+=== Cloud Tiering を使用すると、アクセス頻度の低いデータのレポートを作成でき
+
+はい、 Cloud Tiering を使用すると、各アグリゲートでアクセス頻度の低いデータレポートを有効にできますこの設定により、アクセス頻度の低いデータのうち、低コストのオブジェクトストレージに階層化できるデータの量を特定できます。
+
+
+
+=== NAS ボリュームと SAN ボリュームのデータを階層化できますか。
+
+クラウド階層化を使用すると、 NAS ボリュームからパブリッククラウドに、 SAN ボリュームからプライベートクラウドに、 StorageGRID を使用してデータを階層化できます。
+
+
+
+=== Cloud Volumes ONTAP について教えてください。
+
+Cloud Volumes ONTAP システムを使用している場合は、クラスタダッシュボードにこれらのシステムが表示され、ハイブリッドクラウドインフラにおけるデータの階層化を完全に確認できます。
+
+クラスタダッシュボードでは、オンプレミスの ONTAP クラスタと同様の階層化情報を表示できます。運用の健常性、現在の削減量、削減機会、ボリュームとアグリゲートに関する詳細などです。
+
+Cloud Volumes ONTAP システムは、 Cloud Tiering から読み取り専用です。Cloud Volumes ONTAP では、クラウド階層化からデータ階層化を設定することはできません。階層化の設定は、 Cloud Manager の作業環境から同じように行います。
+
+
+
+== オブジェクトストレージ
+
+オブジェクトストレージに関連する質問を次に示します。
+
+
+
+=== サポートされているオブジェクトストレージプロバイダを教えてください。
+
+Amazon S3 、 Azure Blob Storage 、 Google Cloud Storage 、 S3 プロトコルを使用した StorageGRID がサポートされます。
+
+
+
+=== 独自のバケット / コンテナを使用できますか。
+
+はい、できます。データの階層化を設定するときに、新しいバケット / コンテナを追加するか、既存のバケット / コンテナを選択するかを選択できます。
+
+
+
+=== サポートされているリージョンはどれですか。
+
+* link:reference_aws_support.html["サポートされている AWS リージョン"]
+* link:reference_azure_support.html["サポートされている Azure リージョン"]
+* link:reference_google_support.html["サポートされている Google Cloud リージョン"]
+
+
+
+
+=== サポートされている S3 ストレージクラスはどれですか？
+
+Cloud Tiering は、 _Standard_'_Standard-Infrequent Access'_1 Zone-IA_'_Intelligent Storage クラスへのデータ階層化をサポートしています。を参照してください link:reference_aws_support.html["サポートされている S3 ストレージクラス"] 詳細：
+
+
+
+=== サポートされている Azure Blob アクセス階層はどれですか？
+
+Cloud Tiering は、アクセス頻度の低いデータにホットアクセス階層を自動的に使用します。
+
+
+
+=== Google Cloud Storage ではどのストレージクラスがサポートされていますか。
+
+Cloud Tiering は、アクセス頻度の低いデータに _Standard_storage クラスを使用しています。
+
+
+
+=== Cloud Tiering は、クラスタ全体に 1 つのオブジェクトストアを使用していますか、それともアグリゲートごとに 1 つ使用していますか
+
+クラスタ全体で 1 つのオブジェクトストアを使用します。
+
+
+
+=== 階層化とは関係なくオブジェクトストアにポリシーを適用してデータを移動できますか。
+
+いいえ。 Cloud Tiering は、オブジェクトストアからデータを移動または削除するオブジェクトライフサイクル管理ルールをサポートしていません。
+
+
+
+== コネクタ
+
+コネクタに関連する質問を次に示します。
+
+
+
+=== コネクタはどこに取り付ける必要がありますか？
+
+* データを S3 に階層化する場合は、 AWS VPC またはオンプレミスにコネクタを配置できます。
+* データを BLOB ストレージに階層化する場合は、コネクタが Azure VNet 内に存在している必要があります。
+* データを Google Cloud Storage に階層化する場合は、 Google Cloud Platform VPC 内に Connector を配置する必要があります。
+* データを StorageGRID に階層化する場合は、コネクタをオンプレミスの Linux ホストに配置する必要があります。
+
+
+
+
+== ネットワーキング
+
+ネットワークに関連する質問を次に示します。
+
+
+
+=== ネットワーク要件
+
+* ONTAP クラスタが、オブジェクトストレージプロバイダへのポート 443 経由の HTTPS 接続を開始します。
++
+ONTAP は、オブジェクトストレージとの間でデータの読み取りと書き込みを行います。オブジェクトストレージが開始されることはなく、応答するだけです。
+
+* StorageGRID の場合、 ONTAP クラスタは、ユーザ指定のポートから StorageGRID への HTTPS 接続を開始します（このポートは階層化のセットアップ時に設定可能です）。
+* コネクタには、ポート 443 経由での ONTAP クラスタへのアウトバウンド HTTPS 接続、オブジェクトストア、およびクラウド階層化サービスが必要です。
+
+
+詳細については、以下を参照してください。
+
+* link:task_tiering_onprem_aws.html["オンプレミスの ONTAP クラスタから Amazon S3 へデータを階層化する"]
+* link:task_tiering_onprem_azure.html["オンプレミスの ONTAP クラスタから Azure BLOB ストレージへデータを階層化する"]
+* link:task_tiering_onprem_gcp.html["オンプレミスの ONTAP クラスタから Google Cloud Storage へデータを階層化する"]
+* link:task_tiering_onprem_storagegrid.html["オンプレミスの ONTAP クラスタから StorageGRID へデータを階層化する"]
+
+
+
+
+== 権限
+
+権限に関連する質問を次に示します。
+
+
+
+=== AWS で必要な権限
+
+権限が必要です link:task_tiering_onprem_aws#preparing-amazon-s3["をクリックして S3 バケットを管理します"]。
+
+
+
+=== Azure で必要な権限
+
+Cloud Manager に提供する必要がある権限以外で追加の権限は必要ありません。
+
+
+
+=== Google Cloud Platform に必要な権限は何ですか。
+
+ストレージ管理者の権限は、ストレージアクセスキーを含むサービスアカウントに必要です。
+
+
+
+=== StorageGRID に必要な権限
+
+link:task_tiering_onprem_storagegrid.html#preparing-storagegrid["S3 権限が必要です"]。

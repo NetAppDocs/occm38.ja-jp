@@ -1,0 +1,203 @@
+---
+sidebar: sidebar 
+permalink: task_tiering_onprem_gcp.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, google, gcp, google cloud storage 
+summary: データを Google Cloud Storage に階層化することで、オンプレミスの ONTAP クラスタの空きスペースを確保できます。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。 
+---
+= オンプレミスの ONTAP クラスタから Google Cloud Storage へデータを階層化する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+データを Google Cloud Storage に階層化することで、オンプレミスの ONTAP クラスタの空きスペースを確保できます。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== Google Cloud Storage へのデータの階層化を準備
+
+[role="quick-margin-para"]
+次のものが必要です。
+
+* ONTAP 9.6 以降を実行し、 Google Cloud Storage への HTTPS 接続を備えたオール SSD アグリゲートを含む AFF または FAS システム。
+* 事前定義された Storage Admin ロールとストレージアクセスキーを持つサービスアカウント。
+* Google Cloud Platform VPC にインストールされるコネクタ。
+* データセンター内の ONTAP クラスタ、 Google Cloud Storage 、およびクラウド階層化サービスへのアウトバウンド HTTPS 接続を可能にするコネクタのネットワーク。
+
+
+
+
+==== 階層化をセットアップする
+
+[role="quick-margin-para"]
+Cloud Manager で、オンプレミスの作業環境を選択し、 * 階層化の設定 * をクリックして、プロンプトに従って Google Cloud Storage にデータを階層化します。
+
+
+
+==== ライセンスをセットアップする
+
+[role="quick-margin-para"]
+無償トライアルの終了後、従量課金制のサブスクリプション、 ONTAP 階層化ライセンス、またはその両方を組み合わせて使用して、クラウド階層化の料金を支払うことができます。
+
+* GCP Marketplace からサブスクライブするには、 [ * 階層化（ * Tiering ） ] > [ ライセンス（ Licensing ） ] をクリックし、 [ * サブスクライブ（ * Subscribe ） ] をクリックして、プロンプトに従います。
+* 階層化ライセンスを追加する場合は、 mailto ： ng-cloud-tiering@netapp.com ？ subject= Licensing [ 購入が必要な場合は当社にお問い合わせください ] を選択してから 。
+
+
+
+
+== 要件
+
+ONTAP クラスタのサポートを確認し、ネットワークをセットアップし、オブジェクトストレージを準備します。
+
+次の図は、各コンポーネントとその間の準備に必要な接続を示しています。
+
+image:diagram_cloud_tiering_google.png["「クラウドプロバイダのサービスコネクタへの接続、 ONTAP クラスタへの接続を備えたクラウド階層化サービス、クラウドプロバイダ内の ONTAP クラスタとオブジェクトストレージの接続を示すアーキテクチャイメージ。アクティブなデータは ONTAP クラスタに格納され、アクセス頻度の低いデータはオブジェクトストレージに格納されます。」"]
+
+
+NOTE: Connector と Google Cloud Storage の間の通信は、オブジェクトストレージのセットアップにのみ使用されます。
+
+
+
+=== ONTAP クラスタの準備
+
+データを Google Cloud Storage に階層化するには、 ONTAP クラスタが次の要件を満たしている必要があります。
+
+サポートされている ONTAP プラットフォーム:: Cloud Tiering は、 FAS システム上の AFF システムとオール SSD アグリゲートをサポートしています。
+サポートされている ONTAP のバージョン:: ONTAP 9.6 以降
+クラスタネットワークの要件::
++
+--
+* ONTAP クラスタが、ポート 443 から Google Cloud Storage への HTTPS 接続を開始します。
++
+ONTAP は、オブジェクトストレージとの間でデータの読み取りと書き込みを行います。オブジェクトストレージが開始されることはなく、応答するだけです。
+
++
+Google Cloud Interconnect はパフォーマンスの向上とデータ転送コストの削減を実現しますが、 ONTAP クラスタと Google Cloud Storage の間では必要ありません。Google Cloud Interconnect の使用時はパフォーマンスが大幅に向上するため、これを推奨するベストプラクティスです。
+
+* Google Cloud Platform VPC 内の NetApp Service Connector からのインバウンド接続が必要です。
++
+クラスタと Cloud Tiering Service の間の接続は必要ありません。
+
+* 階層化ボリュームをホストする各 ONTAP ノードにクラスタ間 LIF が 1 つ必要です。LIF は、 ONTAP がオブジェクトストレージへの接続に使用する IPspace に関連付けられている必要があります。
++
+IPspace を使用すると、ネットワークトラフィックを分離してプライバシーとセキュリティを確保することができます。 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["IPspace の詳細については、こちらをご覧ください"^]。
+
++
+データの階層化を設定すると、使用する IPspace を入力するように求められます。各 LIF を関連付ける IPspace を選択する必要があります。これは、「デフォルト」の IPspace または作成したカスタム IPspace です。
+
+
+
+--
+
+
+link:https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc[""]
+
+
+NOTE: Cloud Tiering は、 FlexGroup ボリュームをサポートしています。セットアップは他のボリュームと同じように機能します。
+
+
+
+=== コネクタの作成または切り替え
+
+データをクラウドに階層化するにはコネクタが必要です。データを Google Cloud Storage に階層化する場合は、 Google Cloud Platform VPC でコネクタが使用可能である必要があります。新しいコネクターを作成するか、現在選択されているコネクターが GCP にあることを確認する必要があります。
+
+* link:concept_connectors.html["コネクタについて説明します"]
+* link:task_creating_connectors_gcp.html["GCP でコネクタを作成する"]
+* link:task_managing_connectors.html["コネクタ間の切り替え"]
+
+
+
+
+=== コネクタのネットワークを準備しています
+
+コネクタに必要なネットワーク接続があることを確認します。
+
+.手順
+. コネクタがインストールされている VPC で次の接続が有効になっていることを確認します。
++
+** クラウドの階層化サービスへのアウトバウンドのインターネット接続 ポート 443 （ HTTPS ）
+** ポート 443 から Google Cloud Storage への HTTPS 接続
+** ONTAP クラスタへのポート 443 経由の HTTPS 接続
+
+
+. オプション：サービスコネクタを配置するサブネットで Google プライベートアクセスを有効にします。
++
+https://cloud.google.com/vpc/docs/configure-private-google-access["プライベート Google アクセス"^] ONTAP クラスタから VPC への直接接続を確立している環境で、 Connector と Google Cloud Storage の間の通信を仮想プライベートネットワークのままにする場合は、を推奨します。プライベート Google アクセスは、内部（プライベート） IP アドレスのみ（外部 IP アドレスは使用しない）を持つ VM インスタンスで機能します。
+
+
+
+
+
+=== データ階層化のための Google Cloud Storage の準備
+
+階層化を設定する場合は、 Storage Admin の権限があるサービスアカウントにストレージアクセスキーを指定する必要があります。サービスアカウントを使用すると、 Cloud Tiering で、データの階層化に使用する Cloud Storage バケットを認証し、アクセスできます。キーは、 Google Cloud Storage がリクエストを発行しているユーザーを認識できるようにするために必要です。
+
+.手順
+. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["事前定義されたストレージ管理者を含むサービスアカウントを作成します ロール"^]。
+. に進みます https://console.cloud.google.com/storage/settings["GCP Storage Settings （ GCP ストレージ設定）"^] サービスアカウントのアクセスキーを作成します。
++
+.. プロジェクトを選択し、 * 互換性 * をクリックします。まだ有効にしていない場合は、 [ 相互運用アクセスを有効にする *] をクリックします。
+.. [ サービスアカウントのアクセスキー *] で、 [ サービスアカウントのキーの作成 *] をクリックし、作成したサービスアカウントを選択して、 [ キーの作成 *] をクリックします。
++
+必要なのは、です link:task_tiering_google.html#tiering-inactive-data-to-a-google-cloud-storage-bucket["Cloud Tiering にキーを入力します"] 後で階層化を設定する場合。
+
+
+
+
+
+
+
+== 最初のクラスタから Google Cloud にアクセス頻度の低いデータを階層化する ストレージ
+
+Google Cloud 環境を準備したら、最初のクラスタからアクセス頻度の低いデータの階層化を開始します。
+
+.必要なもの
+* link:task_discovering_ontap.html["オンプレミスの作業環境"]。
+* Storage Admin ロールが割り当てられているサービスアカウントのストレージアクセスキー。
+
+
+.手順
+. オンプレミスクラスタを選択
+. 「 * 階層化の設定 * 」をクリックします。
++
+image:screenshot_setup_tiering_onprem.gif["オンプレミスの ONTAP 作業環境を選択したあとに画面の右側に表示される「階層化の設定」オプションを示すスクリーンショット。"]
+
++
+これで階層化ダッシュボードが表示されます。
+
+. クラスタの横にある「 * 階層化を設定」をクリックします。
+. 「 * Tiering Setup * 」ページに記載された手順を実行します。
++
+.. * Bucket * ：新しい Google Cloud Storage バケットを追加するか、既存のバケットを選択して、 * Continue * をクリックします。
+.. * ストレージクラス * ：階層化データに使用するストレージクラスを選択し、 * 続行 * をクリックします。
+.. * クレデンシャル * ：ストレージ管理者ロールが割り当てられたサービスアカウントのストレージアクセスキーとシークレットキーを入力します。
+.. * クラスタネットワーク * ： ONTAP がオブジェクトストレージへの接続に使用する IPspace を選択し、「 * 続行」をクリックします。
++
+正しい IPspace を選択すると、 Cloud Tiering を使用して、 ONTAP からクラウドプロバイダのオブジェクトストレージへの接続をセットアップできます。
+
+
+
+. 「 * Continue * 」をクリックして、階層化するボリュームを選択します。
+. [* Tier Volumes] ページで、各ボリュームの階層化を設定します。をクリックします image:screenshot_edit_icon.gif["に表示される編集アイコンのスクリーンショット ボリューム階層化のテーブルの各行の末尾です"] アイコンをクリックし、階層化ポリシーを選択します。必要に応じてクーリング日数を調整し、 * 適用 * をクリックします。
++
+link:concept_cloud_tiering.html#volume-tiering-policies["ボリューム階層化ポリシーの詳細については、こちらをご覧ください"]。
+
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_volumes_select.gif["ソースボリュームの選択ページで選択されたボリュームを示すスクリーンショット。"]
+
+
+
+クラスタのボリュームから Google Cloud オブジェクトストレージへのデータ階層化の設定が完了しました。
+
+link:task_licensing_cloud_tiering.html["Cloud Tiering サービスに登録してください"]。
+
+また、クラスタを追加したり、クラスタ上のアクティブなデータと非アクティブなデータに関する情報を確認したりすることもできます。詳細については、を参照してください link:task_managing_tiering.html["クラスタからのデータ階層化の管理"]。

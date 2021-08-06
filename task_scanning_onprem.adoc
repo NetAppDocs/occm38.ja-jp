@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: task_scanning_onprem.html 
+keywords: cloud compliance, on-prem, scan on prem data, scan on-prem data 
+summary: オンプレミスの ONTAP データを Cloud Volumes ONTAP 作業環境にレプリケートし、コンプライアンスを有効にすることで、オンプレミスの データをクラウドコンプライアンスでスキャンできます。オンプレミスの ONTAP 作業環境からデータを直接スキャンすることはできません。 
+---
+= SnapMirror を使用した、クラウド準拠のオンプレミス ONTAP データのスキャン
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+オンプレミスの NFS または CIFS データを Cloud Volumes ONTAP 作業環境にレプリケートし、コンプライアンスを有効にすることで、オンプレミスの ONTAP データをクラウドコンプライアンスでスキャンできます。オンプレミスの ONTAP 作業環境からデータを直接スキャンすることはできません。
+
+が必要です link:task_deploy_cloud_compliance.html["Cloud Manager に Cloud Compliance のインスタンスを導入済みである"^]。
+
+.手順
+. Cloud Manager で、オンプレミスの ONTAP クラスタと Cloud Volumes ONTAP の間に SnapMirror 関係を作成します。
++
+.. https://docs.netapp.com/us-en/occm/task_discovering_ontap.html["Cloud Manager でオンプレミスクラスタを検出"^]。
+.. https://docs.netapp.com/us-en/occm/task_replicating_data.html["オンプレミスの ONTAP クラスタとの間に、 SnapMirror レプリケーションを作成 Cloud Manager から Cloud Volumes ONTAP にアクセスします"^]。
+
+
+. SMB ソースボリュームから作成された DP ボリュームの場合、 ONTAP CLI から、データアクセス用の SMB デスティネーションボリュームを設定します。（データアクセスは Cloud Compliance から自動的に有効になるため、 NFS ボリュームの場合は必要ありません）。
++
+.. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-cifs-cg/GUID-371B7797-B5BE-4B19-BDE4-BBC938F109BF.html["デスティネーションボリュームに SMB 共有を作成"^]。
+.. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-cifs-cg/GUID-90FCFDB3-F60C-4685-9BBD-6D648F75701C.html["デスティネーションボリュームの SMB 共有に適切な ACL を適用します"^]。
+
+
+. Cloud Manager から、 SnapMirror データが格納されている Cloud Volumes ONTAP 作業環境で Cloud Compliance をアクティブ化します。
++
+.. [ 作業環境（ Working Environments ） ] をクリックします。
+.. SnapMirror データを含む作業環境を選択し、 * コンプライアンスを有効にする * をクリックします。
++
+link:task_getting_started_compliance.html["Cloud Compliance の有効化に関するサポートが必要な場合は、ここをクリックしてください Cloud Volumes ONTAP システム"^]。
+
+.. _Scan Configuration_page の上部にある *Enable Access to DP volumes * ボタンをクリックします。
+.. スキャンする各 DP ボリュームをアクティブ化するか、 * すべてのボリュームのコンプライアンスのアクティブ化 * コントロールを使用して、すべての DP ボリュームを含むすべてのボリュームを有効にします。
+
+
+
+
+を参照してください link:task_getting_started_compliance.html#scanning-data-protection-volumes["データ保護ボリュームをスキャンしています"^] DP ボリュームのスキャンの詳細については、を参照してください。

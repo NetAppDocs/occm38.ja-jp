@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: reference_google_support.html 
+keywords: google, gcp, regions, google regions, gcp regions, storage class, standard storage class 
+summary: Cloud Tiering は、 Standard ストレージクラスとほとんどのリージョンをサポートしています。 
+---
+= サポートされている Google Cloud ストレージクラスとリージョン
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Tiering は、 Standard ストレージクラスとほとんどの Google Cloud リージョンをサポートしています。
+
+
+
+== サポートされるアクセス階層
+
+Cloud Tiering は、アクセス頻度の低いデータに _Standard_access 階層を使用します。
+
+
+
+== サポートされている Google Cloud リージョン
+
+Cloud Tiering は、次のリージョンをサポートしています。
+
+
+
+=== 南北アメリカ
+
+* アイオワ
+* ロサンゼルス
+* モントリオール
+* N（バージニア州）
+* オレゴン
+* サンパウロ
+* サウスカロライナ
+
+
+
+
+=== アジア太平洋地域
+
+* 香港
+* ムンバイ
+* 大阪
+* シンガポール
+* シドニー
+* 台湾
+* 東京
+
+
+
+
+=== ヨーロッパ
+
+* ベルギー
+* フィンランド
+* フランクフルト
+* ロンドン
+* オランダ
+* チューリッヒ
+

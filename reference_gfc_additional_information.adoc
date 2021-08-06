@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: reference_gfc_additional_information.html 
+keywords: global file cache 
+summary: グローバルファイルキャッシュなどのネットアップ製品の詳細については、次のリンクを参照してください。 
+---
+= 追加情報
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+グローバルファイルキャッシュおよびその他のネットアップ製品の詳細については、次のリンクを参照してください。
+
+* グローバルファイルキャッシュに関する FAQ
++
+** よくある質問とその回答のリストを参照してください link:https://cloud.netapp.com/global-file-cache-faq["こちらをご覧ください"^]
+
+
+* link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["『 NetApp Global File Cache User Guide 』を参照してください"^]
+* ネットアップの製品マニュアル
++
+** ネットアップのクラウド製品に関するその他のドキュメントを参照してください https://docs.netapp.com/us-en/cloud/["こちらをご覧ください"^]
+** すべてのネットアップ製品の追加ドキュメントを参照 https://docs.netapp.com["こちらをご覧ください"^]
+
+
+* Cloud Volumes ONTAP を使用したグローバルファイルキャッシュユーザに対するカスタマーサポートは、次のチャネルを介して利用できます。
++
+** Guided Problem Solving 、ケース管理、ナレッジベース、ダウンロード、ツールなどを開始できます link:https://cloud.netapp.com/gfc-support["こちらをご覧ください"^]
+** ネットアップサポートにログインします https://mysupport.netapp.com[] NSS のクレデンシャルを使用します
+** P1 問題の迅速なサポートについては、 +1 856.481.3990 （オプション 2 ）までお電話ください。
+
+
+* クラウドボリュームサービスと Azure NetApp Files を利用しているグローバルファイルキャッシュユーザを対象としたカスタマーサポートは、プロバイダからの標準サポートを通じて利用できます。Google カスタマーサポートまたは Microsoft カスタマーサポートにそれぞれお問い合わせください。
+

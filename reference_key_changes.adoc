@@ -1,0 +1,175 @@
+---
+sidebar: sidebar 
+permalink: reference_key_changes.html 
+keywords: what's new, key changes, saas, accounts, workspaces, users, connectors, endpoints, urls, permissions, permission changes 
+summary: このページでは、 Cloud Manager の _important_changes が強調されています。このページは、新しい機能強化を導入する際にこのサービスを使用する際に役立ちます。新機能と拡張機能については、引き続き最新情報のページをお読みください。 
+---
+= Cloud Manager の重要な変更点
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+このページでは、 Cloud Manager の重要な変更点について説明します。この変更は、新しい機能強化を導入する際に役立つ情報として提供されます。を引き続きお読みください link:reference_new_occm.html["新機能"] のページで、すべての新機能と機能拡張について確認してください。
+
+
+
+== SaaS の変更
+
+ネットアップは、 Cloud Manager のソフトウェアサービスエクスペリエンスを導入しました。この新しいエクスペリエンスにより、 Cloud Manager の使用が簡単になり、ハイブリッドクラウドインフラ管理のための追加機能を提供できるようになりました。
+
+* link:concept_saas.html["Cloud Manager を SaaS に移行"]
+* link:concept_overview.html["Cloud Manager の仕組みをご確認ください"]
+
+
+
+
+== マシンタイプが変更されました
+
+Cloud Manager の新機能と今後の機能に対して適切なリソースを利用できるように、最小限必要なインスタンス、 VM 、マシンのタイプを次のように変更しました。
+
+* AWS ： t3.xlarge
+* Azure ： DS3 v2
+* GCP ： n1-standard-4
+
+
+マシンタイプをアップグレードすると、新しい Kubernetes エクスペリエンス、グローバルファイルキャッシュ、監視などの機能にアクセスできます。
+
+サポートされる最小サイズは、これらのデフォルトサイズです link:reference_cloud_mgr_reqs.html["CPU と RAM の要件に基づきます"]。
+
+Cloud Manager からコネクタのマシンタイプの変更手順が表示されます。
+
+
+
+== アカウント設定
+
+Cloud Central アカウントは、マルチテナンシーの提供、分離されたワークスペースでのユーザやリソースの整理、コネクタやサブスクリプションへのアクセス管理を支援するために導入されました。
+
+* link:concept_cloud_central_accounts.html["Cloud Central アカウントについて、ユーザ、ワークスペース、コネクタ、サブスクリプションを紹介します"]
+* link:task_setting_up_cloud_central_accounts.html["アカウントの使用を開始する方法について説明します"]
+* link:task_managing_cloud_central_accounts.html["設定後にアカウントを管理する方法について説明します 上へ"]
+
+
+
+
+== 新しい権限
+
+Cloud Manager で新しい機能や拡張機能を導入する際に、クラウドプロバイダの権限が必要になることがあります。このセクションでは、必要になった新しい権限について説明します。
+
+最新の権限のリストは、で確認できます https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager のポリシーのページです"^]。
+
+
+
+=== AWS
+
+3.8.1 リリース以降では、 Cloud Volumes ONTAP でクラウドにバックアップを使用するには、次の権限が必要です。 link:task_backup_to_s3.html["詳細はこちら。"]。
+
+[source, json]
+----
+{
+            "Sid": "backupPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "s3:DeleteBucket",
+                "s3:GetLifecycleConfiguration",
+                "s3:PutLifecycleConfiguration",
+                "s3:PutBucketTagging",
+                "s3:ListBucketVersions",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketTagging",
+                "s3:GetBucketLocation",
+                "s3:GetBucketPolicyStatus",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetBucketAcl",
+                "s3:GetBucketPolicy",
+                "s3:PutBucketPublicAccessBlock"
+            ],
+            "Resource": [
+                "arn:aws:s3:::netapp-backup-*"
+            ]
+        },
+----
+
+
+=== Azure
+
+* Azure の導入でエラーが発生しないように、 Azure の Cloud Manager ポリシーに次の権限が含まれていることを確認してください。
++
+[source, json]
+----
+"Microsoft.Resources/deployments/operationStatuses/read"
+----
+* 3.8.7 リリース以降では、別のアカウントの外部キーを使用して、シングルノード Cloud Volumes ONTAP システム上の Azure 管理対象ディスクを暗号化するには、次の権限が必要です。 link:reference_new_occm.html#cloud-volumes-ontap-enhancements["詳細はこちら。"]。
++
+[source, json]
+----
+"Microsoft.Compute/diskEncryptionSets/read"
+----
+* Cloud Volumes ONTAP でグローバルファイルキャッシュを有効にするには、次の権限が必要です。 link:concept_gfc.html["詳細はこちら。"]。
++
+[source, json]
+----
+"Microsoft.Resources/deployments/operationStatuses/read",
+"Microsoft.Insights/Metrics/Read",
+"Microsoft.Compute/virtualMachines/extensions/write",
+"Microsoft.Compute/virtualMachines/extensions/read",
+"Microsoft.Compute/virtualMachines/extensions/delete",
+"Microsoft.Compute/virtualMachines/delete",
+"Microsoft.Network/networkInterfaces/delete",
+"Microsoft.Network/networkSecurityGroups/delete",
+"Microsoft.Resources/deployments/delete",
+----
+
+
+
+
+=== GCP
+
+
+
+==== Kubernetes 管理用の新しい権限
+
+3.8.8 リリース以降、 Connector のサービスアカウントでは、 Google Kubernetes Engine （ GKE ）で実行されている Kubernetes クラスタを検出および管理するために次の権限が必要になります。
+
+[source, yaml]
+----
+- container.*
+----
+
+
+==== データ階層化の新しい権限
+
+3.8 リリース以降、データの階層化にサービスアカウントを使用するには、次の権限が必要になります。 link:reference_new_occm.html#data-tiering-enhancements-in-gcp["詳細はこちら。"]。
+
+[source, yaml]
+----
+- storage.buckets.update
+- compute.instances.setServiceAccount
+- iam.serviceAccounts.getIamPolicy
+- iam.serviceAccounts.list
+----
+
+
+== 新しいエンドポイント
+
+Connector では、パブリッククラウド環境内のリソースとプロセスを管理するためにアウトバウンドインターネットアクセスが必要です。このセクションでは、必要になった新しいエンドポイントについて説明します。
+
+を検索できます link:reference_networking.html["Web ブラウザからアクセスするエンドポイントの完全なリストをここに表示します"] および 。
+
+* ユーザは、次のエンドポイントに接続して Web ブラウザから Cloud Manager にアクセスする必要があります。
++
+\ https://cloudmanager.netapp.com
+
+* Docker インフラのコンテナコンポーネントのソフトウェアイメージを取得するには、コネクタが次のエンドポイントにアクセスできる必要があります。
++
+\ https://cloudmanagerinfraprod.azurecr.io
+
++
+ファイアウォールがコネクタからこのエンドポイントへのアクセスを有効にしていることを確認してください。
+
+

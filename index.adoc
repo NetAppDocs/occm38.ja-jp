@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: index.html 
+summary: Cloud Manager を使用すると、 IT エキスパートとクラウドアーキテクトは、ネットアップのクラウドソリューションを使用してハイブリッドマルチクラウドインフラを一元管理できます。 
+---
+= Cloud Manager および Cloud Volumes ONTAP のドキュメント
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+Cloud Manager を使用すると、 IT エキスパートとクラウドアーキテクトは、ネットアップのクラウドソリューションを使用してハイブリッドマルチクラウドインフラを一元管理できます。
+
+
+
+== 新機能をご紹介します
+
+* link:reference_key_changes.html["Cloud Manager の重要な変更点"]
+* link:reference_new_occm.html["Cloud Manager の新機能"]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_97.html["Cloud Volumes ONTAP の新機能"^]
+
+
+
+
+== はじめに
+
+* link:concept_overview.html["クラウドマネージャ"]
+* link:concept_cloud_central_accounts.html["アカウント設定"]
+* link:task_getting_started_aws.html["Cloud Volumes ONTAP for AWS"]
+* link:task_getting_started_azure.html["Cloud Volumes ONTAP for Azure"]
+* link:task_getting_started_gcp.html["Cloud Volumes ONTAP for Google Cloud の略"]
+* link:task_manage_anf.html["Azure NetApp Files の特長"]
+* link:task_manage_cvs_aws.html["Cloud Volumes Service for AWS"]
+* link:task_manage_cvs_gcp.html["Cloud Volumes Service for Google Cloud"]
+* link:task_getting_started_compliance.html["クラウドコンプライアンス"]
+* link:task_gfc_getting_started.html["グローバルファイルキャッシュ"]
+* link:concept_backup_to_cloud.html["クラウドへのバックアップ"]
+* link:task_getting_started_monitoring.html["Cloud Insights の機能です"]
+
+
+
+
+== API による自動化
+
+* link:api.html["API 開発者ガイド"^]
+* link:reference_infrastructure_as_code.html["自動化のサンプル"]
+
+
+
+
+== 同僚とつながり、サポートを受け、詳細情報を入手します
+
+* https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS["ネットアップコミュニティ：クラウドデータサービス"^]
+* https://mysupport.netapp.com/GPS/ECMLS2588181.html["NetApp Cloud Volumes ONTAP のサポート"^]
+* link:reference_additional_info.html["ヘルプを参照したり、詳細情報を参照したりするには"]
+

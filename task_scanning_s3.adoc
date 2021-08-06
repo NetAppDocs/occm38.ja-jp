@@ -1,0 +1,248 @@
+---
+sidebar: sidebar 
+permalink: task_scanning_s3.html 
+keywords: cloud compliance, amazon s3, s3 buckets, amazon s3 buckets, scan s3 buckets, scan amazon s3 buckets, enable compliance s3, enable compliance on s3, s3 working environment 
+summary: Cloud Compliance では、 Amazon S3 バケットをスキャンして、 S3 オブジェクトストレージに格納されている個人データや機密データを特定できます。Cloud Compliance は、ネットアップソリューション用に作成されたバケットであるかどうかに関係なく、アカウント内の任意のバケットをスキャンできます。 
+---
+= Cloud Compliance for Amazon S3 の利用を開始してください
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Compliance では、 Amazon S3 バケットをスキャンして、 S3 オブジェクトストレージに格納されている個人データや機密データを特定できます。Cloud Compliance は、ネットアップソリューション用に作成されたバケットであるかどうかに関係なく、アカウント内の任意のバケットをスキャンできます。
+
+
+
+== クイックスタート
+
+これらの手順を実行すると、すぐに作業を開始できます。また、残りのセクションまでスクロールして詳細を確認することもできます。
+
+
+
+==== クラウド環境で S3 の要件を設定します
+
+[role="quick-margin-para"]
+クラウド環境が Cloud Compliance の要件を満たしていることを確認します。たとえば、 IAM ロールの準備と Cloud Compliance から S3 への接続の設定を行います。 <<Reviewing S3 prerequisites,すべてのリストを参照してください>>。
+
+
+
+==== Cloud Compliance インスタンスを導入します
+
+[role="quick-margin-para"]
+link:task_deploy_cloud_compliance.html["Cloud Manager に Cloud Compliance を導入"^] インスタンスが展開されていない場合。
+
+
+
+==== S3 作業環境でコンプライアンスをアクティブ化します
+
+[role="quick-margin-para"]
+Amazon S3 作業環境を選択し、 * 準拠の有効化 * をクリックして、必要な権限を含む IAM ロールを選択します。
+
+
+
+==== スキャンするバケットを選択します
+
+[role="quick-margin-para"]
+スキャンするバケットを選択すると、 Cloud Compliance でスキャンが開始されます。
+
+
+
+== S3 の前提条件の確認
+
+S3 バケットのスキャンに固有の要件を次に示します。
+
+[[policy-requirements]]
+Cloud Compliance インスタンス用の IAM ロールを設定します::
++
+--
+[source, json]
+----
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": [
+              "s3:Get*",
+              "s3:List*",
+              "s3:HeadBucket"
+          ],
+          "Resource": "*"
+      },
+      {
+          "Effect": "Allow",
+          "Action": [
+              "iam:GetPolicyVersion",
+              "iam:GetPolicy",
+              "iam:ListAttachedRolePolicies"
+          ],
+          "Resource": [
+              "arn:aws:iam::*:policy/*",
+              "arn:aws:iam::*:role/*"
+          ]
+      }
+  ]
+}
+----
+--
+Cloud Compliance から Amazon S3 への接続を提供::
++
+--
+VPC エンドポイントを作成するときは、 Cloud Compliance インスタンスに対応するリージョン、 VPC 、およびルーティングテーブルを選択してください。S3 エンドポイントへのトラフィックを有効にする発信 HTTPS ルールを追加するには、セキュリティグループも変更する必要があります。そうしないと、 Cloud Compliance は S3 サービスに接続できません。
+
+問題が発生した場合は、を参照してください https://aws.amazon.com/premiumsupport/knowledge-center/connect-s3-vpc-endpoint/["AWS のサポートナレッジセンター：ゲートウェイ VPC エンドポイントを使用して S3 バケットに接続できないのはなぜですか。"^]
+
+別の方法として、 NAT ゲートウェイを使用して接続を提供する方法があります。
+
+
+NOTE: インターネット経由で S3 にアクセスするためにプロキシを使用することはできません。
+
+--
+
+
+
+
+== Cloud Compliance インスタンスの導入
+
+link:task_deploy_cloud_compliance.html["Cloud Manager に Cloud Compliance を導入"^] インスタンスが展開されていない場合。
+
+この AWS アカウントで S3 バケットが Cloud Manager で自動的に検出されて Amazon S3 作業環境に表示されるように、 AWS コネクタにインスタンスを導入する必要があります。
+
+
+
+== S3 作業環境でのコンプライアンスのアクティブ化
+
+前提条件を確認したら、 Amazon S3 で Cloud Compliance を有効にします。
+
+.手順
+. Cloud Manager の上部で、 * 作業環境 * をクリックします。
+. Amazon S3 作業環境を選択します。
++
+image:screenshot_s3_we.gif["Amazon S3 作業環境アイコンのスクリーンショット"]
+
+. 右側のペインで、 * コンプライアンスを有効にする * をクリックします。
++
+image:screenshot_s3_enable_compliance.gif["から Cloud Compliance サービスを有効にするためのスクリーンショット サービスパネル"]
+
+. プロンプトが表示されたら、の Cloud Compliance インスタンスに IAM ロールを割り当てます <<Requirements specific to S3,必要な権限>>。
++
+image:screenshot_s3_compliance_iam_role.gif["クラウド用の AWS IAM ロールを入力するスクリーンショット コンプライアンス"]
+
+. [ コンプライアンスを有効にする ] をクリックします。
+
+
+
+TIP: また、作業環境のコンプライアンススキャンを有効にすることもできます をクリックして、 [ スキャン設定 ] ページからアクセスします image:screenshot_gallery_options.gif[""] ボタンを押して、 * コンプライアンスを有効にする * を選択します。
+
+Cloud Manager によって、インスタンスに IAM ロールが割り当てられます。
+
+
+
+== S3 バケットでの準拠スキャンの有効化と無効化
+
+Cloud Manager で Amazon S3 の Cloud Compliance が有効になったら、次の手順でスキャンするバケットを設定します。
+
+スキャンする S3 バケットを含む AWS アカウントで Cloud Manager を実行している場合は、そのバケットが検出され、 Amazon S3 作業環境に表示されます。
+
+Cloud Compliance も同様です <<Scanning buckets from additional AWS accounts,別々の AWS アカウントにある S3 バケットをスキャンします>>。
+
+.手順
+. Amazon S3 作業環境を選択します。
+. 右側のペインで、 * バケットの設定 * をクリックします。
++
+image:screenshot_s3_configure_buckets.gif["S3 を選択するためにバケットの設定をクリックするスクリーンショット スキャンするバケット"]
+
+. スキャンするバケットで準拠を有効にします。
++
+image:screenshot_s3_select_buckets.gif["目的の S3 バケットを選択するスクリーンショット スキャン"]
+
+
+
+Cloud Compliance で、有効にした S3 バケットのスキャンが開始されます。エラーが発生した場合は、エラーを修正するために必要なアクションとともに、 [ ステータス ] 列に表示されます。
+
+
+
+== 追加の AWS アカウントからバケットをスキャンする
+
+別の AWS アカウントを使用している S3 バケットをスキャンするには、そのアカウントからロールを割り当てて、既存の Cloud Compliance インスタンスにアクセスします。
+
+.手順
+. S3 バケットをスキャンするターゲット AWS アカウントに移動し、 * 別の AWS アカウント * を選択して IAM ロールを作成します。
++
+image:screenshot_iam_create_role.gif[""]
+
++
+必ず次の手順を実行してください。
+
++
+** Cloud Compliance インスタンスが存在するアカウントの ID を入力します。
+** 最大 CLI / API セッション期間 * を 1 時間から 12 時間に変更し、変更を保存してください。
+** Cloud Compliance IAM ポリシーを関連付けます。必要な権限があることを確認します。
++
+[source, json]
+----
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": [
+              "s3:Get*",
+              "s3:List*",
+              "s3:HeadBucket"
+          ],
+          "Resource": "*"
+      },
+  ]
+}
+----
+
+
+. Cloud Compliance インスタンスが存在するソース AWS アカウントに移動し、インスタンスに関連付けられている IAM ロールを選択します。
++
+.. 最大 CLI / API セッション期間 * を 1 時間から 12 時間に変更し、変更を保存してください。
+.. [* ポリシーの適用 *] をクリックし、 [ ポリシーの作成 *] をクリックします。
+.. 「 STS ： AssumeRole 」アクションと、ターゲットアカウントで作成したロールの ARN を含むポリシーを作成します。
++
+[source, json]
+----
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::<ADDITIONAL-ACCOUNT-ID>:role/<ADDITIONAL_ROLE_NAME>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetPolicyVersion",
+                "iam:GetPolicy",
+                "iam:ListAttachedRolePolicies"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:policy/*",
+                "arn:aws:iam::*:role/*"
+            ]
+        }
+    ]
+}
+----
++
+Cloud Compliance インスタンスのプロファイルアカウントで追加の AWS アカウントにアクセスできるようになりました。
+
+
+
+. Amazon S3 Scan Configuration * ページに移動し、新しい AWS アカウントが表示されます。Cloud Compliance が新しいアカウントの作業環境を同期し、この情報を表示するまでに数分かかることがあります。
++
+image:screenshot_activate_and_select_buckets.png[""]
+
+. [Activate Compliance & Select Buckets] をクリックして、スキャンするバケットを選択します。
+
+
+Cloud Compliance によって、有効にした新しい S3 バケットのスキャンが開始されます。

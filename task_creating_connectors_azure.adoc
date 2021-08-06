@@ -1,0 +1,136 @@
+---
+sidebar: sidebar 
+permalink: task_creating_connectors_azure.html 
+keywords: create connector in Azure, create connector in azure, create connector in gcp, launch connector in Azure, launch connector in azure, launch connector in gcp, deploy connector in Azure, deploy connector in azure, deploy connector in gcp 
+summary: Cloud Manager のほとんどの機能を使用するには、 Account Admin がコネクタを導入する必要があります。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。 
+---
+= Cloud Manager から Azure にコネクタを作成する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager のほとんどの機能を使用するには、 Account Admin が _ Connector を導入する必要があります。 link:concept_connectors.html["コネクタが必要になるタイミングを学習します"]。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。
+
+このページでは、 Cloud Manager から直接 Azure でコネクタを作成する方法について説明します。オプションとして、を選択することもできます link:task_launching_azure_mktp.html["Azure Marketplace からコネクタを作成します"]またはをに設定します 。
+
+これらの手順は、 Account Admin ロールを持つユーザが実行する必要があります。ワークスペース管理者はコネクタを作成できません。
+
+
+TIP: 最初の Cloud Volumes ONTAP 作業環境を作成する際、まだコネクタがない場合は、 Cloud Manager からコネクタの作成を求められます。
+
+
+
+== コネクタを作成するための Azure 権限を設定しています
+
+Cloud Manager からコネクタを導入する前に、 Azure アカウントが正しい権限を持っていることを確認する必要があります。
+
+.手順
+. コネクタの Azure ポリシーを使用してカスタムロールを作成します。
++
+.. をダウンロードします https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service_Azure.json["コネクタの Azure ポリシー"^]。
++
+
+TIP: リンクを右クリックし、 [ 名前を付けてリンクを保存 ...] をクリックしてファイルをダウンロードする。
+
+.. JSON ファイルを変更して、割り当て可能な範囲に Azure サブスクリプション ID を追加します。
++
+* 例 *
+
++
+[source, json]
+----
+"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz",
+],
+----
+.. JSON ファイルを使用して、 Azure でカスタムロールを作成します。
++
+次の例は、 Azure CLI 2.0 を使用してカスタムロールを作成する方法を示しています。
+
++
+「 AZ role definition create -- role-definition C ： \Policy_for _Setup_as _ Service_azure.json 」
+
++
+これで、 _Azure SetupAsService_という カスタムロールが作成されました。
+
+
+
+. Cloud Manager からコネクタを導入するユーザにロールを割り当てます。
++
+.. [ サブスクリプション ] サービスを開き、ユーザーのサブスクリプションを選択します。
+.. 「 * アクセスコントロール（ IAM ） * 」をクリックします。
+.. [ * 追加 *>* 役割の割り当ての追加 * ] をクリックして、権限を追加します。
++
+*** Azure SetupAsService * ロールを選択します。
++
+
+NOTE: Azure SetupAsService は、で指定されているデフォルトの名前です https://mysupport.netapp.com/site/info/cloud-manager-policies["Azure の Connector 導入ポリシー"^]。ロールに別の名前を選択した場合は、代わりにその名前を選択します。
+
+*** Azure AD のユーザ、グループ、アプリケーション * へのアクセスを割り当てます。
+*** ユーザアカウントを選択します。
+*** [ 保存（ Save ） ] をクリックします。
+
+
+
+
+
+
+Azure ユーザに、 Cloud Manager から Connector を導入するために必要な権限が付与されるようになりました。
+
+
+
+== Azure でコネクタを作成する
+
+Cloud Manager では、ユーザインターフェイスから直接 Azure にコネクタを作成できます。
+
+.必要なもの
+* 。 https://mysupport.netapp.com/site/info/cloud-manager-policies["必要な権限"^] 使用している Azure アカウントに対して。
+* Azure サブスクリプション。
+* 選択した Azure リージョン内の VNet およびサブネット
+
+
+.手順
+. 最初の作業環境を作成する場合は、 * 作業環境の追加 * をクリックし、プロンプトに従います。それ以外の場合は、 [*connector*] ドロップダウンをクリックし、 [*Add connector*] を選択します。
++
+image:screenshot_connector_add.gif["ヘッダーのコネクターアイコンとコネクターの追加アクションを示すスクリーンショット。"]
+
+. [ * 開始しましょう * ] をクリックします。
+. クラウドプロバイダとして「 * Microsoft Azure * 」を選択します。
++
+Connector は、作成する作業環境の種類や有効にするサービスへのネットワーク接続を確立する必要があることに注意してください。
+
++
+link:reference_networking_cloud_manager.html["Connector のネットワーク要件の詳細については、こちらをご覧ください"]。
+
+. 必要な情報を確認し、 [* Continue （続行） ] をクリックします。
+. プロンプトが表示されたら、 Microsoft アカウントにログインします。このアカウントには、仮想マシンの作成に必要な権限が付与されている必要があります。
++
+このフォームは、 Microsoft が所有およびホストしています。クレデンシャルがネットアップに提供されていません。
+
++
+
+TIP: すでに Azure アカウントにログインしている場合、そのアカウントは Cloud Manager によって自動的に使用されます。アカウントが複数ある場合は、適切なアカウントを使用するために、最初にログアウトする必要があります。
+
+. 必要な情報を入力します。
++
+** * VM 認証 * ：仮想マシンの名前、ユーザ名、パスワード、または公開鍵を入力します。
+** * 基本設定 * ： Azure サブスクリプション、 Azure リージョン、および新しいリソースグループを作成するか既存のリソースグループを使用するかを選択します。
+** * ネットワーク * ： VNet とサブネットを選択し、パブリック IP アドレスを有効にするかどうか、および必要に応じてプロキシ設定を指定します。
+** * セキュリティグループ * ：新しいセキュリティグループを作成するか、インバウンド HTTP 、 HTTPS 、 SSH アクセスを許可する既存のセキュリティグループを選択するかを選択します。
++
+
+NOTE: コネクタへの着信トラフィックは、開始しない限りありません。へのアクセスは、 HTTP および HTTPS を使用して提供されます link:concept_connectors.html#the-local-user-interface["ローカル UI"]は、まれな状況で使用します。SSH が必要になるのは、トラブルシューティングのためにホストに接続する必要がある場合のみです。
+
+
+
+. [ 作成（ Create ） ] をクリックします。
++
+仮想マシンの準備が完了するまでに約 7 分かかります。処理が完了するまで、ページには表示されたままにしておいてください。
+
+
+
+ワークスペース管理者がコネクタを使用して Cloud Volumes ONTAP システムを作成できるように、コネクタをワークスペースに関連付ける必要があります。アカウント管理者のみがいる場合は、コネクタをワークスペースに関連付ける必要はありません。アカウント管理者は、デフォルトで Cloud Manager のすべてのワークスペースにアクセスできます。 link:task_setting_up_cloud_central_accounts.html#associating-connectors-with-workspaces["詳細はこちら。"]。

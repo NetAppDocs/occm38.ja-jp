@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: reference_azure_support.html 
+keywords: microsoft azure, azure, hot, access tier, cold, regions 
+summary: Cloud Tiering は、ホットアクセス階層とほとんどのリージョンをサポートしています。 
+---
+= サポートされている Azure Blob アクセス階層とリージョン
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Tiering は、 _ ホットアクセス階層とほとんどのリージョンをサポートしています。
+
+
+
+== サポートされる Azure Blob アクセス階層
+
+Azure へのデータ階層化を設定すると、 Cloud Tiering は、アクセス頻度の低いデータに _Hot_access 階層を自動的に使用します。
+
+
+
+== サポートされている Azure リージョン
+
+Cloud Tiering は、次の Azure リージョンをサポートしています。
+
+
+
+=== アフリカ
+
+* 南アフリカ北部
+
+
+
+
+=== アジア太平洋地域
+
+* オーストラリア東部
+* オーストラリア南東部
+* 東アジア
+* 日本東部
+* 日本西部
+* 韓国中央
+* 韓国
+* 東南アジア
+
+
+
+
+=== ヨーロッパ
+
+* フランス中部
+* ドイツセントラル
+* 北東ドイツ
+* 北ヨーロッパ
+* 英国南部
+* 英国西部
+* 西ヨーロッパ
+
+
+
+
+=== 北米
+
+* カナダセントラル
+* カナダ東部
+* 米国中部
+* 米国東部
+* 東アメリカ 2
+* 北米
+* 米国南部
+* 米国西部
+* 西アメリカ 2
+* アメリカ西部
+
+
+
+
+=== 南米
+
+* ブラジル南部
+

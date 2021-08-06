@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_installing_https_cert.html 
+keywords: https certificate, certificate, adding, installing, ca, certificate authority, format, encoding, renewing 
+summary: デフォルトでは、 Cloud Manager は Web コンソールへの HTTPS アクセスに自己署名証明書を使用します。認証局（ CA ）によって署名された証明書をインストールできます。これにより、自己署名証明書よりも優れたセキュリティ保護が提供されます。 
+---
+= セキュアなアクセスのための HTTPS 証明書の管理
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+デフォルトでは、 Cloud Manager は Web コンソールへの HTTPS アクセスに自己署名証明書を使用します。認証局（ CA ）によって署名された証明書をインストールできます。これにより、自己署名証明書よりも優れたセキュリティ保護が提供されます。
+
+
+
+== 始める前に
+
+Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
+
+
+
+== HTTPS 証明書のインストール
+
+セキュアなアクセスのために、 CA によって署名された証明書をインストールします。
+
+.手順
+. Cloud Manager コンソールの右上にある設定アイコンをクリックし、 * HTTPS セットアップ * を選択します。
++
+image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にある設定アイコンを示すスクリーンショット。"]
+
+. [HTTPS Setup] ページで、証明書署名要求（ CSR ）を生成するか、独自の CA 署名付き証明書をインストールして、証明書をインストールします。
++
+[cols="25,75"]
+|===
+| オプション | 説明 
+
+
+| CSR を生成します  a| 
+.. コネクターホストのホスト名または DNS （共通名）を入力し、 * CSR の生成 * をクリックします。
++
+証明書署名要求が表示されます。
+
+.. CSR を使用して、 SSL 証明書要求を CA に送信します。
++
+証明書では、 Privacy Enhanced Mail （ PEM ） Base-64 エンコード X.509 形式を使用する必要があります。
+
+.. 署名済み証明書の内容をコピーし、 [ 証明書 ] フィールドに貼り付けて、 [*Install*] をクリックします。
+
+
+
+
+| 独自の CA 署名付き証明書をインストールします  a| 
+.. 「 CA 署名証明書のインストール」を選択します。
+.. 証明書ファイルと秘密鍵の両方をロードし、 * Install * をクリックします。
++
+証明書では、 Privacy Enhanced Mail （ PEM ） Base-64 エンコード X.509 形式を使用する必要があります。
+
+
+
+|===
+
+
+Cloud Manager は、 CA 署名付き証明書を使用して、セキュアな HTTPS アクセスを提供するようになりました。次の図は、セキュアアクセス用に設定された Cloud Manager システムを示しています。
+
+image:screenshot_https_cert.gif["スクリーンショット：署名付き証明書をインストールした後の HTTPS セットアップページを表示します。このページには、証明書のプロパティと、証明書を更新するオプションが表示されます。"]
+
+
+
+== Cloud Manager の HTTPS 証明書を更新します
+
+Cloud Manager Web コンソールへの安全なアクセスを確保するために、 Cloud Manager HTTPS 証明書は有効期限が切れる前に更新する必要があります。証明書の有効期限が切れる前に証明書を更新しないと、ユーザが HTTPS を使用して Web コンソールにアクセスしたときに警告が表示されます。
+
+.手順
+. Cloud Manager コンソールの右上にある設定アイコンをクリックし、 * HTTPS セットアップ * を選択します。
++
+Cloud Manager 証明書の詳細が表示されます。有効期限も表示されます。
+
+. [HTTPS 証明書の更新 ] をクリックし、手順に従って CSR を生成するか、独自の CA 署名証明書をインストールします。
+
+
+Cloud Manager は新しい CA 署名付き証明書を使用して、セキュアな HTTPS アクセスを提供します。

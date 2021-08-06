@@ -1,0 +1,183 @@
+---
+sidebar: sidebar 
+permalink: task_tiering_onprem_azure.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, azure, blob, azure blob 
+summary: データを Azure BLOB ストレージに階層化することにより、オンプレミスの ONTAP クラスタの空きスペースを確保します。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。 
+---
+= オンプレミスの ONTAP クラスタから Azure BLOB ストレージへデータを階層化する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+データを Azure BLOB ストレージに階層化することにより、オンプレミスの ONTAP クラスタの空きスペースを確保します。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== Azure BLOB ストレージへのデータの階層化を準備する
+
+[role="quick-margin-para"]
+次のものが必要です。
+
+* ONTAP 9.4 以降を実行し、かつ Azure Blob Storage への HTTPS 接続を備えたオール SSD アグリゲートを含む AFF または FAS システム。
+* Azure VNet にインストールされるコネクタ。
+* データセンター内の ONTAP クラスタ、 Azure BLOB ストレージ、およびクラウド階層化サービスへのアウトバウンド HTTPS 接続を可能にするコネクタのネットワーク。
+
+
+
+
+==== 階層化をセットアップする
+
+[role="quick-margin-para"]
+Cloud Manager で、オンプレミスの作業環境を選択し、 * 階層化の設定 * をクリックして、プロンプトに従って Azure Blob Storage にデータを階層化します。
+
+
+
+==== ライセンスをセットアップする
+
+[role="quick-margin-para"]
+無償トライアルの終了後、従量課金制のサブスクリプション、 ONTAP 階層化ライセンス、またはその両方を組み合わせて使用して、クラウド階層化の料金を支払うことができます。
+
+* Azure Marketplace からサブスクライブするには、 * Tiering > Licensing * をクリックし、 * Subscribe * をクリックして、プロンプトに従います。
+* 階層化ライセンスを追加する場合は、 mailto ： ng-cloud-tiering@netapp.com ？ subject= Licensing [ 購入が必要な場合は当社にお問い合わせください ] を選択してから 。
+
+
+
+
+== 要件
+
+ONTAP クラスタのサポートを確認し、ネットワークをセットアップし、オブジェクトストレージを準備します。
+
+次の図は、各コンポーネントとその間の準備に必要な接続を示しています。
+
+image:diagram_cloud_tiering_azure.png["「クラウドプロバイダのサービスコネクタへの接続、 ONTAP クラスタへの接続を備えたクラウド階層化サービス、クラウドプロバイダ内の ONTAP クラスタとオブジェクトストレージの接続を示すアーキテクチャイメージ。アクティブなデータは ONTAP クラスタに格納され、アクセス頻度の低いデータはオブジェクトストレージに格納されます。」"]
+
+
+NOTE: コネクタと BLOB ストレージ間の通信はオブジェクトストレージのセットアップにのみ使用されます。
+
+
+
+=== ONTAP クラスタの準備
+
+ONTAP クラスタを Azure BLOB ストレージにデータを階層化する場合は、次の要件を満たす必要があります。
+
+サポートされている ONTAP プラットフォーム:: Cloud Tiering は、 FAS システム上の AFF システムとオール SSD アグリゲートをサポートしています。
+サポートされる ONTAP のバージョン:: ONTAP 9.4 以降
+クラスタネットワークの要件::
++
+--
+* ONTAP クラスタが、ポート 443 経由で Azure BLOB ストレージへの HTTPS 接続を開始します。
++
+ONTAP は、オブジェクトストレージとの間でデータの読み取りと書き込みを行います。オブジェクトストレージが開始されることはなく、応答するだけです。
+
++
+ExpressRoute の方がパフォーマンスが向上し、データ転送コストは削減されますが、 ONTAP クラスタと Azure BLOB ストレージ間では必要ありません。ExpressRoute を使用する際はパフォーマンスが大幅に向上するため、推奨されるベストプラクティスです。
+
+* Azure VNet 内にあるネットアップサービスコネクタからのインバウンド接続が必要です。
++
+クラスタと Cloud Tiering Service の間の接続は必要ありません。
+
+* 階層化ボリュームをホストする各 ONTAP ノードにクラスタ間 LIF が 1 つ必要です。LIF は、 ONTAP がオブジェクトストレージへの接続に使用する IPspace に関連付けられている必要があります。
++
+IPspace を使用すると、ネットワークトラフィックを分離してプライバシーとセキュリティを確保することができます。 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["IPspace の詳細については、こちらをご覧ください"^]。
+
++
+データの階層化を設定すると、使用する IPspace を入力するように求められます。各 LIF を関連付ける IPspace を選択する必要があります。これは、「デフォルト」の IPspace または作成したカスタム IPspace です。
+
+
+
+--
+
+
+link:https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc[""]
+
+
+NOTE: Cloud Tiering は、 ONTAP 9.5 以降、 FlexGroup ボリュームをサポートしています。セットアップは他のボリュームと同じように機能します。
+
+
+
+=== コネクタの作成または切り替え
+
+データをクラウドに階層化するにはコネクタが必要です。データを Azure BLOB ストレージに階層化する場合は、 Azure VNet 内にコネクタが必要です。新しいコネクタを作成するか、現在選択されているコネクタが Azure にあることを確認する必要があります。
+
+* link:concept_connectors.html["コネクタについて説明します"]
+* link:task_creating_connectors_azure.html["Azure でコネクタを作成する"]
+* link:task_managing_connectors.html["コネクタ間の切り替え"]
+
+
+
+
+=== コネクタのネットワークを準備しています
+
+コネクタに必要なネットワーク接続があることを確認します。
+
+.手順
+. コネクタが取り付けられている VNet で次の接続が有効になっていることを確認します。
++
+** クラウドの階層化サービスへのアウトバウンドのインターネット接続 ポート 443 （ HTTPS ）
+** ポート 443 から Azure BLOB ストレージへの HTTPS 接続
+** ONTAP クラスタへのポート 443 経由の HTTPS 接続
+
+
+. 必要に応じて、 VNet サービスエンドポイントを Azure ストレージに対して有効にします。
++
+ONTAP クラスタから VNet への ExpressRoute または VPN 接続があり、コネクタと BLOB ストレージ間の通信を仮想プライベートネットワーク内に維持する場合は、 Azure ストレージへの VNet サービスエンドポイントを推奨します。
+
+
+
+
+
+== 最初のクラスタから Azure Blob にアクセス頻度の低いデータを階層化する ストレージ
+
+Azure 環境を準備したら、最初のクラスタからアクセス頻度の低いデータの階層化を開始します。
+
+link:task_discovering_ontap.html["オンプレミスの作業環境"]。
+
+.手順
+. オンプレミスクラスタを選択
+. 「 * 階層化の設定 * 」をクリックします。
++
+image:screenshot_setup_tiering_onprem.gif["オンプレミスの ONTAP 作業環境を選択したあとに画面の右側に表示される「階層化の設定」オプションを示すスクリーンショット。"]
+
++
+これで階層化ダッシュボードが表示されます。
+
+. クラスタの横にある「 * 階層化を設定」をクリックします。
+. 「 * Tiering Setup * 」ページに記載された手順を実行します。
++
+.. * リソースグループ *: 既存のコンテナが管理されているリソースグループ ' または階層化されたデータの新しいコンテナを作成する場所を選択します
+.. * Azure Container * ：ストレージアカウントに新しい BLOB コンテナを追加するか、既存のコンテナを選択して * Continue * をクリックします。
++
+この手順で表示されるストレージアカウントとコンテナは、前の手順で選択したリソースグループに属しています。
+
+.. * アクセス層 *: 階層化されたデータに使用するアクセス層を選択し、「 * 続行 * 」をクリックします。
+.. * クラスタネットワーク * ： ONTAP がオブジェクトストレージへの接続に使用する IPspace を選択し、「 * 続行」をクリックします。
++
+正しい IPspace を選択すると、 Cloud Tiering を使用して、 ONTAP からクラウドプロバイダのオブジェクトストレージへの接続をセットアップできます。
+
+
+
+. 「 * Continue * 」をクリックして、階層化するボリュームを選択します。
+. [* Tier Volumes] ページで、各ボリュームの階層化を設定します。をクリックします image:screenshot_edit_icon.gif["に表示される編集アイコンのスクリーンショット ボリューム階層化のテーブルの各行の末尾です"] アイコンをクリックし、階層化ポリシーを選択します。必要に応じてクーリング日数を調整し、 * 適用 * をクリックします。
++
+link:concept_cloud_tiering.html#volume-tiering-policies["ボリューム階層化ポリシーの詳細については、こちらをご覧ください"]。
+
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_volumes_select.gif["ソースボリュームの選択ページで選択されたボリュームを示すスクリーンショット。"]
+
+
+
+クラスタのボリュームから Azure Blob オブジェクトストレージへのデータ階層化のセットアップが完了しました。
+
+link:task_licensing_cloud_tiering.html["Cloud Tiering サービスに登録してください"]。
+
+また、クラスタを追加したり、クラスタ上のアクティブなデータと非アクティブなデータに関する情報を確認したりすることもできます。詳細については、を参照してください link:task_managing_tiering.html["クラスタからのデータ階層化の管理"]。

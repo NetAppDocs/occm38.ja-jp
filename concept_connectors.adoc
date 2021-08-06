@@ -1,0 +1,148 @@
+---
+sidebar: sidebar 
+permalink: concept_connectors.html 
+keywords: concept, connectors, learn about connectors, service connectors, what are connectors, what is a connector, what's a connector, days, 14 days 
+summary: ほとんどの場合、クラウドまたはオンプレミスネットワークにコネクタを導入する必要があります。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。 
+---
+= コネクタについて説明します
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ほとんどの場合、アカウント管理者は _ コネクタ _ をクラウドまたはオンプレミスネットワークに導入する必要があります。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。
+
+
+
+== コネクタが必要な場合
+
+Cloud Manager の次の機能を使用するには、コネクタが必要です。
+
+* Cloud Volumes ONTAP
+* オンプレミスの ONTAP クラスタ
+* クラウドコンプライアンス
+* Kubernetes
+* クラウドへのバックアップ
+* 監視
+* オンプレミスでの階層化
+* グローバルファイルキャッシュ
+* Amazon S3 バケットの検出
+
+
+Azure NetApp Files 、 Cloud Volumes Service 、または Cloud Sync には、コネクタは * _ 必要ではありません。
+
+
+NOTE: Azure NetApp Files のセットアップと管理にコネクタは必要ありませんが、 Azure NetApp Files データのスキャンに Cloud Compliance を使用する場合はコネクタが必要になります。
+
+
+
+== サポートされている場所
+
+コネクタは次の場所でサポートされています。
+
+* Amazon Web Services の
+* Microsoft Azure
+* Google Cloud
+* オンプレミス
+
+
+
+NOTE: Google Cloud で Cloud Volumes ONTAP システムを作成する場合は、 Google Cloud でもコネクタを実行する必要があります。別の場所で実行されているコネクタは使用できません。
+
+
+
+== コネクタは動作したままにしてください
+
+コネクタは常時稼働している必要があります。有効にするサービスの継続的な健常性と運用性にとって重要です。
+
+たとえば、 Cloud Volumes ONTAP PAYGO システムの正常性と運用においては、コネクタが重要な要素です。コネクタの電源がオフの場合、 Cloud Volumes ONTAP PAYGO システムは、コネクタとの通信を 14 日以上失った後にシャットダウンします。
+
+
+
+== コネクタを作成する方法
+
+Workspace 管理者が Cloud Volumes ONTAP 作業環境を作成し、上記の他の機能を使用するには、アカウント管理者がコネクタを作成する必要があります。
+
+アカウント管理者は、さまざまな方法でコネクタを作成できます。
+
+* Cloud Manager から直接（推奨）
++
+** link:task_creating_connectors_aws.html["AWS でを作成します"]
+** link:task_creating_connectors_azure.html["Azure で作成します"]
+** link:task_creating_connectors_gcp.html["GCP で作成します"]
+
+
+* link:task_launching_aws_mktp.html["AWS Marketplace から入手できます"]
+* link:task_launching_azure_mktp.html["Azure Marketplace から入手できます"]
+* link:task_installing_linux.html["既存の Linux にソフトウェアをダウンロードしてインストールする ホスト"]
+
+
+最初の Cloud Volumes ONTAP 作業環境を作成する際、まだコネクタがない場合は、 Cloud Manager からコネクタの作成を求められます。
+
+
+
+== 権限
+
+コネクタを作成するには特定の権限が必要であり、コネクタインスタンス自体に別の権限セットが必要です。
+
+
+
+=== コネクタを作成する権限
+
+Cloud Manager からコネクタを作成するユーザには、任意のクラウドプロバイダにインスタンスを導入するための特定の権限が必要です。Connector を作成するときは、 Cloud Manager に権限の要件が通知されます。
+
+https://mysupport.netapp.com/site/info/cloud-manager-policies["各クラウドプロバイダのポリシーを表示します"^]。
+
+
+
+=== コネクタインスタンスの権限
+
+Connector で処理を実行するには、特定のクラウドプロバイダの権限が必要です。たとえば、 Cloud Volumes ONTAP を導入して管理するには、のように指定します。
+
+Cloud Manager から直接コネクタを作成すると、必要な権限を持つコネクタが Cloud Manager によって作成されます。必要なことは何もありません。
+
+コネクタを AWS Marketplace 、 Azure Marketplace 、またはソフトウェアを手動でインストールして作成する場合は、適切な権限が設定されていることを確認する必要があります。
+
+https://mysupport.netapp.com/site/info/cloud-manager-policies["各クラウドプロバイダのポリシーを表示します"^]。
+
+
+
+== 複数のコネクタを使用する場合
+
+コネクタが 1 つしか必要ない場合もありますが、 2 つ以上のコネクタが必要な場合もあります。
+
+次にいくつかの例を示します。
+
+* マルチクラウド環境（ AWS と Azure ）を使用しているため、 AWS と Azure のコネクタが 1 つずつ必要です。各で、それらの環境で実行される Cloud Volumes ONTAP システムを管理します。
+* サービスプロバイダは、ある Cloud Central アカウントを使用してお客様にサービスを提供しながら、別のアカウントを使用していずれかのビジネスユニットのディザスタリカバリを提供することができます。アカウントごとに個別のコネクタがあります。
+
+
+
+
+== コネクタを切り替えるタイミング
+
+最初のコネクタを作成すると、新しく作成する作業環境ごとに、そのコネクタが Cloud Manager によって自動的に使用されます。コネクタを追加で作成したら、コネクタを切り替えることで各コネクタに固有の作業環境を確認する必要があります。
+
+link:task_managing_connectors.html#switch-between-connectors["コネクタを切り替える方法について説明します"]。
+
+
+
+== ローカルユーザインターフェイス
+
+ではほぼすべてのタスクを実行する必要がありますが https://cloudmanager.netapp.com["SaaS ユーザインターフェイス"^]では、ローカルユーザーインターフェースは引き続きコネクターで使用できます。このインターフェイスは、コネクタ自体から実行する必要があるいくつかのタスクに必要です。
+
+* link:task_configuring_proxy.html["プロキシサーバを設定しています"]
+* パッチをインストールしています （通常はネットアップの担当者と協力してパッチをインストールします）
+* AutoSupport メッセージをダウンロードしています （通常は問題が発生したときにネットアップの担当者が指示）
+
+
+link:task_managing_connectors.html#accessing-the-local-ui["ローカル UI へのアクセス方法について説明します"]。
+
+
+
+== コネクタのアップグレード
+
+Connector は、ソフトウェアが最新バージョンである限り、自動的にソフトウェアを更新します link:reference_networking_cloud_manager.html["アウトバウンドインターネットアクセス"] をクリックしてソフトウェアアップデートを入手します。

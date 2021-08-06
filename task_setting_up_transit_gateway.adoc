@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: task_setting_up_transit_gateway.html 
+keywords: transit gateway, aws, amazon web services, transit gateway, floating ip, client access, nas, outside, vpc, virtual private cloud, route table 
+summary: AWS 転送ゲートウェイを設定して、 Cloud Volumes ONTAP が配置された VPC の外部からフローティング IP アドレスへの NAS クライアントアクセスを有効にします。この機能は、障害の発生時にフローティング IP がノード間で自動的に移行されるため便利です。 
+---
+= での HA ペアの AWS 転送ゲートウェイのセットアップ 複数の AZ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+へのアクセスを有効にするために、 AWS 転送ゲートウェイを設定します HA ペアの 1 つ link:reference_networking_aws.html#aws-networking-requirements-for-cloud-volumes-ontap-ha-in-multiple-azs["フローティング IP アドレス"] HA ペアが存在する VPC の外部から
+
+Cloud Volumes ONTAP HA 構成が複数の AWS アベイラビリティゾーンに分散されている場合は、 VPC 内からの NAS データアクセス用にフローティング IP アドレスが必要です。これらのフローティング IP アドレスは、障害の発生時にノード間で移行できますが、 VPC の外部からネイティブにアクセスすることはできません。VPC の外部からのデータアクセスはプライベート IP アドレスで提供されますが、自動フェイルオーバーは提供されません。
+
+クラスタ管理インターフェイスとオプションの SVM 管理 LIF にもフローティング IP アドレスが必要です。
+
+AWS 転送ゲートウェイを設定すると、 HA ペアが配置された VPC の外部からフローティング IP アドレスにアクセスできるようになります。つまり、 VPC の外部にある NAS クライアントとネットアップの管理ツールからフローティング IP にアクセスできます。
+
+以下に、トランジットゲートウェイによって接続された 2 つの VPC の例を示します。HA システムは 1 つの VPC に存在し、クライアントはもう一方の VPC に存在します。その後、フローティング IP アドレスを使用して NAS ボリュームをクライアントにマウントできます。
+
+image:diagram_transit_gateway.png["1 つの VPC における HA 構成を示した図。 ENI にルーティングされるフローティング IP 、別の VPC 内のクライアント、中継ゲートウェイにルーティングされるフローティング IP 、および VPC1 ルートテーブルにルーティングされるフローティング IP を使用したトランジットゲートウェイを示しています。"]
+
+以下に、同様の構成を設定する手順を示します。
+
+.手順
+. https://docs.aws.amazon.com/vpc/latest/tgw/tgw-getting-started.html["トランジットゲートウェイを作成し、 VPC をに接続します ゲートウェイ"^]。
+. HA ペアのフローティング IP アドレスを指定して、転送ゲートウェイのルートテーブルにルートを作成します。
++
+フローティング IP アドレスは、 Cloud Manager の Working Environment Information ページで確認できます。次に例を示します。
+
++
+image:screenshot_floating_ips.gif["「クラスタ管理インターフェイスのフローティング IP アドレス、 2 つの NFS と CIFS のデータインターフェイス、および SVM 管理インターフェイスを示す Cloud Manager のスクリーンショット」"]
+
++
+次の図は、中継ゲートウェイのルートテーブルを示しています。このルートには、 2 つの VPC の CIDR ブロックへのルートと、 Cloud Volumes ONTAP で使用される 4 つのフローティング IP アドレスが含まれます。
+
++
+image:screenshot_transit_gateway1.png["転送ゲートウェイのルートテーブルを示す AWS コンソールのスクリーンショット。このルートには、 2 つの VPC の CIDR ブロックへのルートと、 Cloud Volumes ONTAP で使用される 4 つのフローティング IP アドレスが含まれます。"]
+
+. フローティング IP アドレスにアクセスする必要がある VPC のルーティングテーブルを変更します。
++
+.. フローティング IP アドレスにルートエントリを追加します。
+.. HA ペアが存在する VPC の CIDR ブロックにルートエントリを追加します。
++
+次の図は、 VPC 1 へのルートとフローティング IP アドレスを含む VPC 2 のルートテーブルを示しています。
+
++
+image:screenshot_transit_gateway2.png["「 VPC 1 へのルートとフローティング IP アドレスを含む VPC 2 のルートテーブルを示す AWS コンソールのスクリーンショット」"]
+
+
+
+. フローティング IP アドレスへのアクセスが必要な VPC へのルートを追加して、 HA ペアの VPC のルーティングテーブルを変更します。
++
+VPC 間のルーティングが完了するため、この手順は重要です。
+
++
+次の例は、 VPC 1 のルートテーブルを示しています。フローティング IP アドレスへのルートと、クライアントが配置されている VPC 2 へのルートが含まれます。フローティング IP は、 HA ペアの導入時に Cloud Manager によってルートテーブルに自動的に追加されます。
+
++
+image:screenshot_transit_gateway3.png["「 VPC 1 のルーティングテーブルを示す AWS コンソールのスクリーンショット。フローティング IP アドレスへのルートと、クライアントが配置されている VPC 2 へのルートが含まれます。"]
+
+. フローティング IP アドレスを使用して、ボリュームをクライアントにマウントします。
++
+Cloud Manager で正しい IP アドレスを確認するには、ボリュームを選択して * Mount command * をクリックします。
+
++
+image:screenshot_mount.gif["スクリーンショット：ボリュームを選択したときに使用可能なマウントコマンドを表示します。"]
+
+
+
+* 関連リンク *
+
+* link:concept_ha.html["AWS におけるハイアベイラビリティペア"]
+* link:reference_networking_aws.html["Cloud Volumes ONTAP in AWS のネットワーク要件"]
+

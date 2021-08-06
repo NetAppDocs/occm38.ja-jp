@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: task_sync_installing_gcp.html 
+keywords: data broker, install, gcp, google, networking, permissions, regions, install data broker in gcp, install in gcp, deploy in gcp, deploy data broker in gcp, install data broker in google, install in google, deploy in google, deploy data broker in google, networking requirements, port, ports, 443, port 443, ntp, network time protocol, gcp data broker, service account 
+summary: 同期関係を作成する場合は、 GCP データブローカーオプションを選択して、 vPC 内の新しい仮想マシンインスタンスにデータブローカーソフトウェアを展開します。Cloud Sync ではインストールプロセスがガイドされますが、インストールの準備に役立つように、このページの要件と手順が繰り返されています。 
+---
+= Google Cloud Platform にデータブローカーをインストールする
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+同期関係を作成する場合は、 GCP データブローカーオプションを選択して、 vPC 内の新しい仮想マシンインスタンスにデータブローカーソフトウェアを展開します。Cloud Sync ではインストールプロセスがガイドされますが、インストールの準備に役立つように、このページの要件と手順が繰り返されています。
+
+また、クラウド内または社内の既存の Linux ホストにデータブローカーをインストールすることもできます。 link:task_sync_installing_linux.html["詳細はこちら。"]。
+
+
+
+== サポートされる GCP リージョン
+
+すべてのリージョンがサポートされています。
+
+
+
+== ネットワーク要件
+
+* データブローカーは、アウトバウンドインターネット接続を必要としているため、クラウド同期サービスにポート 443 経由のタスクをポーリングできます。
++
+Cloud Sync は、 GCP にデータブローカーを導入すると、必要なアウトバウンド通信を可能にするセキュリティグループを作成します。
+
++
+アウトバウンド接続を制限する必要がある場合は、を参照してください link:reference_sync_networking.html["データブローカーが連絡するエンドポイントのリスト"]。
+
+* ネットワークタイムプロトコル（ NTP ）サービスを使用するように、ソース、ターゲット、およびデータブローカーを設定することを推奨します。3 つのコンポーネント間の時間差は 5 分を超えないようにしてください。
+
+
+
+
+== GCP にデータブローカーを導入するために必要な権限
+
+データブローカーを導入する GCP ユーザに次の権限があることを確認します。
+
+[source, yaml]
+----
+- compute.networks.list
+- compute.regions.list
+- deploymentmanager.deployments.create
+- deploymentmanager.deployments.delete
+- deploymentmanager.operations.get
+- iam.serviceAccounts.list
+----
+
+
+== サービスアカウントに必要な権限
+
+データブローカーを導入する場合、次の権限を持つサービスアカウントを選択する必要があります。
+
+[source, yaml]
+----
+- logging.logEntries.create
+- resourcemanager.projects.get
+- storage.buckets.get
+- storage.buckets.list
+- storage.objects.*
+----
+
+
+== データブローカーのインストール
+
+同期関係を作成するときに、データブローカーを GCP にインストールできます。
+
+.手順
+. [ 新しい同期の作成 *] をクリックします。
+. [ 同期関係の定義 *] ページで、ソースとターゲットを選択し、 [ 続行 *] をクリックします。
++
+「 * データブローカー * 」ページが表示されるまで、手順を完了します。
+
+. [ * データブローカー * ] ページで、 [ * データブローカーの作成 * ] をクリックし、 [* Google Cloud Platform* ] を選択します。
++
+データブローカーがすでにある場合は、をクリックする必要があります image:screenshot_plus_icon.gif["プラスアイコンの場合のスクリーンショット"] 最初にアイコンをクリックします
+
++
+image:screenshot_create_data_broker.gif["AWS 、 Azure 、 GCP 、オンプレミスのデータブローカーを選択できるデータブローカーページのスクリーンショット。"]
+
+. データブローカーの名前を入力し、 [* 続行 ] をクリックします。
+. メッセージが表示されたら、 Google アカウントでログインします。
++
+このフォームは Google が所有およびホストしています。クレデンシャルがネットアップに提供されていません。
+
+. プロジェクトとサービスアカウントを選択し、データブローカーの場所を選択します。
++
+image:screenshot_data_broker_gcp.gif["Google Cloud にデータブローカーを導入するために必要な情報を示すスクリーンショット。"]
+
+. データブローカーが利用可能になったら、 Cloud Sync で [* 続行 ] をクリックします。
++
+このインスタンスの導入には、約 5 ～ 10 分かかります。Cloud Sync サービスから進捗状況を監視できます。このサービスは、インスタンスが使用可能になると自動的に更新されます。
+
+. ウィザードのページに入力して、新しい同期関係を作成します。
+
+
+GCP にデータブローカーを導入し、新しい同期関係を作成しておきます。このデータブローカーは、追加の同期関係とともに使用できます。

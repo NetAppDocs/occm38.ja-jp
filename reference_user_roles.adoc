@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: reference_user_roles.html 
+keywords: user, users, roles, role, task, permission, permissions, tasks, admin, Account Admin, Workspace Admin, Cloud Compliance Viewer 
+summary: Account Admin 、 Workspace Admin 、 Cloud Compliance Viewer の各ロールは、ユーザーに特定の権限を提供します。 
+---
+= ロール
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Account Admin 、 Workspace Admin 、 Cloud Compliance Viewer の各ロールは、ユーザーに特定の権限を提供します。
+
+[cols="31,23,23,23"]
+|===
+| タスク | アカウント管理者 | ワークスペース管理者 | Cloud Compliance Viewer の情報を確認します 
+
+
+| 作業環境の管理 | はい。 | はい。 | いいえ 
+
+
+| 作業環境でサービスを有効にします | はい。 | はい。 | いいえ 
+
+
+| データ複製ステータスを表示します | はい。 | はい。 | いいえ 
+
+
+| タイムラインを表示します | はい。 | はい。 | いいえ 
+
+
+| ワークスペースを切り替えます | はい。 | はい。 | はい。 
+
+
+| コンプライアンススキャンの結果を表示します | はい。 | はい。 | はい。 
+
+
+| 作業環境を削除します | はい。 | いいえ | いいえ 
+
+
+| Kubernetes クラスタを作業環境に接続 | はい。 | いいえ | いいえ 
+
+
+| Cloud Volumes ONTAP レポートを受信します | はい。 | いいえ | いいえ 
+
+
+| コネクタを作成します | はい。 | いいえ | いいえ 
+
+
+| Cloud Central アカウントを管理します | はい。 | いいえ | いいえ 
+
+
+| クレデンシャルを管理する | はい。 | いいえ | いいえ 
+
+
+| Cloud Manager の設定を変更 | はい。 | いいえ | いいえ 
+
+
+| サポートダッシュボードを表示および管理します | はい。 | いいえ | いいえ 
+
+
+| Cloud Manager から作業環境を削除します | はい。 | いいえ | いいえ 
+
+
+| HTTPS 証明書をインストールします | はい。 | いいえ | いいえ 
+|===
+.関連リンク
+* link:task_setting_up_cloud_central_accounts.html["Cloud Central アカウントでのワークスペースとユーザのセットアップ"^]
+* link:task_managing_cloud_central_accounts.html["Cloud Central アカウントでのワークスペースとユーザの管理"^]
+

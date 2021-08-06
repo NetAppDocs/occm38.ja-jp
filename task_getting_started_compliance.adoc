@@ -1,0 +1,176 @@
+---
+sidebar: sidebar 
+permalink: task_getting_started_compliance.html 
+keywords: cloud compliance, get started, enable cloud compliance, cifs credentials, smb credentials, outbound internet, endpoints, cloud compliance internet, web browser connectivity, cloud compliance access, privacy, compliance, dp volumes, data protection volumes 
+summary: AWS または Azure で Cloud Compliance for Azure NetApp Files または Cloud Volumes ONTAP を使用するには、いくつかの手順を実行します。 
+---
+= 『 Getting started with Cloud Compliance for Cloud Volumes ONTAP and Azure NetApp Files 』
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP または Azure NetApp Files 向けのクラウドコンプライアンスを開始するには、いくつかの手順を実行します。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== Cloud Compliance インスタンスを導入します
+
+[role="quick-margin-para"]
+link:task_deploy_cloud_compliance.html["Cloud Manager に Cloud Compliance を導入"^] インスタンスが展開されていない場合。
+
+
+
+==== 作業環境でクラウドへのコンプライアンスを実現
+
+[role="quick-margin-para"]
+Cloud Compliance をクリックし、 * Configuration * タブを選択して、特定の作業環境のコンプライアンススキャンを有効にします。
+
+
+
+==== ボリュームへのアクセスを確認
+
+[role="quick-margin-para"]
+Cloud Compliance が有効になったので、ボリュームにアクセスできることを確認します。
+
+* クラウドコンプライアンスインスタンスには、各 Cloud Volumes ONTAP サブネットまたは Azure NetApp Files サブネットへのネットワーク接続が必要です。
+* Cloud Volumes ONTAP のセキュリティグループは、クラウドコンプライアンスインスタンスからのインバウンド接続を許可する必要があります。
+* NFS ボリュームのエクスポートポリシーで、 Cloud Compliance インスタンスからのアクセスを許可する必要があります。
+* CIFS ボリュームをスキャンするには、 Cloud Compliance で Active Directory のクレデンシャルが必要です。
++
+クラウドコンプライアンス * > * スキャン設定 * > * CIFS クレデンシャルの編集 * をクリックし、クレデンシャルを入力します。クレデンシャルは読み取り専用ですが、管理者のクレデンシャルを指定することで、 Cloud Compliance は昇格された権限が必要なデータを確実に読み取ることができます。
+
+
+
+
+
+==== スキャンするボリュームを設定します
+
+[role="quick-margin-para"]
+スキャンするボリュームを選択すると、 Cloud Compliance でスキャンが開始されます。
+
+
+
+== Cloud Compliance インスタンスの導入
+
+link:task_deploy_cloud_compliance.html["Cloud Manager に Cloud Compliance を導入"^] インスタンスが展開されていない場合。
+
+
+
+== 作業環境での Cloud Compliance の有効化
+
+. Cloud Manager の上部で、 * Cloud Compliance * をクリックし、 * Configuration * タブを選択します。
++
+image:screenshot_cloud_compliance_we_scan_config.png["Cloud Compliance インスタンスを導入した直後の Scan Configuration タブのスクリーンショット。"]
+
+. 作業環境内のすべてのボリュームをスキャンするには、 * すべてのボリュームのコンプライアンスをアクティブ化 * をクリックします。
++
+作業環境内の特定のボリュームのみをスキャンするには、 * をクリックするか、 Volumes （ボリューム） * を選択して、スキャンするボリュームを選択します。
+
+
+
+を参照してください <<Enabling and disabling compliance scans on volumes,ボリュームのコンプライアンススキャンの有効化と無効化>> を参照してください。
+
+Cloud Compliance は、それぞれの作業環境でデータのスキャンを開始します。結果は、 Cloud Compliance ダッシュボードで最初のスキャンが完了するとすぐに表示されます。所要時間はデータ量によって異なります。数分から数時間かかる場合もあります。
+
+
+
+== Cloud Compliance がボリュームにアクセスできることの確認
+
+ネットワーク、セキュリティグループ、およびエクスポートポリシーを確認して、 Cloud Compliance がボリュームにアクセスできることを確認します。CIFS ボリュームにアクセスできるようにするには、 Cloud Compliance に CIFS クレデンシャルを指定する必要があります。
+
+.手順
+. クラウドコンプライアンスインスタンスと、 Cloud Volumes ONTAP または Azure NetApp Files のボリュームを含む各ネットワークとの間にネットワーク接続が確立されていることを確認します。
++
+
+NOTE: Azure NetApp Files の場合、 Cloud Compliance は Cloud Manager と同じリージョンにあるボリュームのみをスキャンできます。
+
+. Cloud Volumes ONTAP のセキュリティグループがクラウドコンプライアンスインスタンスからのインバウンドトラフィックを許可していることを確認してください。
++
+Cloud Compliance インスタンスの IP アドレスからのトラフィックのセキュリティグループを開くか、仮想ネットワーク内からのすべてのトラフィックのセキュリティグループを開くことができます。
+
+. NFS ボリュームのエクスポートポリシーに Cloud Compliance インスタンスの IP アドレスが含まれていて、各ボリュームのデータにアクセスできることを確認します。
+. CIFS を使用する場合は、 Active Directory クレデンシャルを使用して Cloud Compliance を提供し、 CIFS ボリュームをスキャンできるようにします。
++
+.. Cloud Manager の上部で、 * Cloud Compliance * をクリックします。
+.. [* 構成 *] タブをクリックします。
++
+image:screenshot_cifs_credentials.gif["コンテンツペインの右上にある [ スキャンステータス ] ボタンを示す [ 遵守 ] タブのスクリーンショット。"]
+
+.. 各作業環境について、 * CIFS 資格情報の編集 * をクリックし、クラウド・コンプライアンスがシステム上の CIFS ボリュームにアクセスするために必要なユーザー名とパスワードを入力します。
++
+クレデンシャルは読み取り専用ですが、管理者のクレデンシャルを指定することで、 Cloud Compliance は昇格された権限が必要なデータを読み取ることができます。クレデンシャルは Cloud Compliance インスタンスに保存されます。
+
++
+クレデンシャルを入力すると、すべての CIFS ボリュームが認証されたことを示すメッセージが表示されます。
+
++
+image:screenshot_cifs_status.gif["スキャン設定ページと、 CIFS クレデンシャルが正常に入力された 1 つの Cloud Volumes ONTAP システムを示すスクリーンショット。"]
+
+
+
+. _Scan Configuration_page で、 * View Details * をクリックして、各 CIFS および NFS ボリュームのステータスを確認し、エラーを修正します。
++
+たとえば、次の図は 3 つのボリュームを示しています。 1 つは Cloud Compliance インスタンスとボリュームの間のネットワーク接続の問題が原因で Cloud Compliance がスキャンできないボリュームです。
+
++
+image:screenshot_compliance_volume_details.gif["スキャン設定の View Details ページのスクリーンショット。 3 つのボリュームが表示されます。そのうちの 1 つは、 Cloud Compliance とボリュームの間のネットワーク接続が原因でスキャンされていません。"]
+
+
+
+
+
+== ボリュームのコンプライアンススキャンの有効化と無効化
+
+作業環境内のボリュームのスキャンは、 Scan Configuration ページからいつでも停止または開始できます。すべてのボリュームをスキャンすることを推奨します。
+
+image:screenshot_volume_compliance_selection.png["個々のボリュームのスキャンを有効または無効にできるスキャン設定ページのスクリーンショット。"]
+
+[cols="40,50"]
+|===
+| 終了： | 手順： 
+
+
+| ボリュームのスキャンを無効にします | 音量スライダを左に動かします 
+
+
+| すべてのボリュームのスキャンを無効にします | [ すべてのボリュームのコンプライアンスを有効にする * ] スライダをに移動します 左 
+
+
+| ボリュームのスキャンを有効にします | 音量スライダを右に動かします 
+
+
+| すべてのボリュームのスキャンを有効にします | [ すべてのボリュームのコンプライアンスを有効にする * ] スライダをに移動します 権利 
+|===
+
+TIP: 作業環境に追加した新しいボリュームは、すべてのボリュームのコンプライアンスのアクティブ化 * 設定が有効になっている場合にのみ自動的にスキャンされます。この設定を無効にすると、作業環境で作成する新しいボリュームごとにスキャンを有効にする必要があります。
+
+
+
+== データ保護ボリュームをスキャンしています
+
+デフォルトでは、データ保護（ DP ）ボリュームは外部から公開されておらず、 Cloud Compliance はアクセスできないため、スキャンされません。通常、オンプレミスの ONTAP クラスタから SnapMirror を処理するためのデスティネーションボリュームです。
+
+最初は、 Cloud Compliance ボリュームのリストで、これらのボリュームを _Type_* DP * でステータスが「スキャンなし」 * および「必要な操作 _ * DP ボリュームへのアクセスを有効にする * 」と指定します。
+
+image:screenshot_cloud_compliance_dp_volumes.png["DP ボリュームへのアクセスを有効にするボタンを示すスクリーンショット。データ保護ボリュームをスキャンするように選択できます。"]
+
+これらのデータ保護ボリュームをスキャンする場合は、次の手順を実行します。
+
+. ページ上部の * DP ボリュームへのアクセスを有効にする * ボタンをクリックします。
+. スキャンする各 DP ボリュームをアクティブ化するか、 * すべてのボリュームのコンプライアンスのアクティブ化 * コントロールを使用して、すべての DP ボリュームを含むすべてのボリュームを有効にします。
+
+
+有効にすると、コンプライアンスのためにアクティブ化された各 DP ボリュームから NFS 共有が作成され、スキャンすることができます。共有のエクスポートポリシーでは、 Cloud Compliance インスタンスからのアクセスのみが許可されます。
+
+
+NOTE: ボリュームリストには、ソース ONTAP システムで最初に NFS ボリュームとして作成されたボリュームのみが表示されます。最初に CIFS として作成されたソースボリュームは、現時点では Cloud Compliance に表示されません。

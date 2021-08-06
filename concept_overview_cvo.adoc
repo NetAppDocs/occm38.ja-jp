@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: concept_overview_cvo.html 
+keywords: what is cloud volumes ontap, cloud volumes ontap features, features, cloud volumes ontap overview, overview of cloud volumes ontap 
+summary: Cloud Volumes ONTAP を使用すると、データ保護、セキュリティ、コンプライアンスを強化しながら、クラウドストレージのコストとパフォーマンスを最適化できます。 
+---
+= Cloud Volumes ONTAP の詳細をご覧ください
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP を使用すると、データ保護、セキュリティ、コンプライアンスを強化しながら、クラウドストレージのコストとパフォーマンスを最適化できます。
+
+Cloud Volumes ONTAP は、クラウドで ONTAP データ管理ソフトウェアを実行するソフトウェア型のストレージアプライアンスです。以下の主要機能を備えたエンタープライズクラスのストレージを提供します。
+
+* ストレージの効率化
++
+組み込みのデータ重複排除、データ圧縮、シンプロビジョニング、クローニングを活用して、ストレージコストを最小限に抑えます。
+
+* 高可用性
++
+クラウド環境で障害が発生した場合でも、エンタープライズクラスの信頼性と継続的な運用を確保できます。
+
+* データ保護
++
+Cloud Volumes ONTAP は、業界をリードするネットアップのレプリケーションテクノロジである SnapMirror を利用してオンプレミスのデータをクラウドにレプリケートするため、セカンダリコピーを複数のユースケースに簡単に利用できます。
+
++
+また、 Cloud Volumes ONTAP は Cloud Backup Service との統合により、保護のためのバックアップとリストア機能、およびクラウドデータの長期アーカイブ機能を提供します。
+
+* データの階層化
++
+アプリケーションをオフラインにすることなく、ハイパフォーマンスとローパフォーマンスのストレージプールをオンデマンドで切り替えます。
+
+* アプリケーションの整合性
++
+NetApp SnapCenter を使用して、 NetApp Snapshot コピーの整合性を確保します。
+
+* データセキュリティ
++
+Cloud Volumes ONTAP は、データ暗号化をサポートし、ウィルスやランサムウェアからの保護を提供します。
+
+* プライバシーコンプライアンスの管理
++
+Cloud Compliance との統合により、データコンテキストを把握し、機密データを識別できます。
+
+
+
+
+NOTE: ONTAP 機能のライセンスは、 Cloud Volumes ONTAP に含まれています。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html["サポートされている Cloud Volumes ONTAP 構成を表示します"^]
+
+https://cloud.netapp.com/ontap-cloud["Cloud Volumes ONTAP の詳細については、こちらを参照してください"^]

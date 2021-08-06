@@ -1,0 +1,212 @@
+---
+sidebar: sidebar 
+permalink: task_provisioning_storage.html 
+keywords: storage, provisioning, iscsi, nfs, cifs, volumes, aggregates, provision, create, quotas, nas, san, LUNs, quotas, qtree, add, advanced allocation, create a volume, add a volume, create volumes, add volumes, creating a volume, adding a volume, creating aggregates, adding an aggregate, add an aggregate, create an aggregate, provision volume, provision a volume, provisioning volumes, create a LUN, create LUNs, create LUN, provision LUNs, add volume to second node, add volume to node 2, flexcache, flexcache volumes, create a flexcache volume, provision flexcache, create flexcache volume 
+summary: ボリュームおよびアグリゲートを管理することで、 Cloud Manager から Cloud Volumes ONTAP システムに追加する NFS 、 CIFS 、および iSCSI ストレージをプロビジョニングできます。 
+---
+= ストレージのプロビジョニング
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ボリュームおよびアグリゲートを管理することで、 Cloud Manager から Cloud Volumes ONTAP システムに追加のストレージをプロビジョニングできます。
+
+
+IMPORTANT: すべてのディスクとアグリゲートは、 Cloud Manager から直接作成および削除する必要があります。これらのアクションは、別の管理ツールから実行しないでください。これにより、システムの安定性が低下し、将来ディスクを追加できなくなる可能性があります。また、クラウドプロバイダの冗長料金が発生する可能性もあります。
+
+
+
+== FlexVol ボリュームの作成
+
+Cloud Volumes ONTAP システムの起動後にストレージの追加が必要になった場合は、 Cloud Manager から NFS 、 CIFS 、または iSCSI 用の新しい FlexVol ボリュームを作成できます。
+
+iSCSI ボリュームを作成すると、 Cloud Manager によって自動的に LUN が作成されます。ボリュームごとに 1 つの LUN だけを作成することでシンプルになり、管理は不要になります。ボリュームを作成したら、 <<Connecting a LUN to a host,IQN を使用して、から LUN に接続します ホスト>>。
+
+
+NOTE: LUN は、 System Manager または CLI を使用して追加で作成できます。
+
+AWS で CIFS を使用する場合は、 DNS と Active Directory を設定しておく必要があります。詳細については、を参照してください link:reference_networking_aws.html["Cloud Volumes ONTAP for AWS のネットワーク要件"]。
+
+.手順
+. 作業環境のページで、 FlexVol ボリュームをプロビジョニングする Cloud Volumes ONTAP システムの名前をダブルクリックします。
+. アグリゲートまたは特定のアグリゲートに新しいボリュームを作成します。
++
+[cols="30,70"]
+|===
+| アクション | 手順 
+
+
+| 新しいボリュームを作成し、 Cloud Manager に包含アグリゲートを選択させます | [ 新しいボリュームの追加 ] をクリックします。 
+
+
+| 特定のアグリゲートに新しいボリュームを作成します  a| 
+.. メニューアイコンをクリックし、 [ * 詳細設定 ] 、 [ 詳細な割り当て * ] の順にクリックします。
+.. アグリゲートのメニューをクリックします。
+.. [ ボリュームの作成 ] をクリックします。
+
+
+|===
+. 新しいボリュームの詳細を入力し、 * Continue * をクリックします。
++
+このページの一部のフィールドは、説明のために用意されています。次の表では、ガイダンスが必要なフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シンプロビジョニングを有効にするかどうかによって大きく異なります。シンプロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きいボリュームを作成できます。 
+
+
+| アクセス制御（ NFS のみ） | エクスポートポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、 Cloud Manager はサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー / グループ（ CIFS のみ） | これらのフィールドを使用すると、ユーザおよびグループ（アクセスコントロールリストまたは ACL とも呼ばれる）の共有へのアクセスレベルを制御できます。ローカルまたはドメインの Windows ユーザまたはグループ、 UNIX ユーザまたはグループを指定できます。ドメインの Windows ユーザ名を指定する場合は、 domain\username 形式でユーザのドメインを指定する必要があります。 
+
+
+| スナップショットポリシー | Snapshot コピーポリシーは、自動的に作成される NetApp Snapshot コピーの頻度と数を指定します。NetApp Snapshot コピーは、パフォーマンスに影響を与えず、ストレージを最小限に抑えるポイントインタイムファイルシステムイメージです。デフォルトポリシーを選択することも、なしを選択することもできます。一時データには、 Microsoft SQL Server の tempdb など、 none を選択することもできます。 
+
+
+| アドバンストオプション（ NFS のみ） | ボリュームの NFS バージョンを NFSv3 または NFSv4 のいずれかで選択してください。 
+
+
+| イニシエータグループと IQN （ iSCSI のみ） | iSCSI ストレージターゲットは LUN （論理ユニット）と呼ばれ、標準のブロックデバイスとしてホストに提示されます。イニシエータグループは、 iSCSI ホストのノード名のテーブルであり、どのイニシエータがどの LUN にアクセスできるかを制御します。iSCSI ターゲットは、標準のイーサネットネットワークアダプタ（ NIC ）、ソフトウェアイニシエータを搭載した TOE カード、 CNA 、または専用の HBA を使用してネットワークに接続され、 iSCSI Qualified Name （ IQN ）で識別されます。iSCSI ボリュームを作成すると、 Cloud Manager によって自動的に LUN が作成されます。ボリュームごとに 1 つの LUN だけを作成することでシンプルになり、管理は不要になります。ボリュームを作成したら、 link:task_provisioning_storage.html#connecting-a-lun-to-a-host["IQN を使用して、から LUN に接続します ホスト"]。 
+|===
+. CIFS プロトコルを選択し、 CIFS サーバがセットアップされていない場合は、 Create a CIFS Server （ CIFS サーバの作成）ダイアログボックスでサーバの詳細を指定し、 * Save and continue * をクリックします。
++
+[cols="30,70"]
+|===
+| フィールド | 説明 
+
+
+| DNS プライマリおよびセカンダリ IP アドレス | CIFS サーバの名前解決を提供する DNS サーバの IP アドレス。リストされた DNS サーバには、 CIFS サーバが参加するドメインの Active Directory LDAP サーバとドメインコントローラの検索に必要なサービスロケーションレコード（ SRV ）が含まれている必要があります。 
+
+
+| 参加する Active Directory ドメイン | CIFS サーバを参加させる Active Directory （ AD ）ドメインの FQDN 。 
+
+
+| ドメインへの参加を許可されたクレデンシャル | AD ドメイン内の指定した組織単位（ OU ）にコンピュータを追加するための十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS サーバの NetBIOS 名 | AD ドメイン内で一意の CIFS サーバ名。 
+
+
+| 組織単位  a| 
+CIFS サーバに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。
+
+** AWS Managed Microsoft AD を Cloud Volumes ONTAP の AD サーバとして設定するには、このフィールドに「 * OU=computers 、 OU=corp * 」と入力します。
+** Azure AD ドメインサービスを Cloud Volumes ONTAP の AD サーバとして設定するには、このフィールドに「 * OU=AADDC computers* 」または「 * OU=AADDC Users* 」と入力します。https://docs.microsoft.com/en-us/azure/active-directory-domain-services/create-ou["Azure のドキュメント：「 Create an Organizational Unit （ OU ；組織単位） in an Azure AD Domain Services managed domain"^]
+
+
+
+
+| DNS ドメイン | Cloud Volumes ONTAP Storage Virtual Machine （ SVM ）の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTP サーバ | Active Directory DNS を使用して NTP サーバを設定するには、「 Active Directory ドメインを使用」を選択します。別のアドレスを使用して NTP サーバを設定する必要がある場合は、 API を使用してください。を参照してください link:api.html["Cloud Manager API 開発者ガイド"^] を参照してください。 
+|===
+. Usage Profile 、 Disk Type 、および Tiering Policy ページで、 Storage Efficiency 機能を有効にするかどうかを選択し、ディスクタイプを選択し、必要に応じて階層化ポリシーを編集します。
++
+ヘルプについては、次のトピックを参照してください。
+
++
+** link:task_planning_your_config.html#choosing-a-volume-usage-profile["ボリューム使用率プロファイルについて"]
+** link:task_planning_your_config.html#sizing-your-system-in-aws["AWS でのシステムのサイジング"]
+** link:task_planning_your_config.html#sizing-your-system-in-azure["Azure でのシステムのサイジング"]
+** link:concept_data_tiering.html["データ階層化の概要"]
+
+
+. [Go*] をクリックします。
+
+
+Cloud Volumes ONTAP がボリュームをプロビジョニングします。
+
+CIFS 共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、それらのユーザが共有にアクセスしてファイルを作成できることを確認します。
+
+ボリュームにクォータを適用する場合は、 System Manager または CLI を使用する必要があります。クォータを使用すると、ユーザ、グループ、または qtree が使用するディスク・スペースとファイル数を制限または追跡できます。
+
+
+
+== HA の 2 つ目のノードでの FlexVol ボリュームの作成 設定
+
+デフォルトでは、 Cloud Manager は HA 構成の最初のノードにボリュームを作成します。両方のノードがクライアントにデータを提供するアクティブ / アクティブ構成が必要な場合は、 2 番目のノードにアグリゲートとボリュームを作成する必要があります。
+
+.手順
+. [ 作業環境（ Working Environments ） ] ページで、アグリゲートを管理する Cloud Volumes ONTAP 作業環境の名前をダブルクリックします。
+. メニューアイコンをクリックし、 [ * 詳細設定 ] > [ 高度な割り当て * ] をクリックします。
+. Add Aggregate * をクリックして、アグリゲートを作成します。
+. Home Node には、 HA ペアの 2 番目のノードを選択します。
+. Cloud Manager でアグリゲートが作成されたら、そのアグリゲートを選択して * ボリュームの作成 * をクリックします。
+. 新しいボリュームの詳細を入力し、 * Create * をクリックします。
+
+
+必要に応じて、このアグリゲートに追加のボリュームを作成できます。
+
+
+IMPORTANT: 複数の AWS アベイラビリティゾーンに HA ペアを導入する場合は、ボリュームが配置されているノードのフローティング IP アドレスを使用してボリュームをクライアントにマウントする必要があります。
+
+
+
+== アグリゲートの作成
+
+アグリゲートは、自分で作成することも、 Cloud Manager でボリュームを作成するときに作成することもできます。アグリゲートを手動で作成することのメリットは、基盤となるディスクサイズを選択して、必要な容量またはパフォーマンスに合わせてアグリゲートをサイジングできることです。
+
+.手順
+. [Working Environments] ページで、アグリゲートを管理する Cloud Volumes ONTAP インスタンスの名前をダブルクリックします。
+. メニューアイコンをクリックし、 [ * 詳細設定 ] 、 [ 詳細な割り当て * ] の順にクリックします。
+. Add Aggregate * をクリックして、アグリゲートの詳細を指定します。
++
+ディスクタイプとディスクサイズについては、を参照してください link:task_planning_your_config.html["構成の計画"]。
+
+. [* Go * ] をクリックし、 [* 承認して購入 * ] をクリックします。
+
+
+
+
+== LUN をホストに接続しています
+
+iSCSI ボリュームを作成すると、 Cloud Manager によって自動的に LUN が作成されます。ボリュームごとに 1 つの LUN だけを作成することでシンプルになり、管理は不要になります。ボリュームの作成後、 IQN を使用してホストから LUN に接続します。
+
+次の点に注意してください。
+
+. Cloud Manager の自動容量管理は、 LUN には適用されません。Cloud Manager で LUN を作成すると自動拡張機能が無効になります。
+. LUN は、 System Manager または CLI を使用して追加で作成できます。
+
+
+.手順
+. [ 作業環境 ] ページで、ボリュームを管理する Cloud Volumes ONTAP 作業環境をダブルクリックします。
+. ボリュームを選択し、 * Target IQN * をクリックします。
+. [* Copy*] をクリックして IQN 名をコピーします。
+. ホストから LUN への iSCSI 接続をセットアップします。
++
+** http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-iscsi-rhel-cg/GUID-15E8C226-BED5-46D0-BAED-379EA4311340.html["ONTAP 9 Red Hat Enterprise Linux 向けの iSCSI の簡単な設定：ターゲットとの iSCSI セッションの開始"^]
+** http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-iscsi-cpg/GUID-857453EC-90E9-4AB6-B543-83827CF374BF.html["ONTAP 9 Windows 向けの iSCSI の簡単な設定：ターゲットとの iSCSI セッションの開始"^]
+
+
+
+
+
+
+== FlexCache ボリュームを使用してデータアクセスを高速化する
+
+FlexCache ボリュームは、元の（またはソース）ボリュームから NFS 読み取りデータをキャッシュするストレージボリュームです。その後キャッシュされたデータを読み取ることで、そのデータへのアクセスが高速になります。
+
+FlexCache を使用すると、データアクセスを高速化したり、アクセス頻度の高いボリュームのトラフィック負荷を軽減したりできます。FlexCache ボリュームを使用すると、元のボリュームにアクセスせずに直接データを使用できるため、特にクライアントが同じデータに繰り返しアクセスする場合に、パフォーマンスの向上に役立ちます。FlexCache ボリュームは、読み取り処理が大量に発生するシステムワークロードに適しています。
+
+現時点では、 Cloud Manager で FlexCache ボリュームを管理することはできませんが、 FlexCache CLI または ONTAP System Manager を使用して、 ONTAP ボリュームを作成および管理できます。
+
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-fc-mgmt/home.html["『 FlexCache Volumes for Faster Data Access Power Guide 』を参照してください"^]
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.onc-sm-help-960/GUID-07F4C213-076D-4FE8-A8E3-410F49498D49.html["System Manager での FlexCache ボリュームの作成"^]
+
+
+3.7.2 リリース以降、 Cloud Manager はすべての新しい Cloud Volumes ONTAP システムに対して FlexCache ライセンスを生成します。ライセンスの使用量は 500GB に制限されています。
+
+
+NOTE: ライセンスを生成するには、 Cloud Manager から https://ipa-signer.cloudmanager.netapp.com にアクセスする必要があります。この URL にファイアウォールからアクセスできることを確認してください。
+
+video::PBNPVRUeT1o[youtube, width=848,height=480]

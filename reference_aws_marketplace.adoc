@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: reference_aws_marketplace.html 
+keywords: aws marketplace, marketplace pages, marketplace offerings, subscribe, subscribing 
+summary: AWS Marketplace では、 Cloud Manager と Cloud Volumes ONTAP 向けのサービスがいくつか提供されています。使用する必要があるページがわからない場合は、以下をお読みください。目標に基づいて適切なページに移動します。 
+---
+= AWS Marketplace の Cloud Manager と Cloud Volumes ONTAP のページ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AWS Marketplace では、 Cloud Manager と Cloud Volumes ONTAP 向けのサービスがいくつか提供されています。各ページの目的についてヘルプが必要な場合は、以下の説明を参照してください。
+
+いずれの場合も、 AWS Marketplace から AWS で Cloud Volumes ONTAP を起動することはできないことに注意してください。Cloud Manager から直接起動する必要があります。
+
+[cols="34,33,33"]
+|===
+| 目標 | AWS Marketplace のページで使用できます | 詳細情報 
+
+
+| Cloud Volumes ONTAP PAYGO 、クラウド階層化、クラウドコンプライアンス、その他のアドオンサービスを有効にします | https://aws.amazon.com/marketplace/pp/B07QX2QLXX["Cloud Manager - NetApp Cloud Data Services の導入と管理"^] | このサブスクリプションでは、 Cloud Volumes ONTAP 9.6 以降の PAYGO バージョンの課金が可能です。また、 Cloud Tiering 、 Cloud Compliance 、その他のアドオンサービスを課金できます。Cloud Manager から要求されてページにリダイレクトされた場合は、このサービスに登録する必要があります。Cloud Manager の Working Environment ウィザードを使用するか、 Settings で新しいクレデンシャルを追加するように求められます。このページでは、 AWS で Cloud Manager を起動することはできません。から実行する必要があります https://cloud.netapp.com["NetApp Cloud Central"^]または、この表の 3 行目に記載された AMI を使用することもできます。 
+
+
+| Cloud Volumes ONTAP PAYGO 、クラウド階層化、クラウドコンプライアンス、その他のアドオンサービスを年単位の契約 _ で利用可能にします | https://aws.amazon.com/marketplace/pp/B086PDWSS8["Cloud Manager （契約） - ネットアップクラウドデータサービスの導入と管理"^] | このサブスクリプションは、最初の行のサブスクリプションに代わるものです。これにより、年 1 回の前払いでの支払いが可能になります。主な対象はネットアップパートナーです。 
+
+
+| AWS Marketplace から AMI を使用して Cloud Manager を導入 | https://aws.amazon.com/marketplace/pp/B018REK8QG["Cloud Manager - アクセスキーを使用せずに手動でインストール"^] | から AWS で Cloud Manager を起動することを推奨します https://cloud.netapp.com["NetApp Cloud Central"^]ただし、必要に応じて、この AWS Marketplace のページから起動することもできます。 
+
+
+| Cloud Volumes ONTAP PAYGO （ 9.5 以前）の導入が可能  a| 
+* https://aws.amazon.com/marketplace/pp/B011KEZ734["Cloud Volumes ONTAP for AWS"^]
+* https://aws.amazon.com/marketplace/pp/B01H4LVJ84["Cloud Volumes ONTAP for AWS - 高可用性"^]
+
+| AWS Marketplace のこれらのページでは、バージョン 9.5 以前の Cloud Volumes ONTAP の単一ノードまたは HA バージョンをサブスクライブできます。バージョン 9.6 以降では、 PAYGO の導入については、この表の 1 行目に記載された AWS Marketplace のページでサブスクライブする必要があります。 
+|===

@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: concept_saas.html 
+keywords: cloud manager, Connector, user interface, ui, interface, cloud, saas, saas interface 
+summary: ネットアップは、 Cloud Manager のサービスとしてのソフトウェアエクスペリエンスを提供します。この新しいエクスペリエンスにより、 Cloud Manager の使用が簡単になり、ハイブリッドクラウドインフラ管理のための追加機能を提供できるようになりました。 
+---
+= Cloud Manager を SaaS に移行
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ネットアップは、 Cloud Manager のサービスとしてのソフトウェアエクスペリエンスを提供します。この新しいエクスペリエンスにより、 Cloud Manager の使用が簡単になり、ハイブリッドクラウドインフラ管理のための追加機能を提供できるようになりました。
+
+
+
+== Cloud Manager の従来のエクスペリエンス
+
+Cloud Manager ソフトウェアは、以前はクラウドプロバイダに要求を送信するユーザインターフェイスと管理レイヤで構成されていました。作業を開始するには、 Cloud Manager をクラウドネットワークまたはオンプレミスネットワークに導入し、そのインスタンスで実行されるユーザインターフェイスにアクセスします。
+
+その経験は変わりました。
+
+
+
+== 新しい SaaS エクスペリエンス
+
+NetApp Cloud Central からログインする SaaS ベースのユーザインターフェイスを使用して、 Cloud Manager インターフェイスにアクセスできるようになりました。ネットワークで実行されているソフトウェアからユーザインターフェイスにアクセスする必要はなくなりました。
+
+ほとんどの場合、クラウドまたはオンプレミスネットワークに _ Connector _ を導入する必要があります。Connector は、 Cloud Volumes ONTAP やその他のクラウドデータサービスの管理に必要なソフトウェアです。（コネクタは、実際にはインストール済みの既存の Cloud Manager ソフトウェアと同じです）。
+
+
+
+== 利点
+
+この SaaS ベースのアプローチには、次のようなメリットがあります。
+
+* これにより、お客様の環境にソフトウェアを導入することなく、 Azure NetApp Files と Cloud Volumes Service の管理機能を追加できます。
+* Cloud Central アカウントを簡単に切り替えることができます。
++
+ユーザが複数の Cloud Central アカウントに関連付けられている場合、 User Settings メニューからいつでも別のアカウントに変更できます。そのアカウントに関連付けられているコネクタと作業環境を確認できます。
+
++
+image:screenshot_switch_account.gif[""]
+
+* 異なるネットワークまたは異なるクラウドプロバイダにインストールされているコネクタ（現時点では Cloud Manager ソフトウェアと同じ）を簡単に切り替えることができます。
++
+image:screenshot_switch_service_connector.gif[""]
+
+
+
+
+
+== ローカルユーザインターフェイス
+
+SaaS ユーザインターフェイスからほとんどのタスクを実行する必要がありますが、ローカルユーザインターフェイスは引き続きコネクタで使用できます。このインターフェイスは、コネクタ自体から実行する必要があるいくつかのタスクに必要です。
+
+* プロキシサーバを設定しています
+* パッチをインストールしています
+* AutoSupport メッセージをダウンロードしています
+
+
+ローカルユーザインターフェイスには、 SaaS ユーザインターフェイスから直接アクセスできます。
+
+image:screenshot_local_ui.gif[""]
+
+
+
+== インスタンス、 VM 、マシンタイプが変更された
+
+Cloud Manager の新機能と今後の機能に対して適切なリソースを利用できるように、最小限必要なインスタンス、 VM 、マシンのタイプを次のように変更しました。
+
+* AWS ： t3.xlarge
+* Azure ： DS3 v2
+* GCP ： n1-standard-4
+
+
+マシンタイプをアップグレードすると、新しい Kubernetes エクスペリエンス、グローバルファイルキャッシュ、監視などの機能にアクセスできます。
+
+サポートされる最小サイズは、これらのデフォルトサイズです link:reference_cloud_mgr_reqs.html["CPU と RAM の要件に基づきます"]。
+
+Cloud Manager からコネクタのマシンタイプの変更手順が表示されます。

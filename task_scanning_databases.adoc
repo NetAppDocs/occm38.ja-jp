@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: task_scanning_databases.html 
+keywords: cloud compliance, enable cloud compliance, outbound internet, endpoints, cloud compliance internet, web browser connectivity, cloud compliance access, privacy, compliance, databases, database schemas, Oracle, SAP HANA, SQL Server, MongoDB, PostgreSQL 
+summary: Cloud Compliance でデータベーススキーマのスキャンを開始するには、いくつかの手順を実行します。 
+---
+= データベーススキーマをスキャンしています
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Compliance でデータベーススキーマのスキャンを開始するには、いくつかの手順を実行します。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== データベースの前提条件を確認する
+
+[role="quick-margin-para"]
+データベースがサポートされていること、およびデータベースへの接続に必要な情報があることを確認します。
+
+
+
+==== Cloud Compliance インスタンスを導入します
+
+[role="quick-margin-para"]
+link:task_deploy_cloud_compliance.html["Cloud Manager に Cloud Compliance を導入"^] インスタンスが展開されていない場合。
+
+
+
+==== データベースサーバを追加します
+
+[role="quick-margin-para"]
+アクセスするデータベースサーバを追加します。
+
+
+
+==== スキーマを選択します
+
+[role="quick-margin-para"]
+スキャンするスキーマを選択します。
+
+
+
+== 前提条件の確認
+
+Cloud Compliance を有効にする前に、次の前提条件を確認し、サポートされている構成であることを確認してください。
+
+
+
+=== サポートされるデータベース
+
+Cloud Compliance では、次のデータベースからスキーマをスキャンできます。
+
+* MongoDB
+* Oracle の場合
+* PostgreSQL
+* SAP HANA のサポート
+* SQL Server （ MSSQL ）
+
+
+
+IMPORTANT: 統計収集機能 * は、データベースで有効にする必要があります * 。
+
+
+
+=== データベースの要件
+
+Cloud Compliance インスタンスに接続されたデータベースは、ホストされている場所に関係なくすべてスキャンできます。データベースに接続するには、次の情報が必要です。
+
+* IP アドレスまたはホスト名
+* ポート
+* サービス名（ Oracle データベースにアクセスする場合のみ）
+* スキーマへの読み取りアクセスを許可するクレデンシャル
++
+ユーザー名とパスワードを選択する場合は、スキャンするすべてのスキーマとテーブルに対する完全な読み取り権限を持つユーザーを選択することが重要です。必要なすべての権限を持つ専用のユーザを Cloud Compliance システムに作成することを推奨します。
+
+
+
+* 注： MongoDB では、読み取り専用の管理者ロールが必要です。
+
+
+
+== データベースサーバを追加しています
+
+が必要です link:task_deploy_cloud_compliance.html["Cloud Manager に Cloud Compliance のインスタンスを導入済みである"^]。
+
+スキーマが存在するデータベース・サーバを追加します。
+
+. _Scan Configuration_page から、 *Add DB Server* ボタンをクリックします。
++
+image:screenshot_compliance_add_db_server_button.png["［ Scan Configuration ］ ページのスクリーンショットで、 ［ Add DB Server ］ ボタンをクリックします。"]
+
+. データベースサーバを識別するために必要な情報を入力します。
++
+.. データベースタイプを選択します。
+.. データベースに接続するポートおよびホスト名または IP アドレスを入力します。
+.. Oracle データベースの場合は、サービス名を入力します。
+.. Cloud Compliance がサーバにアクセスできるように、クレデンシャルを入力します。
+.. [Add DB Server* ] をクリックします。
++
+image:screenshot_compliance_add_db_server_dialog.png["データベースを識別するための [Add DB Server] ページのスクリーンショット。"]
+
+
+
+
+
+データベースが作業ディレクトリのリストに追加されます。
+
+
+
+== データベーススキーマでの準拠スキャンの有効化と無効化
+
+スキーマのスキャンは、いつでも停止または開始できます。
+
+. _Scan Configuration_page から、設定するデータベースの *Configuration* ボタンをクリックします。
++
+image:screenshot_compliance_db_server_config.png["設定ボタンを選択できるスキャン設定ページのスクリーンショット。"]
+
+. スライダを右に移動して、スキャンするスキーマを選択します。
++
+image:screenshot_compliance_select_schemas.png["スキャンするスキーマを選択できる [Scan Configuration] ページのスクリーンショット。"]
+
+
+
+Cloud Compliance によって、有効にしたデータベーススキーマのスキャンが開始されます。エラーが発生した場合は、エラーを修正するために必要なアクションとともに、 [ ステータス ] 列に表示されます。
+
+
+
+== Cloud Manager からデータベースを削除しています
+
+特定のデータベースをスキャンする必要がなくなった場合は、 Cloud Manager インターフェイスからそのデータベースを削除して、すべてのスキャンを停止できます。
+
+_Scan Configuration_page で、をクリックします image:screenshot_gallery_options.gif["[ 詳細 ] ボタン"] ボタンをクリックし、 * DB サーバの削除 * をクリックします。
+
+image:screenshot_compliance_remove_db.png["Scan Configuration ページの Remove DB Server ボタンのスクリーンショット。"]

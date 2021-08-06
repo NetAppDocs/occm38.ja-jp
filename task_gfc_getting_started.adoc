@@ -1,0 +1,199 @@
+---
+sidebar: sidebar 
+permalink: task_gfc_getting_started.html 
+keywords: global file cache, core, management server 
+summary: Cloud Manager を使用して、グローバルファイルキャッシュ管理サーバおよびグローバルファイルキャッシュコアソフトウェアを作業環境に導入します。 
+---
+= はじめに
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager を使用して、グローバルファイルキャッシュ管理サーバおよびグローバルファイルキャッシュコアソフトウェアを作業環境に導入します。
+
+
+
+== Cloud Manager を使用してグローバルファイルキャッシュを有効化
+
+この構成では、グローバルファイルキャッシュ管理サーバとグローバルファイルキャッシュコアを、 Cloud Manager を使用して Cloud Volumes ONTAP システムを作成したのと同じ作業環境に導入します。
+
+見る link:https://www.youtube.com/watch?v=TGIQVssr43A["このビデオでは"^] をクリックして、最初から最後までのステップを確認してください。
+
+
+
+=== クイックスタート
+
+次の手順を実行すると、すぐに作業を開始できます。また、残りのセクションまでスクロールして詳細を確認することもできます。
+
+
+
+==== Cloud Volumes ONTAP を導入します
+
+[role="quick-margin-para"]
+Azure または AWS に Cloud Volumes ONTAP を導入し、 SMB ファイル共有を設定詳細については、を参照してください link:task_deploying_otc_azure.html["Azure で Cloud Volumes ONTAP を起動します"^] または 。
+
+
+
+==== グローバルファイルキャッシュ管理サーバーを展開します
+
+[role="quick-margin-para"]
+グローバルファイルキャッシュ管理サーバのインスタンスを、 Cloud Volumes ONTAP のインスタンスと同じ作業環境に導入します。
+
+
+
+==== グローバルファイルキャッシュコアを展開します
+
+[role="quick-margin-para"]
+グローバルファイルキャッシュコアのインスタンスまたは複数のインスタンスを、 Cloud Volumes ONTAP のインスタンスと同じ作業環境に展開し、 Active Directory ドメインに参加させます。
+
+
+
+==== グローバルファイルキャッシュのライセンスを取得します
+
+[role="quick-margin-para"]
+グローバルファイルキャッシュコアインスタンスに、グローバルファイルキャッシュライセンス管理サーバ（ LMS ）サービスを設定します。NSS のクレデンシャル、またはネットアップから提供されたお客様 ID を使用して、サブスクリプションをアクティブ化する必要があります。
+
+
+
+==== グローバルファイルキャッシュエッジインスタンスを配置します
+
+[role="quick-margin-para"]
+を参照してください link:task_deploy_gfc_edge_instances.html["グローバルファイルキャッシュエッジインスタンスの配置"^] グローバルファイルキャッシュエッジインスタンスを各リモートロケーションに配置するには、次の手順を実行します。この手順は、 Cloud Manager では実行されません。
+
+
+
+=== ストレージプラットフォームとして Cloud Volumes ONTAP を導入
+
+現在のリリースでは、 Azure または AWS に導入された Cloud Volumes ONTAP がグローバルファイルキャッシュでサポートされています。前提条件、要件、および導入手順の詳細については、を参照してください link:task_deploying_otc_azure.html["Azure で Cloud Volumes ONTAP を起動します"^] または 。
+
+次のグローバルファイルキャッシュの追加要件に注意してください。
+
+* SMB ファイル共有は Cloud Volumes ONTAP のインスタンスで設定する必要があります。
++
+インスタンスに SMB ファイル共有が設定されていない場合は、グローバルファイルキャッシュコンポーネントのインストール時に SMB 共有を設定するように求められます。
+
+
+
+
+
+=== 作業環境でグローバルファイルキャッシュを有効にします
+
+グローバルファイルキャッシュウィザードでは、以下に示すように、グローバルファイルキャッシュ管理サーバーインスタンスおよびグローバルファイルキャッシュコアインスタンスを展開する手順を順を追って説明します。
+
+image:screenshot_gfc_install1.png["Global File Cache の初期インストールページのスクリーンショット。"]
+
+.手順
+. Cloud Volumes ONTAP を導入した作業環境を選択します。
+. サービスパネルで、 * GFC を有効にする * をクリックします。
++
+image:screenshot_gfc_install2.png["グローバルファイルキャッシュを有効にするための作業環境で最初に GFC を有効にするボタンのスクリーンショット。"]
+
+. 概要ページを読み、 * 続行 * をクリックします。
+. Cloud Volumes ONTAP インスタンスに使用可能な SMB 共有がない場合は、 SMB サーバおよび SMB 共有の詳細を入力して共有を作成するように求められます。SMB 設定の詳細については、を参照してください link:concept_before_you_begin_to_deploy_gfc.html#storage-platform-volumes["ストレージプラットフォーム"^]。
++
+完了したら、 * Continue * をクリックして SMB 共有を作成します。
+
++
+image:screenshot_gfc_install3.png["使用可能な SMB 共有がない場合の SMB 共有の作成に必要な情報を示すスクリーンショット。"]
+
+. Global File Cache Service ページで、展開する Global File Cache Edge インスタンスの数を入力し、システムが Network Configuration and Firewall Rules 、 Active Directory の設定、および除外する Antivirus の要件を満たしていることを確認します。を参照してください link:concept_before_you_begin_to_deploy_gfc.html#prerequisites["前提条件"] 詳細：
++
+image:screenshot_gfc_install4.png["グローバルファイルキャッシュ管理サーバーおよびコアインスタンスを展開する前の前提条件を示すスクリーンショット。"]
+
+. 要件が満たされていること、またはこれらの要件を満たす情報があることを確認したら、 [* Continue （続行） ] をクリックします。
+. グローバルファイルキャッシュ管理サーバー VM へのアクセスに使用する管理者資格情報を入力し、 * GFC サービスを有効にする * をクリックします。Azure の場合はユーザ名およびパスワードとしてクレデンシャルを入力し、 AWS の場合は適切なキーペアを選択します。必要に応じて VM / インスタンス名を変更できます。
++
+image:screenshot_gfc_install5.png["グローバルファイルキャッシュ管理サーバの設定に必要な設定情報を示すスクリーンショット。"]
+
+. グローバルファイルキャッシュ管理サービスが正常に展開されたら、 [* 続行 ] をクリックします。
+. Global File Cache Core の場合、 Active Directory ドメインに参加するための管理者ユーザクレデンシャルとサービスアカウントユーザクレデンシャルを入力します。[* Continue （続行） ] をクリックします。
++
+** グローバルファイルキャッシュコアインスタンスは、 Cloud Volumes ONTAP インスタンスと同じ Active Directory ドメインに配置する必要があります。
+** サービスアカウントはドメインユーザであり、 Cloud Volumes ONTAP インスタンスの BUILTIN\Backup Operators グループに含まれます。
++
+image:screenshot_gfc_install6.png["Global File Cache Core Active Directory およびサービスアカウントのセットアップに必要な設定情報を示すスクリーンショット。"]
+
+
+
+. グローバルファイルキャッシュコア VM へのアクセスに使用する管理者資格情報を入力し、 * GFC コアの展開 * をクリックします。Azure の場合はユーザ名およびパスワードとしてクレデンシャルを入力し、 AWS の場合は適切なキーペアを選択します。必要に応じて VM / インスタンス名を変更できます。
++
+image:screenshot_gfc_install7.png["グローバルファイルキャッシュコアインスタンスのセットアップに必要な設定情報を示すスクリーンショット。"]
+
+. グローバルファイルキャッシュコアが正常に展開されたら、 * ダッシュボードへ移動 * をクリックします。
++
+image:screenshot_gfc_install8.png["インストールが完了した後のグローバルファイルキャッシュダッシュボードを示すスクリーンショット。"]
+
+
+
+ダッシュボードには、管理サーバインスタンスとコアインスタンスが * オン * で動作していることが示されています。
+
+
+
+=== グローバルファイルキャッシュのインストールのライセンスを取得します
+
+グローバルファイルキャッシュを使用する前に、グローバルファイルキャッシュコアインスタンス上でグローバルファイルキャッシュライセンス管理サーバ（ LMS ）サービスを設定する必要があります。NSS のクレデンシャル、またはお客様の ID をネットアップに伝えて、サブスクリプションをアクティブ化する必要があります。
+
+この例では、パブリッククラウドに展開したばかりのコアインスタンスに LMS サービスを設定します。これは、 LMS サービスをセットアップする 1 回限りのプロセスです。
+
+.手順
+. 次の URL を使用して、グローバルファイルキャッシュコア（ LMS サービスとして指定するコア）の [Global File Cache License Registration] ページを開きます。<IP_address> _ をグローバルファイルキャッシュコアの IP アドレスに置き換えます。https://<ip_address>/lms/api/v1/config/lmsconfig.html[]
+. 続行するには、 [Continue to this website (not recommended)] をクリックします。LMS を設定したり、既存のライセンス情報を確認したりできるページが表示されます。
++
+image:screenshot_gfc_license1.png["Global File Cache License Registration ページのスクリーンショット。"]
+
+. [On-Premise LMS] または [Cloud MS] を選択して、登録モードを選択します。
++
+** 「 On-Premise LMS 」は、ネットアップサポートから顧客 ID を受け取った既存または試用版のお客様に使用されます。
+** 「 Cloud MS 」は、 NetApp Global File Cache Edge ライセンスをネットアップまたは認定パートナーから購入し、ネットアップのクレデンシャルを取得しているお客様に使用されます。
+
+
+. Cloud MS の場合は、 * Cloud MS * をクリックし、 NSS 資格情報を入力して、 * Submit * をクリックします。
++
+image:screenshot_gfc_license3.png["Global File Cache License Registration ページにクラウド MS NSS クレデンシャルを入力するスクリーンショット。"]
+
+. オンプレミス LMS の場合は、 * オンプレミス LMS * をクリックし、顧客 ID を入力して、 * LMS の登録 * をクリックします。
++
+image:screenshot_gfc_license2.png["Global File Cache License Registration ページに On-Premise LMS Customer ID を入力するスクリーンショット。"]
+
+
+
+構成をサポートするために複数のグローバルファイルキャッシュコアを導入する必要があると判断した場合は、ダッシュボードで * コアインスタンスの追加 * をクリックし、導入ウィザードに従います。
+
+コアの導入を完了したら、を実行する必要があります link:download_gfc_resources.html["グローバルファイルキャッシュエッジインスタンスを配置します"^] 各リモートオフィスに配置できます。
+
+
+
+== コアインスタンスを追加導入します
+
+多数の Edge インスタンスがあるために複数の Global File Cache Core をインストールする必要がある構成の場合は、作業環境に別の Core を追加できます。
+
+Edge インスタンスを配置する場合は、最初のコアに接続するように一部を設定し、他のコアを 2 番目のコアに接続するように設定します。両方のコアインスタンスが作業環境内の同じバックエンドストレージ（ Cloud Volumes ONTAP インスタンス）にアクセスします。
+
+. グローバルファイルキャッシュダッシュボードで、 * コアインスタンスの追加 * をクリックします。
++
+image:screenshot_gfc_add_another_core.png["GFC ダッシュボードのスクリーンショットと、コアインスタンスを追加するためのボタン。"]
+
+. Active Directory ドメインに参加するための管理者ユーザクレデンシャルとサービスアカウントユーザクレデンシャルを入力します。[* Continue （続行） ] をクリックします。
++
+** グローバルファイルキャッシュコアインスタンスは、 Cloud Volumes ONTAP インスタンスと同じ Active Directory ドメインに存在する必要があります。
+** サービスアカウントはドメインユーザであり、 Cloud Volumes ONTAP インスタンスの BUILTIN\Backup Operators グループに含まれます。
++
+image:screenshot_gfc_install6.png["Global File Cache Core Active Directory およびサービスアカウントのセットアップに必要な設定情報を示すスクリーンショット。"]
+
+
+
+. グローバルファイルキャッシュコア VM へのアクセスに使用する管理者資格情報を入力し、 * GFC コアの展開 * をクリックします。Azure の場合はユーザ名およびパスワードとしてクレデンシャルを入力し、 AWS の場合は適切なキーペアを選択します。必要に応じて VM 名を変更することができます。
++
+image:screenshot_gfc_install7.png["グローバルファイルキャッシュコアインスタンスのセットアップに必要な設定情報を示すスクリーンショット。"]
+
+. グローバルファイルキャッシュコアが正常に展開されたら、 * ダッシュボードへ移動 * をクリックします。
++
+image:screenshot_gfc_dashboard_2cores.png["インストールが完了した後のグローバルファイルキャッシュダッシュボードを示すスクリーンショット。"]
+
+
+
+ダッシュボードには、作業環境の 2 番目のコアインスタンスが反映されます。

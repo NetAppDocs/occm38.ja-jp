@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: concept_accounts_gcp.html 
+keywords: cloud provider accounts, gcp, gcp accounts, google cloud platform, google accounts, google cloud platform accounts, permissions, tiering, data tiering, account for data tiering, account for tiering, project, projects, add project, select new project, gcp project, google project, google cloud project 
+summary: プロジェクトに Cloud Manager を導入するには、 Google Cloud アカウントを使用します。その後、同じプロジェクトまたは別のプロジェクトに Cloud Volumes ONTAP を導入できます。Cloud Manager に追加した Google Cloud アカウントは、データの階層化に使用されます。 
+---
+= Google Cloud のプロジェクト、権限、アカウント
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+サービスアカウントを使用すると、 Cloud Manager と同じプロジェクトまたは異なるプロジェクトに Cloud Volumes ONTAP システムを導入して管理する権限が Cloud Manager に付与されます。
+
+
+
+== Cloud Manager のプロジェクトと権限
+
+Google Cloud に Cloud Volumes ONTAP を導入する前に、まず Google Cloud プロジェクトに Connector を導入する必要があります。Connector は、オンプレミスでも別のクラウドプロバイダでも実行できません。
+
+Cloud Manager からコネクタを直接導入するには、次の 2 組の権限が必要です。
+
+. Cloud Manager から Connector VM インスタンスを起動する権限がある Google アカウントを使用して Connector を導入する必要があります。
+. コネクタを配置するときに、を選択するよう求められます https://cloud.google.com/iam/docs/service-accounts["サービスアカウント"^] VM インスタンスの場合です。Cloud Manager は、サービスアカウントから権限を取得して、 Cloud Volumes ONTAP システムを代わりに作成および管理します。権限は、サービスアカウントにカスタムロールを割り当てることによって提供されます。
+
+
+ユーザとサービスアカウントに必要な権限を含む YAML ファイルを 2 つ設定しました。 link:task_creating_connectors_gcp.html["YAML ファイルを使用して設定する方法を学習します 権限"]。
+
+次の図は、上記の番号 1 と 2 で説明した権限の要件を示しています。
+
+image:diagram_permissions_gcp.png["説明"]
+
+
+
+== Project for Cloud Volumes ONTAP の略
+
+Cloud Volumes ONTAP は、コネクタと同じプロジェクトに存在することも、別のプロジェクトに存在することもできます。Cloud Volumes ONTAP を別のプロジェクトに配置するには、まずコネクタサービスアカウントとその役割をそのプロジェクトに追加する必要があります。
+
+* link:task_creating_connectors_gcp.html#setting-up-gcp-permissions-to-create-a-connector["サービスアカウントの設定方法について説明します（手順 2 を参照）。"]。
+* link:task_deploying_gcp.html["GCP とで Cloud Volumes ONTAP を導入する方法について説明します プロジェクトを選択します"]。
+
+
+
+
+== データの階層化を考慮してください
+
+
+TIP: Cloud Manager には Cloud Volumes ONTAP 9.6 用の GCP アカウントが必要ですが、 9.7 以降の GCP アカウントは必要ありません。Cloud Volumes ONTAP 9.7 でデータ階層化を使用する場合は、の手順 4 を実行します link:task_getting_started_gcp.html["Google Cloud Platform での Cloud Volumes ONTAP の使用を開始する"]。
+
+Cloud Volumes ONTAP 9.6 システムでデータの階層化を有効にするには、 Cloud Manager に Google Cloud アカウントを追加する必要があります。データ階層化により、コールドデータを低コストのオブジェクトストレージに自動的に階層化し、プライマリストレージのスペースを再利用してセカンダリストレージを縮小できます。
+
+アカウントを追加するときは、 Storage Admin の権限を持つサービスアカウントのストレージアクセスキーを Cloud Manager に提供する必要があります。Cloud Manager は、アクセスキーを使用して Cloud Storage バケットをセットアップおよび管理し、データを階層化します。
+
+Google Cloud アカウントを追加したら、作成、変更、または複製するときに、個々のボリュームでデータ階層化を有効にできます。
+
+* link:task_adding_gcp_accounts.html["GCP アカウントの設定方法と追加方法について説明します Cloud Manager の略"]。
+* link:task_tiering.html["アクセス頻度の低いデータを低コストのオブジェクトストレージに階層化する方法について説明します"]。
+

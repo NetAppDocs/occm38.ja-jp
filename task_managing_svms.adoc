@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: task_managing_svms.html 
+keywords: storage virtual machine, vserver, svm, storage vm, supported number, number supported 
+summary: Storage VM は ONTAP 内で実行される仮想マシンであり、クライアントにストレージサービスとデータサービスを提供します。これは SVM または SVM として認識されていることがあります。Cloud Volumes ONTAP にはデフォルトで 1 つの Storage VM が設定されますが、一部の設定では追加の Storage VM がサポートされます。 
+---
+= Storage VM の管理
+:toc: macro
+:hardbreaks:
+:toc: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Storage VM は ONTAP 内で実行される仮想マシンであり、クライアントにストレージサービスとデータサービスを提供します。これは、 _ SVM _ または _ SVM _ であることがわかります。Cloud Volumes ONTAP にはデフォルトで 1 つの Storage VM が設定されますが、一部の設定では追加の Storage VM がサポートされます。
+
+
+
+== サポートされている Storage VM 数
+
+Cloud Volumes ONTAP 9.7 では、特定の構成で AWS 内の複数の Storage VM とアドオンライセンスがサポートされます。 https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_limits_aws_97.html#logical-storage-limits["AWS でサポートされている Storage VM の数を表示します"^]。アカウントチームに連絡して SVM アドオンライセンスを入手してください。
+
+他のすべての Cloud Volumes ONTAP 構成で、ディザスタリカバリに使用する 1 つのデータ提供用 Storage VM と 1 つのデスティネーション Storage VM がサポートされます。ソース Storage VM で障害が発生した場合は、デスティネーション Storage VM をデータアクセス用にアクティブ化できます。
+
+Storage VM は Cloud Volumes ONTAP システム全体（ HA ペアまたはシングルノード）にまたがります。
+
+
+
+== 追加の Storage VM を作成しています
+
+構成でサポートされる場合は、を使用して追加の Storage VM を作成できます link:task_connecting_to_otc.html["System Manager または CLI のいずれかです"]。
+
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-cifs-cg/GUID-CE5DE09F-3B48-48FE-A41C-9D69C3D0C402.html["SMB アクセス用の SVM を作成する"^]
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nfs-cg/GUID-CE5DE09F-3B48-48FE-A41C-9D69C3D0C402.html["NFS アクセス用の SVM を作成する"^]
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-iscsi-cpg/GUID-0FCB46AA-DA18-417B-A9EF-B6A665DB77FC.html["iSCSI アクセス用の SVM を作成する"^]
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["ディザスタリカバリ用のデスティネーション SVM の作成"^]
+
+
+
+
+== Cloud Manager での複数の Storage VM の使用
+
+Cloud Manager では、 System Manager または CLI から追加で作成する Storage VM をサポートします。
+
+たとえば、次の図は、ボリュームの作成時に Storage VM を選択する方法を示しています。
+
+image:screenshot_create_volume_svm.gif["ボリュームを作成する Storage VM を選択する機能を示すスクリーンショット。"]
+
+次の図は、ボリュームを別のシステムにレプリケートするときに Storage VM を選択する方法を示しています。
+
+image:screenshot_replicate_volume_svm.gif["ボリュームをレプリケートする Storage VM を選択する機能を示すスクリーンショット。"]
+
+
+
+== Storage VM ディザスタリカバリの管理
+
+Cloud Manager では、 Storage VM ディザスタリカバリのセットアップやオーケストレーションはサポートされていません。System Manager または CLI を使用する必要があります。
+
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["SVM ディザスタリカバリ設定エクスプレスガイド"^]
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["『 SVM ディザスタリカバリエクスプレスガイド』"^]
+
+
+
+
+== Storage VM 名を変更しています
+
+Cloud Manager は、 Cloud Volumes ONTAP 用に作成した単一の Storage VM に自動的に名前を付けます。厳密な命名基準がある場合は、 Storage VM の名前を変更できます。たとえば、 ONTAP クラスタの Storage VM の命名規則に沿った名前に変更できます。
+
+Cloud Volumes ONTAP 用に追加の Storage VM を作成した場合、その Storage VM の名前を Cloud Manager から変更することはできません。Cloud Volumes ONTAP から直接実行する必要があります。そのためには、 System Manager または CLI を使用します。
+
+.手順
+. 作業環境で、メニューアイコンをクリックし、 * 情報 * をクリックします。
+. Storage VM 名の右にある編集アイコンをクリックします。
++
+image:screenshot_svm.gif["スクリーンショット： SVM 名フィールドと、 SVM 名を変更するためにクリックする必要がある編集アイコンが表示されます。"]
+
+. SVM 名の変更ダイアログボックスで名前を変更し、 * 保存 * をクリックします。
+

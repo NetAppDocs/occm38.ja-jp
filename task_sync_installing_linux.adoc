@@ -1,0 +1,179 @@
+---
+sidebar: sidebar 
+permalink: task_sync_installing_linux.html 
+keywords: data broker, install, linux, on-prem data broker, on-prem, on prem, on premises, networking, permissions, os, operating system, rhel, red hat, ram, cpu, disk space, install data broker, installing data broker, install a data broker, data broker installation, linux installation, linux operating system, aws access, aws keys, keys, gcp access, aws permissions, gcp permissions, google permissions 
+summary: 同期関係を作成する場合は、オンプレミスのデータブローカーオプションを選択して、オンプレミスの Linux ホストまたはクラウド内の既存の Linux ホストにデータブローカーソフトウェアをインストールします。Cloud Sync ではインストールプロセスがガイドされますが、インストールの準備に役立つように、このページの要件と手順が繰り返されています。 
+---
+= Linux ホストへのデータブローカーのインストール
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+同期関係を作成する場合は、オンプレミスのデータブローカーオプションを選択して、オンプレミスの Linux ホストまたはクラウド内の既存の Linux ホストにデータブローカーソフトウェアをインストールします。Cloud Sync ではインストールプロセスがガイドされますが、インストールの準備に役立つように、このページの要件と手順が繰り返されています。
+
+
+
+== Linux ホストの要件
+
+* * オペレーティング・システム * ：
++
+** CentOS 7.0 、 7.7 、および 8.0
+** Red Hat Enterprise Linux 7.7 および 8.0
+** Ubuntu Server 18.04 LTS の場合は
+** SUSE Linux Enterprise Server 15 SP1
++
+コマンド 'yum update all' は ' データ・ブローカをインストールする前に ' ホスト上で実行する必要があります
+
++
+Red Hat Enterprise Linux システムは、 Red Hat サブスクリプション管理に登録する必要があります。登録されていない場合、システムはインストール中に必要なサードパーティソフトウェアをアップデートするためのリポジトリにアクセスできません。
+
+
+
+* * RAM * ： 16GB
+* * CPU * ： 4 コア
+* * 空きディスク容量 * ： 10 GB
+* * SELinux * ：無効にすることをお勧めします https://selinuxproject.org/["SELinux"^] ホスト。
++
+SELinux では、データブローカーソフトウェアの更新をブロックし、通常運用に必要なエンドポイントにデータブローカーがアクセスできないようにするポリシーが適用されます。
+
+* * OpenSSL * ： Linux ホストに OpenSSL がインストールされている必要があります。
+
+
+
+
+== ネットワーク要件
+
+* Linux ホストは、ソースとターゲットに接続されている必要があります。
+* ファイルサーバが Linux ホストにエクスポートへのアクセスを許可している必要があります。
+* AWS へのアウトバウンドトラフィック（データブローカーは常に Amazon SQS サービスと通信）を処理するために、 Linux ホストでポート 443 が開いている必要があります。
+* ネットワークタイムプロトコル（ NTP ）サービスを使用するように、ソース、ターゲット、およびデータブローカーを設定することを推奨します。3 つのコンポーネント間の時間差は 5 分を超えないようにしてください。
+
+
+
+
+== AWS へのアクセスを有効化
+
+S3 バケットを含む同期関係でデータブローカーを使用する場合は、 Linux ホストで AWS にアクセスする準備をしておく必要があります。データブローカーをインストールする際、プログラム経由のアクセス権と特定の権限を持つ AWS ユーザに対して AWS キーを提供する必要があります。
+
+.手順
+. を使用して、 IAM ポリシーを作成します https://s3.amazonaws.com/metadata.datafabric.io/docs/on_prem_iam_policy.json["ネットアップが提供するポリシーです"^]。。
+. プログラムによるアクセス権を持つ IAM ユーザを作成します。 https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html["AWS の手順を表示します。"^]。
++
+データブローカーソフトウェアをインストールするときに AWS キーを指定する必要があるため、必ず AWS キーをコピーしてください。
+
+
+
+
+
+== Google Cloud へのアクセスを有効にします
+
+Google Cloud Storage バケットを含む同期関係でデータブローカーを使用する場合は、 Linux ホストで GCP アクセスを準備しておく必要があります。データブローカーをインストールする場合、特定の権限を持つサービスアカウントにキーを提供する必要があります。
+
+.手順
+. まだ Storage Admin の権限がない GCP サービスアカウントを作成します。
+. JSON 形式で保存されたサービスアカウントキーを作成します。 https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys["GCP の手順を表示します。"^]。
++
+このファイルには、少なくとも「 project_id 」、「 private_key 」、および「 client_email 」というプロパティを含める必要があります。
+
++
+
+NOTE: キーを作成すると、ファイルが生成され、マシンにダウンロードされます。
+
+. JSON ファイルを Linux ホストに保存します。
+
+
+
+
+== Microsoft Azure へのアクセスを有効にしています
+
+Azure へのアクセスは、関係ごとに定義されます。そのためには、同期関係ウィザードでストレージアカウントと接続文字列を指定します。
+
+
+
+== データブローカーのインストール
+
+同期関係を作成するときに、 Linux ホストにデータブローカーをインストールできます。
+
+.手順
+. [ 新しい同期の作成 *] をクリックします。
+. [ 同期関係の定義 *] ページで、ソースとターゲットを選択し、 [ 続行 *] をクリックします。
++
+「 * データブローカー * 」ページが表示されるまで、手順を完了します。
+
+. [ * データブローカー * ] ページで、 [ * データブローカーの作成 * ] をクリックし、 [ * オンプレミスのデータブローカー * ] を選択します。
++
+データブローカーがすでにある場合は、をクリックする必要があります image:screenshot_plus_icon.gif["プラスアイコンの場合のスクリーンショット"] 最初にアイコンをクリックします
+
++
+image:screenshot_create_data_broker.gif["AWS 、 Azure 、 GCP 、オンプレミスのデータブローカーを選択できるデータブローカーページのスクリーンショット。"]
+
++
+
+NOTE: このオプションには「 * _ オンプレミス _ データブローカー * 」というラベルが付けられていますが、オンプレミスまたはクラウド上の Linux ホストにも該当します。
+
+. データブローカーの名前を入力し、 [* 続行 ] をクリックします。
++
+手順ページがすぐにロードされます。これらの手順に従う必要があります。インストーラをダウンロードするための固有のリンクが含まれています。
+
+. 手順ページで次の手順を実行します。
++
+.. 「 * AWS * 」、「 * Google Cloud * 」、またはその両方へのアクセスを有効にするかどうかを選択します。
+.. インストールオプションとして、 * プロキシなし * 、 * プロキシサーバーを使用 * 、または * 認証付きプロキシサーバーを使用 * を選択します。
+.. データブローカーをダウンロードしてインストールするには、コマンドを使用します。
++
+次の手順では、使用可能な各インストールオプションの詳細を示します。インストールオプションに基づいて正確なコマンドを取得するには、手順ページを参照してください。
+
+.. インストーラをダウンロードします。
++
+*** プロキシなし：
++
+curl <uri>-o data_broker_installer.sh
+
+*** プロキシサーバを使用：
++
+curl <uri>-o data_broker_installer.sh -x <proxy_host>: <proxy_port>`
+
+*** プロキシサーバで認証を使用する：
++
+curl <uri>-o data_broker_installer.sh -x <proxy_username>:<proxy_password>@<proxy_host>:<proxy_port>`
+
++
+URI:: Cloud Sync の指示ページにインストールファイルの URI が表示され、オンプレミスのデータブローカーを導入するプロンプトに従ってロードされます。この URI はリンクが動的に生成され、 1 回しか使用できないため、ここでは繰り返し使用されません。 <<Installing the data broker,Cloud Sync から URI を取得するには、次の手順を実行します。>>。
+
+
+
+
+.. スーパーユーザーに切り替え、インストーラを実行可能にしてソフトウェアをインストールします。
++
+
+NOTE: 以下に示す各コマンドには、 AWS アクセスと GCP アクセスのパラメータが含まれています。インストールオプションに基づいて正確なコマンドを取得するには、手順ページを参照してください。
+
++
+*** プロキシ構成なし：
++
+「 sudo -s chmod +x data_broker_installer.sh 」 / data_broker_installer.sh - A <AWS_access_key> -s <AWS_secret_key> -g <absolute_path-to-the _json ファイル >`
+
+*** プロキシ設定：
++
+「 sudo -s chmod +x data_broker_installer.sh 」 / data_broker_installer.sh - A <AWS_access_key> -s <AWS_secret_key> -g <absolute_path-to-the _json ファイル > -h <proxy_host> -p <proxy_port>`
+
+*** 認証を使用したプロキシ設定：
++
+「 sudo -s chmod +x data_broker_installer.sh 」 / data_broker_installer.sh - A <AWS_access_key> -s <AWS_secret_key> -g <absolute_path-to-the _json _file> -h <proxy_host> -p <proxy_port> -u <proxy_username> -w <proxy_password>
+
++
+AWS キー:: これらはユーザに適切なキーです 準備しておきます <<Enabling access to AWS,次の手順を実行します>>。AWS のキーはデータブローカーに格納され、オンプレミスネットワークやクラウドネットワークで実行されます。ネットアップでは、データブローカー以外でキーを使用していません。
+JSON ファイル:: この JSON ファイルにサービスアカウントが含まれています 準備しておく必要があるキー <<Enabling access to Google Cloud,次の手順を実行します>>。
+
+
+
+
+
+
+. データブローカーが利用可能になったら、 Cloud Sync で [* 続行 ] をクリックします。
+. ウィザードのページに入力して、新しい同期関係を作成します。
+

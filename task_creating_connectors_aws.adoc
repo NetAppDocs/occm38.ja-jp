@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_creating_connectors_aws.html 
+keywords: create connector in aws, create connector in azure, create connector in gcp, launch connector in aws, launch connector in azure, launch connector in gcp, deploy connector in aws, deploy connector in azure, deploy connector in gcp 
+summary: Cloud Manager のほとんどの機能を使用するには、 Account Admin がコネクタを導入する必要があります。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。 
+---
+= AWS で Cloud Manager からコネクタを作成する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager のほとんどの機能を使用するには、 Account Admin が _ Connector を導入する必要があります。 link:concept_connectors.html["コネクタが必要になるタイミングを学習します"]。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。
+
+このページでは、 Cloud Manager から AWS でコネクタを直接作成する方法について説明します。オプションとして、を選択することもできます link:task_launching_aws_mktp.html["AWS Marketplace からコネクタを作成します"]またはをに設定します 。
+
+これらの手順は、 Account Admin ロールを持つユーザが実行する必要があります。ワークスペース管理者はコネクタを作成できません。
+
+
+TIP: 最初の Cloud Volumes ONTAP 作業環境を作成する際、まだコネクタがない場合は、 Cloud Manager からコネクタの作成を求められます。
+
+
+
+== コネクタを作成するための AWS 権限を設定する
+
+Cloud Manager からコネクタを導入する前に、 AWS アカウントが正しい権限を持っていることを確認する必要があります。
+
+.手順
+. 次の場所からコネクタ IAM ポリシーをダウンロードします。
++
+https://mysupport.netapp.com/site/info/cloud-manager-policies["NetApp Cloud Manager ： AWS 、 Azure 、 GCP ポリシー"^]
+
+. AWS IAM コンソールで、コネクタ IAM ポリシーからコピーしたテキストを貼り付けて独自のポリシーを作成します。
+. 前の手順で作成したポリシーを、 Cloud Manager からコネクタを作成する IAM ユーザに関連付けます。
+
+
+AWS ユーザに、 Cloud Manager からコネクタを作成するために必要な権限が付与されました。Cloud Manager からプロンプトが表示されたら、このユーザの AWS アクセスキーを指定する必要があります。
+
+
+
+== AWS でコネクタを作成する
+
+Cloud Manager では、ユーザインターフェイスから AWS に直接コネクタを作成できます。
+
+.必要なもの
+* IAM 用の AWS アクセスキーとシークレットキー を持つユーザ https://mysupport.netapp.com/site/info/cloud-manager-policies["必要な権限"^]。
+* 選択した AWS リージョン内の VPC 、サブネット、キーペア。
+
+
+.手順
+. 最初の作業環境を作成する場合は、 * 作業環境の追加 * をクリックし、プロンプトに従います。それ以外の場合は、 [*connector*] ドロップダウンをクリックし、 [*Add connector*] を選択します。
++
+image:screenshot_connector_add.gif["ヘッダーのコネクターアイコンとコネクターの追加アクションを示すスクリーンショット。"]
+
+. [ * 開始しましょう * ] をクリックします。
+. クラウドプロバイダとして「 * Amazon Web Services * 」を選択します。
++
+Connector は、作成する作業環境の種類や有効にするサービスへのネットワーク接続を確立する必要があることに注意してください。
+
++
+link:reference_networking_cloud_manager.html["Connector のネットワーク要件の詳細については、こちらをご覧ください"]。
+
+. 必要な情報を確認し、 [* Continue （続行） ] をクリックします。
+. 必要な情報を入力します。
++
+** * AWS クレデンシャル * ：インスタンスの名前を入力し、権限の要件を満たす AWS アクセスキーとシークレットキーを指定します。
+** * 場所 * ：インスタンスの AWS リージョン、 VPC 、およびサブネットを指定します。
+** * ネットワーク * ：インスタンスで使用するキーペア、パブリック IP アドレスを有効にするかどうか、およびオプションでプロキシ設定を指定します。
+** * セキュリティグループ * ：新しいセキュリティグループを作成するか、インバウンド HTTP 、 HTTPS 、 SSH アクセスを許可する既存のセキュリティグループを選択するかを選択します。
++
+
+NOTE: コネクタへの着信トラフィックは、開始しない限りありません。へのアクセスは、 HTTP および HTTPS を使用して提供されます link:concept_connectors.html#the-local-user-interface["ローカル UI"]は、まれな状況で使用します。SSH が必要になるのは、トラブルシューティングのためにホストに接続する必要がある場合のみです。
+
+
+
+. [ 作成（ Create ） ] をクリックします。
++
+インスタンスの準備が完了するまでに約 7 分かかります。処理が完了するまで、ページには表示されたままにしておいてください。
+
+
+
+ワークスペース管理者がコネクタを使用して Cloud Volumes ONTAP システムを作成できるように、コネクタをワークスペースに関連付ける必要があります。アカウント管理者のみがいる場合は、コネクタをワークスペースに関連付ける必要はありません。アカウント管理者は、デフォルトで Cloud Manager のすべてのワークスペースにアクセスできます。 link:task_setting_up_cloud_central_accounts.html#associating-connectors-with-workspaces["詳細はこちら。"]。

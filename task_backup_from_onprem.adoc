@@ -1,0 +1,146 @@
+---
+sidebar: sidebar 
+permalink: task_backup_from_onprem.html 
+keywords: backing up, back up, backup, backup cloud volumes ontap, back up cloud volumes ontap, cloud volumes ontap, on-prem, on-premises, back up volumes, Backup to Cloud, cloud backup service 
+summary: オンプレミスの ONTAP システムからクラウドの低コストのオブジェクトストレージへのデータのバックアップを開始するには、いくつかの手順を実行します。 
+---
+= オンプレミスの ONTAP システムからへのデータのバックアップ クラウド
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+オンプレミスの ONTAP システムからクラウドの低コストのオブジェクトストレージへのデータのバックアップを開始するには、いくつかの手順を実行します。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== 構成がサポートされていることを確認します
+
+* オンプレミスクラスタを検出し、 Cloud Manager の作業環境に追加しておきます。を参照してください link:task_discovering_ontap.html["ONTAP クラスタの検出"^] を参照してください。
+* クラスタで ONTAP 9.7P5 以降を実行しています。
+* バックアップを格納するストレージスペースに対する有効なクラウドプロバイダのサブスクリプションが必要です。
+* に登録しておきます https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Cloud Manager Marketplace のバックアップソリューション"^]またはを購入したことが必要です link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["アクティブ化されます"^] NetApp の Backup to Cloud BYOL ライセンス。
+
+
+
+
+==== システムでクラウドへのバックアップを有効化
+
+[role="quick-margin-para"]
+作業環境を選択し、右パネルのクラウドへのバックアップサービスの横にある * アクティブ化 * をクリックして、セットアップウィザードに従います。
+
+[role="quick-margin-para"]
+image:screenshot_backup_to_s3_icon.gif["作業環境を選択したあとに使用できるクラウドへのバックアップのアクティブ化ボタンを示すスクリーンショット。"]
+
+
+
+==== クラウドプロバイダを選択し、プロバイダの詳細を入力します
+
+[role="quick-margin-para"]
+プロバイダを選択し、プロバイダサブスクリプション、リージョン、およびリソースグループを選択します。また、ボリュームが配置されている ONTAP クラスタ内の IPspace を指定する必要があります。
+
+[role="quick-margin-para"]
+image:screenshot_backup_onprem_to_azure.png["バッキング時にクラウドプロバイダの詳細を示すスクリーンショット オンプレミスクラスタから Azure Blob にボリュームをバックアップ 階層"]
+
+
+
+==== バックアップポリシーを定義
+
+[role="quick-margin-para"]
+デフォルトポリシーでは、毎日ボリュームがバックアップされ、各ボリュームの最新の 30 個のバックアップコピーが保持されます。週単位または月単位のバックアップに変更するか、システム定義のポリシーの中からいくつかのオプションを選択します。
+
+[role="quick-margin-para"]
+image:screenshot_backup_onprem_policy.png["クラウドへのバックアップ設定を示すスクリーンショット。バックアップのスケジュールと保持期間を選択できます。"]
+
+
+
+==== バックアップするボリュームを選択します
+
+[role="quick-margin-para"]
+クラスタからバックアップするボリュームを特定します。
+
+
+
+==== 必要に応じて、データをリストアします
+
+[role="quick-margin-para"]
+バックアップリストで、ボリュームを選択し、バックアップを選択します。次に、同じクラウドプロバイダを使用している Cloud Volumes ONTAP システム上の新しいボリュームに、バックアップのデータをリストアします。
+
+[role="quick-margin-para"]
+image:screenshot_backup_to_s3_restore_icon.gif["ボリュームを選択したあとのバックアップのリストアアイコンのスクリーンショット。"]
+
+
+
+== 要件
+
+Azure BLOB ストレージへのボリュームのバックアップを開始する前に、次の要件を参照して、サポートされている構成があることを確認してください。
+
+サポートされている ONTAP のバージョン:: ONTAP 9.7P5 以降
+クラスタネットワークの要件::
++
+--
+クラウドへのバックアップをセットアップすると、 IPspace で使用するように求められます。各 LIF を関連付ける IPspace を選択する必要があります。これは、「デフォルト」の IPspace または作成したカスタム IPspace です。
+
+--
+サポートされている Azure リージョン:: クラウドへのバックアップは、すべての Azure リージョンでサポートされています https://cloud.netapp.com/cloud-volumes-global-regions["Cloud Volume がサポートされている場合"^]。
+ライセンス要件::
++
+--
+Backup to Cloud BYOL ライセンスを利用するには、ライセンスの期間と容量にサービスを使用できるように、ネットアップから提供されたシリアル番号が必要です。を参照してください link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["バックアップ BYOL ライセンスを追加および更新する"^]。
+
+また、バックアップを格納するストレージスペースには、 Microsoft Azure サブスクリプションが必要です。
+
+--
+
+
+
+
+== クラウドへのバックアップを有効化してい
+
+作業環境からクラウドへのバックアップをいつでも直接有効にできます。
+
+.手順
+. 作業環境を選択し、右パネルのクラウドへのバックアップサービスの横にある * アクティブ化 * をクリックします。
++
+image:screenshot_backup_to_s3_icon.gif["作業環境を選択したあとに使用できるクラウドへのバックアップのアクティブ化ボタンを示すスクリーンショット。"]
+
+. プロバイダを選択し、プロバイダの詳細を入力します。
++
+.. バックアップの格納に使用する Azure サブスクリプション。
+.. Azure リージョン。
+.. リソースグループ - 新しいリソースグループを作成することも、を選択して既存のリソースグループを選択することもできます。
+.. バックアップするボリュームが配置されている ONTAP クラスタ内の IPspace 。
+.. [* Continue （続行） ] をクリックします。
++
+image:screenshot_backup_onprem_to_azure.png["バッキング時にクラウドプロバイダの詳細を示すスクリーンショット オンプレミスクラスタから Azure Blob にボリュームをバックアップ 階層"]
+
++
+サービスの開始後に、サブスクリプションまたはリソースグループを変更することはできません。
+
+
+
+. [_Define Policy_] ページで、バックアップスケジュールと保持の値を選択し、 [* Continue * ] をクリックします。
++
+image:screenshot_backup_onprem_policy.png["クラウドへのバックアップ設定を示すスクリーンショット。バックアップのスケジュールと保持期間を選択できます。"]
+
++
+を参照してください link:concept_backup_to_cloud.html#the-schedule-is-daily-weekly-monthly-or-a-combination["既存のポリシーのリスト"^]。
+
+. バックアップするボリュームを選択し、 * Activate * をクリックします。
++
+image:screenshot_backup_select_onprem_volumes.png["バックアップするボリュームを選択するスクリーンショット。"]
+
+
+
+クラウドへのバックアップは、選択した各ボリュームの初期バックアップの作成を開始します。
+
+link:task_managing_backups.html["バックアップの管理では、バックアップスケジュールの変更、ボリュームのリストアなどを行うことができます"^]。

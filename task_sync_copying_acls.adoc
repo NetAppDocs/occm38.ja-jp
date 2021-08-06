@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_sync_copying_acls.html 
+keywords: permissions, access control list, acls, ntfs, cifs, smb, shares, robocopy, copy, transfer, activate, operating system, os, ram, cpu, networking, copy acls to the target 
+summary: Cloud Sync では、ソース SMB 共有とターゲット SMB 共有の間でアクセス制御リスト（ ACL ）をコピーできます。必要に応じて、 Robocopy を使用して ACL を手動で保存できます。 
+---
+= SMB 共有間での ACL のコピー
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Sync では、ソース SMB 共有とターゲット SMB 共有の間でアクセス制御リスト（ ACL ）をコピーできます。必要に応じて、 Robocopy を使用して手動で ACL を保存することができます。
+
+.選択肢
+* <<Setting up Cloud Sync to copy ACLs between SMB servers,ACL を自動的にコピーするように Cloud Sync を設定します>>
+* <<Manually copying ACLs,ACL を手動でコピーします>>
+
+
+
+
+== SMB サーバ間で ACL をコピーするための Cloud Sync の設定
+
+関係の作成時または関係の作成後に設定を有効にして、 SMB サーバ間の ACL をコピーします。
+
+この機能は、 2020 年 2 月 23 日リリース以降に作成された新しい同期関係で使用できます。この機能をその日付より前に作成された既存の関係で使用する場合は、関係を再作成する必要があります。
+
+.必要なもの
+* 2020 年 2 月 23 日リリース以降に作成された新しい同期関係または既存の同期関係。
+* あらゆる種類のデータブローカーに対応
++
+この機能は、 _any_type のデータブローカー（ AWS 、 Azure 、 Google Cloud Platform 、オンプレミスのデータブローカー）と連携します。オンプレミスのデータブローカーを実行できます link:task_sync_installing_linux.html["サポートされているオペレーティングシステム"]。
+
+
+
+.新しい関係の手順
+. Cloud Sync で、 * 新しい同期を作成 * をクリックします。
+. ソースとターゲットに * SMB サーバー * をドラッグアンドドロップし、 * 続行 * をクリックします。
+. [* SMB サーバー * ] ページで、次の操作を行います。
++
+.. 新しい SMB サーバーを入力するか、既存のサーバーを選択して、 * 続行 * をクリックします。
+.. SMB サーバのクレデンシャルを入力します。
+.. [* アクセス制御リストをターゲットにコピーする *] を選択し、 [* 続行 *] をクリックします。
++
+image:screenshot_acl_support.gif["ターゲットへのアクセス制御リストのコピーを有効にするオプションを示すスクリーンショット。"]
+
+
+
+. 残りのプロンプトに従って、同期関係を作成します。
+
+
+.既存の関係に対する手順
+. 同期関係の上にカーソルを置いて、 [ アクション ] メニューをクリックします。
+. [* 設定 * ] をクリックします。
+. [* アクセス制御リストをターゲットにコピーする *] を選択します。
+. [ 設定の保存 *] をクリックします。
+
+
+データを同期する場合、 Cloud Sync はソースとターゲットの SMB 共有間の ACL を保持します。
+
+
+
+== ACL の手動コピー
+
+Windows の Robocopy コマンドを使用すると、 SMB 共有間で ACL を手動で保存できます。
+
+.手順
+. 両方の SMB 共有へのフルアクセス権を持つ Windows ホストを特定します。
+. いずれかのエンドポイントで認証が必要な場合は、 * net use * コマンドを使用して Windows ホストからエンドポイントに接続します。
++
+Robocopy を使用する前に、この手順を実行する必要があります。
+
+. Cloud Sync で、ソースとターゲットの SMB 共有間の新しい関係を作成するか、既存の関係を同期します。
+. データの同期が完了したら、 Windows ホストから次のコマンドを実行して、 ACL と所有権を同期します。
++
+....
+robocopy /E /COPY:SOU /secfix [source] [target] /w:0 /r:0 /XD ~snapshots /UNILOG:”[logfilepath]
+....
++
+UNC 形式を使用して、 source_or_target_ と _target_ の両方を指定する必要があります。たとえば、 \\<server>\<share>\<path> と入力します
+
+

@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: concept_licensing.html 
+keywords: licenses, licensing, byol, license, subscription, renewal, expire, netapp support site, account, credentials, file, license file, upload, nlf, backup to cloud license, byol backup, license for backup to cloud 
+summary: 各 Cloud Volumes ONTAP BYOL システムには、アクティブなサブスクリプションを使用したシステムライセンスがインストールされている必要があります。Cloud Manager では、ライセンスを管理し、有効期限が切れる前に通知することで、プロセスを簡素化します。BYOL ライセンスは、 Backup to Cloud でも利用できます。 
+---
+= ライセンス
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+各 Cloud Volumes ONTAP BYOL システムには、アクティブなサブスクリプションを使用したシステムライセンスがインストールされている必要があります。Cloud Manager では、ライセンスを管理し、有効期限が切れる前に通知することで、プロセスを簡素化します。BYOL ライセンスは、 Backup to Cloud でも利用できます。
+
+
+
+== BYOL システムのライセンス
+
+Cloud Volumes ONTAP BYOL システムでは、複数のライセンスを購入して、 368 TB を超える容量を割り当てることができます。たとえば、 2 つのライセンスを購入して、 Cloud Volumes ONTAP に最大 736TB の容量を割り当てることができます。また、 4 つのライセンスを購入して、最大 1.4 PB までライセンスを取得することもできます。
+
+シングルノードシステムまたは HA ペアに対して購入できるライセンスの数に制限はありません。
+
+ディスク制限によって、ディスクだけを使用することで容量制限に達することがないことに注意してください。を使用すると、ディスク制限を超えることができます link:concept_data_tiering.html["使用頻度の低いデータをオブジェクトストレージに階層化します"]。ディスクの制限については、を参照してください https://docs.netapp.com/us-en/cloud-volumes-ontap/["ストレージの制限については、『 Cloud Volumes ONTAP リリースノート』を参照してください"^]。
+
+
+
+=== 新しいシステムのライセンス管理
+
+BYOL システムを作成する際、 Cloud Manager はライセンスのシリアル番号と NetApp Support Site のアカウントを入力するよう求めます。Cloud Manager は、アカウントを使用してネットアップからライセンスファイルをダウンロードし、 Cloud Volumes ONTAP システムにインストールします。
+
+link:task_adding_nss_accounts.html["ネットアップサポートサイトのアカウントをクラウドに追加する方法をご確認ください マネージャー"]。
+
+Cloud Manager がセキュアなインターネット接続経由でライセンスファイルにアクセスできない場合は、ユーザがファイルを取得して、 Cloud Manager に手動でアップロードできます。手順については、を参照してください link:task_managing_licenses.html["Cloud Volumes ONTAP の BYOL ライセンスの管理"]。
+
+
+
+=== ライセンスの有効期限に関する警告
+
+ライセンスの有効期限が切れる 30 日前と、ライセンスの有効期限が切れる 30 日前に、 Cloud Manager から警告が表示されます。次の図は、 30 日間の有効期限の警告を示しています。
+
+image:screenshot_warning.gif["スクリーンショット：警告アイコンが含まれている Cloud Volumes ONTAP の作業環境を示します。アイコンは、アクションが必要であることを示します。"]
+
+メッセージを確認する作業環境を選択できます。
+
+期限までにライセンスを更新しない場合は、 Cloud Volumes ONTAP システムがシャットダウンされます。再起動すると、自動的にシャットダウンされます。
+
+
+NOTE: Cloud Volumes ONTAP では、 EMS （ Event Management System ）イベント通知を使用して、電子メール、 SNMP トラップホスト、または syslog サーバから通知することもできます。手順については、を参照してください http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-ems/home.html["ONTAP 9 EMS 構成エクスプレスガイド"^]。
+
+
+
+=== ライセンスの更新
+
+ネットアップの担当者に連絡して BYOL サブスクリプションを更新すると、 Cloud Manager は自動的にネットアップから新しいライセンスを取得し、 Cloud Volumes ONTAP システムにインストールします。
+
+Cloud Manager がセキュアなインターネット接続経由でライセンスファイルにアクセスできない場合は、ユーザがファイルを取得して、 Cloud Manager に手動でアップロードできます。手順については、を参照してください link:task_managing_licenses.html["Cloud Volumes ONTAP の BYOL ライセンスの管理"]。
+
+
+
+== BYOL バックアップライセンス
+
+BYOL バックアップライセンスを使用すると、一定期間、および最大容量のバックアップスペースのために、ネットアップからライセンスを購入して Backup to Cloud を使用できます。いずれかの制限に達すると、ライセンスを更新する必要があります。
+
+link:concept_backup_to_cloud.html#cost["Backup to Cloud BYOL ライセンスの詳細については、こちらをご覧ください"]。

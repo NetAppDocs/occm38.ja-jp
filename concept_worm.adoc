@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: concept_worm.html 
+keywords: worm, write once, read many, snaplock, enterprise, retain, retention, period 
+summary: Cloud Volumes ONTAP システム上で Write Once Read Many （ WORM ）ストレージをアクティブにして、指定した保存期間内にファイルを変更せずに保持できます。WORM ファイルはファイルレベルで保護されます。 
+---
+= WORM ストレージ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP システム上で Write Once Read Many （ WORM ）ストレージをアクティブにして、指定した保存期間内にファイルを変更せずに保持できます。WORM ストレージには、エンタープライズモードの SnapLock テクノロジが採用されています。つまり、 WORM ファイルはファイルレベルで保護されます。
+
+WORM ストレージにコミットされたファイルは、保存期間が終了した後でも変更できません。改ざん防止クロックは、 WORM ファイルの保持期間が経過したタイミングを決定します。
+
+保存期間が経過すると、不要になったファイルを削除する必要があります。
+
+[discrete]
+=== WORM ストレージのアクティブ化
+
+新しい作業環境を作成するときに、 Cloud Volumes ONTAP システムで WORM ストレージをアクティブにできます。これには、アクティベーションコードの指定とファイルのデフォルトの保存期間の設定が含まれます。アクティベーションコードを取得するには、 Cloud Manager インターフェイスの右下にあるチャットアイコンを使用します。
+
+
+NOTE: 個々のボリュームで WORM ストレージをアクティブ化することはできません -- WORM はシステムレベルでアクティブ化する必要があります
+
+次の図は、作業環境の作成時に WORM ストレージをアクティブにする方法を示しています。
+
+image:screenshot_enabling_worm.gif["に、新しい作業環境を作成するときに使用できる WORM オプションを示します。"]
+
+[discrete]
+=== ファイルを WORM にコミットしています
+
+アプリケーションを使用して、 NFS または CIFS を介してファイルを WORM にコミットしたり、 ONTAP CLI を使用してファイルを WORM に自動コミットしたりできます。また、追記可能 WORM ファイルを使用して、ログ情報のように増分的に書き込まれるデータを保持することもできます。
+
+Cloud Volumes ONTAP システムで WORM ストレージをアクティブにした後は、 WORM ストレージのすべての管理に ONTAP CLI を使用する必要があります。手順については、を参照してください http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-arch-con/home.html["ONTAP のドキュメント"^]。
+
+
+NOTE: WORM ストレージに対する Cloud Volumes ONTAP のサポートは、 SnapLock Enterprise モードと同等です。
+
+[discrete]
+=== 制限
+
+* AWS または Azure からディスクを直接削除または移動すると、ボリュームは有効期限前に削除されます。
+* WORM ストレージをアクティブ化すると、オブジェクトストレージへのデータ階層化を有効にできません。
+* WORM ストレージを有効にするには、クラウドへのバックアップを無効にする必要があります。
+

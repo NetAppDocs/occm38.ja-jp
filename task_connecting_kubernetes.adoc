@@ -1,0 +1,287 @@
+---
+sidebar: sidebar 
+permalink: task_connecting_kubernetes.html 
+keywords: kubernetes, persistent volumes, containers, persistent storage, kubeconfig, trident, kubernetes cluster, storage classes, classes, cvo-single, cvo-ha, thick provisioning, trident_trident, connect, disconnect, provision 
+summary: Cloud Manager では、 Kubernetes クラスタへの NetApp Trident の導入を自動化できるため、 Cloud Volumes ONTAP をコンテナ用の永続的ストレージとして使用できます。 
+---
+= Kubernetes 用の永続的ストレージとしての Cloud Volumes ONTAP の使用
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager では、 Kubernetes クラスタへの NetApp Trident の導入を自動化できるため、 Cloud Volumes ONTAP をコンテナ用の永続的ストレージとして使用できます。
+
+Trident は、ネットアップが管理する、完全にサポートされているオープンソースプロジェクトです。Trident は、 Kubernetes と Persistent Volume フレームワークとネイティブに統合されており、ネットアップのストレージプラットフォームを任意に組み合わせて実行されるシステムからボリュームのプロビジョニングと管理をシームレスに行います。 https://netapp-trident.readthedocs.io/en/latest/introduction.html["Trident の詳細をご確認ください"^]。
+
+
+NOTE: Kubernetes 機能は、オンプレミスの ONTAP クラスタではサポートされていません。Cloud Volumes ONTAP でのみサポートされています。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== 前提条件を確認する
+
+[role="quick-margin-para"]
+Kubernetes クラスタと Cloud Volumes ONTAP の接続、 Kubernetes クラスタとコネクタの間の接続、 1.14 以上の Kubernetes バージョン、クラスタ内の少なくとも 1 つのワーカーノードなど、環境が前提条件を満たしていることを確認します。 <<Reviewing prerequisites,すべてのリストを参照してください>>。
+
+
+
+==== Kubernetes クラスタを Cloud Manager に追加
+
+[role="quick-margin-para"]
+Cloud Manager で、 * Kubernetes * をクリックしてクラウドプロバイダの管理サービスからクラスタを直接検出するか、または kubeconfig ファイルを指定してクラスタをインポートします。
+
+
+
+==== クラスタを Cloud Volumes ONTAP に接続します
+
+[role="quick-margin-para"]
+Kubernetes クラスタを追加したら、 * 作業環境への接続 * をクリックして、クラスタを 1 つ以上の Cloud Volumes ONTAP システムに接続します。
+
+
+
+==== 永続ボリュームのプロビジョニングを開始します
+
+[role="quick-margin-para"]
+Kubernetes の標準のインターフェイスと構成要素を使用して、永続ボリュームを要求および管理できます。Cloud Manager では、 NFS ストレージクラスと iSCSI ストレージクラスが作成されます。このクラスは、永続的ボリュームのプロビジョニング時に使用できます。
+
+[role="quick-margin-para"]
+https://netapp-trident.readthedocs.io/["Trident で最初のボリュームをプロビジョニングする方法をご確認ください Kubernetes"^]。
+
+
+
+== 前提条件の確認
+
+開始する前に、 Kubernetes クラスタとコネクタが特定の要件を満たしていることを確認してください。
+
+
+
+=== Kubernetes クラスタの要件
+
+* Kubernetes クラスタとコネクタの間、および Kubernetes クラスタと Cloud Volumes ONTAP の間には、ネットワーク接続が必要です。
++
+Connector と Cloud Volumes ONTAP の両方で Kubernetes API エンドポイントへの接続が必要です。
+
++
+** 管理対象クラスタの場合は、クラスタの VPC と、コネクタと Cloud Volumes ONTAP が存在する VPC の間にルートを設定します。
+** 他のクラスタの場合は、マスターノードまたはロードバランサの IP アドレス（ kubeconfig ファイルに一覧表示）にコネクタおよび Cloud Volumes ONTAP から到達可能で、有効な TLS 証明書を提供する必要があります。
+
+
+* Kubernetes クラスタは、上記のネットワーク接続を持つ任意の場所に配置できます。
+* Kubernetes クラスタで少なくともバージョン 1.14 が実行されている必要があります。
++
+サポートされる最大バージョンは Trident によって定義されています。 https://netapp-trident.readthedocs.io/en/stable-v20.07/support/requirements.html#supported-frontends-orchestrators["サポートされる Kubernetes の最大バージョンについては、こちらをクリックしてください"^]。
+
+* Kubernetes クラスタには、少なくとも 1 つのワーカーノードが必要です。
+* Amazon Elastic Kubernetes Service （ Amazon EKS ）で実行されているクラスタの場合、権限のエラーを解決するために、各クラスタに IAM ロールを追加する必要があります。クラスタの追加後、 Cloud Manager は、エラーを解決する eksctl コマンドでプロンプトを表示します。
++
+https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html["IAM 権限の境界について説明します"^]。
+
+* Azure Kubernetes Service （ AKS ）で実行されているクラスタには、これらのクラスタに _Azure Kubernetes Service RBAC Cluster Admin_role を割り当てる必要があります。これは、 Cloud Manager が Trident をインストールし、クラスタにストレージクラスを設定するために必要です。
+* Google Kubernetes Engine （ GKE ）で実行されているクラスタでは、デフォルトのコンテナ最適化 OS を使用しないでください。Ubuntu を使用するようにホストを切り替える必要があります。
++
+GKE はデフォルトで Google を使用します https://cloud.google.com/container-optimized-os["コンテナで最適化されたイメージ"^]には、 Trident がボリュームをマウントするために必要なユーティリティがありません。
+
+
+
+
+
+=== コネクタの要件
+
+次のネットワークと許可がコネクタに設定されていることを確認します。
+
+
+
+==== ネットワーキング
+
+* Trident のインストール時に次のエンドポイントにアクセスするには、コネクタにアウトバウンドインターネット接続が必要です。
++
+¥ https://packages.cloud.google.com/yum ¥ https://github.com/NetApp/trident/releases/download/
+
++
+Cloud Manager は、作業環境をクラスタに接続すると Kubernetes クラスタに Trident をインストールします。
+
+
+
+
+
+==== EKS クラスタを検出および管理するために必要な権限
+
+Connector は、 Amazon Elastic Kubernetes Service （ EKS ）で実行されている Kubernetes クラスタを検出して管理するために Admin 権限を必要とします。
+
+[source, json]
+----
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "eks:*",
+            "Resource": "*"
+       }
+    ]
+}
+----
+
+
+==== GKE クラスタの検出と管理に必要な権限
+
+Connector は、 Google Kubernetes Engine （ GKE ）で実行されている Kubernetes クラスタを検出して管理するために次の権限を必要とします。
+
+[source, yaml]
+----
+container.*
+----
+
+
+=== セットアップ例
+
+次の図は、 Amazon Elastic Kubernetes Service （ Amazon EKS ）で実行されている Kubernetes クラスタとコネクタおよび Cloud Volumes ONTAP への接続の例を示しています。
+
+image:diagram_kubernetes.png["AWS で実行されている Kubernetes クラスタのアーキテクチャ図と、 AWS で実行されているコネクタおよび Cloud Volumes ONTAP への接続"]
+
+
+
+== Kubernetes クラスタを追加しています
+
+クラウドプロバイダの管理対象の Kubernetes サービスで実行されているクラスタを検出するか、クラスタの kubeconfig ファイルをインポートして、 Kubernetes クラスタを Cloud Manager に追加します。
+
+.手順
+. Cloud Manager の上部で、 * Kubernetes * をクリックします。
+. [Add Cluster*] をクリックします。
+. 次のいずれかのオプションを選択します。
++
+** [* クラスタの検出 * ] をクリックして、 Cloud Manager がコネクタに指定した権限に基づいてアクセスできる管理対象クラスタを検出します。
++
+たとえば、 Connector が Google Cloud で実行されている場合、 Cloud Manager は、 Connector のサービスアカウントの権限を使用して、 Google Kubernetes Engine （ GKE ）で実行されているクラスタを検出します。
+
+** * クラスタのインポート * をクリックして、 kubeconfig ファイルを使用してクラスタをインポートします。
++
+ファイルをアップロードすると、 Cloud Manager はクラスタへの接続を検証し、暗号化された kubeconfig ファイルのコピーを保存します。
+
+
+
+
+
+Cloud Manager によって Kubernetes クラスタが追加されます。これで、クラスタを Cloud Volumes ONTAP に接続できるようになります。
+
+
+
+== クラスタを Cloud Volumes ONTAP に接続しています
+
+Kubernetes クラスタを Cloud Volumes ONTAP に接続し、 Cloud Volumes ONTAP をコンテナ用の永続的ストレージとして使用できるようにします。
+
+.手順
+. Cloud Manager の上部で、 * Kubernetes * をクリックします。
+. 追加したクラスタの [Connect to Working Environment] をクリックします。
++
+image:screenshot_kubernetes_connect.gif["Kubernetes クラスタのリストのスクリーンショット。作業環境に接続をクリックできます。"]
+
+. 作業環境を選択し、 * 続行 * をクリックします。
+. Kubernetes クラスタのデフォルトのストレージクラスとして使用するネットアップストレージクラスを選択し、「 * Continue * 」をクリックします。
++
+ユーザが永続ボリュームを作成すると、 Kubernetes クラスタはこのストレージクラスをデフォルトでバックエンドストレージとして使用できます。
+
+. デフォルトの自動エクスポートポリシーを使用するか、カスタムの CIDR ブロックを追加するかを選択します。
++
+image:screenshot_kubernetes_confirm.gif["確認ページのスクリーンショット。オプションを確認してエクスポートポリシーを設定します。"]
+
+. * 作業環境の追加 * をクリックします。
+
+
+Cloud Manager によって作業環境がクラスタに接続されます。この処理には最大 15 分かかることがあります。
+
+
+
+== クラスタの管理
+
+Cloud Manager では、 Kubernetes クラスタを管理するために、デフォルトのストレージクラスの変更、 Trident のアップグレードなどを行うことができます。
+
+
+
+=== デフォルトのストレージクラスを変更する
+
+クラスタがバックエンドストレージとして Cloud Volumes ONTAP を使用するように、 Cloud Volumes ONTAP ストレージクラスをデフォルトのストレージクラスとして設定していることを確認します。
+
+.手順
+. Cloud Manager の上部で、 * Kubernetes * をクリックします。
+. Kubernetes クラスタの名前をクリックします。
+. ストレージクラス * の表で、デフォルトとして設定するストレージクラスの右端にあるアクションメニューをクリックします。
++
+image:screenshot_kubernetes_storage_class.gif["ストレージクラステーブルのスクリーンショット。アクションメニューをクリックしてデフォルトに設定を選択します。"]
+
+. * デフォルトに設定 * をクリックします。
+
+
+
+
+=== Trident のアップグレード
+
+Trident の新しいバージョンが利用可能になったら、 Cloud Manager から Trident をアップグレードできます。
+
+.手順
+. Cloud Manager の上部で、 * Kubernetes * をクリックします。
+. Kubernetes クラスタの名前をクリックします。
+. 新しいバージョンが利用可能な場合は、 Trident バージョンの横にある * アップグレード * をクリックします。
++
+image:screenshot_kubernetes_upgrade.gif["Trident バージョンの横に Upgrade ボタンが表示される Cluster Details ページのスクリーンショット"]
+
+
+
+
+
+=== kubeconfig ファイルを更新しています
+
+クラスタを Cloud Manager に追加したときに kubeconfig ファイルをインポートすると、いつでも最新の kubeconfig ファイルを Cloud Manager にアップロードできます。この処理は、クレデンシャルを更新した場合、ユーザやロールを変更した場合、またはクラスタ、ユーザ、ネームスペース、認証に影響する変更を加えた場合に実行します。
+
+.手順
+. Cloud Manager の上部で、 * Kubernetes * をクリックします。
+. Kubernetes クラスタの名前をクリックします。
+. ［ * Update Kubeconfig * ］ をクリックします。
+. Web ブラウザからプロンプトが表示されたら、更新された kubeconfig ファイルを選択し、 * Open * をクリックします。
+
+
+Cloud Manager は、最新の kubeconfig ファイルに基づいて Kubernetes クラスタに関する情報を更新します。
+
+
+
+=== クラスタを切断しています
+
+クラスタを Cloud Volumes ONTAP から切断すると、その Cloud Volumes ONTAP システムをコンテナ用の永続的ストレージとして使用できなくなります。既存の永続ボリュームは削除されません。
+
+.手順
+. Cloud Manager の上部で、 * Kubernetes * をクリックします。
+. Kubernetes クラスタの名前をクリックします。
+. [* 作業環境 * （ Working Environments * ） ] テーブルで、切断する作業環境の右端にあるアクションメニューをクリックします。
++
+image:screenshot_kubernetes_disconnect.gif["テーブルの右端にあるメニューをクリックすると、 [Disconnect] アクションが表示される作業環境テーブルのスクリーンショット。"]
+
+. [ 切断（ Disconnect ） ] をクリックする。
+
+
+Cloud Manager によってクラスタが Cloud Volumes ONTAP システムから切断されます。
+
+
+
+=== クラスタを削除しています
+
+すべての作業環境をクラスタから切断したら、運用停止したクラスタを Cloud Manager から削除します。
+
+.手順
+. Cloud Manager の上部で、 * Kubernetes * をクリックします。
+. Kubernetes クラスタの名前をクリックします。
+. [ クラスタの削除 ] をクリックします。
++
+image:screenshot_kubernetes_remove.gif["クラスタの詳細ページの上部に表示されるクラスタの削除ボタンのスクリーンショット。"]
+
+

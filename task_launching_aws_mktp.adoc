@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: task_launching_aws_mktp.html 
+keywords: install connector, create connector, deploy connector, installation, installing, marketplace, aws, launch, launching, ec2 console, iam role 
+summary: Cloud Manager からコネクタを直接作成することを推奨します。 AWS アクセスキーを指定しない場合は、 AWS Marketplace からコネクタを起動できます。Connector の作成とセットアップが完了すると、新しい作業環境を作成するときに、 Cloud Manager によって自動的に Connector が使用されます。 
+---
+= AWS Marketplace からコネクタを作成する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager からコネクタを直接作成することを推奨します。 AWS アクセスキーを指定しない場合は、 AWS Marketplace からコネクタを起動できます。Connector の作成とセットアップが完了すると、新しい作業環境を作成するときに、 Cloud Manager によって自動的に Connector が使用されます。
+
+.手順
+. EC2 インスタンス用の IAM ポリシーとロールを作成します。
++
+.. 次のサイトから Cloud Manager IAM ポリシーをダウンロードします。
++
+https://mysupport.netapp.com/site/info/cloud-manager-policies["NetApp Cloud Manager ： AWS 、 Azure 、 GCP ポリシー"^]
+
+.. IAM コンソールから、 Cloud Manager IAM ポリシーからテキストをコピーアンドペーストして、独自のポリシーを作成します。
+.. ロールタイプが Amazon EC2 の IAM ロールを作成し、前の手順で作成したポリシーをロールに付加します。
+
+
+. 次に、に進みます https://aws.amazon.com/marketplace/pp/B018REK8QG["AWS Marketplace の Cloud Manager のページ"^] AMI から Cloud Manager を導入
++
+IAM ユーザがサブスクライブとサブスクライブ解除を行うには、 AWS Marketplace の権限が必要です。
+
+. [Marketplace] ページで [* Continue to Subscribe* ] をクリックし、 [* Continue to Configuration* ] をクリックします。
++
+image:screenshot_subscribe_cm.gif["AWS Marketplace の Continue to Subscribe and Continue to Configuration ボタンを示すスクリーンショット"]
+
+. デフォルトのオプションを変更し、 [* Continue to Launch] をクリックします。
+. [ アクションの選択 *] で [* EC2 で起動 ] を選択し、 [* 起動 *] をクリックします。
++
+以下の手順では、 EC2 コンソールからインスタンスを起動する方法について説明します。このコンソールでは、 IAM ロールを Cloud Manager インスタンスに関連付けることができます。これは、 * ウェブサイトからの起動 * アクションを使用しては実行できません。
+
+. プロンプトに従って、インスタンスを設定および導入します。
++
+** * インスタンスタイプを選択 * ：リージョンの可用性に応じて、サポートされているインスタンスタイプ（ t3.xlarge を推奨）のいずれかを選択します。
++
+link:reference_cloud_mgr_reqs.html["インスタンスの要件を確認します"]。
+
+** * Configure Instance * ： VPC とサブネットを選択し、手順 1 で作成した IAM ロールを選択して、終了保護を有効にし（推奨）、要件を満たす他の設定オプションを選択します。
++
+image:screenshot_aws_iam_role.gif["AWS の Configure Instance ページのフィールドを示すスクリーンショット。手順 1 で作成する必要のある IAM ロールが選択されている。"]
+
+** * Add Storage* ：デフォルトのストレージ・オプションをそのまま使用します。
+** * Add Tags* ：必要に応じて、インスタンスのタグを入力します。
+** * セキュリティグループの設定 * ：コネクタインスタンスに必要な接続方法（ SSH 、 HTTP 、 HTTPS ）を指定します。
+** * 復習 * ：選択内容を確認して、 * 起動 * をクリックします。
++
+AWS は、指定した設定でソフトウェアを起動します。コネクタインスタンスとソフトウェアは、約 5 分後に実行される必要があります。
+
+
+
+. コネクタインスタンスに接続されているホストから Web ブラウザを開き、次の URL を入力します。
++
+http://_ipaddress_:80[]
+
+. ログイン後、コネクタを設定します。
++
+.. コネクタに関連付ける Cloud Central アカウントを指定します。
++
+link:concept_cloud_central_accounts.html["Cloud Central アカウントについて詳しくは、こちらをご覧ください"]。
+
+.. システムの名前を入力します。
++
+image:screenshot_set_up_cloud_manager.gif["コネクタのセットアップ画面のスクリーンショット。 Cloud Central アカウントを選択してシステムに名前を付けることができます。"]
+
+
+
+
+
+これで、 Connector がインストールされ、 Cloud Central アカウントでセットアップされました。Cloud Manager は、新しい作業環境の作成時にこのコネクタを自動的に使用します。ただし、コネクタが複数ある場合は、が必要です link:task_managing_connectors.html["スイッチを切り替えます"]。

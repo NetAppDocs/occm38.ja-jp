@@ -1,0 +1,102 @@
+---
+sidebar: sidebar 
+permalink: task_setting_up_kms.html 
+keywords: encryption, kms, key management service, cmk, customer master key, master key, key, permissions 
+summary: Cloud Volumes ONTAP で Amazon 暗号化を使用する場合は、 AWS Key Management Service をセットアップする必要があります。 
+---
+= AWS KMS のセットアップ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP で Amazon 暗号化を使用する場合は、 AWS Key Management Service （ KMS ）を設定する必要があります。
+
+.手順
+. アクティブな Customer Master Key （ CMK ）が存在することを確認します。
++
+CMK は、 AWS 管理の CMK または顧客管理の CMK にすることができます。Cloud Manager および Cloud Volumes ONTAP と同じ AWS アカウントにすることも、別の AWS アカウントにすることもできます。
+
++
+https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys["AWS ドキュメント：「 Customer Master Keys （ CMK ；カスタマーマスターキー）」"^]
+
+. 各 CMK のキーポリシーを変更します。変更するには、 Cloud Manager に a_key user_権限 を付与する IAM ロールを追加します。
++
+IAM ロールをキーユーザとして追加すると、 Cloud Volumes ONTAP で CMK を使用する権限が Cloud Manager に付与されます。
+
++
+https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html["AWS のドキュメント：「キーの編集"^]
+
+. CMK が別の AWS アカウントにある場合は、次の手順を実行します。
++
+.. CMK が存在するアカウントから KMS コンソールにアクセスします。
+.. キーを選択します。
+.. General configuration * ペインで、キーの ARN をコピーします。
++
+Cloud Volumes ONTAP システムの作成時には、 Cloud Manager の ARN の指定が必要になります。
+
+.. その他の AWS アカウント * ペインで、 Cloud Manager に権限を付与する AWS アカウントを追加します。
++
+ほとんどの場合、 Cloud Manager が配置されているアカウントです。Cloud Manager が AWS にインストールされていない場合、 Cloud Manager に AWS アクセスキーを指定したアカウントになります。
+
++
+image:screenshot_cmk_add_accounts.gif["このスクリーンショットは、 AWS KMS コンソールの「 Add other AWS accounts 」ボタンを示しています。"]
+
++
+image:screenshot_cmk_add_accounts_dialog.gif["このスクリーンショットは、 AWS KMS コンソールの「その他の AWS アカウント」ダイアログボックスを示しています。"]
+
+.. 次に、 Cloud Manager に権限を付与する AWS アカウントに切り替えて、 IAM コンソールを開きます。
+.. 以下の権限を含む IAM ポリシーを作成します。
+.. Cloud Manager に権限を付与する IAM ロールまたは IAM ユーザにポリシーを関連付けます。
++
+次のポリシーは、 Cloud Manager が外部 AWS アカウントから CMK を使用するために必要な権限を提供します。「リソース」セクションで、リージョンとアカウント ID を必ず変更してください。
+
++
+[source, json]
+----
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowUseOfTheKey",
+            "Effect": "Allow",
+            "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+                "kms:DescribeKey"
+            ],
+            "Resource": [
+                "arn:aws:kms:us-east-1:externalaccountid:key/externalkeyid"
+            ]
+        },
+        {
+            "Sid": "AllowAttachmentOfPersistentResources",
+            "Effect": "Allow",
+            "Action": [
+                "kms:CreateGrant",
+                "kms:ListGrants",
+                "kms:RevokeGrant"
+            ],
+            "Resource": [
+                "arn:aws:kms:us-east-1:externalaccountid:key/externalaccountid"
+            ],
+            "Condition": {
+                "Bool": {
+                    "kms:GrantIsForAWSResource": true
+                }
+            }
+        }
+    ]
+}
+----
++
+このプロセスの詳細については、を参照してください https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying.html#key-policy-modifying-external-accounts["AWS ドキュメント：「外部 AWS アカウントによる CMK へのアクセスの許可"^]。
+
+
+
+

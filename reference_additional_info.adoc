@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: reference_additional_info.html 
+keywords: community, forums, help, support, videos, policies, json, api, ontap, release notes, bugs, limitations, known issues, permissions, apis, flexcache, common vulnerabilities and exposures, cve, security 
+summary: Cloud Manager と Cloud Volumes ONTAP の詳細については、ビデオ、フォーラム、サポートなどのさまざまなリソースを参照してください。 
+---
+= ヘルプを参照したり、詳細情報を参照したりするには
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager と Cloud Volumes ONTAP の詳細については、ビデオ、フォーラム、サポートなどのさまざまなリソースを参照してください。
+
+* https://mysupport.netapp.com/GPS/ECMLS2588181.html["NetApp Cloud Volumes ONTAP のサポート"^]
++
+サポートリソースにアクセスして、 Cloud Volumes ONTAP に関するヘルプやトラブルシューティングを参照してください。
+
+* https://www.youtube.com/playlist?list=PLdXI3bZJEw7lnoRo8FBKsX1zHbK8AQOoT["Cloud Manager と Cloud Volumes ONTAP のビデオ"^]
++
+Cloud Volumes ONTAP の導入と管理の方法、ハイブリッドクラウド全体でデータをレプリケートする方法を紹介したビデオをご覧ください。
+
+* https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager のポリシー"^]
++
+Cloud Manager がクラウドプロバイダ内でアクションを実行するために必要な権限を含む JSON ファイルをダウンロードします。
+
+* link:api.html["Cloud Manager API 開発者ガイド"^]
++
+API の概要、使用方法の例、 API リファレンスを紹介します。
+
+* Cloud Volumes ONTAP のトレーニング
++
+** https://learningcenter.netapp.com/LC?ObjectType=WBT&ObjectID=00368390["Cloud Volumes ONTAP の基礎"^]
+** https://learningcenter.netapp.com/LC?ObjectType=WBT&ObjectID=00369436["Azure 向け Cloud Volumes ONTAP の導入と管理"^]
+** https://learningcenter.netapp.com/LC?ObjectType=WBT&ObjectID=00376094["AWS 向けの Cloud Volumes ONTAP の導入と管理"^]
+
+
+* テクニカルレポート
++
+** https://www.netapp.com/us/media/tr-4383.pdf["NetApp テクニカルレポート 4383 ：アプリケーションワークロードを使用した Amazon Web Services における Cloud Volumes ONTAP のパフォーマンス特性"^]
+** https://www.netapp.com/us/media/tr-4671.pdf["NetApp テクニカルレポート 4671 ：アプリケーションワークロードを使用した Azure における Cloud Volumes ONTAP のパフォーマンス特性評価"^]
+** https://www.netapp.com/us/media/tr-4816.pdf["ネットアップテクニカルレポート 4816 ：『 Performance Characterization of Cloud Volumes ONTAP for Google Cloud 』"^]
+
+
+* SVM ディザスタリカバリ
++
+SVM ディザスタリカバリは、ソース SVM からデスティネーション SVM への SVM のデータと設定の非同期ミラーリングです。ソース SVM が使用できなくなった場合は、デスティネーション SVM をデータアクセス用に簡単にアクティブ化できます。
+
++
+** https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["『 Cloud Volumes ONTAP 9SVM Disaster Recovery Preparation Express Guide 』を参照してください"^]
++
+ディザスタリカバリに備えて、デスティネーション SVM を迅速に設定する方法について説明します。
+
+** https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["『 Cloud Volumes ONTAP 9SVM Disaster Recovery Express Guide 』を参照してください"^]
++
+災害発生後にデスティネーション SVM を迅速にアクティブ化し、ソース SVM を再アクティブ化する方法について説明します。
+
+
+
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-fc-mgmt/home.html["『 FlexCache Volumes for Faster Data Access Power Guide 』を参照してください"^]
++
+データアクセスを高速化するために、元のボリュームと同じクラスタまたは異なるクラスタに FlexCache ボリュームを作成して管理する方法について説明します。
+
+* https://security.netapp.com/advisory/["セキュリティアドバイザリ"^]
++
+ONTAP を含むネットアップ製品の既知の脆弱性（ CSE ）を特定するCloud Volumes ONTAP のセキュリティの脆弱性は、 ONTAP のドキュメントに従って修正できます。
+
+* http://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 ドキュメンテーション・センター"^]
++
+Cloud Volumes ONTAP の使用に役立つ ONTAP の製品マニュアルにアクセスしてください。
+
+* https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS["ネットアップコミュニティ：クラウドデータサービス"^]
++
+同僚とつながり、質問をしたり、アイデアを交換したり、リソースを見つけたり、ベストプラクティスを共有したりします。
+
+* http://cloud.netapp.com/["NetApp Cloud Central"^]
++
+クラウド向けのその他のネットアップ製品とソリューションに関する情報をご覧ください。
+
+* http://docs.netapp.com["ネットアップの製品マニュアル"^]
++
+手順、リソース、回答については、ネットアップの製品マニュアルを参照してください。
+
+

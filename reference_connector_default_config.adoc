@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: reference_connector_default_config.html 
+keywords: linux, user name, operating system, installation files, installation folder, folder, log, logs, service, mysql, packages, linux 
+summary: コネクタのトラブルシューティングが必要な場合は、コネクタの設定を理解すると役立つことがあります。 
+---
+= コネクタのデフォルト設定
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+コネクタのトラブルシューティングが必要な場合は、コネクタの設定を理解すると役立つことがあります。
+
+* Cloud Manager から（またはクラウドプロバイダのマーケットプレイスから直接） Connector を導入した場合は、次の点に注意してください。
++
+** AWS では、 EC2 Linux インスタンスのユーザ名は EC2-user です。
+** イメージのオペレーティングシステムは次のとおりです。
++
+*** AWS ： Red Hat Enterprise Linux 7.5 （ HVM ）
+*** Azure ： Red Hat Enterprise Linux 7.6 （ HVM ）
+*** GCP ： CentOS 7.6
++
+オペレーティングシステムには GUI は含まれていません。システムにアクセスするには、端末を使用する必要があります。
+
+
+
+
+
+* Connector インストールフォルダは、次の場所にあります。
++
+/opt/application/netapp/cloudmanager です
+
+* ログファイルは次のフォルダに格納されます。
++
+/opt/application/netapp/cloudmanager/log を選択します
+
+* Cloud Manager サービスの名前は occm です。
+* OCCM サービスは MySQL サービスに依存します。
++
+MySQL サービスがダウンしている場合は、 OCCM サービスもダウンしています。
+
+* 次のパッケージがまだインストールされていない場合は、 Cloud Manager によって Linux ホストにインストールされます。
++
+** 7 郵便番号
+** AWSCLI
+** Docker です
+** Java
+** Kubectl のように入力する
+** MySQL
+** Tridentctl
+** プル
+** 取得
+
+
+* このコネクタは Linux ホストで次のポートを使用します。
++
+** HTTP アクセスの場合は 80
+** 443 ： HTTPS アクセス用
+** 3306 （ Cloud Manager データベース用
+** クラウドマネージャ API プロキシの場合は 8080
+** Service Manager API の場合は 8666
+** 8777 （ Health-Checker コンテナサービス API の場合）
+
+
+

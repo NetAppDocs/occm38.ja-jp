@@ -1,0 +1,130 @@
+---
+sidebar: sidebar 
+permalink: task_manage_anf_volumes.html 
+keywords: azure netapp files, create volumes, delete volumes, create nfs volumes, delete nfs volumes, netapp account, capacity pool, create capacity pool, azure netapp files permissions, azure permissions, mount path, get mount path, find mount path, mount volume 
+summary: 作業環境のセットアップが完了したら、 Azure NetApp Files アカウント、容量プール、ボリューム、 Snapshot の作成と管理を開始できます。 
+---
+= Azure NetApp Files 用のボリュームを作成および管理する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+作業環境をセットアップしたら、 Azure NetApp Files アカウント、容量プール、ボリューム、 Snapshot を作成して管理できます。
+
+
+
+== ボリュームの作成
+
+NFS または SMB ボリュームは、新規または既存の Azure NetApp Files アカウントで作成できます。
+
+.手順
+. Azure NetApp Files 作業環境を開きます。
+. [ 新しいボリュームの追加 ] をクリックします。
+. 各ページで必要な情報を入力します。
++
+** * Azure NetApp Files アカウント * ：既存の Azure NetApp Files アカウントを選択するか、新しいアカウントを作成します。
++
+image:screenshot_anf_create_account.gif["「 Azure NetApp Files アカウントの作成に必要なフィールドのスクリーンショット。名前、 Azure サブスクリプション、場所、リソースグループが含まれています。」"]
+
+** * 容量プール * ：既存の容量プールを選択するか、新しい容量プールを作成します。
++
+新しい容量プールを作成する場合は、サイズを指定してを選択する必要があります https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels["サービスレベル"^]。
+
++
+容量プールの最小サイズは 4TB です。サイズは 4TB の倍数で指定できます。
+
+** * 詳細とタグ * ：ボリュームの名前とサイズ、ボリュームを配置する VNet とサブネットを入力し、必要に応じてボリュームのタグを指定します。
+** * プロトコル * ： NFS または SMB プロトコルを選択し、必要な情報を入力します。
++
+以下に、 NFS の詳細の例を示します。
+
++
+image:screenshot_anf_nfs.gif[""]
+
++
+SMB の詳細の例を次に示します。最初の SMB ボリュームをセットアップするときに、 Active Directory の情報を指定する必要があります。
+
++
+image:screenshot_anf_smb.gif[""]
+
+
+
+. [ ボリュームの追加 ] をクリックします。
+
+
+
+
+== ボリュームのマウント
+
+Cloud Manager でのマウント手順を参照して、ホストにボリュームをマウントできるようにします。
+
+.手順
+. 作業環境を開きます。
+. ボリュームにカーソルを合わせ、 * ボリュームをマウント * を選択します。
++
+image:screenshot_anf_hover.gif[""]
+
+. 指示に従ってボリュームをマウントします。
+
+
+
+
+== ボリュームのサイズとタグを編集する
+
+ボリュームの作成後、ボリュームのサイズやタグをいつでも変更できます。
+
+.手順
+. 作業環境を開きます。
+. ボリュームにカーソルを合わせ、 * 編集 * を選択します。
+. 必要に応じてサイズとタグを変更します。
+. [ 適用（ Apply ） ] をクリックします。
+
+
+
+
+== Snapshot コピーの管理
+
+Snapshot コピーは、ボリュームのポイントインタイムコピーを提供します。Snapshot コピーの作成、新しいボリュームへのデータのリストア、および Snapshot コピーの削除
+
+.手順
+. 作業環境を開きます。
+. ボリュームにカーソルを合わせ、 Snapshot コピーの管理に使用できるオプションを 1 つ選択します。
++
+** * Snapshot コピーを作成します *
+** * 新しいボリュームへのリストア *
+** * Snapshot コピーを削除します。 *
+
+
+. プロンプトに従って、選択した操作を完了します。
+
+
+
+
+== ボリュームの削除
+
+不要になったボリュームを削除します。
+
+.手順
+. 作業環境を開きます。
+. ボリュームにカーソルを合わせ、 * 削除 * をクリックします。
+. ボリュームを削除することを確定します。
+
+
+
+
+== Azure NetApp Files の削除
+
+この操作を実行すると、 Azure NetApp Files が Cloud Manager から削除されます。Azure NetApp Files アカウントやボリュームは削除されません。Azure NetApp Files はいつでも Cloud Manager に追加できます。
+
+.手順
+. Azure NetApp Files 作業環境を開きます。
+. ページの右上にあるアクションメニューを選択し、 * Azure NetApp Files の削除 * をクリックします。
++
+image:screenshot_anf_remove.gif[""]
+
+. [ 削除（ Remove ） ] をクリックして確定します。
+

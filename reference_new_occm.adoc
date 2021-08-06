@@ -1,0 +1,937 @@
+---
+sidebar: sidebar 
+permalink: reference_new_occm.html 
+keywords: what's new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes 
+summary: 通常、 Cloud Manager では毎月新しいリリースが導入され、新機能、拡張機能、およびバグ修正が提供されます。 
+---
+= Cloud Manager 3.8 の新機能
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+通常、 Cloud Manager では毎月新しいリリースが導入され、新機能、拡張機能、およびバグ修正が提供されます。
+
+
+TIP: 以前のリリースをお探しですか？link:https://docs.netapp.com/us-en/occm37/reference_new_occm.html["3.7 の新機能"^]
+
+
+
+
+
+== 新しい Terraform プロバイダ（ 2020 年 10 月 19 日）
+
+ネットアップは、 DevOps チームが Cloud Manager と連携して Cloud Volumes ONTAP を自動化し、コードとしてインフラと統合できる新しい Terraform プロバイダを開発しました。
+
+https://registry.terraform.io/providers/NetApp/netapp-cloudmanager/latest["cloudmanager プロバイダを表示します"^]。
+
+
+
+== Cloud Manager 3.8.9 の更新（ 2020 年 10 月 18 日）
+
+を活用して https://spot.io/products/cloud-analyzer/["Spot の Cloud Analyzer の略"^]Cloud Manager では、クラウドコンピューティング関連のコストを高水準で分析し、コスト削減の可能性を特定できるようになりました。この情報は、 Cloud Manager の * Compute * サービスから入手できます。 link:concept_compute.html["詳細はこちら。"]。
+
+image:screenshot_compute_dashboard.gif["Cloud Manager のコスト分析ページを示すスクリーンショット。"]
+
+
+
+== Cloud Manager 3.8.9 の更新（ 2020 年 10 月 13 日）
+
+Cloud Tiering には、次の 2 つの更新がリリースされてい
+
+* Cloud Tiering のライセンスが Cloud Manager から提供されるようになりました。
++
+従量課金制のサブスクリプション、 FabricPool 階層化ライセンスの _ ONTAP _ 、またはその組み合わせを使用して、オンプレミスの ONTAP クラスタからクラウドへのデータ階層化を行うことができます。
+
+* スタンドアロンの Cloud Tiering サービスは廃止されました。Cloud Tiering には、 Cloud Manager から直接アクセスできます。 Cloud Manager には、同じ機能がすべて利用できます。
+
+
+
+
+== Cloud Manager 3.8.9 （ 2020 年 10 月 4 日）
+
+* <<Cloud Compliance enhancements>>
+* <<Cloud Volumes Service for AWS enhancements>>
+* <<Cloud Sync integration>>
+* <<Account management enhancements>>
+* <<Changes for Government regions>>
+
+
+
+
+=== Cloud Compliance の機能拡張
+
+* Cloud Manager に、新しい * Cloud Compliance Viewer * ロールが追加されました。
++
+このロールを割り当てられたユーザーは、コンプライアンス情報を表示し、アクセス権限を持つワークスペースのレポートを生成することのみができます。Cloud Compliance の設定は管理できず、他の Cloud Manager の機能やサービスにはアクセスできません。これは、 Cloud Compliance スキャンの結果を監視できるようにするために、法務部門にとって最適な役割です。を参照してください link:reference_user_roles.html["ユーザロール"] を参照してください。
+
+* MongoDB データベーススキーマと PostgreSQL データベーススキーマのスキャンがサポートされるようになりました。を参照してください link:task_scanning_databases.html["データベーススキーマをスキャンしています"] を参照してください。
+* Cloud Compliance の価格は、 10 月 7 日時点で変更されています。
++
+Cloud Compliance が Cloud Manager ワークスペースでスキャンする最初の 1TB のデータは無料です。これには、 Cloud Volumes ONTAP ボリューム、 Azure NetApp Files ボリューム、 Amazon S3 バケット、データベーススキーマのデータが含まれます。1TB に達したあとに追加データをスキャンするには、サブスクリプションが必要です。を参照してください link:https://cloud.netapp.com/cloud-compliance#pricing["価格設定"^] を参照してください。
+
+
+
+
+
+=== Cloud Volumes Service for AWS の機能拡張
+
+新しいボリュームを作成するときに、そのボリュームを別のボリュームの既存の Snapshot コピーに基づいて作成することができます。
+
+
+
+=== Cloud Sync の統合
+
+ネットアップの Cloud Sync サービスが Cloud Manager 内から利用できるようになりました。Cloud Sync は、シンプルでセキュアな自動化された方法で、データを任意のソースデスティネーションから、クラウド内または社内の任意のターゲットデスティネーションに移行します。 link:concept_cloud_sync.html["詳細はこちら。"]。
+
+
+
+=== アカウント管理の機能拡張
+
+アカウントを管理する方法が追加されました。
+
+* アカウントリソースの概要が表示されます。
++
+アカウント内のユーザー、ワークスペース、コネクタ、およびサブスクリプションの数を簡単に表示できます。
+
+* アカウントの名前を変更できます。
+* アカウント ID 、ワークスペース ID 、またはコネクタ ID をコピーできます。
++
+これらの ID をコピーすると、計画している自動化機能に役立ちます。
+
+* SaaS プラットフォームの使用を無効にできます。
++
+会社のセキュリティポリシーに準拠するために必要な場合を除き、 SaaS プラットフォームを無効にすることはお勧めしません。SaaS プラットフォームを無効にすると、ネットアップの統合クラウドサービスを使用できなくなります。 link:task_managing_cloud_central_accounts.html["詳細はこちら。"]。
+
+
+
+image:screenshot_account_management.gif[""]
+
+
+
+=== 政府地域の変更
+
+コネクタを AWS GovCloud リージョン、 Azure Government リージョン、または Azure DoD リージョンに導入した場合、 Cloud Manager へのアクセスはコネクタのホスト IP アドレスからのみ可能になりました。SaaS プラットフォームへのアクセスは、アカウント全体で無効になります。
+
+つまり、エンドユーザの内部 VPC / VNet にアクセスできる特権ユーザのみが Cloud Manager の UI または API を使用できます。
+
+link:reference_limitations.html["この制限事項の詳細については、こちらをご覧ください"]。
+
+
+
+== Cloud Manager 3.8.8 アップデート（ 2020 年 9 月 22 日）
+
+Kubernetes サービスが強化され、使いやすくなりました。また、次のような機能も追加されています。
+
+* クラウドプロバイダのマネージド Kubernetes サービスで実行されている Kubernetes クラスタを簡単に検出できるようになりました。
++
+[ クラスタの検出 ] をクリックするだけで、すでに指定したクラウドプロバイダの権限を使用して管理対象クラスタが検出されます。
+
+* 検出された Kubernetes クラスタについて、状態、ボリューム数、ストレージクラスなどの詳細情報を確認できるようになりました。
++
+image:screenshot_kubernetes_info.gif["Kubernetes クラスタのスクリーンショット。 Kubernetes クラスタの状態、ボリュームの数、ストレージクラスなどに関する情報を確認できます。"]
+
+* クラスタと Cloud Volumes ONTAP の間の通信を確保するために、リソースとエラーをチェックする機能が追加されました。そうでない場合は、お知らせいたします。
+
+
+link:task_connecting_kubernetes.html["開始方法をご確認ください"]。
+
+Connector のサービスアカウントでは、 Google Kubernetes Engine （ GKE ）で実行されている Kubernetes クラスタを検出および管理するために次の権限が必要です。
+
+[source, yaml]
+----
+- container.*
+----
+
+
+== Cloud Manager 3.8.8 の更新プログラム（ 2020 年 9 月 10 日）
+
+Cloud Manager を使用してグローバルファイルキャッシュを導入する際には、次の点を改善できます。
+
+* AWS の Cloud Volumes ONTAP HA ペアが、中央ストレージのバックエンドストレージプラットフォームとしてサポートされるようになりました。
+* 複数のグローバルファイルキャッシュコアインスタンスを負荷分散設計に配置できます。
+
+
+link:concept_gfc.html["グローバルファイルキャッシュの詳細については、こちらをご覧ください"]。
+
+
+
+== Cloud Manager 3.8.8 （ 2020 年 9 月 9 日）
+
+* <<Support for Cloud Volumes Service for Google Cloud>>
+* <<Backup to Cloud now supports on-premises ONTAP clusters>>
+* <<Backup to Cloud enhancements>>
+* <<Cloud Compliance enhancements>>
+* <<Refreshed navigation>>
+* <<Administration improvements>>
+
+
+
+
+=== Cloud Volumes Service for Google Cloud のサポート
+
+* 作業環境を追加して、既存の Cloud Volumes Service for GCP ボリュームを管理し、新しいボリュームを作成します。 link:task_setup_cvs_gcp.html["詳細をご確認ください"^]。
+* Linux クライアントと UNIX クライアントの場合は NFSv3 ボリュームと NFSv4.1 ボリューム、 Windows クライアントの場合は SMB 3.x ボリュームを作成して管理します。
+* ボリューム Snapshot を作成、削除、およびリストアします。
+
+
+
+
+=== クラウドへのバックアップで、オンプレミスの ONTAP クラスタがサポートされるようになりました
+
+オンプレミスの ONTAP システムからクラウドへのデータのバックアップを開始オンプレミスの作業環境でクラウドへのバックアップを有効にし、 Azure Blob Storage にボリュームをバックアップ link:task_backup_from_onprem.html["詳細はこちら。"^]。
+
+
+
+=== クラウドへのバックアップの機能拡張
+
+使いやすさを向上させるため、ユーザインターフェイスを改訂しました。
+
+* ボリュームリストページでは、バックアップ対象のボリュームと使用可能なバックアップを簡単に確認できます
+* 各作業環境のバックアップ設定を表示するバックアップ設定ページ
+
+
+
+
+=== Cloud Compliance の機能拡張
+
+* データベースからデータをスキャンできます
++
+データベースをスキャンして、各スキーマに存在する個人データと機密データを特定します。サポートされているデータベースには、 Oracle 、 SAP HANA 、 SQL Server （ MSSQL ）があります。 link:task_scanning_databases.html["データベースのスキャンの詳細については、こちらをご覧ください"^]。
+
+* データ保護（ DP ）ボリュームをスキャンする機能
++
+DP ボリュームは、通常はオンプレミスの ONTAP クラスタからの SnapMirror 処理のデスティネーションボリュームです。オンプレミスファイルに保存されている個人データや機密データを簡単に識別できるようになりました。 link:task_getting_started_compliance.html#scanning-data-protection-volumes["方法を参照してください"^]。
+
+
+
+
+
+=== ナビゲーションが更新されました
+
+Cloud Manager のヘッダーを更新したので、 NetApp クラウドサービス間の移動が簡単になりました。
+
+[ すべてのサービスを表示 ] をクリックすると、ナビゲーションに表示するサービスをピン留めしたり、ピン留めを解除したりできます。
+
+image:screenshot_header.gif["Cloud Manager で使用可能な新しいヘッダーを示すスクリーンショット。"]
+
+ご覧のように、 [ アカウント ] 、 [ ワークスペース ] 、 [ コネクタ ] のドロップダウンも更新されているので、現在の選択内容を簡単に確認できます。
+
+
+
+=== 管理の改善
+
+* 非アクティブなコネクタを Cloud Manager から削除できるようになりました。 link:task_managing_connectors.html["詳細をご確認ください"]。
++
+image:screenshot_connector_remove.gif["非アクティブなコネクタを削除できるコネクタウィジェットのスクリーンショット。"]
+
+* 現在クラウドプロバイダのクレデンシャルに関連付けられている Marketplace サブスクリプションを置き換えることができるようになりました。請求方法を変更する必要がある場合は、この変更を利用して、適切な Marketplace サブスクリプションを通じて課金されるようにすることができます。
++
+詳細をご確認ください link:task_adding_aws_accounts.html["AWS の場合"]、 および 。
+
+
+
+
+
+== Azure の必要な権限に関する更新情報（ 2020 年 8 月 6 日）
+
+Azure の導入でエラーが発生しないように、 Azure の Cloud Manager ポリシーに次の権限が含まれていることを確認してください。
+
+[source, json]
+----
+"Microsoft.Resources/deployments/operationStatuses/read"
+----
+Azure では、一部の仮想マシン環境（導入時に使用される基盤となる物理ハードウェアによって異なる）に対してこの権限が必要となります。
+
+https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.8.7.json["Azure の最新の Cloud Manager ポリシーを表示します"^]。
+
+
+
+== Cloud Manager 3.8.7 （ 2020 年 8 月 3 日）
+
+* <<New software-as-a-service experience>>
+* <<Cloud Volumes ONTAP enhancements>>
+* <<Azure NetApp Files enhancements>>
+* <<Cloud Volumes Service for AWS enhancements>>
+* <<Cloud Compliance enhancements>>
+* <<Backup to Cloud enhancements>>
+* <<Support for Global File Cache>>
+
+
+
+
+=== 新しいソフトウェアサービスエクスペリエンス
+
+ネットアップは、 Cloud Manager のソフトウェアサービスエクスペリエンスを全面的に導入しました。この新しいエクスペリエンスにより、 Cloud Manager の使用が簡単になり、ハイブリッドクラウドインフラ管理のための追加機能を提供できるようになりました。
+
+Cloud Manager にはが含まれています https://cloudmanager.netapp.com/["SaaS-based インターフェイス"^] NetApp Cloud Central に統合されているコネクタ。 Cloud Manager がパブリッククラウド環境内のリソースとプロセスを管理できるようにします。（コネクタは、実際にはインストール済みの既存の Cloud Manager ソフトウェアと同じです）。
+
+
+NOTE: ほとんどの場合コネクタは必要ですが、 Cloud Sync 、 Cloud Volumes Service 、または Azure NetApp Files を Cloud Manager から使用する必要はありません。
+
+このリリースノートですでに説明したように、コネクタ用のマシンタイプをアップグレードして、当社が提供する新しい機能にアクセスする必要があります。Cloud Manager にマシンタイプを変更する手順が表示されます。 link:concept_saas.html#the-local-user-interface["詳細はこちら。"]。
+
+
+
+=== Cloud Volumes ONTAP の機能拡張
+
+Cloud Volumes ONTAP では、 2 つの拡張機能を使用できます。
+
+* * 追加容量を割り当てるための複数の BYOL ライセンス *
++
+Cloud Volumes ONTAP BYOL システムに複数のライセンスを購入して、 368 TB を超える容量を割り当てることができるようになりました。たとえば、 2 つのライセンスを購入して、 Cloud Volumes ONTAP に最大 736TB の容量を割り当てることができます。また、 4 つのライセンスを購入して、最大 1.4 PB までライセンスを取得することもできます。
+
++
+シングルノードシステムまたは HA ペアに対して購入できるライセンスの数に制限はありません。
+
++
+ディスク制限によって、ディスクだけを使用することで容量制限に達することがないことに注意してください。を使用すると、ディスク制限を超えることができます link:concept_data_tiering.html["使用頻度の低いデータをオブジェクトストレージに階層化します"^]。ディスクの制限については、を参照してください https://docs.netapp.com/us-en/cloud-volumes-ontap/["ストレージの制限については、『 Cloud Volumes ONTAP リリースノート』を参照してください"^]。
+
++
+link:task_managing_licenses.html["新しいシステムライセンスを追加する方法について説明します"]。
+
+* * 外部キーを使用して Azure 管理対象ディスクを暗号化 *
++
+別のアカウントの外部キーを使用して、シングルノード Cloud Volumes ONTAP システムの Azure 管理ディスクを暗号化できるようになりました。この機能は API を使用してサポートされます。
+
++
+シングルノードシステムの作成時に API 要求に次の情報を追加するだけです。
+
++
+[source, json]
+----
+"azureEncryptionParameters": {
+      "key": <azure id of encryptionset>
+  }
+----
++
+この機能を使用するには、最新ので示されている新しい権限が必要です https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.8.7.json["Azure 向け Cloud Manager ポリシー"^]。
+
++
+[source, json]
+----
+"Microsoft.Compute/diskEncryptionSets/read"
+----
+
+
+
+
+=== Azure NetApp Files の機能拡張
+
+このリリースには、 Azure NetApp Files のサポートに関する機能拡張が複数含まれています。
+
+* * Azure NetApp Files セットアップ *
++
+Azure NetApp Files を Cloud Manager から直接セットアップおよび管理できるようになりました。 link:task_manage_anf.html["詳細をご確認ください"]。
+
+* * 新しいプロトコルのサポート *
++
+NFSv4.1 ボリュームと SMB ボリュームを作成できるようになりました。
+
+* * 容量プールとボリュームスナップショットの管理 *
++
+Cloud Manager では、ボリューム Snapshot を作成、削除、リストアできます。新しい容量プールを作成してそのサービスレベルを指定することもできます。
+
+* * ボリュームの編集機能 *
++
+ボリュームのサイズを変更し、タグを管理することで、ボリュームを編集できます。
+
+
+
+
+
+=== Cloud Volumes Service for AWS の機能拡張
+
+Cloud Manager では、 Cloud Volumes Service for AWS をサポートするために多数の機能拡張が行われています。
+
+* * 新しいプロトコルのサポート *
++
+NFSv4.1 ボリューム、 SMB ボリューム、およびデュアルプロトコルボリュームを作成できるようになりました。これまでは、 Cloud Manager で NFSv3 ボリュームを作成して検出することしかできませんでした。
+
+* * スナップショットサポート *
++
+Snapshot ポリシーを作成して、ボリューム Snapshot の作成、オンデマンド Snapshot の作成、 Snapshot からのボリュームのリストア、既存の Snapshot に基づく新しいボリュームの作成などを自動化できます。を参照してください link:task_manage_cloud_volumes_snapshots.html["Cloud Volume スナップショットの管理"] を参照してください。
+
+* * Cloud Manager * からリージョン内に初期ボリュームを作成します
++
+このリリースより前のリリースでは、各リージョンの最初のボリュームを Cloud Volumes Service for AWS インターフェイスで作成する必要がありました。これで、にサブスクライブできるようになりました link:https://aws.amazon.com/marketplace/search/results?x=0&y=0&searchTerms=netapp+cloud+volumes+service["AWS Marketplace で提供されている NetApp Cloud Volumes Service ソリューションの 1 つ"^] 次に、 Cloud Manager から最初のボリュームを作成します。
+
+
+
+
+
+=== Cloud Compliance の機能拡張
+
+以下の機能強化がクラウドコンプライアンスで利用できるようになりました。
+
+* * Cloud Compliance インスタンスの導入プロセスを改訂 *
++
+Cloud Compliance インスタンスのセットアップと導入には、 Cloud Manager の新しいウィザードを使用します。導入が完了したら、スキャンする作業環境ごとにサービスを有効にします。
+
+* * 作業環境内でスキャンするボリュームを選択する機能 *
++
+Cloud Volumes ONTAP または Azure NetApp Files 作業環境内の個々のボリュームに対するスキャンを有効または無効にできるようになりました。特定のボリュームで準拠状況をスキャンする必要がない場合は、スキャンをオフにします。
+
++
+link:task_getting_started_compliance.html#enabling-and-disabling-compliance-scans-on-individual-volumes["ボリュームのスキャンを無効にする方法については、こちらをご覧ください。"^]
+
+* * ナビゲーションタブを使用して、関心領域にすばやくジャンプできます。 *
++
+Dashboard 、 Investigation 、 Configuration の新しいタブを使用すると、これらのセクションに簡単にアクセスできます。
+
+* * HIPAA レポート *
++
+新たに Health Insurance Portability and Accountability Act （ HIPAA ：医療保険の携行性と責任に関する法律）レポートが公開されました。このレポートは、 HIPAA データプライバシー法に準拠するという組織の要件を支援するために作成されています。
+
++
+link:task_generating_compliance_reports.html#hipaa-report["HIPAA レポートの詳細をご覧ください。"^]
+
+* * 新しい機密性の高い個人データ型 *
++
+クラウドコンプライアンスでは、ファイル内に ICD-9-CM Medical Codes を検索できるようになりました。
+
+* * 新しい個人データ型 *
++
+Cloud Compliance では、新しい 2 つの国 ID （クロアチア ID （ OIB ）とギリシャ ID ）がファイルに追加されました。
+
+
+
+
+
+=== クラウドへのバックアップの機能拡張
+
+次の機能拡張がクラウドへのバックアップに使用できるようになりました。
+
+* * お客様所有のライセンスを使用（ BYOL ）できるようになりました *
++
+クラウドへのバックアップは、従量課金制（ PAYGO ）ライセンスでのみ利用できます。BYOL ライセンスを使用すると、一定期間、および最大容量のバックアップスペースの間、ネットアップからライセンスを購入して Backup to Cloud を使用できます。いずれかの制限に達すると、ライセンスを更新する必要があります。
+
++
+link:concept_backup_to_cloud.html#cost["新しい Backup to Cloud BYOL ライセンスの詳細については、こちらをご覧ください。"^]
+
+* * データ保護（ DP ）ボリューム * のサポート
++
+データ保護ボリュームをバックアップおよびリストアできるようになりました。
+
+
+
+
+
+=== グローバルファイルキャッシュのサポート
+
+ネットアップのグローバルファイルキャッシュを使用すると、分散したファイルサーバのサイロをパブリッククラウドの 1 つの包括的なグローバルストレージ容量に統合できます。これにより、グローバルにアクセス可能なファイルシステムがクラウド内に作成され、分散したすべての場所がローカルの場合と同様に使用できるようになります。
+
+このリリースから、グローバルファイルキャッシュ管理インスタンスとコアインスタンスを Cloud Manager で導入および管理できるようになりました。これにより、初期導入プロセスでは数時間を節約でき、このシステムと他の導入済みシステムについて Cloud Manager を使用した単一のコンソールが提供されます。グローバルファイルキャッシュエッジインスタンスは、引き続きリモートオフィスでローカルに導入されます。
+
+を参照してください link:concept_gfc.html["Global File Cache の概要"^] を参照してください。
+
+Cloud Manager を使用して導入できる初期設定は、次の要件を満たす必要があります。従来の手順を使用して、 Cloud Volumes Service 、 Azure NetApp Files 、 Cloud Volumes Service for AWS や GCP などの他の設定も引き続き導入されます。 https://cloud.netapp.com/global-file-cache/onboarding["詳細はこちら。"^]。
+
+* 中央ストレージとして使用するバックエンドストレージプラットフォームは、 Azure で Cloud Volumes ONTAP HA ペアを導入済みの作業環境である必要があります。
++
+他のストレージプラットフォームやクラウドプロバイダは、現時点では Cloud Manager を使用してサポートされていませんが、従来の導入手順を使用して導入することもできます。
+
+* GFC コアは、スタンドアロンインスタンスとしてのみ導入できます。
++
+複数のコアインスタンスを含む負荷分散設計を使用する必要がある場合は、レガシー手順を使用する必要があります。
+
+
+
+この機能を使用するには、最新ので示されている新しい権限が必要です https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.8.7.json["Azure 向け Cloud Manager ポリシー"^]。
+
+[source, json]
+----
+"Microsoft.Resources/deployments/operationStatuses/read",
+"Microsoft.Insights/Metrics/Read",
+"Microsoft.Compute/virtualMachines/extensions/write",
+"Microsoft.Compute/virtualMachines/extensions/read",
+"Microsoft.Compute/virtualMachines/extensions/delete",
+"Microsoft.Compute/virtualMachines/delete",
+"Microsoft.Network/networkInterfaces/delete",
+"Microsoft.Network/networkSecurityGroups/delete",
+"Microsoft.Resources/deployments/delete",
+----
+
+
+== エクスペリエンスの向上には、より強力な機械タイプが必要（ 2020 年 7 月 15 日）
+
+Cloud Manager のエクスペリエンスを向上させるためには、マシンタイプをアップグレードして、これから提供する新しい機能にアクセスする必要があります。この改善には、が含まれます link:concept_saas.html["Cloud Manager のソフトウェアサービスエクスペリエンス"] クラウドサービスの統合機能が新しく強化されています。
+
+Cloud Manager にマシンタイプを変更する手順が表示されます。
+
+以下に詳細を示します。
+
+. Cloud Manager の新機能が正常に機能するように、適切なリソースを利用できるようにするために、デフォルトのインスタンス、 VM 、マシンのタイプを次のように変更しました。
++
+** AWS ： t3.xlarge
+** Azure ： DS3 v2
+** GCP ： n1-standard-4
++
+サポートされる最小サイズは、これらのデフォルトサイズです link:reference_cloud_mgr_reqs.html["CPU と RAM の要件に基づきます"]。
+
+
+
+. この移行の一環として、 Cloud Manager は次のエンドポイントにアクセスして、 Docker インフラのコンテナコンポーネントのソフトウェアイメージを取得できるようにする必要があります。
++
+\ https://cloudmanagerinfraprod.azurecr.io
+
++
+Cloud Manager からこのエンドポイントへのアクセスがファイアウォールで有効になっていることを確認してください。
+
+
+
+
+
+== Cloud Manager 3.8.6 （ 2020 年 7 月 6 日）
+
+* <<Support for iSCSI volumes>>
+* <<Support for the All tiering policy>>
+
+
+
+
+=== iSCSI ボリュームのサポート
+
+Cloud Manager では、 Cloud Volumes ONTAP クラスタとオンプレミス ONTAP クラスタの iSCSI ボリュームをユーザインターフェイスから直接作成できるようになりました。
+
+iSCSI ボリュームを作成すると、 Cloud Manager によって自動的に LUN が作成されます。ボリュームごとに 1 つの LUN だけを作成することでシンプルになり、管理は不要になります。ボリュームを作成したら、 link:task_provisioning_storage.html#connecting-a-lun-to-a-host["IQN を使用して、から LUN に接続します ホスト"]。
+
+
+NOTE: LUN は、 System Manager または CLI を使用して追加で作成できます。
+
+
+
+=== 「すべて」の階層化ポリシーがサポートされます
+
+Cloud Volumes ONTAP のボリュームを作成または変更するときに、「すべて」の階層化ポリシーを選択できるようになりました。「すべて」の階層化ポリシーを使用すると、データはすぐにコールドとしてマークされ、オブジェクトストレージにできるだけ早く階層化されます。 link:concept_data_tiering.html["データ階層化の詳細については、こちらをご覧ください。"]。
+
+
+
+== Cloud Manager から SaaS への移行（ 2020 年 6 月 22 日）
+
+ネットアップは、 Cloud Manager 向けのサービスとしてのソフトウェアエクスペリエンスを提供します。この新しいエクスペリエンスにより、 Cloud Manager の使用が簡単になり、ハイブリッドクラウドインフラ管理のための追加機能を提供できるようになりました。 link:concept_saas.html["詳細はこちら。"]。
+
+
+
+== Cloud Manager 3.8.5 （ 2020 年 5 月 31 日）
+
+* <<New subscription required in the Azure Marketplace>>
+* <<Backup to Cloud enhancements>>
+* <<Cloud Compliance enhancements>>
+
+
+
+
+=== Azure Marketplace での新しいサブスクリプションが必要です
+
+Azure Marketplace で新しいサブスクリプションが提供されています。Cloud Volumes ONTAP 9.7 PAYGO を導入するには、この 1 回限りのサブスクリプションが必要です（ 30 日間の無償トライアルシステムを除く）。サブスクリプションでは、 Cloud Volumes ONTAP PAYGO および BYOL のアドオン機能も提供できます。作成した Cloud Volumes ONTAP PAYGO システムごと、および有効にしたアドオン機能ごとに、このサブスクリプションから料金が請求されます。
+
+新しい Cloud Volumes ONTAP システム（ 9.7 P1 以降）の導入時に、 Cloud Manager からこのサービスへの登録を求められます。
+
+image:screenshot_azure_marketplace_subscription.gif[""]
+
+
+
+=== クラウドへのバックアップの機能拡張
+
+次の機能拡張がクラウドへのバックアップに使用できるようになりました。
+
+* Azure では、新しいリソースグループを作成したり既存のリソースグループを選択したりできるようになりました。 Cloud Manager でリソースグループを作成する必要はありません。クラウドへのバックアップを有効にしたあとでリソースグループを変更することはできません。
+* AWS では、 Cloud Manager AWS アカウントとは別の AWS アカウントにある Cloud Volumes ONTAP インスタンスをバックアップできるようになりました。
+* ボリュームのバックアップスケジュールを選択する際に追加のオプションを使用できるようになりました。日単位、週単位、月単位のバックアップオプションに加え、日単位 30 、週単位 13 、月単位 12 のバックアップなどの組み合わせポリシーを提供するシステム定義のポリシーのいずれかを選択できるようになりました。
+* ボリュームのすべてのバックアップを削除したあと、そのボリュームのバックアップの作成を再開できるようになりました。これは、以前のリリースの既知の制限事項です。
+
+
+
+
+=== Cloud Compliance の機能拡張
+
+Cloud Compliance で使用できる機能拡張は次のとおりです。
+
+* Cloud Compliance インスタンスとは異なる AWS アカウントにある S3 バケットをスキャンできるようになりました。既存の Cloud Compliance インスタンスがこれらのバケットに接続できるようにするには、新しいアカウントにロールを作成する必要があります。 link:task_scanning_s3.html#scanning-buckets-from-additional-aws-accounts["詳細はこちら。"]。
++
+リリース 3.0.5 より前に Cloud Compliance を設定した場合は、既存のを変更する必要があります link:task_scanning_s3.html#requirements-specific-to-s3["Cloud Compliance インスタンスの IAM ロール"] をクリックしてください。
+
+* 調査ページの内容をフィルタして、表示する結果のみを表示できるようになりました。フィルタには、作業環境、カテゴリ、プライベートデータ、ファイルタイプ、最終変更日、 S3 オブジェクトの権限がパブリックアクセスに対して許可されているかどうか。
++
+image:screenshot_compliance_investigation_filtered.png[""]
+
+* 作業環境で Cloud Compliance を活動化または非活動化できるように、 Cloud Compliance タブから直接活動化できるようになりました。
+
+
+
+
+== Cloud Manager 3.8.4 アップデート（ 2020 年 5 月 10 日）
+
+Cloud Manager 3.8.4 の機能拡張をリリースしました。
+
+
+
+=== Cloud Insights の統合
+
+Cloud Manager は、ネットアップの Cloud Insights サービスを活用することで、 Cloud Volumes ONTAP インスタンスの正常性とパフォーマンスに関するインサイトを提供し、クラウドストレージ環境のパフォーマンスのトラブルシューティングと最適化を支援します。 link:concept_monitoring.html["詳細はこちら。"]。
+
+
+
+== Cloud Manager 3.8.4 （ 2020 年 5 月 3 日）
+
+Cloud Manager 3.8.4 では、次の点が改善されました。
+
+
+
+=== クラウドへのバックアップの機能拡張
+
+クラウドへのバックアップ（以前の S3_for AWS へのバックアップ）で次の機能拡張が可能になりました。
+
+* * Azure Blob Storage へのバックアップ *
++
+クラウドへのバックアップが Cloud Volumes ONTAP で Azure で利用できるようになりました。クラウドへのバックアップは、保護とクラウドデータの長期アーカイブのためのバックアップとリストア機能を提供します。 link:concept_backup_to_cloud.html["詳細はこちら。"]。
+
+* * バックアップを削除しています *
++
+特定のボリュームのすべてのバックアップを Cloud Manager のインターフェイスから直接削除できるようになりました。 link:task_managing_backups.html#deleting-backups["詳細はこちら。"]。
+
+
+
+
+
+== Cloud Manager 3.8.3 （ 2020 年 4 月 5 日）
+
+* <<Cloud Tiering integration>>
+* <<Data migration to Azure NetApp Files>>
+* <<Cloud Compliance enhancements>>
+* <<Backup to S3 enhancements>>
+* <<iSCSI volumes using APIs>>
+
+
+
+
+=== Cloud Tiering との統合
+
+ネットアップの Cloud Tiering サービスは、 Cloud Manager から利用できるようになりました。Cloud Tiering を使用すると、オンプレミスの ONTAP クラスタからクラウド内の低コストのオブジェクトストレージにデータを階層化できます。これにより、クラスタのハイパフォーマンスストレージスペースが解放され、より多くのワークロードに対応できるようになります。
+
+link:concept_cloud_tiering.html["詳細はこちら。"]。
+
+
+
+=== Azure NetApp Files へのデータ移行
+
+NFS または SMB データを Azure NetApp Files に Cloud Manager から直接移行できるようになりました。データの同期には、ネットアップの Cloud Sync サービスが利用されています。
+
+link:task_manage_anf.html#migrating-data-to-azure-netapp-files["Azure NetApp Files にデータを移行する方法について説明します"]。
+
+
+
+=== Cloud Compliance の機能拡張
+
+以下の機能強化がクラウドコンプライアンスで利用できるようになりました。
+
+* * Amazon S3 * の 30 日間無料トライアル版
++
+Amazon S3 のデータをクラウドコンプライアンスでスキャンするための 30 日間無償トライアルを利用できるようになりました。Amazon S3 で Cloud Compliance を有効にしていた場合、 30 日間の無償トライアルは本日から有効になります（ 2020 年 4 月 5 日）。
+
++
+AWS Marketplace へのサブスクリプションは、無償トライアルの終了後も Amazon S3 のスキャンを続行するために必要です。 link:task_scanning_s3.html#subscribing-to-aws-marketplace["登録方法については、こちらをご覧ください"]。
+
++
+https://cloud.netapp.com/cloud-compliance#pricing["Amazon S3 をスキャンするための価格設定について説明します"^]。
+
+* * 新しい個人データ型 *
++
+Cloud Compliance のファイルに、新しい国別識別子（ブラジルの ID （ CPF ））が追加されました。
+
++
+link:task_controlling_private_data.html#personal-data["個人データの種類の詳細については、こちらをご覧ください"]。
+
+* * 追加のメタデータカテゴリ * のサポート
++
+Cloud Compliance では、データをさらに 9 つのメタデータカテゴリに分類できるようになりました。 link:task_controlling_private_data.html#types-of-categories["サポートされているメタデータカテゴリの一覧を確認します"]。
+
+
+
+
+
+=== S3 へのバックアップの機能拡張
+
+Backup to S3 サービスで以下の機能拡張が可能になりました。
+
+* * バックアップ用の S3 ライフサイクルポリシー *
++
+バックアップは _Standard_storage クラスから開始し、 30 日後に _Standard-Infrequent Access_storage クラスに移行します。
+
+* * バックアップを削除しています *
++
+Cloud Manager API を使用してバックアップを削除できるようになりました。 link:task_backup_to_s3.html#deleting-backups["詳細はこちら。"]。
+
+* * パブリックアクセスをブロック *
++
+Cloud Manager でが有効になります https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html["Amazon S3 ブロックのパブリックアクセス機能"^] バックアップが格納されている S3 バケット。
+
+
+
+
+
+=== API を使用した iSCSI ボリューム
+
+Cloud Manager API で iSCSI ボリュームを作成できるようになりました。 link:api.html#_provisioning_iscsi_volumes["例を参照してください"^]。
+
+
+
+== Cloud Manager 3.8.2 （ 2020 年 3 月 1 日）
+
+* <<Amazon S3 working environments>>
+* <<Cloud Compliance enhancements>>
+* <<NFS version for volumes>>
+* <<Support for Azure US Gov regions>>
+
+
+
+
+=== Amazon S3 作業環境
+
+Cloud Manager で、バケットがインストールされている AWS アカウントにある Amazon S3 バケットに関する情報が自動的に検出されるようになりました。これにより、リージョン、アクセスレベル、ストレージクラス、バケットを Cloud Volumes ONTAP で使用してバックアップとデータ階層化を行うかどうかなど、 S3 バケットの詳細を簡単に確認できます。また、以下の説明に従って、 Cloud Compliance で S3 バケットをスキャンできます。
+
+image:screenshot_amazon_s3.gif["Amazon S3 作業環境の詳細を示すスクリーンショット。バケットの総数とリージョンの総数、アクティブなサービスを使用するバケットの数、各 S3 バケットの詳細を示す表を示しています。"]
+
+
+
+=== Cloud Compliance の機能拡張
+
+以下の機能強化がクラウドコンプライアンスで利用できるようになりました。
+
+* * Amazon S3 * のサポート
++
+Cloud Compliance で Amazon S3 バケットをスキャンして、 S3 オブジェクトストレージにある個人データや機密データを特定できるようになりました。Cloud Compliance は、ネットアップソリューション用に作成されたバケットであるかどうかに関係なく、アカウント内の任意のバケットをスキャンできます。
+
++
+link:task_scanning_s3.html["開始方法をご確認ください"]。
+
+* * 調査ページ *
++
+個人ファイル、機密性の高い個人ファイル、カテゴリ、およびファイルタイプごとに、新しい ［ 調査 ］ ページを使用できるようになりました。このページには、影響を受けるファイルの詳細が表示され、最も個人データ、機密性の高い個人データ、およびデータ主体の名前を含むファイルで並べ替えることができます。このページは、以前に使用可能だった CSV レポートに代わるものです。
+
++
+次に例を示します。
+
++
+image:screenshot_compliance_investigation.gif["調査ページのスクリーンショット。"]
+
++
+link:task_controlling_private_data.html["[ 調査 ] ページの詳細を確認してください"]。
+
+* * PCI DSS レポート *
++
+新しい Payment Card Industry データセキュリティ Standard (PCI DSS) レポートが利用可能になりました。このレポートは、クレジットカード情報のファイルへの配布を識別するのに役立ちます。クレジットカード情報が含まれるファイルの数、作業環境が暗号化やランサムウェアから保護されているかどうか、保持の詳細などを確認できます。
+
++
+link:task_generating_compliance_reports.html["PCI DSS レポートの詳細を確認してください"]。
+
+* * 新しい機密性の高い個人データ型 *
++
+クラウドコンプライアンスでは、医療および医療業界で使用されている ICD-10-CM 医療コードを検索できるようになりました。
+
+
+
+
+
+=== ボリュームの NFS バージョン
+
+Cloud Volumes ONTAP のボリュームを作成または編集するときに、ボリュームで有効にする NFS のバージョンを選択できるようになりました。
+
+image:screenshot_nfs_version.gif["ボリュームの詳細画面のスクリーンショット。 NFSv3 、 NFSv4 、またはその両方を有効にできます。"]
+
+
+
+=== Azure US Gov リージョンのサポート
+
+Azure US Cloud Volumes ONTAP リージョンで HA ペアがサポートされるようになりました。
+
+https://cloud.netapp.com/cloud-volumes-global-regions["サポートされる Azure リージョンの一覧を参照してください"^]。
+
+
+
+== Cloud Manager 3.8.1 アップデート（ 2020 年 2 月 16 日）
+
+Cloud Manager 3.8.1 の機能拡張をいくつかリリースしました。
+
+
+
+=== S3 へのバックアップの機能拡張
+
+* バックアップコピーは、 Cloud Manager が AWS アカウントに作成する S3 バケットに格納されます。各 Cloud Volumes ONTAP 作業環境にバケットが 1 つずつ作成されます。
+* すべての AWS リージョンで S3 へのバックアップがサポートされるようになりました https://cloud.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAP がサポートされている場合"^]。
+* バックアップスケジュールは、毎日、毎週、または毎月に設定できます。
+* Cloud Manager で Backup to S3 サービスへの _private リンクを設定する必要がなくなりました。
+
+
+これらの機能拡張には、追加の S3 権限が必要です。Cloud Manager に権限を提供する IAM ロールに最新のからの権限を含める必要があります https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager ポリシー"^]。
+
+link:task_backup_to_s3.html["S3 へのバックアップに関する詳細情報"]。
+
+
+
+=== AWS が更新されます
+
+新しい EC2 インスタンスのサポートと、 Cloud Volumes ONTAP 9.6 および 9.7 でサポートされるデータディスクの数の変更が導入されました。『 Cloud Volumes ONTAP リリースノート』の変更点を確認してください。
+
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_97.html["Cloud Volumes ONTAP 9.7 リリースノート"^]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_96.html["Cloud Volumes ONTAP 9.6 リリースノート"^]
+
+
+
+
+== Cloud Manager 3.8.1 （ 2020 年 2 月 2 日）
+
+* <<Cloud Compliance enhancements>>
+* <<Enhancements to accounts and subscriptions>>
+* <<Timeline enhancements>>
+
+
+
+
+=== Cloud Compliance の機能拡張
+
+以下の機能強化がクラウドコンプライアンスで利用できるようになりました。
+
+* * Azure NetApp Files * のサポート
++
+Cloud Compliance では、 Azure NetApp Files をスキャンして、ボリューム上に存在する個人データや機密データを特定できるようになりました。
+
++
+link:task_getting_started_compliance.html["開始方法をご確認ください"]。
+
+* * スキャンステータス *
++
+Cloud Compliance で、 CIFS と NFS の各ボリュームのスキャンステータスが表示されるようになりました。これには、問題の修正に使用できるエラーメッセージも含まれます。
+
++
+image:screenshot_cloud_compliance_status.gif[""]
+
+* * 作業環境によるダッシュボードのフィルタリング *
++
+Cloud Compliance ダッシュボードの内容をフィルタリングして、特定の作業環境のコンプライアンスデータを表示できるようになりました。
+
++
+image:screenshot_cloud_compliance_filter.gif[""]
+
+* * 新しい個人データ型 *
++
+データのスキャン時に、 Cloud Compliance がカリフォルニアドライバーズライセンスを特定できるようになりました。
+
+* * その他のカテゴリ * をサポートします
++
+さらに、アプリケーションデータ、ログ、データベースファイル、インデックスファイルの 3 つのカテゴリがサポートされます。
+
++
+link:task_controlling_private_data.html#categories["カテゴリの詳細については、こちらをご覧ください"]。
+
+
+
+
+
+=== アカウントとサブスクリプションの機能が強化されました
+
+AWS アカウントまたは GCP プロジェクトと、従量課金制 Cloud Volumes ONTAP システムの関連するマーケットプレイスサブスクリプションを簡単に選択できるようになりました。これらの機能強化により、適切なアカウントやプロジェクトからの支払いが保証されます。
+
+たとえば、 AWS でシステムを作成する際にデフォルトのアカウントとサブスクリプションを使用しない場合は、「 * クレデンシャルの編集」をクリックします。
+
+image:screenshot_accounts_select_aws.gif["作業環境ウィザードの [ 詳細と資格情報 ] ページのスクリーンショット。 [ 資格情報の編集 ] ボタンが表示されます。"]
+
+そこから、使用するアカウントクレデンシャルと、関連する AWS Marketplace サブスクリプションを選択できます。必要に応じて、マーケットプレイスサブスクリプションを追加することもできます。
+
+image:screenshot_accounts_aws.gif["アカウントの編集とサブスクリプションの追加ダイアログボックスのスクリーンショット。このダイアログボックスでは、サブスクリプションを選択し、クレデンシャルをサブスクリプションに関連付けることができます。"]
+
+また、複数の AWS サブスクリプションを管理している場合は、それぞれのサブスクリプションを設定のクレデンシャルページから別々の AWS クレデンシャルに割り当てることができます。
+
+image:screenshot_aws_add_subscription.gif["AWS クレデンシャルのサブスクリプションをメニューから追加できるクレデンシャルページのスクリーンショット。"]
+
+link:task_adding_aws_accounts.html["Cloud Manager で AWS クレデンシャルを管理する方法について説明します"]。
+
+
+
+=== スケジュールの機能拡張
+
+タイムラインが強化され、使用する NetApp クラウドサービスに関する詳細情報が表示されるようになりました。
+
+* タイムラインに、同じ Cloud Central アカウント内のすべての Cloud Manager システムに対する処理が表示されるようになりました
+* 列のフィルタリング、検索、追加、および削除により、情報をより簡単に検索できるようになりました
+* タイムラインデータを CSV 形式でダウンロードできるようになりました
+* 今後は、使用するネットアップクラウドサービスごとにアクションがタイムラインに表示されます（ただし、情報を 1 つのサービスにフィルタリングすることも可能）。
+
+
+image:screenshot_timeline.gif["Cloud Manager に表示されるタイムラインのスクリーンショット。タイムラインには、 Cloud Manager で実行された操作に関する詳細が表示されます。"]
+
+
+
+== Cloud Manager 3.8 （ 2020 年 1 月 8 日）
+
+* <<HA enhancements in Azure>>
+* <<Data tiering enhancements in GCP>>
+
+
+
+
+=== Azure の HA 機能が強化されました
+
+Azure の Cloud Volumes ONTAP HA ペアで、次の機能拡張が利用できるようになりました。
+
+* * Cloud Volumes ONTAP HA の CIFS ロックを Azure * でオーバーライドします
++
+Cloud Manager で設定を有効にして、 Azure メンテナンスイベント時の Cloud Volumes ONTAP ストレージフェイルオーバーの問題を回避できるようにすることができるようになりました。この設定を有効にすると、 Cloud Volumes ONTAP は CIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。 link:task_overriding_cifs_locks.html["詳細はこちら。"]。
+
+* * Cloud Volumes ONTAP からストレージアカウントへの HTTPS 接続 *
++
+作業環境の作成時に、 Cloud Volumes ONTAP 9.7 HA ペアから Azure ストレージアカウントへの HTTPS 接続を有効にできるようになりました。このオプションを有効にすると、書き込みパフォーマンスに影響する可能性があります。作業環境の作成後に設定を変更することはできません。
+
+* * Azure 汎用 v2 ストレージアカウント * のサポート
++
+Cloud Volumes ONTAP 9.7 HA ペア用に Cloud Manager で作成されるストレージアカウントが、汎用 v2 のストレージアカウントに変更されました。
+
+
+
+
+
+=== GCP のデータ階層化機能の強化
+
+GCP の Cloud Volumes ONTAP データ階層化では、次の機能強化が利用できます。
+
+* * データ階層化のための Google Cloud ストレージクラス *
++
+Cloud Volumes ONTAP から Google Cloud Storage に階層化されるデータ用のストレージクラスを選択できるようになりました。
+
++
+** Standard Storage （デフォルト）
+** ニアラインストレージ
+** コールドラインストレージ
++
+https://cloud.google.com/storage/docs/storage-classes["Google Cloud ストレージクラスの詳細をご覧ください"^]。
+
++
+link:task_tiering.html#changing-the-storage-class-for-tiered-data["Cloud Volumes ONTAP のストレージクラスを変更する方法について説明します"]。
+
+
+
+* * サービスアカウントを使用したデータ階層化 *
++
+9.7 リリース以降では、 Cloud Volumes ONTAP インスタンスにサービスアカウントが設定されます。このサービスアカウントは、 Google Cloud Storage バケットへのデータ階層化の権限を提供します。この変更により、セキュリティが強化され、必要なセットアップが少なくなります。新しいシステムを導入する際の詳しい手順については、 link:task_getting_started_gcp.html["このページの手順 4 を参照してください"]。
+
++
+次の図は、 Working Environment ウィザードを示しています。このウィザードでストレージクラスとサービスアカウントを選択できます。
+
++
+image:screenshot_data_tiering_gcp.gif[""]
+
+
+
+Cloud Manager では、最新の機能に示すように、これらの機能拡張には次の GCP 権限が必要です https://occm-sample-policies.s3.amazonaws.com/Policy_for_Cloud_Manager_3.8.0_GCP.yaml["GCP 向け Cloud Manager ポリシー"^]。
+
+[source, yaml]
+----
+- storage.buckets.update
+- compute.instances.setServiceAccount
+- iam.serviceAccounts.getIamPolicy
+- iam.serviceAccounts.list
+----

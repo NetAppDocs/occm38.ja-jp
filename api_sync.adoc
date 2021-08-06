@@ -1,0 +1,188 @@
+---
+sidebar: sidebar 
+permalink: api_sync.html 
+keywords: api, apis, rest, restful, authorization, getting started, body, header, token, reference, expired token, expires, expired, token expired, list apis, 202, https status code 202, status code 202, id, id field 
+summary: Web UI で使用できるクラウド同期機能は、 RESTful API でも使用できます。 
+---
+= クラウド同期 API
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Web UI で使用できるクラウド同期機能は、 RESTful API でも使用できます。
+
+
+
+== はじめに
+
+Cloud Sync APIs を使用するには、ユーザトークンと Cloud Central アカウント ID を取得する必要があります。API 呼び出しを行うときは、トークンとアカウント ID を Authorization ヘッダーに追加する必要があります。
+
+.手順
+. NetApp Cloud Central からユーザトークンを取得します。
++
+[source, http]
+----
+POST https://netapp-cloud-account.auth0.com/oauth/token
+Header: Content-Type: application/json
+Body:
+{
+              "username": "<user_email>",
+              "scope": "profile",
+              "audience": "https://api.cloud.netapp.com",
+              "client_id": "UaVhOIXMWQs5i1WdDxauXe5Mqkb34NJQ",
+              "grant_type": "password",
+              "password": "<user_password>"
+}
+----
+. Cloud Central アカウント ID を取得します。
++
+[source, http]
+----
+GET https://cloudsync.netapp.com/api/accounts
+Headers: Authorization: Bearer <user_token>
+Content-Type: application/json
+----
++
+この API は、次のような応答を返します。
+
++
+[source, json]
+----
+[
+  {
+    "accountId": "account-JeL97Ry3",
+    "name": "Test"
+  }
+]
+----
+. 各 API 呼び出しの Authorization ヘッダーにユーザトークンとアカウント ID を追加します。
++
+* 例 *
+
++
+次の例は、 Microsoft Azure でデータブローカーを作成するための API 呼び出しを示しています。<user_token> と <accountId> は、前の手順で取得したトークンと ID で置き換えます。
+
++
+[source, http]
+----
+POST https://cloudsync.netapp.com/api/data-brokers
+Headers: Authorization: Bearer <user_token>
+Content-Type: application/json
+x-account-id: <accountId>
+Body: { "name": "databroker1", "type": "AZURE" }
+----
+
+
+.トークンの有効期限が切れた場合はどうすればよいですか。
+****
+NetApp Cloud Central のユーザトークンの有効期限が切れています。トークンを更新するには、手順 1 から API を再度呼び出す必要があります。
+
+API 応答には、トークンの有効期限を示す「 expires_in 」フィールドが含まれています。
+
+****
+
+
+== API リファレンス
+
+各 Cloud Sync API のドキュメントは、から入手できます https://cloudsync.netapp.com/docs/["NetApp Cloud Central"^]。
+
+
+
+== List API の使用
+
+list API は非同期 API であるため ' 結果はすぐには返されません ( たとえば 'get/data-colders/{id}/list-nfs-export-folders' と 'get/data-colders/{id}/list-s3-bas' など )サーバからの応答は、 HTTP ステータス 202 だけです。実際の結果を得るには 'get/mmessages/client'api を使用する必要があります
+
+.手順
+. 使用するリスト API を呼び出します。
+. オペレーションの結果を表示するには 'get/mmessages/client'API を使用します
+. 受信した ID を付加して、同じ API を使用します。「 get\http://cloudsync.netapp.com/api/messages/client?last=<id_from_step_2>` 」
++
+ID は 'get/mmessages/client'API を呼び出すたびに変更されることに注意してください
+
+
+
+* 例 *
+
+'list-s3-buckets' API を呼び出すと ' 結果はすぐには返されません
+
+[source, http]
+----
+GET http://cloudsync.netapp.com/api/data-brokers/<data-broker-id>/list-s3-buckets
+Headers: Authorization: Bearer <user_token>
+Content-Type: application/json
+x-account-id: <accountId>
+----
+その結果、 HTTP ステータスコード 202 が生成されます。これは、メッセージが受け入れられたが、まだ処理されていないことを意味します。
+
+操作の結果を取得するには、次の API を使用する必要があります。
+
+[source, http]
+----
+GET http://cloudsync.netapp.com/api/messages/client
+Headers: Authorization: Bearer <user_token>
+Content-Type: application/json
+x-account-id: <accountId>
+----
+結果は、 ID フィールドを含む 1 つのオブジェクトを持つ配列になります。ID フィールドは、サーバが最後に送信したメッセージを表します。例：
+
+[source, json]
+----
+[
+    {
+        "header": {
+            "requestId": "init",
+            "clientId": "init",
+            "agentId": "init"
+        },
+        "payload": {
+            "init": {}
+        },
+        "id": "5801"
+    }
+]
+----
+次に、受信した ID を使用して、次の API コールを実行します。
+
+[source, http]
+----
+GET http://cloudsync.netapp.com/api/messages/client?last=<id_from_step_2>
+Headers: Authorization: Bearer <user_token>
+Content-Type: application/json
+x-account-id: <accountId>
+----
+結果はメッセージの配列です。各メッセージ内にはペイロードオブジェクトがあります。ペイロードオブジェクトは、動作の名前（キー）とその結果（値）で構成されます。例：
+
+[source, json]
+----
+[
+    {
+        "payload": {
+            "list-s3-buckets": [
+                {
+                    "tags": [
+                        {
+                            "Value": "100$",
+                            "Key": "price"
+                        }
+                    ],
+                    "region": {
+                        "displayName": "US West (Oregon)",
+                        "name": "us-west-2"
+                    },
+                    "name": "small"
+                }
+            ]
+        },
+        "header": {
+            "requestId": "f687ac55-2f0c-40e3-9fa6-57fb8c4094a3",
+            "clientId": "5beb032f548e6e35f4ed1ba9",
+            "agentId": "5bed61f4489fb04e34a9aac6"
+        },
+        "id": "5802"
+    }
+]
+----

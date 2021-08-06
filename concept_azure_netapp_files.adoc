@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: concept_azure_netapp_files.html 
+keywords: azure netapp files, cost, price, features, azure netapp files features, anf, supported regions, azure regions, azure netapp files regions 
+summary: Azure NetApp Files を使用すると、パフォーマンスを重視し、レイテンシの影響を受けやすいコアアプリケーションを Azure に移行して実行できます。クラウドにリファクタリングする必要はありません。 
+---
+= Azure NetApp Files の詳細をご覧ください
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure NetApp Files を使用すると、パフォーマンスを重視し、レイテンシの影響を受けやすいコアアプリケーションを Azure に移行して実行できます。クラウドにリファクタリングする必要はありません。
+
+
+
+== の機能
+
+* 複数のプロトコルをサポートしているため、 Linux と Windows 両方のアプリケーションを Azure でシームレスに移行してスムーズに実行できます。
+* 複数のパフォーマンス階層を使用することで、ワークロードのパフォーマンス要件に緊密に合わせることができます。
+* SAP HANA 、 GDPR 、 HIPPA を含む業界をリードする認定資格を取得することで、最も要件の厳しいワークロードを Azure に移行できます。
+
+
+
+
+== Cloud Manager のその他の機能
+
+* NFS または SMB データを Azure NetApp Files に Cloud Manager から直接移行する。データ移行には、ネットアップの Cloud Sync サービスが採用されています。 link:concept_cloud_sync.html["詳細はこちら。"]。
+* 人工知能（ AI ）ベースのテクノロジを使用して、クラウドコンプライアンスはデータコンテキストを把握し、 Azure NetApp Files アカウントに存在する機密データを特定するのに役立ちます。 link:concept_cloud_compliance.html["詳細はこちら。"]。
+
+
+
+
+== コスト
+
+https://azure.microsoft.com/pricing/details/netapp/["Azure NetApp Files の価格設定を確認する"^]。
+
+サブスクリプションと課金は、 Cloud Manager ではなく Azure NetApp Files サービスによって維持されます。
+
+
+
+== サポートされている地域
+
+https://cloud.netapp.com/cloud-volumes-global-regions["サポートされる Azure リージョンを表示します"^]。
+
+
+
+== アクセスを要求中です
+
+Azure NetApp Files へのアクセスを許可する必要があります によって https://aka.ms/azurenetappfiles["オンラインリクエストを送信しています"^]。Azure NetApp Files チームからの承認を待ってから、次の手順に進む必要があります。
+
+
+
+== サポートを受ける
+
+Azure NetApp Files に関連したテクニカルサポートの問題については、 Azure ポータルを使用して Microsoft にサポートリクエストを記録してください。関連する Microsoft サブスクリプションを選択し、「 * ストレージ * 」の下の「 * Azure NetApp Files * 」サービス名を選択します。Microsoft サポートリクエストの作成に必要な残りの情報を入力します。
+
+Cloud Sync と Azure NetApp Files に関連する問題については、 Cloud Sync のシリアル番号を Cloud Sync サービスから直接使用してネットアップから開始できます。Cloud Sync サービスには、 Cloud Manager のリンクからアクセスする必要があります。 https://docs.netapp.com/us-en/cloudsync/reference_additional_info.html["プロセスを表示して Cloud Sync サポートを有効にします"^]。
+
+
+
+== 関連リンク
+
+* https://cloud.netapp.com/azure-netapp-files["NetApp Cloud Central ： Azure NetApp Files"^]
+* https://docs.microsoft.com/azure/azure-netapp-files/["Azure NetApp Files のドキュメント"^]
+* https://docs.netapp.com/us-en/cloudsync/index.html["Cloud Sync のドキュメント"^]
+

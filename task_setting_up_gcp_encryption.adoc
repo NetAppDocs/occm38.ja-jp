@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: task_setting_up_gcp_encryption.html 
+keywords: encryption, gcp, encryption key, permissions, customer-managed, gcpencryption 
+summary: Google Cloud Storage では、データがディスクに書き込まれる前に常に暗号化されますが、 Cloud Manager API を使用して、お客様が管理する暗号化キーを使用する Cloud Volumes ONTAP システムを作成できます。これらは、 Cloud Key Management Service を使用して GCP で生成および管理するキーです。 
+---
+= お客様が管理する暗号化キーを Cloud Volumes ONTAP で使用する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Google Cloud Storage では、データがディスクに書き込まれる前に必ず暗号化されますが、 Cloud Manager API を使用して、 _ お客様が管理する暗号化キー _ を使用する Cloud Volumes ONTAP システムを作成できます。これらは、 Cloud Key Management Service を使用して GCP で生成および管理するキーです。
+
+.手順
+. 暗号化キーを使用する権限を Connector サービスアカウントに付与します。
++
+image:screenshot_gcp_key.gif[""]
+
+. /GCP/VSA/metadata/GCP-encryption-keys API の get コマンドを呼び出して、キーの「 id 」を取得します。
+. 作業環境を作成するときは、 API 要求で "GcpEncryption" パラメータを使用します。
++
+* 例 *
+
++
+[source, json]
+----
+"gcpEncryptionParameters": {
+    "key": "projects/tlv-support/locations/us-east4/keyRings/Nikiskeys/cryptoKeys/generatedkey1"
+  }
+----
+
+
+を参照してください link:api.html#_creating_systems_in_gcp["API 開発者ガイド"^] "GcpEncryption" パラメータの使用方法の詳細については、を参照してください。

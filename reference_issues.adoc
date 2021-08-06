@@ -1,0 +1,20 @@
+---
+sidebar: sidebar 
+permalink: reference_issues.html 
+keywords: issues, bugs, known issues 
+summary: 既知の問題は、このリリースの製品を正常に使用できない可能性のある問題を特定します。 
+---
+= 既知の問題
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+既知の問題は、このリリースの製品を正常に使用できない可能性のある問題を特定します。
+
+このリリースの Cloud Manager には既知の問題はありません。
+
+Cloud Volumes ONTAP の既知の問題については、を参照してください 。 https://docs.netapp.com/us-en/cloud-volumes-ontap/["Cloud Volumes ONTAP リリースノート"^] および ONTAP ソフトウェアについては、を参照してください。

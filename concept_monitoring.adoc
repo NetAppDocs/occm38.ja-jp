@@ -1,0 +1,97 @@
+---
+sidebar: sidebar 
+permalink: concept_monitoring.html 
+keywords: concepts, how cloud insights works, how monitoring works, features, monitoring features, cloud insights features, cost, monitoring 
+summary: ネットアップの Cloud Insights サービスを活用することで、 Cloud Manager はすべての Cloud Volumes ONTAP インスタンスの健全性とパフォーマンスを分析し、クラウドストレージ環境のパフォーマンスのトラブルシューティングと最適化に役立ちます。 
+---
+= 監視サービスについて説明します
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+を活用する https://cloud.netapp.com/cloud-insights["NetApp Cloud Insights サービス"]Cloud Manager を使用すると、 Cloud Volumes ONTAP インスタンスの健常性とパフォーマンスを把握し、クラウドストレージ環境のパフォーマンスのトラブルシューティングと最適化に役立てることができます。
+
+
+
+== の機能
+
+* すべてのボリュームを自動的に監視します
+* ボリュームのパフォーマンスデータを IOPS 、スループット、レイテンシの観点から表示します
+* パフォーマンスの問題を特定して、ユーザおよびへの影響を最小限に抑えます アプリケーション
+
+
+
+
+== サポートされているクラウドプロバイダ
+
+監視サービスは Cloud Volumes ONTAP for AWS でサポートされます。
+
+
+
+== コスト
+
+現在、監視はプレビューとして利用できます。アクティブ化は無料ですが、 Cloud Manager は VPC で仮想マシンを起動して監視を容易にします。この VM を使用すると、クラウドプロバイダから料金が発生します。
+
+
+
+== Cloud Insights と Cloud Manager の相互運用性
+
+Cloud Insights と Cloud Manager の統合の概要は次のようになります。
+
+. Cloud Volumes ONTAP で監視サービスを有効にした場合。
+. Cloud Manager によって環境が設定されます。次の処理を行います。
++
+.. Cloud Insights テナント（ _environment_ ）を作成し、 Cloud Central アカウントのすべてのユーザをテナントに関連付けます。
+.. Cloud Insights の 30 日間無償トライアルをご利用いただけます。
+.. Acquisition Unit と呼ばれる VPC に仮想マシンを導入して、ボリュームを監視します（上記の「 Cost 」セクションに記載された VM ）。
+.. Acquisition Unit を Cloud Volumes ONTAP および Cloud Insights テナントに接続します。
+
+
+. Cloud Manager では、監視をクリックし、パフォーマンスデータを使用してパフォーマンスのトラブルシューティングと最適化を行います。
+
+
+次の図は、これらのコンポーネント間の関係を示しています。
+
+image:diagram_cloud_insights.png["「 AWS における Cloud Manager 、 Cloud Volumes ONTAP 、 Acquisition Unit の概念図」"]
+
+
+
+=== Acquisition Unit の略
+
+監視を有効にすると、 Cloud Manager によって Acquisition Unit がコネクタと同じサブネットに導入されます。
+
+An Acquisition Unit _ は、 Cloud Volumes ONTAP からパフォーマンスデータを収集し、 Cloud Insights テナントに送信します。Cloud Manager は、そのデータを照会してユーザに提供します。
+
+Acquisition Unit インスタンスについては、次の点に注意してください。
+
+* Acquisition Unit は、 100GB の gp2 ボリュームである t3.xlarge インスタンスで実行されます。
+* インスタンスの名前は _AcquisitionUnit_ で、生成されたハッシュ（ UUID ）が連結されます。例： _AcquisitionUnit - FANFqeH_
+* 1 つのコネクタに展開される Acquisition Unit は 1 つだけです。
+* 監視タブでパフォーマンス情報にアクセスするには、インスタンスが実行されている必要があります。
+
+
+
+
+=== Cloud Insights テナント
+
+監視を有効にすると、 Cloud Manager によって _tenant_ がセットアップされます。Cloud Insights テナントを使用して、 Acquisition Unit で収集されたパフォーマンスデータにアクセスできます。テナントは、 NetApp Cloud Insights サービス内のセキュアなデータパーティションです。
+
+
+
+=== Cloud Insights Web インターフェイス
+
+Cloud Manager の Monitoring （監視）タブには、ボリュームの基本的なパフォーマンスデータが表示されます。ブラウザから Cloud Insights Web インターフェイスにアクセスして、より詳細な監視を実行したり、 Cloud Volumes ONTAP システムのアラートを設定したりできます。
+
+
+
+=== 無料トライアルとサブスクリプション
+
+Cloud Manager を使用すると、 Cloud Insights の 30 日間無償トライアルで、 Cloud Manager 内にパフォーマンスデータを提供したり、 Cloud Insights Standard Edition が提供する機能を確認したりできます。
+
+無償トライアルの終了時に登録する必要があります。登録しないと、 Cloud Insights テナントが最終的に削除されます。Basic 、 Standard 、または Premium のいずれかのエディションに登録すると、 Cloud Manager の監視機能を引き続き使用できます。
+
+https://docs.netapp.com/us-en/cloudinsights/concept_subscribing_to_cloud_insights.html["Cloud Insights に登録する方法について説明します"^]。

@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: reference_legal_notices.html 
+keywords: copyrights, notice, trademarks, patents, privacy, open source 
+summary: 著作権に関する声明、商標、特許などにアクセスできます。 
+---
+= 法的通知
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+著作権に関する声明、商標、特許などにアクセスできます。
+
+
+
+== 著作権
+
+http://www.netapp.com/us/legal/copyright.aspx[]
+
+
+
+== 商標
+
+NetApp 、 NetApp のロゴ、および NetApp の商標ページに記載されているマークは、 NetApp, Inc. の商標です。その他の会社名および製品名は、それぞれの所有者の商標である場合があります。
+
+http://www.netapp.com/us/legal/netapptmlist.aspx[]
+
+
+
+== 特許
+
+ネットアップが所有する特許の最新リストは、次のサイトで入手できます。
+
+https://www.netapp.com/us/media/patents-page.pdf[]
+
+
+
+== プライバシーポリシー
+
+https://www.netapp.com/us/legal/privacypolicy/index.aspx[]
+
+
+
+== オープンソース
+
+通知ファイルには、ネットアップソフトウェアで使用されるサードパーティの著作権およびライセンスに関する情報が記載されています。
+
+* link:media/notice_cloud_manager_3.8.7.pdf["Cloud Manager 3.8.7 の注意事項"^]
+* link:media/notice_cloud_manager_3.8.6.pdf["Cloud Manager 3.8.6 の注意事項"^]
+* link:media/notice_cloud_manager_3.8.5.pdf["Cloud Manager 3.8.5 の通知"^]
+* link:media/notice_cloud_manager_3.8.4.pdf["Cloud Manager 3.8.4 の通知"^]
+* link:media/notice_cloud_manager_3.8.3.pdf["Cloud Manager 3.8.3 に関する注意事項"^]
+* link:media/notice_cloud_manager_3.8.2.pdf["Cloud Manager 3.8.2 の通知"^]
+* link:media/notice_cloud_manager_3.8.1.pdf["Cloud Manager 3.8.1 の通知です"^]
+* link:media/notice_cloud_manager_3.8.pdf["Cloud Manager 3.8 に関する注意事項"^]
+* link:media/notice_cloud_backup_service.pdf["Cloud Backup Service の注意事項を参照してください"^]
+* link:media/notice_global_file_cache.pdf["Global File Cache に関する注意事項"^]
+* link:media/notice_cloud_compliance.pdf["Cloud Compliance に関する通知"^]
+

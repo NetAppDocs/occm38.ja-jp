@@ -1,0 +1,605 @@
+---
+sidebar: sidebar 
+permalink: reference_networking_cloud_manager.html 
+keywords: networking, network, requirements, connection, connections, vpc, security group, security groups, subnets, proxy server, vpn, outbound, inbound, connections, jump host, URL, URLs, endpoints, endpoint, ports 
+summary: コネクタがパブリッククラウド環境内のリソースやプロセスを管理できるように、ネットワークを設定します。最も重要なステップは、さまざまなエンドポイントへのアウトバウンドインターネットアクセスを確保することです。 
+---
+= コネクタのネットワーク要件
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+コネクタがパブリッククラウド環境内のリソースやプロセスを管理できるように、ネットワークを設定します。最も重要なステップは、さまざまなエンドポイントへのアウトバウンドインターネットアクセスを確保することです。
+
+
+TIP: ネットワークでインターネットへのすべての通信にプロキシサーバを使用している場合は、 [ 設定 ] ページでプロキシサーバを指定できます。を参照してください link:task_configuring_proxy.html["プロキシサーバを使用するようにコネクタを設定します"]。
+
+
+
+== ターゲットネットワークへの接続
+
+コネクタには、作成する作業環境の種類と、有効にする予定のサービスへのネットワーク接続が必要です。
+
+たとえば、企業ネットワークにコネクタを設置する場合は、 Cloud Volumes ONTAP を起動する VPC または VNet への VPN 接続を設定する必要があります。
+
+
+
+== アウトバウンドインターネットアクセス
+
+Connector では、パブリッククラウド環境内のリソースとプロセスを管理するためにアウトバウンドインターネットアクセスが必要です。アウトバウンドのインターネットアクセスは、コネクタを Linux ホストに手動でインストールする場合や、コネクタで実行されているローカル UI にアクセスする場合にも必要です。
+
+次のセクションでは、特定のエンドポイントについて説明します。
+
+
+
+=== AWS でリソースを管理するエンドポイント
+
+コネクタは、 AWS でリソースを管理する際に次のエンドポイントに接続します。
+
+[cols="43,57"]
+|===
+| エンドポイント | 目的 
+
+
+ a| 
+AWS サービス（ amazonaws.com ）：
+
+* クラウド形成
+* 柔軟なコンピューティングクラウド（ EC2 ）
+* キー管理サービス（ KMS ）
+* セキュリティトークンサービス（ STS ）
+* シンプルなストレージサービス（ S3 ）
+
+
+正確なエンドポイントは、 Cloud Volumes ONTAP を導入する地域によって異なります。 https://docs.aws.amazon.com/general/latest/gr/rande.html["詳細については、 AWS のマニュアルを参照してください。"^]
+| AWS に Cloud Volumes ONTAP を導入して管理できるようにします。 
+
+
+| \ https://api.services.cloud.netapp.com:443 | NetApp Cloud Central への API 要求。 
+
+
+| \ https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com | ソフトウェアイメージ、マニフェスト、およびテンプレートにアクセスできます。 
+
+
+| \ https://repo.cloud.support.netapp.com | Cloud Manager の依存関係のダウンロードに使用します。 
+
+
+| \ http://repo.mysql.com/ | MySQL のダウンロードに使用します。 
+
+
+| ¥ https://cognito-idp.us-east-1.amazonaws.com ¥ https://cognito-identity.us-east-1.amazonaws.com ¥ https://sts.amazonaws.com ¥ https://cloud-support-netapp-com-accelerated.s3.amazonaws.com | コネクタがマニフェスト、テンプレート、および Cloud Volumes ONTAP アップグレードイメージにアクセスしてダウンロードできるようにします。 
+
+
+| \ https://cloudmanagerinfraprod.azurecr.io | Docker を実行しているインフラのコンテナコンポーネントのソフトウェアイメージにアクセスでき、 Cloud Manager とのサービス統合のためのソリューションを提供します。 
+
+
+| \ https://kinesis.us-east-1.amazonaws.com | ネットアップが監査レコードからデータをストリーミングできるようにします。 
+
+
+| \ https://cloudmanager.cloud.netapp.com | Cloud Central アカウントを含む Cloud Manager サービスとの通信。 
+
+
+| https://netapp-cloud-account.auth0.com | NetApp Cloud Central との通信により、ユーザ認証を一元的に行うことができます。 
+
+
+| \ https://w86yt021u5.execute-api.us-east-1.amazonaws.com/production/whitelist | S3 へのバックアップを許可するユーザのリストに AWS アカウント ID を追加します。 
+
+
+| ¥ https://support.netapp.com/aods/asupmessage ¥ https://support.netapp.com/asupprod/post/1.0/postAsup | ネットアップ AutoSupport との通信： 
+
+
+| ¥ https://support.netapp.com/svcgw ¥ https://support.netapp.com/ServiceGW/entitlement ¥ https://eval.lic.netapp.com.s3.us-west-1.amazonaws.com ¥ https://cloud-support-netapp-com.s3.us-west-1.amazonaws.com | システムライセンスとサポート登録を行うためのネットアップとの通信 
+
+
+| ¥ https://client.infra.support.netapp.com.s3.us-west-1.amazonaws.com ¥ https://cloud-support-netapp-com-accelerated.s3.us-west-1.amazonaws.com ¥ https://trigger.asup.netapp.com.s3.us-west-1.amazonaws.com | ネットアップがサポートの問題のトラブルシューティングに必要な情報を収集できるようにします。 
+
+
+| \ https://ipa-signer.cloudmanager.netapp.com | Cloud Manager でライセンスを生成できます（ Cloud Volumes ONTAP 用の FlexCache ライセンスなど）。 
+
+
+| ¥ https://packages.cloud.google.com/yum ¥ https://github.com/NetApp/trident/releases/download/ | Cloud Volumes ONTAP システムを Kubernetes クラスタに接続するために必要です。エンドポイントを使用して NetApp Trident をインストールできます。 
+
+
+ a| 
+次のようなさまざまなサードパーティの場所があります。
+
+* https://repo1.maven.org/maven2 です
+* https://oss.sonType.org/content/repository を参照してください
+* \ https://repo.typesafe.com
+
+
+サードパーティの所在地は変更される可能性があります。
+| アップグレード時に、 Cloud Manager はサードパーティの依存関係に対応する最新のパッケージをダウンロードします。 
+|===
+
+
+=== Azure でリソースを管理するエンドポイント
+
+コネクタは、 Azure でリソースを管理する際に次のエンドポイントに接続します。
+
+[cols="43,57"]
+|===
+| エンドポイント | 目的 
+
+
+| https://management.azure.com https://login.microsoftonline.com | Cloud Manager では、ほとんどの Azure リージョンに Cloud Volumes ONTAP を導入して管理できます。 
+
+
+| https://management.microSoftazure.de https://login.microsoftonline.de | Cloud Manager は、 Azure Germany リージョンに Cloud Volumes ONTAP を導入して管理できます。 
+
+
+| https://management.usgovcloudapi.net/ https://login.microsoftonline.com | Cloud Manager は、 Azure US GOV リージョンに Cloud Volumes ONTAP を導入して管理できます。 
+
+
+| \ https://api.services.cloud.netapp.com:443 | NetApp Cloud Central への API 要求。 
+
+
+| \ https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com | ソフトウェアイメージ、マニフェスト、およびテンプレートにアクセスできます。 
+
+
+| \ https://repo.cloud.support.netapp.com | Cloud Manager の依存関係のダウンロードに使用します。 
+
+
+| \ http://repo.mysql.com/ | MySQL のダウンロードに使用します。 
+
+
+| ¥ https://cognito-idp.us-east-1.amazonaws.com ¥ https://cognito-identity.us-east-1.amazonaws.com ¥ https://sts.amazonaws.com ¥ https://cloud-support-netapp-com-accelerated.s3.amazonaws.com | コネクタがマニフェスト、テンプレート、および Cloud Volumes ONTAP アップグレードイメージにアクセスしてダウンロードできるようにします。 
+
+
+| \ https://cloudmanagerinfraprod.azurecr.io | Docker を実行しているインフラのコンテナコンポーネントのソフトウェアイメージにアクセスでき、 Cloud Manager とのサービス統合のためのソリューションを提供します。 
+
+
+| \ https://kinesis.us-east-1.amazonaws.com | ネットアップが監査レコードからデータをストリーミングできるようにします。 
+
+
+| \ https://cloudmanager.cloud.netapp.com | Cloud Central アカウントを含む Cloud Manager サービスとの通信。 
+
+
+| https://netapp-cloud-account.auth0.com | NetApp Cloud Central との通信により、ユーザ認証を一元的に行うことができます。 
+
+
+| https://mysupport.netapp.com をご覧ください | ネットアップ AutoSupport との通信： 
+
+
+| ¥ https://support.netapp.com/svcgw ¥ https://support.netapp.com/ServiceGW/entitlement ¥ https://eval.lic.netapp.com.s3.us-west-1.amazonaws.com ¥ https://cloud-support-netapp-com.s3.us-west-1.amazonaws.com | システムライセンスとサポート登録を行うためのネットアップとの通信 
+
+
+| ¥ https://client.infra.support.netapp.com.s3.us-west-1.amazonaws.com ¥ https://cloud-support-netapp-com-accelerated.s3.us-west-1.amazonaws.com ¥ https://trigger.asup.netapp.com.s3.us-west-1.amazonaws.com | ネットアップがサポートの問題のトラブルシューティングに必要な情報を収集できるようにします。 
+
+
+| \ https://ipa-signer.cloudmanager.netapp.com | Cloud Manager でライセンスを生成できます（ Cloud Volumes ONTAP 用の FlexCache ライセンスなど）。 
+
+
+| ¥ https://packages.cloud.google.com/yum ¥ https://github.com/NetApp/trident/releases/download/ | Cloud Volumes ONTAP システムを Kubernetes クラスタに接続するために必要です。エンドポイントを使用して NetApp Trident をインストールできます。 
+
+
+| * .blob.core.windows.net | プロキシを使用する場合は HA ペアに必要です。 
+
+
+ a| 
+次のようなさまざまなサードパーティの場所があります。
+
+* https://repo1.maven.org/maven2 です
+* https://oss.sonType.org/content/repository を参照してください
+* \ https://repo.typesafe.com
+
+
+サードパーティの所在地は変更される可能性があります。
+| アップグレード時に、 Cloud Manager はサードパーティの依存関係に対応する最新のパッケージをダウンロードします。 
+|===
+
+
+=== GCP でリソースを管理するためのエンドポイント
+
+コネクタは、 GCP でリソースを管理する際に次のエンドポイントに接続します。
+
+[cols="43,57"]
+|===
+| エンドポイント | 目的 
+
+
+| \ https://www.googleapis.com | GCP で Cloud Volumes ONTAP を導入および管理するために、 Connector から Google API に接続できるようにします。 
+
+
+| \ https://api.services.cloud.netapp.com:443 | NetApp Cloud Central への API 要求。 
+
+
+| \ https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com | ソフトウェアイメージ、マニフェスト、およびテンプレートにアクセスできます。 
+
+
+| \ https://repo.cloud.support.netapp.com | Cloud Manager の依存関係のダウンロードに使用します。 
+
+
+| \ http://repo.mysql.com/ | MySQL のダウンロードに使用します。 
+
+
+| ¥ https://cognito-idp.us-east-1.amazonaws.com ¥ https://cognito-identity.us-east-1.amazonaws.com ¥ https://sts.amazonaws.com ¥ https://cloud-support-netapp-com-accelerated.s3.amazonaws.com | コネクタがマニフェスト、テンプレート、および Cloud Volumes ONTAP アップグレードイメージにアクセスしてダウンロードできるようにします。 
+
+
+| \ https://cloudmanagerinfraprod.azurecr.io | Docker を実行しているインフラのコンテナコンポーネントのソフトウェアイメージにアクセスでき、 Cloud Manager とのサービス統合のためのソリューションを提供します。 
+
+
+| \ https://kinesis.us-east-1.amazonaws.com | ネットアップが監査レコードからデータをストリーミングできるようにします。 
+
+
+| \ https://cloudmanager.cloud.netapp.com | Cloud Central アカウントを含む Cloud Manager サービスとの通信。 
+
+
+| https://netapp-cloud-account.auth0.com | NetApp Cloud Central との通信により、ユーザ認証を一元的に行うことができます。 
+
+
+| https://mysupport.netapp.com をご覧ください | ネットアップ AutoSupport との通信： 
+
+
+| ¥ https://support.netapp.com/svcgw ¥ https://support.netapp.com/ServiceGW/entitlement ¥ https://eval.lic.netapp.com.s3.us-west-1.amazonaws.com ¥ https://cloud-support-netapp-com.s3.us-west-1.amazonaws.com | システムライセンスとサポート登録を行うためのネットアップとの通信 
+
+
+| ¥ https://client.infra.support.netapp.com.s3.us-west-1.amazonaws.com ¥ https://cloud-support-netapp-com-accelerated.s3.us-west-1.amazonaws.com ¥ https://trigger.asup.netapp.com.s3.us-west-1.amazonaws.com | ネットアップがサポートの問題のトラブルシューティングに必要な情報を収集できるようにします。 
+
+
+| \ https://ipa-signer.cloudmanager.netapp.com | Cloud Manager でライセンスを生成できます（ Cloud Volumes ONTAP 用の FlexCache ライセンスなど）。 
+
+
+| ¥ https://packages.cloud.google.com/yum ¥ https://github.com/NetApp/trident/releases/download/ | Cloud Volumes ONTAP システムを Kubernetes クラスタに接続するために必要です。エンドポイントを使用して NetApp Trident をインストールできます。 
+
+
+ a| 
+次のようなさまざまなサードパーティの場所があります。
+
+* https://repo1.maven.org/maven2 です
+* https://oss.sonType.org/content/repository を参照してください
+* \ https://repo.typesafe.com
+
+
+サードパーティの所在地は変更される可能性があります。
+| アップグレード時に、 Cloud Manager はサードパーティの依存関係に対応する最新のパッケージをダウンロードします。 
+|===
+
+
+=== Linux ホストにコネクタをインストールするエンドポイント
+
+Connector ソフトウェアは、手動でインストールすることもできます。その場合、 Connector のインストーラは、インストールプロセス中に次の URL にアクセスする必要があります。
+
+* http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+* https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+* https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+
+
+ホストは、インストール中にオペレーティングシステムパッケージの更新を試みる可能性があります。ホストは、これらの OS パッケージの別のミラーリングサイトにアクセスできます。
+
+
+
+=== ローカルを使用するときに Web ブラウザからアクセスするエンドポイント UI
+
+SaaS ユーザインターフェイスからほとんどのタスクを実行する必要がありますが、ローカルユーザインターフェイスは引き続きコネクタで使用できます。Web ブラウザを実行するマシンは、次のエンドポイントに接続する必要があります。
+
+[cols="43,57"]
+|===
+| エンドポイント | 目的 
+
+
+| コネクタホスト  a| 
+Cloud Manager コンソールをロードするには、 Web ブラウザでホストの IP アドレスを入力する必要があります。
+
+クラウドプロバイダへの接続に応じて、ホストに割り当てられたプライベート IP またはパブリック IP を使用できます。
+
+* プライベート IP は、 VPN とがある場合に機能します 仮想ネットワークへの直接アクセス
+* パブリック IP は、あらゆるネットワークシナリオで機能します
+
+
+いずれの場合も、セキュリティグループのルールで許可された IP またはサブネットからのアクセスのみを許可することで、ネットワークアクセスを保護する必要があります。
+
+
+
+| ¥ https://auth0.com ¥ https://cdn.auth0.com ¥ https://netapp-cloud-account.auth0.com ¥ https://services.cloud.netapp.com | Web ブラウザはこれらのエンドポイントに接続し、 NetApp Cloud Central を介してユーザ認証を一元化します。 
+
+
+| \ https://widget.intercom.io | 製品内でのチャットにより、ネットアップのクラウドエキスパートと会話できます。 
+|===
+
+
+== ポートおよびセキュリティグループ
+
+コネクタへの着信トラフィックは、開始しない限りありません。へのアクセスは、 HTTP および HTTPS を使用して提供されます link:concept_connectors.html#the-local-user-interface["ローカル UI"]は、まれな状況で使用します。SSH が必要になるのは、トラブルシューティングのためにホストに接続する必要がある場合のみです。
+
+
+
+=== AWS のコネクタのルール
+
+コネクタのセキュリティグループには、インバウンドとアウトバウンドの両方のルールが必要です。
+
+
+
+==== インバウンドルール
+
+定義済みセキュリティグループのインバウンドルールの送信元は 0.0.0.0/0 です。
+
+[cols="10,10,80"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| SSH | 22 | コネクタホストへの SSH アクセスを提供します 
+
+
+| HTTP | 80 | クライアント Web ブラウザからローカルへの HTTP アクセスを提供します Cloud Compliance からのユーザインターフェイスと接続 
+
+
+| HTTPS | 443 | クライアント Web ブラウザからローカルへの HTTPS アクセスを提供します ユーザインターフェイス 
+
+
+| TCP | 3128 | AWS ネットワークで NAT やプロキシを使用していない場合に、 Cloud Compliance インスタンスにインターネットアクセスを提供します 
+|===
+
+
+==== アウトバウンドルール
+
+コネクタの事前定義されたセキュリティグループは、すべての発信トラフィックを開きます。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+===== 基本的なアウトバウンドルール
+
+コネクタの事前定義されたセキュリティグループには、次のアウトバウンドルールが含まれています。
+
+[cols="20,20,60"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| すべての TCP | すべて | すべての発信トラフィック 
+
+
+| すべての UDP | すべて | すべての発信トラフィック 
+|===
+
+
+===== 高度なアウトバウンドルール
+
+発信トラフィックに固定ルールが必要な場合は、次の情報を使用して、コネクタによる発信通信に必要なポートだけを開くことができます。
+
+
+NOTE: 送信元 IP アドレスは、コネクタホストです。
+
+[cols="5*"]
+|===
+| サービス | プロトコル | ポート | 宛先 | 目的 
+
+
+.9+| Active Directory | TCP | 88 | Active Directory フォレスト | Kerberos V 認証 
+
+
+| TCP | 139 | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| TCP | 389 | Active Directory フォレスト | LDAP 
+
+
+| TCP | 445 | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| TCP | 464 | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| TCP | 749 | Active Directory フォレスト | Active Directory Kerberos v の変更とパスワードの設定（ RPCSEC_GSS ） 
+
+
+| UDP | 137 | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| UDP | 138 | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| UDP | 464 | Active Directory フォレスト | Kerberos キー管理 
+
+
+| API コールと AutoSupport | HTTPS | 443 | アウトバウンドインターネットおよび ONTAP クラスタ管理 LIF | AWS および ONTAP への API コール、およびネットアップへの AutoSupport メッセージの送信 
+
+
+.2+| API コール | TCP | 3000 | ONTAP クラスタ管理 LIF | ONTAP への API コール 
+
+
+| TCP | 8088 | S3 へのバックアップ | S3 へのバックアップを API で呼び出します 
+
+
+| DNS | UDP | 53 | DNS | Cloud Manager による DNS 解決に使用されます 
+
+
+| クラウドコンプライアンス | HTTP | 80 | Cloud Compliance インスタンス | Cloud Volumes ONTAP 向けクラウドコンプライアンス 
+|===
+
+
+=== Azure のコネクタのルール
+
+コネクタのセキュリティグループには、インバウンドとアウトバウンドの両方のルールが必要です。
+
+
+
+==== インバウンドルール
+
+定義済みセキュリティグループのインバウンドルールの送信元は 0.0.0.0/0 です。
+
+[cols="3*"]
+|===
+| ポート | プロトコル | 目的 
+
+
+| 22 | SSH | コネクタホストへの SSH アクセスを提供します 
+
+
+| 80 | HTTP | クライアント Web ブラウザからローカルへの HTTP アクセスを提供します ユーザインターフェイス 
+
+
+| 443 | HTTPS | クライアント Web ブラウザからローカルへの HTTPS アクセスを提供します ユーザインターフェイス 
+|===
+
+
+==== アウトバウンドルール
+
+コネクタの事前定義されたセキュリティグループは、すべての発信トラフィックを開きます。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+===== 基本的なアウトバウンドルール
+
+コネクタの事前定義されたセキュリティグループには、次のアウトバウンドルールが含まれています。
+
+[cols="3*"]
+|===
+| ポート | プロトコル | 目的 
+
+
+| すべて | すべての TCP | すべての発信トラフィック 
+
+
+| すべて | すべての UDP | すべての発信トラフィック 
+|===
+
+
+===== 高度なアウトバウンドルール
+
+発信トラフィックに固定ルールが必要な場合は、次の情報を使用して、コネクタによる発信通信に必要なポートだけを開くことができます。
+
+
+NOTE: 送信元 IP アドレスは、コネクタホストです。
+
+[cols="5*"]
+|===
+| サービス | ポート | プロトコル | 宛先 | 目的 
+
+
+.9+| Active Directory | 88 | TCP | Active Directory フォレスト | Kerberos V 認証 
+
+
+| 139 | TCP | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| 389 | TCP | Active Directory フォレスト | LDAP 
+
+
+| 445 | TCP | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| 464 | TCP | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| 749 | TCP | Active Directory フォレスト | Active Directory Kerberos v の変更とパスワードの設定（ RPCSEC_GSS ） 
+
+
+| 137 | UDP | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| 138 | UDP | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| 464 | UDP | Active Directory フォレスト | Kerberos キー管理 
+
+
+| API コールと AutoSupport | 443 | HTTPS | アウトバウンドインターネットおよび ONTAP クラスタ管理 LIF | AWS および ONTAP への API コール、およびネットアップへの AutoSupport メッセージの送信 
+
+
+| API コール | 3000 | TCP | ONTAP クラスタ管理 LIF | ONTAP への API コール 
+
+
+| DNS | 53 | UDP | DNS | Cloud Manager による DNS 解決に使用されます 
+|===
+
+
+=== GCP のコネクターのルール
+
+コネクタのファイアウォールルールには、インバウンドとアウトバウンドの両方のルールが必要です。
+
+
+
+==== インバウンドルール
+
+定義済みのファイアウォールルールのインバウンドルールのソースは 0.0.0.0/0 です。
+
+[cols="10,10,80"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| SSH | 22 | コネクタホストへの SSH アクセスを提供します 
+
+
+| HTTP | 80 | クライアント Web ブラウザからローカルへの HTTP アクセスを提供します ユーザインターフェイス 
+
+
+| HTTPS | 443 | クライアント Web ブラウザからローカルへの HTTPS アクセスを提供します ユーザインターフェイス 
+|===
+
+
+==== アウトバウンドルール
+
+コネクタの定義済みファイアウォールルールによって、すべてのアウトバウンドトラフィックが開かれます。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+===== 基本的なアウトバウンドルール
+
+コネクタの定義済みファイアウォールルールには、次のアウトバウンドルールが含まれています。
+
+[cols="20,20,60"]
+|===
+| プロトコル | ポート | 目的 
+
+
+| すべての TCP | すべて | すべての発信トラフィック 
+
+
+| すべての UDP | すべて | すべての発信トラフィック 
+|===
+
+
+===== 高度なアウトバウンドルール
+
+発信トラフィックに固定ルールが必要な場合は、次の情報を使用して、コネクタによる発信通信に必要なポートだけを開くことができます。
+
+
+NOTE: 送信元 IP アドレスは、コネクタホストです。
+
+[cols="5*"]
+|===
+| サービス | プロトコル | ポート | 宛先 | 目的 
+
+
+.9+| Active Directory | TCP | 88 | Active Directory フォレスト | Kerberos V 認証 
+
+
+| TCP | 139 | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| TCP | 389 | Active Directory フォレスト | LDAP 
+
+
+| TCP | 445 | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| TCP | 464 | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| TCP | 749 | Active Directory フォレスト | Active Directory Kerberos v の変更とパスワードの設定（ RPCSEC_GSS ） 
+
+
+| UDP | 137 | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| UDP | 138 | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| UDP | 464 | Active Directory フォレスト | Kerberos キー管理 
+
+
+| API コールと AutoSupport | HTTPS | 443 | アウトバウンドインターネットおよび ONTAP クラスタ管理 LIF | GCP および ONTAP への API コール、およびネットアップへの AutoSupport メッセージの送信 
+
+
+| API コール | TCP | 3000 | ONTAP クラスタ管理 LIF | ONTAP への API コール 
+
+
+| DNS | UDP | 53 | DNS | Cloud Manager による DNS 解決に使用されます 
+|===

@@ -1,0 +1,363 @@
+---
+sidebar: sidebar 
+permalink: task_managing_storage.html 
+keywords: volumes, aggregates, managing, cloning, editing, CIFS server, edit, flexclone, snapshot copy, restore, mount, tier, delete, advanced allocation, disks, cifs setup, DNS, active directory, AD, domain, NetBIOS, identify, move, capacity, action required, clone, snapshot copies, restoring, disk type, add disk, change disk, vol move, volume move, move a volume, volume move slow, volume move performance 
+summary: Cloud Manager では、ボリューム、アグリゲート、 CIFS サーバを管理できます。また、容量の問題を回避するためにボリュームを移動するように求められます。 
+---
+= 既存のストレージの管理
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager では、ボリューム、アグリゲート、 CIFS サーバを管理できます。また、容量の問題を回避するためにボリュームを移動するように求められます。
+
+
+
+== 既存のボリュームの管理
+
+既存のボリュームは、ストレージのニーズの変化に応じて管理できます。ボリュームの表示、編集、クローン作成、リストア、削除を実行できます。
+
+.手順
+. [ 作業環境 ] ページで、ボリュームを管理する Cloud Volumes ONTAP 作業環境をダブルクリックします。
+. ボリュームの管理：
++
+[cols="30,70"]
+|===
+| タスク | アクション 
+
+
+| ボリュームに関する情報を表示します | ボリュームを選択し、 * 情報 * をクリックします。 
+
+
+| ボリュームの編集（読み取り / 書き込みボリュームのみ）  a| 
+.. ボリュームを選択し、 * 編集 * をクリックします。
+.. ボリュームの Snapshot ポリシー、 NFS プロトコルバージョン、 NFS アクセス制御リスト、または共有権限を変更し、 * Update * をクリックします。
+
+
+
+NOTE: カスタムの Snapshot ポリシーが必要な場合は、 System Manager を使用して作成できます。
+
+
+
+| ボリュームのクローンを作成します  a| 
+.. ボリュームを選択し、 * Clone * をクリックします。
+.. 必要に応じてクローン名を変更し、 * Clone * をクリックします。
+
+
+このプロセスにより、 FlexClone ボリュームが作成されます。FlexClone ボリュームは、書き込み可能なポイントインタイムコピーであり、メタデータ用に少量のスペースを使用するため、スペース効率に優れています。また、データの変更や追加に応じて追加のスペースを消費するだけです。
+
+FlexClone ボリュームの詳細については、を参照してください http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["ONTAP 9 論理ストレージ管理ガイド"^]。
+
+
+
+| Snapshot コピーから新しいボリュームにデータをリストアします  a| 
+.. ボリュームを選択し、 * Snapshot コピーからリストア * をクリックします。
+.. Snapshot コピーを選択し、新しいボリュームの名前を入力して、 * Restore * をクリックします。
+
+
+
+
+| オンデマンドで Snapshot コピーを作成します  a| 
+.. ボリュームを選択し、 * Snapshot コピーの作成 * をクリックします。
+.. 必要に応じて名前を変更し、 * 作成 * をクリックします。
+
+
+
+
+| nfs mount コマンドを取得します  a| 
+.. ボリュームを選択し、 * コマンドのマウント * をクリックします。
+.. [* コピー（ Copy ） ] をクリックします
+
+
+
+
+| iSCSI ボリュームのターゲット IQN を表示します  a| 
+.. ボリュームを選択し、 * Target IQN * をクリックします。
+.. [* コピー（ Copy ） ] をクリックします
+.. link:task_provisioning_storage.html#connecting-a-lun-to-a-host["IQN を使用して、から LUN に接続します ホスト"]。
+
+
+
+
+| 基になるディスクタイプを変更します  a| 
+.. ボリュームを選択し、 * ディスクタイプと階層化ポリシーの変更 * をクリックします。
+.. ディスクタイプを選択し、 * Change * をクリックします。
+
+
+
+NOTE: Cloud Manager は、選択したディスクタイプを使用する既存のアグリゲートにボリュームを移動するか、ボリュームの新しいアグリゲートを作成します。
+
+
+
+| 階層化ポリシーを変更します  a| 
+.. ボリュームを選択し、 * ディスクタイプと階層化ポリシーの変更 * をクリックします。
+.. ［ * ポリシーの編集 * ］ をクリックします。
+.. 別のポリシーを選択し、 * 変更 * をクリックします。
+
+
+
+NOTE: Cloud Manager は、選択したディスクタイプを使用する既存のアグリゲートにボリュームを移動するか、ボリュームの新しいアグリゲートを作成します。
+
+
+
+| ボリュームを削除します  a| 
+.. ボリュームを選択し、 * 削除 * をクリックします。
+.. 再度 * Delete * をクリックして確定します。
+
+
+|===
+
+
+
+
+== 既存のアグリゲートの管理
+
+アグリゲートの管理を自分で行うには、ディスクの追加、アグリゲートに関する情報の表示、およびアグリゲートの削除を行います。
+
+アグリゲートを削除する場合は、まずアグリゲート内のボリュームを削除しておく必要があります。
+
+アグリゲートのスペースが不足している場合は、 OnCommand System Manager を使用してボリュームを別のアグリゲートに移動できます。
+
+.手順
+. [ 作業環境 ] ページで、アグリゲートを管理する Cloud Volumes ONTAP 作業環境をダブルクリックします。
+. メニューアイコンをクリックし、 [ * 詳細設定 ] > [ 高度な割り当て * ] をクリックします。
+. アグリゲートの管理：
++
+[cols="30,70"]
+|===
+| タスク | アクション 
+
+
+| アグリゲートに関する情報を表示します | アグリゲートを選択し、 * Info * をクリックします。 
+
+
+| 特定のアグリゲートにボリュームを作成します | アグリゲートを選択し、 * ボリュームの作成 * をクリックします。 
+
+
+| アグリゲートにディスクを追加します  a| 
+.. アグリゲートを選択し、 * AWS ディスクの追加 * または * Azure ディスクの追加 * をクリックします。
+.. 追加するディスクの数を選択し、 * 追加 * をクリックします。
++
+
+TIP: アグリゲート内のディスクはすべて同じサイズである必要があります。
+
+
+
+
+
+| アグリゲートを削除します  a| 
+.. ボリュームを含まないアグリゲートを選択し、 * Delete * をクリックします。
+.. 再度 * Delete * をクリックして確定します。
+
+
+|===
+
+
+
+
+== CIFS サーバの変更
+
+DNS サーバまたは Active Directory ドメインを変更した場合は、クライアントへのストレージの提供を継続できるように、 Cloud Volumes ONTAP で CIFS サーバを変更する必要があります。
+
+.手順
+. 作業環境で、メニューアイコンをクリックし、 * Advanced > CIFS setup * をクリックします。
+. CIFS サーバの設定を指定します。
++
+[cols="30,70"]
+|===
+| タスク | アクション 
+
+
+| DNS プライマリおよびセカンダリ IP アドレス | CIFS サーバの名前解決を提供する DNS サーバの IP アドレス。リストされた DNS サーバには、 CIFS サーバが参加するドメインの Active Directory LDAP サーバとドメインコントローラの検索に必要なサービスロケーションレコード（ SRV ）が含まれている必要があります。 
+
+
+| 参加する Active Directory ドメイン | CIFS サーバを参加させる Active Directory （ AD ）ドメインの FQDN 。 
+
+
+| ドメインへの参加を許可されたクレデンシャル | AD ドメイン内の指定した組織単位（ OU ）にコンピュータを追加するための十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS サーバの NetBIOS 名 | AD ドメイン内で一意の CIFS サーバ名。 
+
+
+| 組織単位 | CIFS サーバに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。AWS Managed Microsoft AD を Cloud Volumes ONTAP の AD サーバとして設定する場合は、このフィールドに「 * OU=computers 、 OU=corp * 」と入力します。 
+
+
+| DNS ドメイン | Cloud Volumes ONTAP Storage Virtual Machine （ SVM ）の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTP サーバ | Active Directory DNS を使用して NTP サーバを設定するには、「 Active Directory ドメインを使用」を選択します。別のアドレスを使用して NTP サーバを設定する必要がある場合は、 API を使用してください。を参照してください link:api.html["Cloud Manager API 開発者ガイド"^] を参照してください。 
+|===
+. [ 保存（ Save ） ] をクリックします。
+
+
+Cloud Volumes ONTAP は CIFS サーバを変更して更新します。
+
+
+
+== ボリュームを移動しています
+
+容量利用率やパフォーマンスの向上、およびサービスレベル契約を満たすためにボリュームを移動する。
+
+System Manager でボリュームを移動するには、ボリュームとデスティネーションアグリゲートを選択してボリューム移動処理を開始し、必要に応じてボリューム移動ジョブを監視します。System Manager を使用すると、ボリューム移動処理が自動的に完了します。
+
+.手順
+. System Manager または CLI を使用して、ボリュームをアグリゲートに移動します。
++
+ほとんどの場合、 System Manager を使用してボリュームを移動できます。
+
++
+手順については、を参照してください http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-vol-move/home.html["ONTAP 9 ボリューム移動エクスプレスガイド"^]。
+
+
+
+
+
+== Cloud Manager に「 Action Required 」が表示されている場合は、ボリュームを移動します メッセージ
+
+Cloud Manager では、容量の問題を回避するためにボリュームの移動が必要であることを示す Action Required メッセージが表示される場合がありますが、問題を修正するための推奨事項を提示することはできません。この場合は、問題の解決方法を特定してから、 1 つ以上のボリュームを移動する必要があります。
+
+.手順
+. <<Identifying how to correct capacity issues,問題を解決する方法を認識する。>>。
+. 分析に基づいて、容量の問題を回避するためにボリュームを移動します。
++
+** <<Moving volumes to another system to avoid capacity issues,ボリュームを別のシステムに移動します。>>。
+** <<Moving volumes to another aggregate to avoid capacity issues,ボリュームを同じシステム上の別のアグリゲートに移動します。>>。
+
+
+
+
+
+
+=== 容量の問題を解決する方法を特定する
+
+容量の問題を回避するために Cloud Manager がボリュームの移動に関する推奨事項を提供できない場合は、移動する必要があるボリュームを特定し、それらを同じシステム上の別のアグリゲートに移動するか、別のシステムに移動するかを決定する必要があります。
+
+.手順
+. Action Required メッセージの詳細情報を表示して、容量制限に達したアグリゲートを特定します。
++
+たとえば、アグリゲート aggr1 の容量が上限に達したとします。
+
+. アグリゲートから移動する 1 つ以上のボリュームを指定します。
++
+.. 作業環境で、メニューアイコンをクリックし、 * 詳細設定 > 高度な割り当て * をクリックします。
+.. アグリゲートを選択し、 * Info * をクリックします。
+.. ボリュームのリストを展開します。
++
+image:screenshot_aggr_volumes.gif["スクリーンショット：アグリゲート内のボリュームのリストがアグリゲート情報ダイアログボックスに表示されます。"]
+
+.. 各ボリュームのサイズを確認し、アグリゲートから移動するボリュームを 1 つ以上選択します。
++
+将来的に容量の問題が発生しないように、アグリゲート内の空きスペースに十分な大きさのボリュームを選択する必要があります。
+
+
+
+. システムがディスク制限に達していない場合は、ボリュームを同じシステム上の既存のアグリゲートまたは新しいアグリゲートに移動する必要があります。
++
+詳細については、を参照してください link:task_managing_storage.html#moving-volumes-to-another-aggregate-to-avoid-capacity-issues["ボリュームを別のアグリゲートに移動して、容量の問題を回避します"]。
+
+. システムがディスクの上限に達した場合は、次のいずれかを実行します。
++
+.. 未使用のボリュームを削除します。
+.. ボリュームを再配置して、アグリゲートの空きスペースを確保します。
++
+詳細については、を参照してください link:task_managing_storage.html#moving-volumes-to-another-aggregate-to-avoid-capacity-issues["ボリュームを別のアグリゲートに移動して、容量の問題を回避します"]。
+
+.. スペースがある別のシステムに 2 つ以上のボリュームを移動します。
++
+詳細については、を参照してください link:task_managing_storage.html#moving-volumes-to-another-system-to-avoid-capacity-issues["容量の問題を回避するためにボリュームを別のシステムに移動する"]。
+
+
+
+
+
+
+
+=== 容量の問題を回避するためにボリュームを別のシステムに移動する
+
+1 つ以上のボリュームを別の Cloud Volumes ONTAP システムに移動して、容量の問題を回避できます。システムがディスクの上限に達した場合は、この操作が必要になることがあります。
+
+このタスクの手順に従って、次のアクションが必要なメッセージを修正できます。
+
+....
+Moving a volume is necessary to avoid capacity issues; however, Cloud Manager cannot perform this action for you because the system has reached the disk limit.
+....
+.手順
+. 使用可能な容量を持つ Cloud Volumes ONTAP システムを特定するか、新しいシステムを導入します。
+. ソースの作業環境をターゲットの作業環境にドラッグアンドドロップして、ボリュームの 1 回限りのデータレプリケーションを実行します。
++
+詳細については、を参照してください link:task_replicating_data.html["システム間でのデータのレプリケーション"]。
+
+. [Replication Status] ページに移動し、 SnapMirror 関係を解除して、レプリケートされたボリュームをデータ保護ボリュームから読み取り / 書き込みボリュームに変換します。
++
+詳細については、を参照してください link:task_replicating_data.html#managing-data-replication-schedules-and-relationships["データレプリケーションのスケジュールと関係の管理"]。
+
+. データアクセス用にボリュームを設定します。
++
+データアクセス用のデスティネーションボリュームの設定については、を参照してください http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-sm-ic-fr/home.html["ONTAP 9 ボリュームディザスタリカバリエクスプレスガイド"^]。
+
+. 元のボリュームを削除します。
++
+詳細については、を参照してください link:task_managing_storage.html#managing-existing-volumes["既存のボリュームの管理"]。
+
+
+
+
+
+=== ボリュームを別のアグリゲートに移動して、容量の問題を回避します
+
+1 つ以上のボリュームを別のアグリゲートに移動して、容量の問題を回避できます。
+
+このタスクの手順に従って、次のアクションが必要なメッセージを修正できます。
+
+....
+Moving two or more volumes is necessary to avoid capacity issues; however, Cloud Manager cannot perform this action for you.
+....
+.手順
+. 既存のアグリゲートに、移動する必要があるボリュームの使用可能な容量があるかどうかを確認します。
++
+.. 作業環境で、メニューアイコンをクリックし、 * 詳細設定 > 高度な割り当て * をクリックします。
+.. 各アグリゲートを選択し、 * Info * をクリックして、使用可能な容量（アグリゲート容量から使用済みアグリゲート容量を引いた容量）を確認します。
++
+image:screenshot_aggr_capacity.gif["スクリーンショット：アグリゲート情報ダイアログボックスで使用可能な合計アグリゲート容量と使用済みアグリゲート容量を表示します。"]
+
+
+
+. 必要に応じて、既存のアグリゲートにディスクを追加します。
++
+.. アグリゲートを選択し、 * ディスクの追加 * をクリックします。
+.. 追加するディスクの数を選択し、 * 追加 * をクリックします。
+
+
+. 使用可能な容量を持つアグリゲートがない場合は、新しいアグリゲートを作成します。
++
+詳細については、を参照してください link:task_provisioning_storage.html#creating-aggregates["アグリゲートの作成"]。
+
+. System Manager または CLI を使用して、ボリュームをアグリゲートに移動します。
+. ほとんどの場合、 System Manager を使用してボリュームを移動できます。
++
+手順については、を参照してください http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-vol-move/home.html["ONTAP 9 ボリューム移動エクスプレスガイド"^]。
+
+
+
+
+
+== ボリューム移動の実行に時間がかかる場合がある理由
+
+Cloud Volumes ONTAP で次のいずれかの条件に該当する場合、ボリュームの移動に予想よりも時間がかかることがあります。
+
+* ボリュームがクローンである。
+* ボリュームがクローンの親です。
+* ソースアグリゲートまたはデスティネーションアグリゲートには、スループットが最適化された HDD （ st1 ）が 1 本含まれています。
+* Cloud Volumes ONTAP システムが AWS にあり、 1 つのアグリゲートがオブジェクトに古い命名規則を使用します。両方のアグリゲートで同じ名前形式を使用する必要があります。
++
+9.4 リリース以前のアグリゲートでデータの階層化が有効になっている場合は、古い命名規則が使用されます。
+
+* 暗号化設定がソースアグリゲートとデスティネーションアグリゲートで一致しないか、キーの変更を実行中です。
+* 階層化ポリシーを変更するためにボリューム移動で -tiering-policy _ オプションが指定されています。
+* ボリューム移動で、 generate-destination-key_option が指定されました。
+

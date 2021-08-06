@@ -1,0 +1,191 @@
+---
+sidebar: sidebar 
+permalink: task_tiering_onprem_storagegrid.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, storagegrid, tier to storagegrid, fabricpool storagegrid 
+summary: データを StorageGRID に階層化することで、オンプレミスの ONTAP クラスタの空きスペースを確保できます。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。 
+---
+= オンプレミスの ONTAP クラスタから StorageGRID へデータを階層化する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+データを StorageGRID に階層化することで、オンプレミスの ONTAP クラスタの空きスペースを確保できます。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== データを StorageGRID に階層化する準備をします
+
+[role="quick-margin-para"]
+次のものが必要です。
+
+* FAS 9.4 以降を実行しているオール SSD アグリゲートを含む AFF または ONTAP システム。ユーザ指定のポートから StorageGRID への接続に使用します。
+* StorageGRID 10.3 以降で、 S3 権限を持つ AWS アクセスキーが使用されています。
+* オンプレミスにインストールされているコネクタ。
+* ONTAP クラスタ、 StorageGRID 、およびクラウド階層化サービスへのアウトバウンド HTTPS 接続を可能にするコネクタのネットワーク。
+
+
+
+
+==== 階層化をセットアップする
+
+[role="quick-margin-para"]
+オンプレミスの作業環境を選択し、「 * 階層化の設定」をクリックして、プロンプトに従ってデータを StorageGRID に階層化します。
+
+
+
+== 要件
+
+ONTAP クラスタのサポートを確認し、ネットワークをセットアップし、オブジェクトストレージを準備します。
+
+次の図は、各コンポーネントとその間の準備に必要な接続を示しています。
+
+image:diagram_cloud_tiering_storagegrid.png["「クラウド階層化サービスと、オンプレミスのサービスコネクタ、 ONTAP クラスタへの接続を含むサービスコネクタ、 ONTAP クラスタとオブジェクトストレージの間の接続を示すアーキテクチャの図。アクティブなデータは ONTAP クラスタに格納され、アクセス頻度の低いデータはオブジェクトストレージに格納されます。」"]
+
+
+NOTE: コネクタと StorageGRID 間の通信は、オブジェクトストレージのセットアップにのみ使用されます。
+
+
+
+=== ONTAP クラスタの準備
+
+データを StorageGRID に階層化するときは、 ONTAP クラスタが次の要件を満たしている必要があります。
+
+サポートされている ONTAP プラットフォーム:: Cloud Tiering は、 FAS システム上の AFF システムとオール SSD アグリゲートをサポートしています。
+サポートされる ONTAP のバージョン:: ONTAP 9.4 以降
+ライセンス:: データを StorageGRID に階層化する場合、 ONTAP クラスタに FabricPool ライセンスは必要ありません。
+クラスタネットワークの要件::
++
+--
+* ONTAP クラスタは、ユーザ指定のポートから StorageGRID への HTTPS 接続を開始します（階層化のセットアップ時に設定可能です）。
++
+ONTAP は、オブジェクトストレージとの間でデータの読み取りと書き込みを行います。オブジェクトストレージが開始されることはなく、応答するだけです。
+
+* コネクタからのインバウンド接続が必要です。この接続はオンプレミスにある必要があります。
++
+クラスタと Cloud Tiering Service の間の接続は必要ありません。
+
+* 階層化ボリュームをホストする各 ONTAP ノードにクラスタ間 LIF が 1 つ必要です。LIF は、 ONTAP がオブジェクトストレージへの接続に使用する IPspace に関連付けられている必要があります。
++
+IPspace を使用すると、ネットワークトラフィックを分離してプライバシーとセキュリティを確保することができます。 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["IPspace の詳細については、こちらをご覧ください"^]。
+
++
+データの階層化を設定すると、使用する IPspace を入力するように求められます。各 LIF を関連付ける IPspace を選択する必要があります。これは、「デフォルト」の IPspace または作成したカスタム IPspace です。
+
+
+
+--
+
+
+link:https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc[""]
+
+
+NOTE: Cloud Tiering は、 ONTAP 9.5 以降、 FlexGroup ボリュームをサポートしています。セットアップは他のボリュームと同じように機能します。
+
+
+
+=== StorageGRID を準備しています
+
+StorageGRID は、次の要件を満たす必要があります。
+
+サポートされている StorageGRID のバージョン:: StorageGRID 10.3 以降がサポートされます。
+S3 クレデンシャル::
++
+--
+これらのアクセスキーは、次の権限を持つユーザに関連付ける必要があります。
+
+[source, json]
+----
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject",
+"s3:CreateBucket"
+----
+--
+オブジェクトのバージョン管理:: オブジェクトストアバケットで StorageGRID オブジェクトのバージョン管理を有効にすることはできません。
+
+
+
+
+=== コネクタの作成または切り替え
+
+データをクラウドに階層化するにはコネクタが必要です。データを StorageGRID に階層化する場合は、オンプレミスのコネクタが必要です。新しいコネクターをインストールするか、現在選択されているコネクターがオンプレミスにあることを確認する必要があります。
+
+* link:concept_connectors.html["コネクタについて説明します"]
+* link:reference_cloud_mgr_reqs.html["Connector ホストの要件"]
+* link:task_installing_linux.html["既存の Linux ホストにコネクタをインストールします"]
+* link:task_managing_connectors.html["コネクタ間の切り替え"]
+
+
+
+
+=== コネクタのネットワークを準備しています
+
+コネクタに必要なネットワーク接続があることを確認します。
+
+.手順
+. コネクタが取り付けられているネットワークで次の接続が有効になっていることを確認します。
++
+** クラウドの階層化サービスへのアウトバウンドのインターネット接続 ポート 443 （ HTTPS ）
+** ポート 443 から StorageGRID への HTTPS 接続
+** ONTAP クラスタへのポート 443 経由の HTTPS 接続
+
+
+
+
+
+
+== 最初のクラスタから StorageGRID にアクセス頻度の低いデータを階層化しています
+
+環境を準備したら、最初のクラスタからアクセス頻度の低いデータの階層化を開始します。
+
+.必要なもの
+* link:task_discovering_ontap.html["オンプレミスの作業環境"]。
+* 必要な S3 権限を持つ AWS アクセスキー。
+
+
+.手順
+. オンプレミスクラスタを選択
+. 「 * 階層化の設定 * 」をクリックします。
++
+image:screenshot_setup_tiering_onprem.gif["オンプレミスの ONTAP 作業環境を選択したあとに画面の右側に表示される「階層化の設定」オプションを示すスクリーンショット。"]
+
++
+これで階層化ダッシュボードが表示されます。
+
+. クラスタの横にある「 * 階層化を設定」をクリックします。
+. 「 * Tiering Setup * 」ページに記載された手順を実行します。
++
+.. * プロバイダを選択 * ：「 StorageGRID 」を選択します。
+.. * サーバ * ： StorageGRID サーバの FQDN を入力し、 StorageGRID が ONTAP との HTTPS 通信に使用するポートを入力して、必要な S3 権限を持つ AWS アカウントのアクセスキーとシークレットキーを入力します。
+.. * Bucket * ：新しいバケットを追加するか、階層化データ用の既存のバケットを選択します。
+.. * クラスタネットワーク * ： ONTAP がオブジェクトストレージへの接続に使用する IPspace を選択し、「 * 続行」をクリックします。
++
+正しい IPspace を選択すると、 Cloud Tiering を使用して、 ONTAP からクラウドプロバイダのオブジェクトストレージへの接続をセットアップできます。
+
+
+
+. 「 * Continue * 」をクリックして、階層化するボリュームを選択します。
+. [* Tier Volumes] ページで、各ボリュームの階層化を設定します。をクリックします image:screenshot_edit_icon.gif["に表示される編集アイコンのスクリーンショット ボリューム階層化のテーブルの各行の末尾です"] アイコンをクリックし、階層化ポリシーを選択します。必要に応じてクーリング日数を調整し、 * 適用 * をクリックします。
++
+link:concept_cloud_tiering.html#volume-tiering-policies["ボリューム階層化ポリシーの詳細については、こちらをご覧ください"]。
+
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_volumes_select.gif["ソースボリュームの選択ページで選択されたボリュームを示すスクリーンショット。"]
+
+
+
+これで、クラスタのボリュームから StorageGRID へのデータ階層化が設定されました。
+
+クラスタを追加したり、クラスタ上のアクティブなデータとアクセス頻度の低いデータに関する情報を確認したりできます。詳細については、を参照してください link:task_managing_tiering.html["クラスタからのデータ階層化の管理"]。

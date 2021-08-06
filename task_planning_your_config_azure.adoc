@@ -1,0 +1,150 @@
+---
+sidebar: sidebar 
+permalink: task_planning_your_config_azure.html 
+keywords: license, disk, storage, size, write speed, volume usage, explore, standard, premium, byol, capacity, limit, configurations, virtual machine, vm, regions, supported disks, disk types, premium storage, standard storage, use profile, thin provisioning, deduplication, compression, Cloud Volumes ONTAP explore, Cloud Volumes ONTAP standard, Cloud Volumes ONTAP premium, Cloud Volumes ONTAP byol, shared instance, dedicated instance, write speed, high write speed, normal write speed, network information, worksheet, limit, limits, storage limits, volume limit, aggregate limit, maximum volume size, maximum aggregate size 
+summary: Azure で Cloud Volumes ONTAP を導入する場合は、ワークロード要件に一致する事前設定済みのシステムを選択するか、または独自の設定を作成できます。独自の設定を選択する場合は、使用可能なオプションを理解しておく必要があります。 
+---
+= Azure での Cloud Volumes ONTAP 構成の計画
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure で Cloud Volumes ONTAP を導入する場合は、ワークロード要件に一致する事前設定済みのシステムを選択するか、または独自の設定を作成できます。独自の設定を選択する場合は、使用可能なオプションを理解しておく必要があります。
+
+
+
+== ライセンスタイプの選択
+
+Cloud Volumes ONTAP には、従量課金制とお客様所有のライセンスを使用（ BYOL ）の 2 種類の料金プランがあります。従量課金制の場合は、 Explore 、 Standard 、 Premium の 3 つのライセンスから選択できます。ライセンスごとに容量とコンピューティングのオプションが異なります。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_configs_azure_97.html["Cloud Volumes ONTAP 9.7 で Azure でサポートされる構成"^]
+
+
+
+== ストレージの制限を理解する
+
+Cloud Volumes ONTAP システムの未フォーマット時の容量制限は、ライセンスに関連付けられています。追加の制限は、アグリゲートとボリュームのサイズに影響します。設定を計画する際には、これらの制限に注意する必要があります。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_limits_azure_97.html["Cloud Volumes ONTAP 9.7 の Azure のストレージ制限"]
+
+
+
+== Azure でのシステムのサイジング
+
+Cloud Volumes ONTAP システムのサイジングを行うことで、パフォーマンスと容量の要件を満たすのに役立ちます。VM タイプ、ディスクタイプ、およびディスクサイズを選択する際には、次の点に注意してください。
+
+仮想マシンのタイプ::
++
+--
+* https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general#dsv2-series["Azure のドキュメント：「汎用仮想マシンのサイズ"^]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory#dsv2-series-11-15["Azure のドキュメント：「 Memory optimized virtual machine sizes"^]
+
+
+--
+Azure のディスクタイプ::
++
+--
+HA システムでは、 Premium ページ BLOB を使用します。一方、シングルノードシステムでは、次の 2 種類の Azure Managed Disks を使用できます。
+
+* _Premium SSD Managed Disks （プレミアム SSD 管理ディスク） - I/O 負荷の高いワークロードに高パフォーマンスを提供し、コストを高めます。
+* _ 標準 SSD 管理ディスク _ 低 IOPS を必要とするワークロードに一貫したパフォーマンスを提供します。
+* _Standard HDD Managed Disks_are a good choice if you need high iops and want to Reduce your costs （高 IOPS が必要なく、コストを削減したい場合に最適です。）
++
+これらのディスクのユースケースの詳細については、を参照してください https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types["Microsoft Azure のドキュメント：「 What disk types are available in Azure ？」"^]。
+
+
+
+--
+Azure のディスクサイズ::
++
+--
+
+TIP: アグリゲート内のディスクはすべて同じサイズである必要があります。
+
+ディスクサイズを選択する際には、いくつかの要素を考慮する必要があります。ディスクサイズは、ストレージのコスト、アグリゲートに作成できるボリュームのサイズ、 Cloud Volumes ONTAP で使用可能な総容量、ストレージパフォーマンスに影響します。
+
+Azure Premium ストレージのパフォーマンスは、ディスクサイズに依存します。ディスク容量が大きいほど、 IOPS とスループットが向上します。たとえば、 1 TB のディスクを選択すると、 500 GB のディスクよりも高いパフォーマンスを低コストで実現できます。
+
+標準ストレージのディスクサイズにはパフォーマンスの違いはありません。必要な容量に基づいてディスクサイズを選択する必要があります。
+
+ディスクサイズ別の IOPS とスループットについては、 Azure を参照してください。
+
+* https://azure.microsoft.com/en-us/pricing/details/managed-disks/["Microsoft Azure ： Managed Disks の価格"^]
+* https://azure.microsoft.com/en-us/pricing/details/storage/page-blobs/["Microsoft Azure ： Page Blob の価格設定"^]
+
+
+--
+
+
+
+
+== Flash Cache をサポートする構成を選択しています
+
+Azure の Cloud Volumes ONTAP 構成にはローカルの NVMe ストレージが含まれており、 Cloud Volumes ONTAP はパフォーマンスを向上させるために _Flash Cache _ として使用します。 link:concept_flash_cache.html["Flash Cache の詳細については、こちらをご覧ください"]。
+
+
+
+== Azure ネットワーク情報ワークシート
+
+Cloud Volumes ONTAP を Azure に導入する場合は、仮想ネットワークの詳細を指定する必要があります。ワークシートを使用して、管理者から情報を収集できます。
+
+[cols="30,70"]
+|===
+| Azure の情報 | あなたの価値 
+
+
+| 地域 |  
+
+
+| 仮想ネットワーク（ Vnet ） |  
+
+
+| サブネット |  
+
+
+| Network Security Group （独自のグループを使用している場合） |  
+|===
+
+
+== 書き込み速度の選択
+
+Cloud Manager では、シングルノードの Cloud Volumes ONTAP システムの書き込み速度設定を選択できます。書き込み速度を選択する前に、高速書き込みを使用する場合の標準設定と高設定の違い、およびリスクと推奨事項を理解しておく必要があります。
+
+
+
+==== 通常の書き込み速度と高速書き込み速度の差
+
+通常の書き込み速度を選択すると、データはディスクに直接書き込まれるため、計画外のシステム停止が発生した場合にデータが失われる可能性が低くなります。
+
+高速書き込みを選択すると、データはディスクに書き込まれる前にメモリにバッファされるため、書き込みパフォーマンスが向上します。このキャッシュにより、計画外のシステム停止が発生した場合にデータが失われる可能性があります。
+
+計画外のシステム停止が発生した場合に失われる可能性があるデータの量は、最後の 2 つの整合ポイントの範囲です。整合ポイントとは、バッファされたデータをディスクに書き込むことです。整合ポイントは、書き込みログがいっぱいになったとき、または 10 秒後（どちらか早い方）に発生します。ただし、 AWS EBS ボリュームのパフォーマンスは、整合ポイントの処理時間に影響を与える可能性があります。
+
+
+
+==== 高速書き込みを使用する場合
+
+高速書き込みは、ワークロードに高速書き込みパフォーマンスが必要な場合に最適です。また、予期しないシステム停止が発生した場合にも、データ損失のリスクに耐えることができます。
+
+
+
+==== 高速書き込みを使用する場合の推奨事項
+
+高速書き込みを有効にする場合は、アプリケーション層で書き込み保護を確保する必要があります。
+
+
+
+== ボリューム使用プロファイルの選択
+
+ONTAP には、必要なストレージの合計容量を削減できるストレージ効率化機能がいくつか搭載されています。Cloud Manager でボリュームを作成する場合は、これらの機能を有効にするプロファイルを選択するか、無効にするプロファイルを選択できます。これらの機能の詳細については、使用するプロファイルを決定する際に役立ちます。
+
+NetApp Storage Efficiency 機能には、次のようなメリットがあります。
+
+シンプロビジョニング:: 物理ストレージプールよりも多くの論理ストレージをホストまたはユーザに提供します。ストレージスペースは、事前にストレージスペースを割り当てる代わりに、データの書き込み時に各ボリュームに動的に割り当てられます。
+重複排除:: 同一のデータブロックを検索し、単一の共有ブロックへの参照に置き換えることで、効率を向上します。この手法では、同じボリュームに存在するデータの冗長ブロックを排除することで、ストレージ容量の要件を軽減します。
+圧縮:: プライマリ、セカンダリ、アーカイブストレージ上のボリューム内のデータを圧縮することで、データの格納に必要な物理容量を削減します。
+

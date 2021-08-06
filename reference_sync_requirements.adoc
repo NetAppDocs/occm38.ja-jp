@@ -1,0 +1,508 @@
+---
+sidebar: sidebar 
+permalink: reference_sync_requirements.html 
+keywords: networking, nfs, cifs, smb, version, connection, google, gcp, azure, blob, service account, resource, permissions, networking, version, ntp, network, protocol, aws efs requirements, efs requirements, s3 requirements, azure blob requirements, blob requirements, azure netapp files, cifs requirements, smb requirements, cloud volumes service, google cloud storage, gcp, ibm cloud object storage, storagegrid, storage tier, blob storage tier, storage class, s3 storage class, nfs versions, smb versions 
+summary: ソースとターゲットがサポートされ、セットアップされていることを確認して、データの同期を準備します。 
+---
+= ソースとターゲットの準備
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ソースとターゲットがサポートされ、セットアップされていることを確認して、データの同期を準備します。
+
+
+
+== サポートされている同期関係
+
+Cloud Sync を使用すると、ソースからターゲットにデータを同期できます（これを「 a_sync relationship_ 」と呼びます）。サポートされている関係を理解してから開始する必要があります。
+
+[cols="20,25"]
+|===
+| ソースの場所 | サポートされるターゲットロケーション 
+
+
+| AWS EFS を使用して  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ NFS ）
+* Cloud Volumes ONTAP （ NFS ）
+* クラウドボリュームサービス（ NFS ）
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* StorageGRID
+
+
+
+
+| AWS S3  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp Files の特長
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| Azure Blob の略  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp Files の特長
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* Google クラウドストレージ
+* IBM クラウドオブジェクトストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| Azure NetApp ファイル（ NFS ）  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ NFS ）
+* Cloud Volumes ONTAP （ NFS ）
+* クラウドボリュームサービス（ NFS ）
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* StorageGRID
+
+
+
+
+| Azure NetApp ファイル（ SMB ）  a| 
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ SMB ）
+* Cloud Volumes ONTAP （ SMB ）
+* クラウドボリュームサービス（ SMB ）
+* Google クラウドストレージ
+* IBM クラウドオブジェクトストレージ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| Cloud Volumes ONTAP （ NFS ）  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ NFS ）
+* Cloud Volumes ONTAP （ NFS ）
+* クラウドボリュームサービス（ NFS ）
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* StorageGRID
+
+
+
+
+| Cloud Volumes ONTAP （ SMB ）  a| 
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ SMB ）
+* Cloud Volumes ONTAP （ SMB ）
+* クラウドボリュームサービス（ SMB ）
+* Google クラウドストレージ
+* IBM クラウドオブジェクトストレージ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| クラウドボリュームサービス（ NFS ）  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ NFS ）
+* Cloud Volumes ONTAP （ NFS ）
+* クラウドボリュームサービス（ NFS ）
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* StorageGRID
+
+
+
+
+| クラウドボリュームサービス（ SMB ）  a| 
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ SMB ）
+* Cloud Volumes ONTAP （ SMB ）
+* クラウドボリュームサービス（ SMB ）
+* Google クラウドストレージ
+* IBM クラウドオブジェクトストレージ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| Google クラウドストレージ  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp Files の特長
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* Google クラウドストレージ
+* IBM クラウドオブジェクトストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| IBM クラウドオブジェクトストレージ  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp Files の特長
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* Google クラウドストレージ
+* IBM クラウドオブジェクトストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| NFS サーバ  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ NFS ）
+* Cloud Volumes ONTAP （ NFS ）
+* クラウドボリュームサービス（ NFS ）
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* StorageGRID
+
+
+
+
+| オンプレミスの ONTAP クラスタ（ NFS ）  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ NFS ）
+* Cloud Volumes ONTAP （ NFS ）
+* クラウドボリュームサービス（ NFS ）
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* StorageGRID
+
+
+
+
+| オンプレミスの ONTAP クラスタ（ SMB ）  a| 
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ SMB ）
+* Cloud Volumes ONTAP （ SMB ）
+* クラウドボリュームサービス（ SMB ）
+* Google クラウドストレージ
+* IBM クラウドオブジェクトストレージ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| ONTAP S3 ストレージ  a| 
+* StorageGRID
+
+
+
+
+| SMB サーバ  a| 
+* AWS S3
+* Azure Blob の略
+* Azure NetApp ファイル（ SMB ）
+* Cloud Volumes ONTAP （ NFS ）
+* クラウドボリュームサービス（ NFS ）
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* オンプレミスの ONTAP クラスタ
+* SMB サーバ
+* StorageGRID
+
+
+
+
+| StorageGRID  a| 
+* AWS EFS を使用して
+* AWS S3
+* Azure Blob の略
+* Azure NetApp Files の特長
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* IBM クラウドオブジェクトストレージ
+* Google クラウドストレージ
+* NFS サーバ
+* オンプレミスの ONTAP クラスタ
+* ONTAP S3 ストレージ
+* SMB サーバ
+* StorageGRID
+
+
+|===
+注：
+
+. BLOB コンテナがターゲットの場合は、特定の Azure BLOB ストレージ階層を選択できます。
++
+** ホットストレージ
+** 優れたストレージ
+
+
+. [[storage-classes] ] AWS S3 がターゲットの場合は、特定の S3 ストレージクラスを選択できます。
++
+** 標準（これがデフォルトクラス）
+** インテリジェント階層化
+** 標準的なアクセス頻度は低い
+** 1 回のアクセスではほとんど発生しません
+** 氷河
+** Glacier Deep Archive
+
+
+
+
+
+
+== ソースとターゲットのネットワーク
+
+* ソースとターゲットは、データブローカーにネットワーク接続されている必要があります。
++
+たとえば、 NFS サーバがデータセンターにあり、データブローカーが AWS にある場合、ネットワークから VPC へのネットワーク接続（ VPN または直接接続）が必要です。
+
+* ネットワークタイムプロトコル（ NTP ）サービスを使用するように、ソース、ターゲット、およびデータブローカーを設定することを推奨します。3 つのコンポーネント間の時間差は 5 分を超えないようにしてください。
+
+
+
+
+== 移行元と移行先の要件
+
+ソースとターゲットが次の要件を満たしていることを確認します。
+
+
+
+=== AWS S3 バケット要件
+
+AWS S3 バケットが次の要件を満たしていることを確認します。
+
+
+
+==== AWS S3 でサポートされるデータブローカーの場所
+
+S3 ストレージを含む同期関係では、 AWS または社内にデータブローカーを導入する必要があります。いずれの場合も、インストール時にデータブローカーを AWS アカウントに関連付けるように求められます。
+
+* link:task_sync_installing_aws.html["AWS データブローカーの導入方法について説明します"]
+* link:task_sync_installing_linux.html["Linux ホストにデータブローカーをインストールする方法について説明します"]
+
+
+
+
+==== サポートされている AWS リージョン
+
+中国と GovCloud （米国）以外のすべての地域がサポートされています。
+
+
+
+==== 他の AWS アカウントの S3 バケットに必要な権限
+
+同期関係をセットアップする際、データブローカーに関連付けられていない AWS アカウントに配置されている S3 バケットを指定することができます。
+
+link:media/aws_iam_policy_s3_bucket.json["この JSON ファイルに含まれている権限"^] データブローカーがアクセスできるように、 S3 バケットに適用する必要があります。これらの権限を使用すると、データブローカーはバケットとの間でデータをコピーし、バケット内のオブジェクトを一覧表示できます。
+
+JSON ファイルに含まれる権限については、次の点に注意してください。
+
+. _<BucketName> _ は、データブローカーに関連付けられていない AWS アカウントにあるバケットの名前です。
+. _<Rolear>_ は次のいずれかに置き換える必要があります。
++
+** データブローカーが Linux ホストに手動でインストールされた場合、データブローカーの導入時に AWS クレデンシャルを指定した AWS ユーザの ARN を _RoleARN に指定する必要があります。
+** CloudFormation テンプレートを使用してデータブローカーが AWS に導入された場合、 _ Rolears_should be the ARN of the IAM role created by the template 。
++
+ロール ARN を見つけるには、 EC2 コンソールに移動し、データブローカーインスタンスを選択して、 Description タブから IAM ロールをクリックします。次に、ロール ARN を含む IAM コンソールに概要ページが表示されます。
+
++
+image:screenshot_iam_role_arn.gif["ロール ARN を示す AWS IAM コンソールのスクリーンショット。"]
+
+
+
+
+
+
+
+=== Azure BLOB ストレージの要件
+
+Azure BLOB ストレージが次の要件を満たしていることを確認します。
+
+
+
+==== Azure BLOB でサポートされるデータブローカーの場所
+
+同期関係に Azure BLOB ストレージが含まれている場合、データブローカーは任意の場所に配置できます。
+
+
+
+==== サポートされている Azure リージョン
+
+中国、米国政府、米国国防総省を除くすべての地域がサポートされます。
+
+
+
+==== Azure BLOB と NFS/SMB を含む関係に必要な接続文字列
+
+Azure BLOB コンテナと NFS サーバまたは SMB サーバ間の同期関係を作成する場合は、ストレージアカウント接続文字列を使用してクラウド同期を提供する必要があります。
+
+image:screenshot_connection_string.gif["に接続文字列を示します。この文字列は、 Azure ポータルでストレージアカウントを選択し、 [ アクセスキー ] をクリックすることで使用できます。"]
+
+2 つの Azure Blob コンテナ間でデータを同期する場合は、接続文字列にを含める必要があります https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1["共有アクセスシグニチャ"^] （ SAS ）。BLOB コンテナと NFS サーバまたは SMB サーバの間で同期する場合は、 SAS を使用することもできます。
+
+SA は、 BLOB サービスとすべてのリソースタイプ（サービス、コンテナ、オブジェクト）へのアクセスを許可する必要があります。SAS には、次の権限も含まれている必要があります。
+
+* ソース BLOB コンテナの場合： read および list
+* ターゲット BLOB コンテナの場合：読み取り、書き込み、一覧表示、追加、作成
+
+
+image:screenshot_connection_string_sas.gif["「は、共有アクセス署名を示しています。この署名は、 Azure ポータルでストレージアカウントを選択し、共有アクセス署名をクリックすることで使用できます。」"]
+
+
+
+=== Azure NetApp Files の要件
+
+Azure NetApp Files との間でデータを同期する場合は、 Premium または Ultra サービスレベルを使用します。ディスクのサービスレベルが Standard の場合は、エラーやパフォーマンスの問題が発生することがあります。
+
+
+TIP: 適切なサービスレベルの決定に支援が必要な場合は、ソリューションアーキテクトに相談してください。取得できるスループットはボリュームサイズとボリューム階層によって決まります。
+
+https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels#throughput-limits["Azure NetApp Files のサービスレベルとスループットの詳細については、こちらをご覧ください"]。
+
+
+
+=== Google クラウドストレージバケットの要件
+
+Google クラウドストレージバケットが次の要件を満たしていることを確認します。
+
+
+
+==== Google クラウドストレージでサポートされるデータブローカーの場所
+
+Google クラウドストレージを含む同期関係では、 GCP または社内にデータブローカーを導入する必要があります。Cloud Sync では、同期関係を作成する際に、データブローカーのインストールプロセスをガイドします。
+
+* link:task_sync_installing_gcp.html["GCP データブローカーの導入方法について説明します"]
+* link:task_sync_installing_linux.html["Linux ホストにデータブローカーをインストールする方法について説明します"]
+
+
+
+
+==== サポートされる GCP リージョン
+
+すべてのリージョンがサポートされています。
+
+
+
+=== NFS サーバの要件
+
+* NFS サーバには、 NetApp システムまたは NetApp 以外のシステムを使用できます。
+* ファイルサーバは、データブローカーホストがエクスポートにアクセスできるようにする必要があります。
+* NFS バージョン 3 、 4.0 、 4.1 、 4.2 がサポートされています。
++
+サーバで目的のバージョンが有効になっている必要があります。
+
+* ONTAP システムから NFS データを同期する場合は、 SVM の NFS エクスポートリストへのアクセスが有効になっていることを確認します（ vserver nfs modify -vserver _svm_name _showmount enabled ）。
++
+
+NOTE: ONTAP 9.2 以降では、 showmount のデフォルト設定は _enabled_starting です。
+
+
+
+
+
+=== ONTAP S3 ストレージの要件
+
+ONTAP 9.7 では、 Amazon Simple Storage Service （ Amazon S3 ）がパブリックプレビューとしてサポートされます。 link:https://www.netapp.com/us/media/tr-4814.pdf["Amazon S3 に対する ONTAP のサポートの詳細については、こちらをご覧ください"^]。
+
+ONTAP S3 ストレージを含む同期関係を設定する際には、次の情報を指定する必要があります。
+
+* ONTAP に接続されている LIF の IP アドレス S3
+* ONTAP が設定されているアクセスキーとシークレットキー を使用してください
+
+
+
+
+=== SMB サーバの要件
+
+* SMB サーバは、 NetApp システムまたは他社製システムのいずれかです。
+* ファイルサーバは、データブローカーホストがエクスポートにアクセスできるようにする必要があります。
+* SMB バージョン 1.0 、 2.0 、 2.1 、 3.0 、および 3.11 がサポートされます。
+* 「フルコントロール」権限を持つ「管理者」グループにソースフォルダとターゲットフォルダを付与します。
++
+この権限を付与しないと、データブローカーにファイルまたはディレクトリの ACL を取得するための十分な権限がない可能性があります。この場合、 "getxattr error 95" というエラーが表示されます。
+
+
+
+
+
+==== 非表示のディレクトリとファイルに関する SMB の制限
+
+SMB の制限は、 SMB サーバ間でデータを同期する際に非表示のディレクトリとファイルに影響します。ソース SMB サーバ上のディレクトリまたはファイルが Windows で非表示になっていた場合、非表示属性はターゲット SMB サーバにコピーされません。
+
+
+
+==== 大文字と小文字の区別がないため、 SMB 同期の動作が制限されます
+
+SMB プロトコルでは大文字と小文字が区別されないため、大文字と小文字は同じものとして扱われます。この動作により、ターゲットに SMB サーバとデータがすでに存在する同期関係では、ファイルが上書きされ、ディレクトリのコピーでエラーが発生する可能性があります。
+
+たとえば、ソースに「 A 」という名前のファイルがあり、ターゲットに「 A 」という名前のファイルがあるとします。Cloud Sync が「 A 」という名前のファイルをターゲットにコピーすると、ファイル「 A 」はソースからファイル「 A 」で上書きされます。
+
+ディレクトリの場合は、ソースに「 b 」という名前のディレクトリがあり、ターゲットに「 B 」という名前のディレクトリがあるとします。Cloud Sync が「 b 」という名前のディレクトリをターゲットにコピーしようとすると、 Cloud Sync には、そのディレクトリがすでに存在することを示すエラーが表示されます。その結果、 Cloud Sync は常に「 B 」という名前のディレクトリをコピーできません。
+
+この制限を回避する最善の方法は、空のディレクトリにデータを確実に同期させることです。
+
+
+
+== SnapMirror デスティネーションの権限
+
+同期関係のソースが SnapMirror デスティネーション（読み取り専用）の場合、「読み取り / リスト」権限でソースからターゲットにデータを同期できます。

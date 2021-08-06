@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: reference_whats_next.html 
+keywords: get started, create working environments, manage settings 
+summary: Cloud Manager にログインしてセットアップしたので、ユーザは作業環境の作成と検出を開始できます。 
+---
+= 次の手順
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager にログインしてセットアップしたので、ユーザは作業環境の作成と検出を開始できます。
+
+* link:task_getting_started_aws.html["Cloud Volumes ONTAP for AWS の利用を開始しましょう"]
+* link:task_getting_started_azure.html["Cloud Volumes ONTAP for Azure の利用を開始しましょう"]
+* link:task_getting_started_gcp.html["Cloud Volumes ONTAP for Google Cloud の利用を開始しましょう"]
+* link:task_manage_anf.html["Azure NetApp Files をセットアップする"]
+* link:task_manage_cvs_aws.html["Cloud Volumes Service for AWS をセットアップする"]
+* link:task_discovering_ontap.html["オンプレミスの ONTAP クラスタを検出"]
+* link:task_viewing_amazon_s3.html["Amazon S3 バケットを検出します"]
+
+
+管理者は、最初のコネクタを作成したあとに Cloud Manager の設定を管理できます。
+
+* link:concept_connectors.html["コネクタについて説明します"]
+* link:task_installing_https_cert.html["セキュアなアクセスのための HTTPS 証明書を管理します"]
+* link:task_configuring_proxy.html["プロキシを設定します"]
+

@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: reference_networking.html 
+keywords: networking overview, networking requirements, endpoints, urls 
+summary: ユーザが Cloud Manager にログインする前に、そのユーザの Web ブラウザが特定のエンドポイントにアクセスできることを確認する必要があります。その後、作成する作業環境および有効にするすべてのサービスについて、ネットワーク要件を確認する必要があります。 
+---
+= ネットワークの概要
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ユーザが Cloud Manager にログインする前に、そのユーザの Web ブラウザが特定のエンドポイントにアクセスできることを確認する必要があります。その後、特定の作業環境および使用するサービスについて、ネットワーク要件を確認する必要があります。
+
+
+
+== Web ブラウザからアクセスするエンドポイント
+
+ユーザは Web ブラウザから Cloud Manager にアクセスする必要があります。Web ブラウザを実行するマシンは、次のエンドポイントに接続する必要があります。
+
+[cols="43,57"]
+|===
+| エンドポイント | 目的 
+
+
+| \ https://cloudmanager.cloud.netapp.com | をクリックして、 Cloud Manager SaaS インターフェイスに接続してください。 
+
+
+| \ https://api.services.cloud.netapp.com | をクリックして Cloud Central API にアクセスしてください。 
+
+
+| ¥ https://auth0.com ¥ https://cdn.auth0.com ¥ https://netapp-cloud-account.auth0.com ¥ https://services.cloud.netapp.com | Web ブラウザはこれらのエンドポイントに接続し、 NetApp Cloud Central を介してユーザ認証を一元化します。 
+
+
+| \ https://widget.intercom.io | 製品内でのチャットにより、ネットアップのクラウドエキスパートと会話できます。 
+|===
+
+
+== ネットワーク要件のインデックス
+
+* link:reference_networking_cloud_manager.html["コネクタ"]
+* link:reference_networking_aws.html["Cloud Volumes ONTAP for AWS"]
+* link:reference_networking_azure.html["Cloud Volumes ONTAP for Azure"]
+* link:reference_networking_gcp.html["Cloud Volumes ONTAP for GCP の略"]
+* link:task_replicating_data.html["ONTAP システム間のデータレプリケーション"]
+* link:task_getting_started_compliance.html["Cloud Volumes ONTAP または Azure NetApp Files 向けのクラウドコンプライアンス"]
+* link:task_scanning_s3.html["Cloud Compliance for Amazon S3"]
+* link:task_discovering_ontap.html["オンプレミスの ONTAP クラスタ"]
++
+** link:task_tiering_onprem_aws.html["ONTAP クラスタから Amazon S3 へのデータ階層化"]
+** link:task_tiering_onprem_azure.html["ONTAP クラスタから Azure BLOB ストレージへのデータ階層化"]
+** link:task_tiering_onprem_gcp.html["ONTAP クラスタから Google Cloud Storage へのデータ階層化"]
+** link:task_tiering_onprem_storagegrid.html["ONTAP クラスタから StorageGRID へのデータ階層化"]
+
+
+

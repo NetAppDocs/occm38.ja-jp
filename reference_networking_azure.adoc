@@ -1,0 +1,536 @@
+---
+sidebar: sidebar 
+permalink: reference_networking_azure.html 
+keywords: networking, network, requirements, connection, connections, vnet, security group, security groups, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, blob, service endpoint 
+summary: Cloud Volumes ONTAP システムが適切に動作するように Azure ネットワークをセットアップします。これには、コネクタと Cloud Volumes ONTAP のネットワークも含まれます。 
+---
+= Azure で Cloud Volumes ONTAP を導入および管理するためのネットワーク要件
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP システムが適切に動作するように Azure ネットワークをセットアップします。これには、コネクタと Cloud Volumes ONTAP のネットワークも含まれます。
+
+
+
+== Cloud Volumes ONTAP の要件
+
+Azure では、次のネットワーク要件を満たしている必要があります。
+
+Cloud Volumes ONTAP 用のアウトバウンドインターネットアクセス::
++
+--
+Cloud Volumes ONTAP が AutoSupport メッセージを送信できるように、ルーティングポリシーとファイアウォールポリシーで次のエンドポイントへの HTTP / HTTPS トラフィックを許可する必要があります。
+
+* \ https://support.netapp.com/aods/asupmessage
+* \ https://support.netapp.com/asupprod/post/1.0/postAsup
++
+link:task_setting_up_ontap_cloud.html["AutoSupport の設定方法について説明します"]。
+
+
+
+--
+セキュリティグループ:: Cloud Manager ではセキュリティグループを作成する必要がないため、セキュリティグループを作成する必要はありません。独自のルールを使用する必要がある場合は、以下のセキュリティグループルールを参照してください。
+IP アドレスの数::
++
+--
+* シングルノード： 5 つの IP アドレス
+* HA ペア： IP アドレス × 16
++
+Cloud Manager では、 HA ペア上に SVM 管理 LIF が作成されますが、 Azure のシングルノードシステム上には作成されません。
+
++
+
+TIP: LIF は、物理ポートに関連付けられた IP アドレスです。SnapCenter などの管理ツールには、 SVM 管理 LIF が必要です。
+
+
+
+--
+クラウドボリューム ONTAP から Azure BLOB ストレージへの接続により、データ階層化を実現します::
++
+--
+[source, json]
+----
+"Microsoft.Network/virtualNetworks/subnets/write",
+"Microsoft.Network/routeTables/join/action",
+----
+これらの権限は最新のに含まれています https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager ポリシー"]。
+
+データ階層化の設定の詳細については、を参照してください link:task_tiering.html["コールドデータを低コストのオブジェクトストレージに階層化する"]。
+
+--
+他のネットワーク内の ONTAP システムへの接続::
++
+--
+手順については、を参照してください https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal["Microsoft Azure のドキュメント：「 Create a Site-to-Site connection in the Azure portal"^]。
+
+--
+
+
+
+
+== コネクタの要件
+
+コネクタがパブリッククラウド環境内のリソースやプロセスを管理できるように、ネットワークを設定します。最も重要なステップは、さまざまなエンドポイントへのアウトバウンドインターネットアクセスを確保することです。
+
+
+TIP: ネットワークでインターネットへのすべての通信にプロキシサーバを使用している場合は、 [ 設定 ] ページでプロキシサーバを指定できます。を参照してください link:task_configuring_proxy.html["プロキシサーバを使用するようにコネクタを設定します"]。
+
+
+
+=== ターゲットネットワークへの接続
+
+コネクタには、 Cloud Volumes ONTAP を導入する VPC および VNet へのネットワーク接続が必要です。
+
+たとえば、企業ネットワークにコネクタを設置する場合は、 Cloud Volumes ONTAP を起動する VPC または VNet への VPN 接続を設定する必要があります。
+
+
+
+=== アウトバウンドインターネットアクセス
+
+Connector では、パブリッククラウド環境内のリソースとプロセスを管理するためにアウトバウンドインターネットアクセスが必要です。コネクタは、 Azure でリソースを管理する際に次のエンドポイントに接続します。
+
+[cols="43,57"]
+|===
+| エンドポイント | 目的 
+
+
+| https://management.azure.com https://login.microsoftonline.com | Cloud Manager では、ほとんどの Azure リージョンに Cloud Volumes ONTAP を導入して管理できます。 
+
+
+| https://management.microSoftazure.de https://login.microsoftonline.de | Cloud Manager は、 Azure Germany リージョンに Cloud Volumes ONTAP を導入して管理できます。 
+
+
+| https://management.usgovcloudapi.net/ https://login.microsoftonline.com | Cloud Manager は、 Azure US GOV リージョンに Cloud Volumes ONTAP を導入して管理できます。 
+
+
+| \ https://api.services.cloud.netapp.com:443 | NetApp Cloud Central への API 要求。 
+
+
+| \ https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com | ソフトウェアイメージ、マニフェスト、およびテンプレートにアクセスできます。 
+
+
+| \ https://repo.cloud.support.netapp.com | Cloud Manager の依存関係のダウンロードに使用します。 
+
+
+| \ http://repo.mysql.com/ | MySQL のダウンロードに使用します。 
+
+
+| ¥ https://cognito-idp.us-east-1.amazonaws.com ¥ https://cognito-identity.us-east-1.amazonaws.com ¥ https://sts.amazonaws.com ¥ https://cloud-support-netapp-com-accelerated.s3.amazonaws.com | Cloud Manager は、マニフェスト、テンプレート、 Cloud Volumes ONTAP アップグレードイメージにアクセスしてダウンロードできます。 
+
+
+| \ https://cloudmanagerinfraprod.azurecr.io | Docker を実行しているインフラのコンテナコンポーネントのソフトウェアイメージにアクセスでき、 Cloud Manager とのサービス統合のためのソリューションを提供します。 
+
+
+| \ https://kinesis.us-east-1.amazonaws.com | ネットアップが監査レコードからデータをストリーミングできるようにします。 
+
+
+| \ https://cloudmanager.cloud.netapp.com | Cloud Central アカウントを含む Cloud Manager サービスとの通信。 
+
+
+| https://netapp-cloud-account.auth0.com | NetApp Cloud Central との通信により、ユーザ認証を一元的に行うことができます。 
+
+
+| https://mysupport.netapp.com をご覧ください | ネットアップ AutoSupport との通信： 
+
+
+| ¥ https://support.netapp.com/svcgw ¥ https://support.netapp.com/ServiceGW/entitlement ¥ https://eval.lic.netapp.com.s3.us-west-1.amazonaws.com ¥ https://cloud-support-netapp-com.s3.us-west-1.amazonaws.com | システムライセンスとサポート登録を行うためのネットアップとの通信 
+
+
+| \ https://ipa-signer.cloudmanager.netapp.com | Cloud Manager でライセンスを生成できます（ Cloud Volumes ONTAP 用の FlexCache ライセンスなど）。 
+
+
+| ¥ https://packages.cloud.google.com/yum ¥ https://github.com/NetApp/trident/releases/download/ | Cloud Volumes ONTAP システムを Kubernetes クラスタに接続するために必要です。エンドポイントを使用して NetApp Trident をインストールできます。 
+
+
+| * .blob.core.windows.net | プロキシを使用する場合は HA ペアに必要です。 
+
+
+ a| 
+次のようなさまざまなサードパーティの場所があります。
+
+* https://repo1.maven.org/maven2 です
+* https://oss.sonType.org/content/repository を参照してください
+* https://repo.typafe.org にアクセスします
+
+
+サードパーティの所在地は変更される可能性があります。
+| アップグレード時に、 Cloud Manager はサードパーティの依存関係に対応する最新のパッケージをダウンロードします。 
+|===
+SaaS ユーザインターフェイスからほとんどのタスクを実行する必要がありますが、ローカルユーザインターフェイスは引き続きコネクタで使用できます。Web ブラウザを実行するマシンは、次のエンドポイントに接続する必要があります。
+
+[cols="43,57"]
+|===
+| エンドポイント | 目的 
+
+
+| コネクタホスト  a| 
+Cloud Manager コンソールをロードするには、 Web ブラウザでホストの IP アドレスを入力する必要があります。
+
+クラウドプロバイダへの接続に応じて、ホストに割り当てられたプライベート IP またはパブリック IP を使用できます。
+
+* プライベート IP は、 VPN とがある場合に機能します 仮想ネットワークへの直接アクセス
+* パブリック IP は、あらゆるネットワークシナリオで機能します
+
+
+いずれの場合も、セキュリティグループのルールで許可された IP またはサブネットからのアクセスのみを許可することで、ネットワークアクセスを保護する必要があります。
+
+
+
+| ¥ https://auth0.com ¥ https://cdn.auth0.com ¥ https://netapp-cloud-account.auth0.com ¥ https://services.cloud.netapp.com | Web ブラウザはこれらのエンドポイントに接続し、 NetApp Cloud Central を介してユーザ認証を一元化します。 
+
+
+| \ https://widget.intercom.io | 製品内でのチャットにより、ネットアップのクラウドエキスパートと会話できます。 
+|===
+
+
+== Cloud Volumes ONTAP のセキュリティグループのルール
+
+Cloud Manager で作成される Azure セキュリティグループには、 Cloud Volumes ONTAP が正常に動作するために必要なインバウンドとアウトバウンドのルールが含まれています。テスト目的でポートを参照したり、独自のセキュリティグループを使用したりする場合に使用します。
+
+Cloud Volumes ONTAP のセキュリティグループには、インバウンドルールとアウトバウンドルールの両方が必要です。
+
+
+
+=== シングルノードシステムのインバウンドルール
+
+次のルールでは、説明で特定の着信トラフィックがブロックされている場合を除き、トラフィックは許可されます。
+
+[cols="4*"]
+|===
+| 優先順位と名前 | ポートおよびプロトコル | ソースとデスティネーションの 2 つです | 説明 
+
+
+| 1000 inbound_ssh | 22 TCP | Any から Any | クラスタ管理 LIF またはノード管理 LIF の IP アドレスへの SSH アクセス 
+
+
+| 1001 INBOUND _http | 80 TCP | Any から Any | クラスタ管理 LIF の IP アドレスを使用した System Manager Web コンソールへの HTTP アクセス 
+
+
+| 1002 INBOUND _111_TCP | 111 TCP | Any から Any | NFS のリモートプロシージャコール 
+
+
+| 1003 INBONED_111_UDP | 111 UDP | Any から Any | NFS のリモートプロシージャコール 
+
+
+| 1004 INBOUND _139 | 139 TCP | Any から Any | CIFS の NetBIOS サービスセッション 
+
+
+| 1005 inbound_161-162_TCP | 161-162 TCP | Any から Any | 簡易ネットワーク管理プロトコル 
+
+
+| 1006 INBOUND _161-162_UDP | UDP 161-162 | Any から Any | 簡易ネットワーク管理プロトコル 
+
+
+| 1007 INBOUND _443 | 443 tcp | Any から Any | クラスタ管理 LIF の IP アドレスを使用した System Manager Web コンソールへの HTTPS アクセス 
+
+
+| 1008 INBOUND _445 | 445 TCP | Any から Any | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| 1009 INBOUND _635_TCP | 635 TCP | Any から Any | NFS マウント 
+
+
+| 1010 INBOUND _635_UDP | 635 UDP | Any から Any | NFS マウント 
+
+
+| 1011 INBOUND _749 | 749 TCP | Any から Any | Kerberos 
+
+
+| 1012 INBOUND _2049 _TCP | 2049 TCP | Any から Any | NFS サーバデーモン 
+
+
+| 1013 INBOUND _2049 _UDP | 2049 UDP | Any から Any | NFS サーバデーモン 
+
+
+| 1014 インバウンド _3260 | 3260 TCP | Any から Any | iSCSI データ LIF を介した iSCSI アクセス 
+
+
+| 1015 INBOUND _4045-4046_tcp の略 | 4045-4046 TCP | Any から Any | NFS ロックデーモンとネットワークステータスモニタ 
+
+
+| 1016 INBOUND _4045-4046_UDP | 4045-4046 UDP | Any から Any | NFS ロックデーモンとネットワークステータスモニタ 
+
+
+| 1017 INBOUND _10000 | 10000 TCP | Any から Any | NDMP を使用したバックアップ 
+
+
+| 1018 INBOUND _11104-11105 | 11104-11105 TCP | Any から Any | SnapMirror によるデータ転送 
+
+
+| 3000 inbound_deny_all_tcp | 任意のポート TCP | Any から Any | 他のすべての TCP インバウンドトラフィックをブロックします 
+
+
+| 3001 INBOUND _DENY_ALL_UDP | 任意のポート UDP | Any から Any | 他のすべての UDP 着信トラフィックをブロックします 
+
+
+| 65000 AllowVnetInBound | 任意のポート任意のプロトコル | VirtualNetwork | VNet 内からのインバウンドトラフィック 
+
+
+| 65001 AllowAzureLoad BalancerInBound の略 | 任意のポート任意のプロトコル | AzureLoadBalancer を任意のに設定します | Azure Standard Load Balancer からのデータトラフィック 
+
+
+| 65500 DenyAllInBound | 任意のポート任意のプロトコル | Any から Any | 他のすべてのインバウンドトラフィックをブロックする 
+|===
+
+
+=== HA システムのインバウンドルール
+
+次のルールでは、説明で特定の着信トラフィックがブロックされている場合を除き、トラフィックは許可されます。
+
+
+NOTE: HA システムのインバウンドデータトラフィックは Azure Standard Load Balancer を経由するため、シングルノードシステムよりもインバウンドルールが少なくなります。そのため、「 AllowAzureLoadBalancerInBound 」ルールに示されているように、ロードバランサからのトラフィックがオープンである必要があります。
+
+[cols="4*"]
+|===
+| 優先順位と名前 | ポートおよびプロトコル | ソースとデスティネーションの 2 つです | 説明 
+
+
+| 100 インバウンド _ 443 | 443 ：任意のプロトコル | Any から Any | クラスタ管理 LIF の IP アドレスを使用した System Manager Web コンソールへの HTTPS アクセス 
+
+
+| 101 INBOUND _111_TCP | 111 すべてのプロトコル | Any から Any | NFS のリモートプロシージャコール 
+
+
+| 102 インバウンド _2049 _TCP | 2049 任意のプロトコル | Any から Any | NFS サーバデーモン 
+
+
+| 111 inbound_ssh | 22 すべてのプロトコル | Any から Any | クラスタ管理 LIF またはノード管理 LIF の IP アドレスへの SSH アクセス 
+
+
+| 121 INBOUND _53 | 53 任意のプロトコル | Any から Any | DNS と CIFS 
+
+
+| 65000 AllowVnetInBound | 任意のポート任意のプロトコル | VirtualNetwork | VNet 内からのインバウンドトラフィック 
+
+
+| 65001 AllowAzureLoad BalancerInBound の略 | 任意のポート任意のプロトコル | AzureLoadBalancer を任意のに設定します | Azure Standard Load Balancer からのデータトラフィック 
+
+
+| 65500 DenyAllInBound | 任意のポート任意のプロトコル | Any から Any | 他のすべてのインバウンドトラフィックをブロックする 
+|===
+
+
+=== アウトバウンドルール
+
+Cloud Volumes 用の事前定義済みセキュリティグループ ONTAP は、すべての発信トラフィックをオープンします。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+==== 基本的なアウトバウンドルール
+
+Cloud Volumes ONTAP 用の定義済みセキュリティグループには、次のアウトバウンドルールが含まれています。
+
+[cols="3*"]
+|===
+| ポート | プロトコル | 目的 
+
+
+| すべて | すべての TCP | すべての発信トラフィック 
+
+
+| すべて | すべての UDP | すべての発信トラフィック 
+|===
+
+
+==== 高度なアウトバウンドルール
+
+発信トラフィックに厳格なルールが必要な場合は、次の情報を使用して、 Cloud Volumes ONTAP による発信通信に必要なポートのみを開くことができます。
+
+
+NOTE: source は、 Cloud Volumes ONTAP システムのインターフェイス（ IP アドレス）です。
+
+[cols="10,10,6,20,20,34"]
+|===
+| サービス | ポート | プロトコル | ソース | 宛先 | 目的 
+
+
+.18+| Active Directory | 88 | TCP | ノード管理 LIF | Active Directory フォレスト | Kerberos V 認証 
+
+
+| 137 | UDP | ノード管理 LIF | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| 138 | UDP | ノード管理 LIF | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| 139 | TCP | ノード管理 LIF | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| 389 | TCP および UDP | ノード管理 LIF | Active Directory フォレスト | LDAP 
+
+
+| 445 | TCP | ノード管理 LIF | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| 464 | TCP | ノード管理 LIF | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| 464 | UDP | ノード管理 LIF | Active Directory フォレスト | Kerberos キー管理 
+
+
+| 749 | TCP | ノード管理 LIF | Active Directory フォレスト | Kerberos V Change & Set Password （ RPCSEC_GSS ） 
+
+
+| 88 | TCP | データ LIF （ NFS 、 CIFS 、 iSCSI ） | Active Directory フォレスト | Kerberos V 認証 
+
+
+| 137 | UDP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| 138 | UDP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| 139 | TCP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| 389 | TCP および UDP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | LDAP 
+
+
+| 445 | TCP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| 464 | TCP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| 464 | UDP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos キー管理 
+
+
+| 749 | TCP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos V Change & Set Password （ RPCSEC_GSS ） 
+
+
+| DHCP | 68 | UDP | ノード管理 LIF | DHCP | 初回セットアップ用の DHCP クライアント 
+
+
+| DHCP | 67 | UDP | ノード管理 LIF | DHCP | DHCP サーバ 
+
+
+| DNS | 53 | UDP | ノード管理 LIF とデータ LIF （ NFS 、 CIFS ） | DNS | DNS 
+
+
+| NDMP | 18600 ～ 18699 | TCP | ノード管理 LIF | 宛先サーバ | NDMP コピー 
+
+
+| SMTP | 25 | TCP | ノード管理 LIF | メールサーバ | SMTP アラート。 AutoSupport に使用できます 
+
+
+.4+| SNMP | 161 | TCP | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| 161 | UDP | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| 162 | TCP | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| 162 | UDP | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+.2+| SnapMirror | 11104 | TCP | クラスタ間 LIF | ONTAP クラスタ間 LIF | SnapMirror のクラスタ間通信セッションの管理 
+
+
+| 11105 | TCP | クラスタ間 LIF | ONTAP クラスタ間 LIF | SnapMirror によるデータ転送 
+
+
+| syslog | 514 | UDP | ノード管理 LIF | syslog サーバ | syslog 転送メッセージ 
+|===
+
+
+== コネクタのセキュリティグループルール
+
+コネクタのセキュリティグループには、インバウンドとアウトバウンドの両方のルールが必要です。
+
+
+
+=== インバウンドルール
+
+定義済みセキュリティグループのインバウンドルールの送信元は 0.0.0.0/0 です。
+
+[cols="3*"]
+|===
+| ポート | プロトコル | 目的 
+
+
+| 22 | SSH | コネクタホストへの SSH アクセスを提供します 
+
+
+| 80 | HTTP | クライアント Web ブラウザからローカルへの HTTP アクセスを提供します ユーザインターフェイス 
+
+
+| 443 | HTTPS | クライアント Web ブラウザからローカルへの HTTPS アクセスを提供します ユーザインターフェイス 
+|===
+
+
+=== アウトバウンドルール
+
+コネクタの事前定義されたセキュリティグループは、すべての発信トラフィックを開きます。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+==== 基本的なアウトバウンドルール
+
+コネクタの事前定義されたセキュリティグループには、次のアウトバウンドルールが含まれています。
+
+[cols="3*"]
+|===
+| ポート | プロトコル | 目的 
+
+
+| すべて | すべての TCP | すべての発信トラフィック 
+
+
+| すべて | すべての UDP | すべての発信トラフィック 
+|===
+
+
+==== 高度なアウトバウンドルール
+
+発信トラフィックに固定ルールが必要な場合は、次の情報を使用して、コネクタによる発信通信に必要なポートだけを開くことができます。
+
+
+NOTE: 送信元 IP アドレスは、コネクタホストです。
+
+[cols="5*"]
+|===
+| サービス | ポート | プロトコル | 宛先 | 目的 
+
+
+.9+| Active Directory | 88 | TCP | Active Directory フォレスト | Kerberos V 認証 
+
+
+| 139 | TCP | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| 389 | TCP | Active Directory フォレスト | LDAP 
+
+
+| 445 | TCP | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| 464 | TCP | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| 749 | TCP | Active Directory フォレスト | Active Directory Kerberos v の変更とパスワードの設定（ RPCSEC_GSS ） 
+
+
+| 137 | UDP | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| 138 | UDP | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| 464 | UDP | Active Directory フォレスト | Kerberos キー管理 
+
+
+| API コールと AutoSupport | 443 | HTTPS | アウトバウンドインターネットおよび ONTAP クラスタ管理 LIF | AWS および ONTAP への API コール、およびネットアップへの AutoSupport メッセージの送信 
+
+
+| API コール | 3000 | TCP | ONTAP クラスタ管理 LIF | ONTAP への API コール 
+
+
+| DNS | 53 | UDP | DNS | Cloud Manager による DNS 解決に使用されます 
+|===

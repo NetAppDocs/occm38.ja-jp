@@ -1,0 +1,163 @@
+---
+sidebar: sidebar 
+permalink: task_creating_connectors.html 
+keywords: create connector in aws, create connector in azure, create connector in gcp, launch connector in aws, launch connector in azure, launch connector in gcp, deploy connector in aws, deploy connector in azure, deploy connector in gcp 
+summary: Cloud Manager のほとんどの機能を使用するには、 Account Admin がコネクタを導入する必要があります。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。このページでは、 Cloud Manager からコネクタを直接作成する方法について説明します。 
+---
+= Cloud Manager からコネクタを作成します
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager のほとんどの機能を使用するには、 Account Admin が _ Connector を導入する必要があります。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。このページでは、 Cloud Manager からコネクタを直接作成する方法について説明します。
+
+これらの手順は、 Account Admin ロールを持つユーザが実行する必要があります。ワークスペース管理者はコネクタを作成できません。
+
+link:concept_connectors.html["コネクタが必要になるタイミングを学習します"]。
+
+
+TIP: 最初の Cloud Volumes ONTAP 作業環境を作成する際、まだコネクタがない場合は、 Cloud Manager からコネクタの作成を求められます。
+
+
+
+== AWS でコネクタを作成する
+
+Cloud Manager では、ユーザインターフェイスから AWS に直接コネクタを作成できます。オプションとして、を選択することもできます link:task_launching_aws_mktp.html["AWS Marketplace からコネクタを作成します"]または 。
+
+.必要なもの
+* IAM 用の AWS アクセスキーとシークレットキー を持つユーザ https://mysupport.netapp.com/site/info/cloud-manager-policies["必要な権限"^]。
+* 選択した AWS リージョン内の VPC 、サブネット、キーペア。
+
+
+.手順
+. 最初の作業環境を作成する場合は、 * 作業環境の追加 * をクリックし、プロンプトに従います。それ以外の場合は、コネクターアイコンをクリックし、 * コネクターを追加 * を選択します。
++
+image:screenshot_connector_add.gif["ヘッダーのコネクターアイコンとコネクターの追加アクションを示すスクリーンショット。"]
+
+. [ * 開始しましょう * ] をクリックします。
+. クラウドプロバイダとして「 * Amazon Web Services * 」を選択します。
++
+Connector は、作成する作業環境の種類や有効にするサービスへのネットワーク接続を確立する必要があることに注意してください。
+
++
+link:reference_networking_cloud_manager.html["Connector のネットワーク要件の詳細については、こちらをご覧ください"]。
+
+. 必要な情報を確認し、 [* Continue （続行） ] をクリックします。
+. 必要な情報を入力します。
++
+** * AWS クレデンシャル * ：インスタンスの名前を入力し、権限の要件を満たす AWS アクセスキーとシークレットキーを指定します。
+** * 場所 * ：インスタンスの AWS リージョン、 VPC 、およびサブネットを指定します。
+** * ネットワーク * ：インスタンスで使用するキーペア、パブリック IP アドレスを有効にするかどうか、およびオプションでプロキシ設定を指定します。
+** * セキュリティグループ * ：新しいセキュリティグループを作成するか、インバウンド HTTP 、 HTTPS 、 SSH アクセスを許可する既存のセキュリティグループを選択するかを選択します。
++
+
+NOTE: コネクタへの着信トラフィックは、開始しない限りありません。へのアクセスは、 HTTP および HTTPS を使用して提供されます link:concept_connectors.html#the-local-user-interface["ローカル UI"]は、まれな状況で使用します。SSH が必要になるのは、トラブルシューティングのためにホストに接続する必要がある場合のみです。
+
+
+
+. [ 作成（ Create ） ] をクリックします。
++
+インスタンスの準備が完了するまでに約 7 分かかります。処理が完了するまで、ページには表示されたままにしておいてください。
+
+
+
+
+
+== Azure でコネクタを作成する
+
+Cloud Manager では、ユーザインターフェイスから直接 Azure にコネクタを作成できます。オプションとして、を選択することもできます link:task_launching_azure_mktp.html["Azure Marketplace からコネクタを作成します"]またはをに設定します 。
+
+.必要なもの
+* 。 https://mysupport.netapp.com/site/info/cloud-manager-policies["必要な権限"^] 使用している Azure アカウントに対して。
+* Azure サブスクリプション。
+* 選択した Azure リージョン内の VNet およびサブネット
+
+
+.手順
+. 最初の作業環境を作成する場合は、 * 作業環境の追加 * をクリックし、プロンプトに従います。それ以外の場合は、コネクターアイコンをクリックし、 * コネクターを追加 * を選択します。
++
+image:screenshot_connector_add.gif["ヘッダーのコネクターアイコンとコネクターの追加アクションを示すスクリーンショット。"]
+
+. [ * 開始しましょう * ] をクリックします。
+. クラウドプロバイダとして「 * Microsoft Azure * 」を選択します。
++
+Connector は、作成する作業環境の種類や有効にするサービスへのネットワーク接続を確立する必要があることに注意してください。
+
++
+link:reference_networking_cloud_manager.html["Connector のネットワーク要件の詳細については、こちらをご覧ください"]。
+
+. 必要な情報を確認し、 [* Continue （続行） ] をクリックします。
+. プロンプトが表示されたら、 Microsoft アカウントにログインします。このアカウントには、仮想マシンの作成に必要な権限が付与されている必要があります。
++
+このフォームは、 Microsoft が所有およびホストしています。クレデンシャルがネットアップに提供されていません。
+
+. 必要な情報を入力します。
++
+** * VM 認証 * ：仮想マシンの名前、ユーザ名、パスワード、または公開鍵を入力します。
+** * 基本設定 * ： Azure サブスクリプション、 Azure リージョン、および新しいリソースグループを作成するか既存のリソースグループを使用するかを選択します。
+** * ネットワーク * ： VNet とサブネットを選択し、パブリック IP アドレスを有効にするかどうか、および必要に応じてプロキシ設定を指定します。
+** * セキュリティグループ * ：新しいセキュリティグループを作成するか、インバウンド HTTP 、 HTTPS 、 SSH アクセスを許可する既存のセキュリティグループを選択するかを選択します。
++
+
+NOTE: コネクタへの着信トラフィックは、開始しない限りありません。へのアクセスは、 HTTP および HTTPS を使用して提供されます link:concept_connectors.html#the-local-user-interface["ローカル UI"]は、まれな状況で使用します。SSH が必要になるのは、トラブルシューティングのためにホストに接続する必要がある場合のみです。
+
+
+
+. [ 作成（ Create ） ] をクリックします。
++
+仮想マシンの準備が完了するまでに約 7 分かかります。処理が完了するまで、ページには表示されたままにしておいてください。
+
+
+
+
+
+== GCP でコネクタを作成する
+
+Cloud Manager では、ユーザインターフェイスから直接 GCP でコネクタを作成できます。オプションとして、を選択することもできます link:task_installing_linux.html["ソフトウェアをダウンロードして、ご使用のホストにインストールします"]。
+
+.必要なもの
+* 。 https://mysupport.netapp.com/site/info/cloud-manager-policies["必要な権限"^] をクリックしてください。
+* Google Cloud プロジェクト。
+* Cloud Volumes ONTAP の作成と管理に必要な権限を持つサービスアカウント。
+* Google Cloud リージョン内の VPC とサブネット。
+
+
+.手順
+. 最初の作業環境を作成する場合は、 * 作業環境の追加 * をクリックし、プロンプトに従います。それ以外の場合は、コネクターアイコンをクリックし、 * コネクターを追加 * を選択します。
++
+image:screenshot_connector_add.gif["ヘッダーのコネクターアイコンとコネクターの追加アクションを示すスクリーンショット。"]
+
+. [ * 開始しましょう * ] をクリックします。
+. クラウドプロバイダとして * Google Cloud Platform * を選択します。
++
+Connector は、作成する作業環境の種類や有効にするサービスへのネットワーク接続を確立する必要があることに注意してください。
+
++
+link:reference_networking_cloud_manager.html["Connector のネットワーク要件の詳細については、こちらをご覧ください"]。
+
+. 必要な情報を確認し、 [* Continue （続行） ] をクリックします。
+. プロンプトが表示されたら、 Google アカウントにログインします。このアカウントには、仮想マシンインスタンスを作成するために必要な権限が付与されている必要があります。
++
+このフォームは Google が所有およびホストしています。クレデンシャルがネットアップに提供されていません。
+
+. 必要な情報を入力します。
++
+** * 基本設定 * ：仮想マシンインスタンスの名前を入力し、必要な権限を持つプロジェクトおよびサービスアカウントを指定します。
+** * 場所 * ：インスタンスのリージョン、ゾーン、 VPC 、およびサブネットを指定します。
+** * ネットワーク * ：パブリック IP アドレスを有効にするかどうかを選択し、必要に応じてプロキシ設定を指定します。
+** * ファイアウォールポリシー * ：新しいファイアウォールポリシーを作成するか、インバウンド HTTP 、 HTTPS 、 SSH アクセスを許可する既存のファイアウォールポリシーを選択するかを選択します。
++
+
+NOTE: コネクタへの着信トラフィックは、開始しない限りありません。へのアクセスは、 HTTP および HTTPS を使用して提供されます link:concept_connectors.html#the-local-user-interface["ローカル UI"]は、まれな状況で使用します。SSH が必要になるのは、トラブルシューティングのためにホストに接続する必要がある場合のみです。
+
+
+
+. [ 作成（ Create ） ] をクリックします。
++
+インスタンスの準備が完了するまでに約 7 分かかります。処理が完了するまで、ページには表示されたままにしておいてください。
+
+

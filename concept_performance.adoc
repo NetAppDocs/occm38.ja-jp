@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: concept_performance.html 
+keywords: performance, technical report, TR, workload 
+summary: パフォーマンスの結果を確認して、 Cloud Volumes ONTAP に適したワークロードを決定できます。 
+---
+= パフォーマンス
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+パフォーマンスの結果を確認して、 Cloud Volumes ONTAP に適したワークロードを決定できます。
+
+* Cloud Volumes ONTAP for AWS
++
+https://www.netapp.com/us/media/tr-4383.pdf["NetApp テクニカルレポート 4383 ：アプリケーションワークロードを使用した Amazon Web Services における Cloud Volumes ONTAP のパフォーマンス特性"^]。
+
+* Cloud Volumes ONTAP for Microsoft Azure
++
+https://www.netapp.com/us/media/tr-4671.pdf["NetApp テクニカルレポート 4671 ：アプリケーションワークロードを使用した Azure における Cloud Volumes ONTAP のパフォーマンス特性評価"^]。
+
+* Cloud Volumes ONTAP for Google Cloud の略
++
+https://www.netapp.com/us/media/tr-4816.pdf["ネットアップテクニカルレポート 4816 ：『 Performance Characterization of Cloud Volumes ONTAP for Google Cloud 』"^]。
+
+

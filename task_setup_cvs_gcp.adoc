@@ -1,0 +1,136 @@
+---
+sidebar: sidebar 
+permalink: task_setup_cvs_gcp.html 
+keywords: cloud volumes service for gcp, google cloud, cloud volumes, create cloud volumes, discover cloud volumes service for gcp, cloud volumes service subscription, discover cloud volumes service subscription, discover region, allowed clients, create snapshots 
+summary: Cloud Manager で Cloud Volumes Service for Google Cloud の作業環境を作成し、ボリュームと Snapshot を作成および管理します。 
+---
+= Cloud Volumes Service for Google Cloud をセットアップします
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager で Cloud Volumes Service for Google Cloud の作業環境を作成し、ボリュームと Snapshot を作成および管理します。
+
+
+
+== クイックスタート
+
+これらの手順をすばやく開始するか、次のセクションで詳細を確認してください。
+
+
+
+==== Cloud Volumes Service API を有効にします
+
+[role="quick-margin-para"]
+Google で、 Cloud Volumes Service for GCP API を有効にして、 Cloud Manager がサブスクリプションとクラウドボリュームを管理できるようにします。
+
+
+
+==== GCP サービスアカウントを作成し、クレデンシャルをダウンロードします
+
+[role="quick-margin-para"]
+Google から GCP サービスアカウントと GCP ロールを作成し、 Cloud Manager が Cloud Volumes Service for GCP アカウントにアクセスできるようにします。
+
+
+
+==== GCP 向け Cloud Volumes Service 作業環境を作成します
+
+[role="quick-margin-para"]
+Cloud Manager で、 * 作業環境の追加 * > * Google Cloud * > * Cloud Volumes Service * をクリックし、サービスアカウントと Google Cloud プロジェクトの詳細を指定します。
+
+
+
+== Cloud Volumes Service API を有効にします
+
+Google Cloud Shell で、次のコマンドを実行して Cloud Volumes Service API を有効にします。
+
+`gcloud --project=<my-cvs-project> サービスは cloudvolumesgcp-api.netapp.com` を有効にします
+
+
+
+== Cloud Manager に Cloud Volumes Service へのアクセスを付与します GCP アカウント
+
+Cloud Manager が Google Cloud プロジェクトにアクセスできるようにするには、次のタスクを実行する必要があります。
+
+* 新しいサービスアカウントを作成します
+* 新しいサービスアカウントメンバーをプロジェクトおよびに追加します IT 固有のロール（権限）の割り当て
+* サービスアカウントのキーペアを作成してダウンロードします Google への認証に使用されます
+
+
+.手順
+. Google Cloud Console で、 ［ * サービスアカウント * ］ ページに移動します。
+. [ * プロジェクトの選択 * ] をクリックし、プロジェクトを選択して [ * 開く * ] をクリックします。
+. [ サービスアカウントの作成 *] をクリックし、サービスアカウント名 ( フレンドリ表示名 ) と説明を入力して、 [ * 作成 *] をクリックします。
+. _iam ページの _Click * Add * をクリックし、 _ Add Members_page のフィールドに入力します。
++
+.. [ 新しいメンバー ] フィールドに、 user1-service-account-cvs@project1.iam.gserviceaccount.com などの完全なサービスアカウント ID を入力します。
+.. 追加するロールは次のとおりです。
++
+*** NetApp Cloud Volumes Admin _
+*** ネットワークビューアを計算します _
+*** _ フォルダビューア _
+
+
+.. [ 保存（ Save ） ] をクリックします。
+
+
+. _ サービスアカウントの詳細 _ ページで、 * キーの追加 > 新しいキーの作成 * をクリックします。
+. キーのタイプとして * json * を選択し、 * Create * をクリックします。
++
+[*Create] をクリックすると、新しい公開鍵と秘密鍵のペアが生成され、システムにダウンロードされます。秘密鍵の唯一のコピーとして機能します。このファイルは、サービスアカウントとしての認証に使用できるため、安全に保管してください。
+
+
+
+詳細な手順については、 Google Cloud のトピックを参照してください link:https://cloud.google.com/iam/docs/creating-managing-service-accounts["サービスアカウントの作成と管理"^]、 および 。
+
+
+
+== GCP 向け Cloud Volumes Service 作業環境を作成します
+
+Cloud Manager で Cloud Volumes Service for GCP の作業環境をセットアップして、ボリュームの作成を開始できるようにします。
+
+Google Cloud Console からすでにボリュームを作成しているかどうかに関係なく、 Cloud Volumes Service for GCP にサインアップしてまだボリュームを持っていない場合は、最初に GCP サブスクリプションに基づいてボリュームの作業環境を作成します。
+
+このサブスクリプション用のクラウドボリュームがすでに存在する場合、ボリュームは新しい作業環境に表示されます。GCP サブスクリプションにまだクラウドボリュームを追加していない場合は、新しい作業環境を作成した後で追加します。
+
+
+TIP: 複数の GCP プロジェクトにサブスクリプションとボリュームがある場合は、プロジェクトごとにこのタスクを実行する必要があります。
+
+各プロジェクトのサブスクリプションを追加する際は、次の情報を確認しておく必要があります。
+
+* サービスアカウントのクレデンシャル（ダウンロードした JSON 秘密鍵）
+* プロジェクト名
+
+
+.手順
+. Cloud Manager で、新しい作業環境を追加し、場所として「 * Google Cloud * 」を選択し、「 * Continue * 」をクリックします。
+. 「 * Cloud Volumes Service * 」を選択し、「 * Continue * 」をクリックします。
++
+image:screenshot_add_cvs_gcp_working_env.png["Cloud Volumes Service for GCP サブスクリプションの作業環境を追加するスクリーンショット。"]
+
+. Cloud Volumes Service サブスクリプションに関する情報を入力します。
++
+.. 使用する作業環境名を入力します。
+.. 前の手順でダウンロードした JSON 秘密鍵をコピーして貼り付けます。
+.. Google Cloud プロジェクトの名前を選択します。
+.. [ 追加（ Add ） ] をクリックします。
++
+image:screenshot_add_cvs_gcp_credentials.png["Cloud Volumes Service for GCP サブスクリプションのクレデンシャルを追加するスクリーンショット。"]
+
+
+
+
+
+Cloud Manager に Cloud Volumes Service for Google Cloud の作業環境が表示されます。
+
+image:screenshot_cvs_gcp_cloud.png["Cloud Volumes Service for Google Cloud 作業環境のスクリーンショット。"]
+
+このサブスクリプション用のクラウドボリュームがすでに存在する場合は、新しい作業環境にスクリーンショットに示すようにボリュームが表示されます。Cloud Manager からクラウドボリュームを追加することができます。
+
+このサブスクリプションにクラウドボリュームが存在しない場合は、ここで作成します。
+
+link:task_manage_cvs_gcp.html["ボリュームの作成と管理を開始します"]。

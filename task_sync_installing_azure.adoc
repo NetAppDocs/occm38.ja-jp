@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: task_sync_installing_azure.html 
+keywords: data broker, install, azure, networking, permissions, regions, install data broker in azure, install in azure, deploy in azure, deploy data broker in azure, networking requirements, port, ports, 443, port 443, ntp, network time protocol, azure data broker 
+summary: 同期関係を作成する場合は、 Azure データブローカーオプションを選択して、 VNet の新しい仮想マシンにデータブローカーソフトウェアを導入します。Cloud Sync ではインストールプロセスがガイドされますが、インストールの準備に役立つように、このページの要件と手順が繰り返されています。 
+---
+= Azure へのデータブローカーのインストール
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+同期関係を作成する場合は、 Azure データブローカーオプションを選択して、 VNet の新しい仮想マシンにデータブローカーソフトウェアを導入します。Cloud Sync ではインストールプロセスがガイドされますが、インストールの準備に役立つように、このページの要件と手順が繰り返されています。
+
+また、クラウド内または社内の既存の Linux ホストにデータブローカーをインストールすることもできます。 link:task_sync_installing_linux.html["詳細はこちら。"]。
+
+
+
+== サポートされている Azure リージョン
+
+中国、米国政府、米国国防総省を除くすべての地域がサポートされます。
+
+
+
+== ネットワーク要件
+
+* データブローカーは、アウトバウンドインターネット接続を必要としているため、クラウド同期サービスにポート 443 経由のタスクをポーリングできます。
++
+Cloud Sync は、データブローカーを Azure に導入するときに、必要なアウトバウンド通信を有効にするセキュリティグループを作成します。
+
++
+アウトバウンド接続を制限する必要がある場合は、を参照してください link:reference_sync_networking.html["データブローカーが連絡するエンドポイントのリスト"]。
+
+* ネットワークタイムプロトコル（ NTP ）サービスを使用するように、ソース、ターゲット、およびデータブローカーを設定することを推奨します。3 つのコンポーネント間の時間差は 5 分を超えないようにしてください。
+
+
+
+
+== 認証方式
+
+データブローカーを導入する際には、認証方式として、パスワードまたは SSH 公開鍵ペアを選択する必要があります。
+
+キー・ペアの作成方法については、を参照してください https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys["Azure のドキュメント：「 Create and use an SSH public-private key pair for Linux VMs in Azure"^]。
+
+
+
+== データブローカーのインストール
+
+同期関係を作成するときに、 Azure にデータブローカーをインストールできます。
+
+.手順
+. [ 新しい同期の作成 *] をクリックします。
+. [ 同期関係の定義 *] ページで、ソースとターゲットを選択し、 [ 続行 *] をクリックします。
++
+ページを完了して、「 * データブローカー * 」ページを表示します。
+
+. [ * データブローカー * ] ページで、 [ * データブローカーの作成 * ] をクリックし、 [Microsoft Azure* ] を選択します。
++
+データブローカーがすでにある場合は、をクリックする必要があります image:screenshot_plus_icon.gif["プラスアイコンの場合のスクリーンショット"] 最初にアイコンをクリックします
+
++
+image:screenshot_create_data_broker.gif["AWS 、 Azure 、 GCP 、オンプレミスのデータブローカーを選択できるデータブローカーページのスクリーンショット。"]
+
+. データブローカーの名前を入力し、 [* 続行 ] をクリックします。
+. プロンプトが表示されたら、 Microsoft アカウントにログインします。プロンプトが表示されない場合は、 * 「 * Azure へのログイン * 」をクリックします。
++
+このフォームは、 Microsoft が所有およびホストしています。クレデンシャルがネットアップに提供されていません。
+
+. データブローカーの場所を選択し、仮想マシンに関する基本的な詳細を入力します。
++
+image:screenshot_azure_data_broker.gif["「サブスクリプション、 Azure リージョン、 VNet 、サブネット、 VM 名、ユーザ名、認証方法、およびリソースグループの各フィールドを示す、 Azure 導入ページのスクリーンショット」"]
+
+. [* Continue （続行） ] をクリックし、展開が完了するまでページを開いたままにします。
++
+この処理には最大 7 分かかることがあります。
+
+. Cloud Sync で、データブローカーが利用可能になったら、 [* 続行 ] をクリックします。
+. ウィザードのページに入力して、新しい同期関係を作成します。
+
+
+Azure にデータブローカーを導入し、新しい同期関係を作成しました。このデータブローカーは、追加の同期関係とともに使用できます。
+
+.管理者の同意が必要なことを示すメッセージを受信しますか？
+****
+Cloud Sync で組織内のリソースに代理でアクセスする権限が必要であるために管理者の承認が必要であることが通知された場合は、次の 2 つのオプションがあります。
+
+. AD 管理者に次の権限を提供するよう依頼します。
++
+Azure では、 [ 管理センター ] > [Azure AD] > [ ユーザーとグループ ] > [ ユーザー設定 * ] の順に選択し、 * ユーザーが代わりに会社のデータにアクセスするアプリに同意できるようにします。 *
+
+. 次の URL を使用して、 * CloudSync-AzureDataBrokerCreator* に代わって、 AD 管理者に同意するよう依頼してください（これは管理者同意エンドポイントです）。
++
+\ https://login.microsoftonline.com/{FILL テナント ID }/v2.0/adminconCILINE?client_id=8ee4ca3A-BAFA-4831-97cc-5a38923cab85 & redirect_uri=https://cloudsync.netapp.com&scope=https://management.azure.com/user_impersonationhttps://graph.microsoft.com/User.Read に移動します
+
++
+URL に示されているように、アプリケーションの URL は \https://cloudsync.netapp.com で、アプリケーションのクライアント ID は 8ee4ca3a-BAFA-4831-97cc-5a38923cab85 です。
+
+
+
+****

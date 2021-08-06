@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: task_monitoring_costs.html 
+keywords: cost, costs, storage, compute, savings, aws, aws costs, billing 
+summary: Cloud Manager では、 AWS での Cloud Volumes ONTAP の実行に関連するコストを確認できます。また、ネットアップの機能を使用してストレージコストを削減し、どれだけのコストを節約したかを確認することもできます。 
+---
+= AWS のリソースコストを監視する
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager では、 AWS での Cloud Volumes ONTAP の実行に関連するリソースコストを確認できます。また、ネットアップの機能を使用してストレージコストを削減し、どれだけのコストを節約したかを確認することもできます。
+
+ページを更新すると、 Cloud Manager によってコストが更新されます。最終的なコストの詳細については、 AWS を参照してください。
+
+.ステップ
+. Cloud Manager から AWS からコスト情報を取得できることを確認します。
++
+.. Cloud Manager に権限を提供する IAM ポリシーに次の操作が含まれていることを確認します。
++
+[source, json]
+----
+"ce:GetReservationUtilization",
+"ce:GetDimensionValues",
+"ce:GetCostAndUsage",
+"ce:GetTags"
+----
++
+これらのアクションは最新のに含まれています https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager ポリシー"^]。これらの権限は、 NetApp Cloud Central から自動的に導入された新しいシステムに含まれます。
+
+.. https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html["* WorkingEnvironmentId* タグをアクティブにします"^]。
++
+AWS のコストを追跡するために、 Cloud Manager はコスト割り当てタグを Cloud Volumes ONTAP インスタンスに割り当てます。最初の作業環境を作成したら、 * WorkingEnvironmentId * タグをアクティブ化します。ユーザ定義のタグは、請求とコスト管理のコンソールでアクティブ化するまでは AWS 請求レポートに表示されません。
+
+
+
+. 作業環境ページで Cloud Volumes ONTAP 作業環境を選択し、コスト * をクリックします。
++
+ボリュームでコスト削減機能を有効にしている場合、過去数カ月のコストと、ネットアップによる年間削減量が表示されます。
+
++
+次の図は、コストページの例を示しています。
+
++
+image:screenshot_cost.gif["スクリーンショット： Cloud Volumes ONTAP インスタンスのコストを月単位で表示します。"]
+
+

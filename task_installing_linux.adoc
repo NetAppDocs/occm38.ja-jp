@@ -1,0 +1,121 @@
+---
+sidebar: sidebar 
+permalink: task_installing_linux.html 
+keywords: install connector, manually install connector, install connector software, installation, installing, linux, installer, software, on prem, on-prem, silent 
+summary: コネクタを作成する最も一般的な方法は、 Cloud Manager から直接、またはクラウドプロバイダのマーケットプレイスから直接行う方法です。ただし、ネットワークまたはクラウドにある既存の Linux ホストに Connector ソフトウェアをダウンロードしてインストールすることもできます。 
+---
+= 既存の Linux ホストに Connector ソフトウェアをインストールします
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+コネクタを作成する最も一般的な方法は、 Cloud Manager から直接、またはクラウドプロバイダのマーケットプレイスから直接行う方法です。ただし、ネットワークまたはクラウドにある既存の Linux ホストに Connector ソフトウェアをダウンロードしてインストールすることもできます。
+
+
+NOTE: Google Cloud で Cloud Volumes ONTAP システムを作成する場合は、 Google Cloud でもコネクタを実行する必要があります。別の場所で実行されているコネクタは使用できません。
+
+.要件
+* ホストがになっている必要があります link:reference_cloud_mgr_reqs.html["コネクタの要件"]。
+* Red Hat Enterprise Linux システムは、 Red Hat サブスクリプション管理に登録する必要があります。登録されていない場合、システムはインストール中に必要なサードパーティソフトウェアをアップデートするためのリポジトリにアクセスできません。
+* Connector インストーラは、インストールプロセス中に複数の URL にアクセスします。アウトバウンドのインターネットアクセスが次のエンドポイントで許可されていることを確認してください。
++
+** http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+** https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+** https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
++
+ホストは、インストール中にオペレーティングシステムパッケージの更新を試みる可能性があります。ホストは、これらの OS パッケージの別のミラーリングサイトにアクセスできます。
+
+
+
+
+
+.このタスクについて
+* コネクタのインストールに root 権限は必要ありません。
+* インストールを実行すると、ネットアップサポートからのリカバリ手順用に AWS コマンドラインツール（ awscli ）がインストールされます。
++
+AWSCLI のインストールに失敗したというメッセージが表示された場合は、このメッセージを無視しても問題ありません。コネクタは、工具なしで正常に作動する。
+
+* ネットアップサポートサイトで入手できるインストーラは、それよりも古いバージョンの場合があります。インストール後、新しいバージョンが利用可能になると、コネクタは自動的に更新されます。
+
+
+.手順
+. から Cloud Manager ソフトウェアをダウンロードします https://mysupport.netapp.com/site/products/all/details/cloud-manager/downloads-tab["ネットアップサポートサイト"^]をクリックし、 Linux ホストにコピーします。
++
+AWS の EC2 インスタンスに接続してファイルをコピーする方法については、を参照してください http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html["AWS ドキュメント：「 Connecting to Your Linux Instance Using SSH"^]。
+
+. スクリプトを実行する権限を割り当てます。
++
+* 例 *
+
++
+....
+chmod +x OnCommandCloudManager-V3.8.4.sh
+....
+. インストールスクリプトを実行します。
++
+....
+./OnCommandCloudManager-V3.8.4.sh [silent] [proxy=ipaddress] [proxyport=port] [proxyuser=user_name] [proxypwd=password]
+....
++
+_silent_ 情報の入力を求めずにインストールを実行します。
+
++
+プロキシサーバの背後にホストがある場合は、 _proxy_is が必要です。
+
++
+proxyport_ は、プロキシサーバのポートです。
+
++
+_proxyUser_ は、ベーシック認証が必要な場合に、プロキシサーバのユーザ名です。
+
++
+_proxypwd_は 、指定したユーザー名のパスワードです。
+
+. silent パラメータを指定しなかった場合は、「 * Y * 」と入力してスクリプトを続行し、プロンプトが表示されたら HTTP ポートと HTTPS ポートを入力します。
++
+Cloud Manager がインストールされました。プロキシサーバを指定した場合、インストールの最後に Cloud Manager Service （ OCCM ）が 2 回再起動します。
+
+. Web ブラウザを開き、次の URL を入力します。
++
+https://_ipaddress_:__port__[]
+
++
+_ipaddress _ には、ホストの設定に応じて、 localhost 、プライベート IP アドレス、またはパブリック IP アドレスを指定できます。たとえば、パブリック IP アドレスのないパブリッククラウドにコネクタがある場合は、コネクタホストに接続されているホストからプライベート IP アドレスを入力する必要があります。
+
++
+デフォルトの HTTP （ 80 ）ポートまたは HTTPS （ 443 ）ポートを変更した場合は、 _port_is 必須です。たとえば、 HTTPS ポートが 8443 に変更された場合はと入力します https://_ipaddress_:8443[]
+
+. NetApp Cloud Central に登録するか、ログインします。
+. ログインしたら、 Cloud Manager をセットアップします。
++
+.. コネクタに関連付ける Cloud Central アカウントを指定します。
++
+link:concept_cloud_central_accounts.html["Cloud Central アカウントについて詳しくは、こちらをご覧ください"]。
+
+.. システムの名前を入力します。
++
+image:screenshot_set_up_cloud_manager.gif["セットアップ画面のスクリーンショット。 Cloud Central アカウントを選択してシステムに名前を付けることができます。"]
+
+
+
+
+
+これで、 Connector がインストールされ、 Cloud Central アカウントでセットアップされました。Cloud Manager は、新しい作業環境の作成時にこのコネクタを自動的に使用します。
+
+Cloud Manager がパブリッククラウド環境内のリソースやプロセスを管理できるように、権限を設定します。
+
+* AWS link:task_adding_aws_accounts.html["AWS アカウントをセットアップして、に追加します Cloud Manager の略"]。
+* Azure link:task_adding_azure_accounts.html["Azure アカウントをセットアップして、に追加します Cloud Manager の略"]。
+* GCP ： Cloud Manager がプロジェクト内で Cloud Volumes ONTAP システムを作成および管理するために必要な権限を持つサービスアカウントを設定します。
++
+.. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["GCP で役割を作成します"^] で定義した権限を含むポリシーを作成します。
+.. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["GCP サービスアカウントを作成し、カスタムロールを適用します を作成しました"^]。
+.. https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#changeserviceaccountandscopes["このサービスアカウントを Connector VM に関連付けます"^]。
+.. Cloud Volumes ONTAP を他のプロジェクトに導入する場合は、 https://cloud.google.com/iam/docs/granting-changing-revoking-access#granting-console["クラウドでサービスアカウントを追加してアクセスを許可します そのプロジェクトに対するマネージャの役割"^]。プロジェクトごとにこの手順を繰り返す必要があります。
+
+
+

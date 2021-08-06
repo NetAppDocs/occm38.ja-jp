@@ -1,0 +1,178 @@
+---
+sidebar: sidebar 
+permalink: task_manage_anf.html 
+keywords: azure netapp files, create volumes, delete volumes, create nfs volumes, delete nfs volumes, netapp account, capacity pool, create capacity pool, azure netapp files permissions, azure permissions, mount path, get mount path, find mount path, mount volume 
+summary: Cloud Manager で Azure NetApp Files 作業環境を作成し、ネットアップアカウント、容量プール、ボリューム、 Snapshot を作成および管理します。 
+---
+= Azure NetApp Files をセットアップしています
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager で Azure NetApp Files 作業環境を作成し、ネットアップアカウント、容量プール、ボリューム、 Snapshot を作成および管理します。
+
+
+
+== クイックスタート
+
+これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。
+
+
+
+==== アクセス権のリクエスト
+
+[role="quick-margin-para"]
+https://aka.ms/azurenetappfiles["オンラインリクエストを送信します"^] Azure NetApp Files へのアクセスを許可する必要があります。
+
+
+
+==== Azure AD アプリケーションをセットアップする
+
+[role="quick-margin-para"]
+Azure から Azure AD アプリケーションに権限を付与し、アプリケーション（クライアント） ID 、ディレクトリ（テナント） ID 、クライアントシークレットの値をコピーします。
+
+
+
+==== Azure NetApp Files 作業環境を作成します
+
+[role="quick-margin-para"]
+Cloud Manager で、 * 作業環境の追加 * > * Microsoft Azure * > * Azure NetApp Files * をクリックし、 AD アプリケーションの詳細を指定します。
+
+
+
+== アクセスを要求中です
+
+Azure NetApp Files へのアクセスを許可する必要があります によって https://aka.ms/azurenetappfiles["オンラインリクエストを送信しています"^]。Azure NetApp Files チームからの承認を待ってから、次の手順に進む必要があります。
+
+
+
+== Azure AD アプリケーションのセットアップ
+
+Cloud Manager で Azure NetApp Files を設定および管理するには権限が必要です。Azure アカウントに必要な権限を付与するには、 Azure AD アプリケーションを作成およびセットアップし、 Cloud Manager で必要な Azure クレデンシャルを取得します。
+
+
+
+=== AD アプリケーションの作成
+
+Cloud Manager でロールベースアクセス制御に使用できる Azure Active Directory （ AD ）アプリケーションとサービスプリンシパルを作成します。
+
+Azure で Active Directory アプリケーションを作成してロールに割り当てるための適切な権限が必要です。詳細については、を参照してください https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/["Microsoft Azure のドキュメント：「 Required permissions"^]。
+
+.手順
+. Azure ポータルで、 * Azure Active Directory * サービスを開きます。
++
+image:screenshot_azure_ad.gif["は、 Microsoft Azure の Active Directory サービスを示しています。"]
+
+. メニューで、 * アプリ登録 * をクリックします。
+. アプリケーションを作成します。
++
+.. [ 新規登録 ] をクリックします。
+.. アプリケーションの詳細を指定します。
++
+*** * 名前 * ：アプリケーションの名前を入力します。
+*** * アカウントタイプ * ：アカウントタイプを選択します（ Cloud Manager で使用できます）。
+*** * リダイレクト URI *: このフィールドは空白のままにできます。
+
+
+.. [*Register] をクリックします。
+
+
+. アプリケーション（クライアント） ID * とディレクトリ（テナント） ID * をコピーします。
++
+image:screenshot_anf_app_ids.gif["Azure Active Directory 内のアプリケーション（クライアント）の ID とディレクトリ（テナント） ID を示すスクリーンショット。"]
+
++
+Cloud Manager で Azure NetApp Files 作業環境を作成するときは、アプリケーション（クライアント） ID とディレクトリ（テナント） ID を指定する必要があります。Cloud Manager は、この ID を使用してプログラムによってサインインします。
+
+. Cloud Manager が Azure AD で認証できるように、アプリケーションのクライアントシークレットを作成します。
++
+.. ［ * 証明書とシークレット > 新しいクライアントシークレット * ］ をクリックします。
+.. シークレットと期間の説明を入力します。
+.. [ 追加（ Add ） ] をクリックします。
+.. クライアントシークレットの値をコピーします。
++
+image:screenshot_anf_client_secret.gif["Azure AD サービスプリンシパルのクライアントシークレットを表示する Azure ポータルのスクリーンショット。"]
+
+
+
+
+
+これで AD アプリケーションがセットアップされ、アプリケーション（クライアント） ID 、ディレクトリ（テナント） ID 、およびクライアントシークレットの値をコピーしました。この情報は、 Azure NetApp Files 作業環境を追加するときに、 Cloud Manager で入力する必要があります。
+
+
+
+=== アプリケーションをロールに割り当てます
+
+サービスプリンシパルを Azure サブスクリプションにバインドし、必要な権限を持つカスタムロールを割り当てる必要があります。
+
+.手順
+. https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles["Azure でカスタムロールを作成します"^]。
++
+Azure ポータルでロールを作成する手順は次のとおりです。
+
++
+.. サブスクリプションを開き、 * アクセスコントロール（ IAM ） * をクリックします。
+.. [ 追加 ] 、 [ カスタムロールの追加 ] の順にクリックします。
++
+image:screenshot_azure_access_control.gif[""]
+
+.. [* 基本情報 * （ * Basics * ） ] タブで、ロールの名前と説明を入力します。
+.. JSON * をクリックし、 JSON 形式の右上に表示される * 編集 * をクリックします。
+.. _actions_ に次の権限を追加します。
++
+[source, json]
+----
+"actions": [
+    "Microsoft.NetApp/*",
+    "Microsoft.Resources/resources/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/write",
+    "Microsoft.Network/virtualNetworks/read",
+    "Microsoft.Insights/Metrics/Read"
+    ],
+----
+.. [ * 保存 * ] をクリックし、 [ * 次へ * ] をクリックして、 [ * 作成 * ] をクリックします。
+
+
+. 次に、作成したロールにアプリケーションを割り当てます。
++
+.. Azure ポータルで、サブスクリプションを開き、 * アクセス制御（ IAM ） > 追加 > ロール割り当ての追加 * をクリックします。
+.. 作成したカスタムロールを選択します。
+.. Azure AD のユーザ、グループ、サービスプリンシパル * は選択したままにします。
+.. アプリケーションの名前を検索します（リストをスクロールして探すことはできません）。
++
+image:screenshot_anf_app_role.gif["Azure ポータルの ［ ロール割り当ての追加 ］ フォームを示すスクリーンショット。"]
+
+.. アプリケーションを選択し、 * 保存 * をクリックします。
++
+Cloud Manager のサービスプリンシパルに、そのサブスクリプションに必要な Azure の権限が付与されるようになりました。
+
+
+
+
+
+
+
+== Azure NetApp Files 作業環境の作成
+
+ボリュームの作成を開始できるように、 Cloud Manager で Azure NetApp Files 作業環境をセットアップします。
+
+. 作業環境ページで、 * 作業環境の追加 * をクリックします。
+. [Microsoft Azure* ] 、 [*Azure NetApp Files *] の順に選択します。
+. 以前に設定した AD アプリケーションの詳細を指定します。
++
+image:screenshot_anf_details.gif["Azure NetApp Files 作業環境の作成に必要なフィールドのスクリーンショット。名前、アプリケーション ID 、クライアントシークレット、およびディレクトリ ID を含みます。"]
+
+. [ 追加（ Add ） ] をクリックします。
+
+
+これで Azure NetApp Files の作業環境が作成されました。
+
+image:screenshot_anf_we.gif["Azure NetApp Files 作業環境のスクリーンショット。"]
+
+link:task_manage_anf_volumes.html["ボリュームの作成と管理を開始します"]。
