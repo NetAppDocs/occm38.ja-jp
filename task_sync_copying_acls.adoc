@@ -76,9 +76,7 @@ Robocopy を使用する前に、この手順を実行する必要がありま�
 . Cloud Sync で、ソースとターゲットの SMB 共有間の新しい関係を作成するか、既存の関係を同期します。
 . データの同期が完了したら、 Windows ホストから次のコマンドを実行して、 ACL と所有権を同期します。
 +
-....
-robocopy /E /COPY:SOU /secfix [source] [target] /w:0 /r:0 /XD ~snapshots /UNILOG:”[logfilepath]
-....
+ robocopy /E /COPY:SOU /secfix [source] [target] /w:0 /r:0 /XD ~snapshots /UNILOG:”[logfilepath]
 +
 UNC 形式を使用して、 source_or_target_ と _target_ の両方を指定する必要があります。たとえば、 \\<server>\<share>\<path> と入力します
 

@@ -52,14 +52,10 @@ AWS の EC2 インスタンスに接続してファイルをコピーする方�
 * 例 *
 
 +
-....
-chmod +x OnCommandCloudManager-V3.8.4.sh
-....
+ chmod +x OnCommandCloudManager-V3.8.4.sh
 . インストールスクリプトを実行します。
 +
-....
-./OnCommandCloudManager-V3.8.4.sh [silent] [proxy=ipaddress] [proxyport=port] [proxyuser=user_name] [proxypwd=password]
-....
+ ./OnCommandCloudManager-V3.8.4.sh [silent] [proxy=ipaddress] [proxyport=port] [proxyuser=user_name] [proxypwd=password]
 +
 _silent_ 情報の入力を求めずにインストールを実行します。
 

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task_logging_in.html 
 keywords: logging in, log in, sign in, signing in, cloud central, netapp cloud central, user account 
-summary: Cloud Manager のインターフェイスには、 SaaS ベースのユーザがアクセスできます にアクセスしてインターフェイスを設定します https://cloudmanager.netapp.com[]。 
+summary: 'Cloud Manager のインターフェイスには、 SaaS ベースのユーザがアクセスできます にアクセスしてインターフェイスを設定します https://cloudmanager.netapp.com[]。' 
 ---
 = Cloud Manager にログインしています
 :hardbreaks:

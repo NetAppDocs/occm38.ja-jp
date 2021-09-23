@@ -283,9 +283,7 @@ image:screenshot_aggr_volumes.gif["スクリーンショット：アグリゲー
 
 このタスクの手順に従って、次のアクションが必要なメッセージを修正できます。
 
-....
-Moving a volume is necessary to avoid capacity issues; however, Cloud Manager cannot perform this action for you because the system has reached the disk limit.
-....
+ Moving a volume is necessary to avoid capacity issues; however, Cloud Manager cannot perform this action for you because the system has reached the disk limit.
 .手順
 . 使用可能な容量を持つ Cloud Volumes ONTAP システムを特定するか、新しいシステムを導入します。
 . ソースの作業環境をターゲットの作業環境にドラッグアンドドロップして、ボリュームの 1 回限りのデータレプリケーションを実行します。
@@ -314,9 +312,7 @@ Moving a volume is necessary to avoid capacity issues; however, Cloud Manager ca
 
 このタスクの手順に従って、次のアクションが必要なメッセージを修正できます。
 
-....
-Moving two or more volumes is necessary to avoid capacity issues; however, Cloud Manager cannot perform this action for you.
-....
+ Moving two or more volumes is necessary to avoid capacity issues; however, Cloud Manager cannot perform this action for you.
 .手順
 . 既存のアグリゲートに、移動する必要があるボリュームの使用可能な容量があるかどうかを確認します。
 +

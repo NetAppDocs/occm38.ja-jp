@@ -81,14 +81,10 @@ Cloud Insights ドメインとテナント ID の特定についてサポート�
 コネクタのネットワーク::
 +
 --
-....
-https://<your-short-tenant-ID>.<Cloud Insights Domain>
-....
+ https://<your-short-tenant-ID>.<Cloud Insights Domain>
 例：
 
-....
-https://abcd12345.c01.cloudinsights.netapp.com
-....
+ https://abcd12345.c01.cloudinsights.netapp.com
 テナントホストの URL の特定についてサポートが必要な場合は、製品内のチャットでお問い合わせください。
 
 --
