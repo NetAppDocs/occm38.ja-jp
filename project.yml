@@ -1,5 +1,15 @@
+---
+settings:
+  name: Cloud Manager 3.8
+  nss_product: OnCommand Cloud Manager
+  downlevel: true
+  internal:
+    pdf_enabled: false
+  prod:
+    pdf_enabled: true
+    harmony_enabled: true
+    langs: ja-jp,us-en,zh-cn
 sidebar:
-  
   entries:
   - title: Cloud Manager のドキュメント
     url: "/index.html"
