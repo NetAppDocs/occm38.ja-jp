@@ -18,7 +18,7 @@
   <meta http-equiv="nss-type" content="Product Documentation"/>
   <meta http-equiv="nss-subtype" content="User Guide"/>
   
-  <meta http-equiv="nss-product" content="OnCommand"/>
+  <meta http-equiv="nss-product" content="OnCommand Cloud Manager"/>
   
   <meta name="description" content="Cloud Manager は、 Cloud Volumes ONTAP ストレージの簡易化された高度な管理機能を提供します。">
   <meta name="keywords" content=" provisioning, capacity management, storage provisioning, manual, automatic, advanced allocation, aggregates, thin provisioning, free space, mode">
@@ -159,7 +159,12 @@
     gtag('config', 'UA-81697994-3');
   }
   </script>
+  <script src='/ja-jp/occm38/js/version-dropdown.js'></script>
   <script src='/ja-jp/occm38/js/product-family.js'></script>
+  <script src='/ja-jp/occm38/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/occm38/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/occm38/js/jszip.min.js'></script>
+  <script src='/ja-jp/occm38/js/pdf-ux.js'></script>
 </head>
 
 
@@ -275,9 +280,6 @@
       </div>
       <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
         <div class="n-language-selector-menu">
-          <div class="n-language-selector-menu__header">
-            <span class="n-language-selector-menu__title">言語を選択</span>
-          </div>
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
@@ -289,10 +291,6 @@
                 </li></ul>
             </li>
           </ul>
-          <div class="menu__footer">
-            <p>選択中の言語: 日本語
-            </p>
-          </div>
         </div>
       </div>
     </div><!-- End Language Selector -->
@@ -329,31 +327,6 @@
   <!-- End property bar -->
 </header>
 
-        <div class="ie-utility">
-  <div class="ie-menu">
-    <div class="n-breadcrumb">
-      <ul class="n-breadcrumb__list">
-        <li class="n-breadcrumb__list-item">
-          <a href="https://www.netapp.com">ホーム</a>
-        </li>
-        <li class="n-breadcrumb__list-item">
-          <a href="https://docs.netapp.com">ドキュメント</a>
-        </li>
-        
-
-        <li class="n-breadcrumb__list-item">
-          <a href="/ja-jp/occm38/">Cloud&nbsp;Manager&nbsp;3.8</a>
-        </li>
-        <li class="n-breadcrumb__list-item">
-          ストレージ管理
-        </li>
-      </ul>
-    </div>
-
-    <div style="clear: both"></div><!-- Main needs to have height -->
-  </div>
-</div>
-
 
         <main id="n-main-content" class="n-main-content">
           <!-- Start Documentation Content -->
@@ -362,72 +335,55 @@
   
   <div class="col-md-3" >
       <div class="n-pdf-header">
-  <a id="toggleButtonPdf" class="n-pdf-button" type="button">PDF<span>
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>利用可能なPDF<span>
     </span>
   </a>
 </div>
-<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><div class="n-pdf-section">
-      <span class="n-pdf-section-title">サイト</span>
-    </div>
-    <li>
-      <a target="_blank" href="/ja-jp/occm38/pdfs/fullsite-sidebar/Cloud_Manager_および_Cloud_Volumes_ONTAP_のドキュメント.pdf" >
-        <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
-        Cloud Manager および Cloud Volumes ONTAP のドキュメント
-      </a>
-    </li>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        <a target="_blank" href="/ja-jp/occm38/pdfs/fullsite-sidebar/Cloud_Manager_および_Cloud_Volumes_ONTAP_のドキュメント.pdf" >
+          <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>このドキュメントサイトのPDF</a>
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/リリースノート.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             リリースノート
           </a>
-        </li>
-        <span>
           
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/クラウドマネージャ.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             クラウドマネージャ
           </a>
+          
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -436,10 +392,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -449,25 +404,16 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Manager_の使用を開始.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Cloud Manager の使用を開始
           </a>
-        </li>
-        <span>
           
 
 
@@ -479,29 +425,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Central_アカウントをセットアップします.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Cloud Central アカウントをセットアップします
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -509,35 +451,31 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/コネクタをセットアップします.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             コネクタをセットアップします
           </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -546,10 +484,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -557,78 +494,58 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_ONTAP_を管理します.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Cloud Volumes ONTAP を管理します
           </a>
-        </li>
-        <span>
           
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/詳細はこちら.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             詳細はこちら
           </a>
-        </li>
-        <span>
           
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ストレージ.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             ストレージ
           </a>
-        </li>
-        <span>
           
 
 
 
 
-    <div class="n-pdf-section">
-  <span class="n-pdf-section-title">このページ</span>
-</div>
-
-<li class="active">
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
   <a target="_blank" href="/ja-jp/occm38/pdfs/pages/concept_storage_management.pdf" >
-    <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
-    ストレージ管理
+    <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
+    PDF of this page
   </a>
 </li>
 
-
+</ul>
   
-
 
 
 
@@ -637,8 +554,8 @@
 
 
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -646,29 +563,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ハイアベイラビリティペア.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             ハイアベイラビリティペア
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -689,10 +602,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -700,19 +612,16 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/AWS_を始めましょう.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             AWS を始めましょう
           </a>
-        </li>
-        <span>
           
 
 
@@ -720,31 +629,27 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ネットワークをセットアップします.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             ネットワークをセットアップします
           </a>
+          
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -757,10 +662,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -768,33 +672,29 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Azure_で始めましょう.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Azure で始めましょう
           </a>
+          
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -802,35 +702,31 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/GCP_を始めましょう.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             GCP を始めましょう
           </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -838,37 +734,33 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ストレージをプロビジョニングおよび管理する.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             ストレージをプロビジョニングおよび管理する
           </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -878,29 +770,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/パフォーマンスを監視.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             パフォーマンスを監視
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -910,55 +798,50 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/管理.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             管理
           </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -966,53 +849,40 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ファイルサービスを使用してボリュームをプロビジョニング.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             ファイルサービスを使用してボリュームをプロビジョニング
           </a>
-        </li>
-        <span>
           
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Azure_NetApp_Files_の特長.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Azure NetApp Files の特長
           </a>
+          
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1020,19 +890,16 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_Service_for_AWS.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Cloud Volumes Service for AWS
           </a>
-        </li>
-        <span>
           
 
 
@@ -1042,39 +909,34 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             参照
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1082,43 +944,38 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_Service_for_GCP.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Cloud Volumes Service for GCP
           </a>
+          
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1126,35 +983,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ONTAP_クラスタを管理します.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             ONTAP クラスタを管理します
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1162,55 +1009,42 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/クラウドへのバックアップ.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             クラウドへのバックアップ
           </a>
-        </li>
-        <span>
           
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             はじめに
           </a>
+          
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1219,10 +1053,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1230,43 +1063,31 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データをコピーして同期.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             データをコピーして同期
           </a>
-        </li>
-        <span>
           
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             はじめに
           </a>
-        </li>
-        <span>
           
 
 
@@ -1276,33 +1097,29 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データブローカーのインストール方法.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             データブローカーのインストール方法
           </a>
+          
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1313,10 +1130,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1324,29 +1140,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/チュートリアル.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             チュートリアル
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1359,10 +1171,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1370,85 +1181,68 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データプライバシーに関する分析情報を入手できます.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             データプライバシーに関する分析情報を入手できます
           </a>
-        </li>
-        <span>
           
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             はじめに
           </a>
-        </li>
-        <span>
           
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データソースでスキャンをアクティブ化します.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             データソースでスキャンをアクティブ化します
           </a>
+          
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1465,10 +1259,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1476,45 +1269,35 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/リアルタイムのグローバルファイル共有を有効にします.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             リアルタイムのグローバルファイル共有を有効にします
           </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1522,35 +1305,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/クラウドコンピューティングのコストを最適化.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             クラウドコンピューティングのコストを最適化
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1558,57 +1331,44 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データをクラウドに階層化.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             データをクラウドに階層化
           </a>
-        </li>
-        <span>
           
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             はじめに
           </a>
+          
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1622,41 +1382,36 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             参照
           </a>
+          
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1666,75 +1421,59 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Manager_の管理.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Cloud Manager の管理
           </a>
-        </li>
-        <span>
           
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/コネクタを管理します.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             コネクタを管理します
           </a>
-        </li>
-        <span>
           
 
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/コネクタを作成するさまざまな方法.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             コネクタを作成するさまざまな方法
           </a>
+          
+
+
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1743,10 +1482,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1754,45 +1492,38 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/クレデンシャルを管理する.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             クレデンシャルを管理する
           </a>
-        </li>
-        <span>
           
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/AWS.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             AWS
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1800,29 +1531,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Azure.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             Azure
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1830,29 +1557,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/GCP.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             GCP
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1861,10 +1584,9 @@
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1882,41 +1604,36 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             参照
           </a>
+          
+
+
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
 
 
 
-
           
-        </span>
-      </span>
+        </li>
+      </ul>
     
 
   
@@ -1924,35 +1641,25 @@
 
 
     
-      <span class="subfolders" style="display:none;">
-        
-          <div class="n-pdf-section">
-            <span class="n-pdf-section-title">
-              セクション
-            </span>
-          </div>
-        
-        <li>
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/API_と自動化を活用.pdf" 
             
           >
-            <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>
+            <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>
             API と自動化を活用
           </a>
+          
+
+
+
+
+
+          
         </li>
-        <span>
-          
-
-
-
-
-
-
-          
-        </span>
-      </span>
+      </ul>
     
 
   
@@ -1966,15 +1673,44 @@
 
 
 
-</ul>
-
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/ja-jp/occm38/images/pdf-zip.png" width="16" height="16"/>
+      <pre>個別のPDFドキュメントのコレクション<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
 <script>
-  $("#toggleContainerPdf li.active").parents('li').toggle('display');
-  $("#toggleContainerPdf li.active").parents('span.subfolders').toggle('display');
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
   $("#toggleButtonPdf").click(function () {
     $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
-</script><ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/occm38/index.html">
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/occm38/index.html">
         Cloud Manager のドキュメント
       </a></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> リリースノート</div>
@@ -2440,7 +2176,7 @@
       </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/occm38/reference_legal_notices.html">
         法的通知
       </a></li></ul>
-
+</div>
 <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
 <script>$("li.active").parents('li').toggleClass("active");</script>
 
@@ -2450,6 +2186,30 @@
   <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
     <!-- Begin of page container -->
     <article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">ホーム</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">ドキュメント</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ja-jp/occm38/">Cloud&nbsp;Manager&nbsp;3.8</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          ストレージ管理
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
       
 <div class="ie-notification">
   <span class="ie-notification-highlight">これは以前のバージョンの Cloud Manager 用ドキュメントです。</span><br>
@@ -2477,7 +2237,7 @@
 <p class="page-details">
   
     
-    <time datetime="2021-08-07 00:22:35 +0000">08/07/2021</time>
+    <time datetime="2022-01-17 11:27:24 +0000">01/17/2022</time>
     
   
 
@@ -2491,12 +2251,6 @@
   </a>
   
 </span>
-
-
-  <span>
-    <a target="_blank" href="/ja-jp/occm38/pdfs/pages/concept_storage_management.pdf" role="button">
-      <img src="/ja-jp/occm38/images/pdf.png" width="20" height="20"/>このページの PDF をダウンロード</a>
-  </span>
 
 
 </p>
@@ -2677,11 +2431,11 @@
   
   <!-- Start Page Toolbar -->
   <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
     <div class="page-nav-contribute"  >
-      <div class="page-nav-contribute-title">寄稿する</div>
-      <a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/concept_storage_management.adoc" class="btn btn-default githubEditButton" role="button"><img src="/ja-jp/occm38/images/github.png" class="github-icon" />このページを編集する</a>
-      <a target="_blank" href="https://github.com/NetAppDocs/occm38/issues/new?body=Page%3A%20[ストレージ管理](https://docs.netapp.com/ja-jp/occm38/concept_storage_management.html)" class="btn btn-default githubEditButton" role="button"><img src="/ja-jp/occm38/images/github.png" class="github-icon" />ドキュメントの変更をリクエストする</a>
-      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >貢献する方法を学ぶ</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/occm38/issues/new?body=Page%3A%20[ストレージ管理](https://docs.netapp.com/ja-jp/occm38/concept_storage_management.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/concept_storage_management.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/occm38/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
     </div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
@@ -2706,7 +2460,7 @@
         <div class="n-footer__copyright">
           <ul class="n-footer__copyright-list">
             <li class="n-footer__copyright-link">
-            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2021 NetApp, Inc.</a>
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
             </li>
 
 </ul>

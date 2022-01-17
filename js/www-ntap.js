@@ -348,7 +348,7 @@
     }
 
     function s() {
-      if (console.log("in modal video partial"), c.length > 0) {
+      if (c.length > 0) {
         c.on("click", o), c.modaal({
           fullscreen: !0
         });

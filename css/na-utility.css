@@ -21,9 +21,11 @@
   margin-bottom: 0px;
 }
 
+.n-breadcrumb__list-item:last-child {
+  white-space: nowrap;
+}
+
 .ie-utility {
-  position: fixed;
-  top: 121px;
   width: 100%;
   z-index: 500;
   background: white;
@@ -243,7 +245,6 @@ button.n-property-bar__search-toggle-button {
   .ie-utility {
     display: block;
     height: auto;
-    margin-left: 20px;
   }
 
   .n-breadcrumb {
@@ -257,6 +258,7 @@ button.n-property-bar__search-toggle-button {
   .n-breadcrumb {
     float: left;
     clear: left;
+    padding-top: 5px;
   }
 
   .search-property-bar {
@@ -298,6 +300,9 @@ button.n-property-bar__search-toggle-button {
     display: block;
     height: auto;
     margin-left: 0px;
+    position: fixed;
+    width: auto;
+    top: 121px;
   }
 
   .n-property-bar__toolbar {
@@ -305,23 +310,44 @@ button.n-property-bar__search-toggle-button {
   }
 
   .n-breadcrumb {
-    width: calc(100% - 470px);
-    padding-left: 20px;
     padding-top: 5px;
     height: 50px;
+  }
+
+  .n-breadcrumb__list-item:last-child {
+    min-height: 19px;
+    padding-top: 6px;
   }
 }
 @media screen and (max-width: 1100px){
   .search-property-bar {
     padding-right: 138px;
+  }
 }
 @media screen and (max-width: 1024px){
   .search-property-bar {
     height: 100%;
     padding-right: 150px;
     width: calc(100% - 118px);
+  }
+
+  .n-breadcrumb .n-breadcrumb__list-item:last-child {
+    padding:5px 0;
+  }
 }
-@media screen and (max-width: 768px){
+
+@media screen and (max-width: 1023px) {
+  .ie-utility {	
+    margin-left: .83333%;
+    padding-bottom:10px;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .ie-utility {
+    padding: 0 20px;
+    top: 68px;
+  }
   .search-property-bar {
     display: inline-block;
     height: 36px;
@@ -329,6 +355,6 @@ button.n-property-bar__search-toggle-button {
     text-align: center;
     width: calc(100% - 180px);
     padding-right: 0px;
+  }
 }
-}
-}
+
