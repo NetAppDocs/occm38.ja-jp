@@ -3919,7 +3919,6 @@
   <block id="27bf96ea2dd4c98f397498424680c167" category="list-text">作業環境の名前を入力し、 * 削除 * をクリックします。</block>
   <block id="7d73be13421466d5cf5d832329f74c79" category="paragraph">作業環境を削除するには、最大 5 分かかります。</block>
   <block id="f409c45ef3441d0b1d871fe92d39f327" category="summary">通常、 Cloud Manager では毎月新しいリリースが導入され、新機能、拡張機能、およびバグ修正が提供されます。</block>
-  <block id="f4690a50e12cd7434b164d86bc64d916" category="doc">Cloud Manager 3.8 の新機能</block>
   <block id="5f8eaa243d627eba439cca6060513858" category="inline-link-macro">3.7 の新機能</block>
   <block id="d890aaed652251570941e063d4c94057" category="inline-link-macro">3.6 の新機能</block>
   <block id="d82f7659524336d21b67ae8a490bd7a1" category="inline-link-macro">3.5 の新機能</block>
@@ -8107,4 +8106,5 @@
   <block id="20bcee4b46f64e2ca105ae61831c7509" category="sidebar">DevOps ツールを使用して自動化</block>
   <block id="7a4e5e5bc542eae2d10e3506f839f2ae" category="sidebar">の問題のトラブルシューティング</block>
   <block id="93168a8084b3e838d2932c4734bd234e" category="sidebar">以前のバージョン</block>
+  <block id="a2094a820fb2286793839bfc11f36fa6" category="doc">Cloud Manager 3.8 の新機能</block>
 </blocks>
