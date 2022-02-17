@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concept_connectors.html 
-keywords: concept, connectors, learn about connectors, service connectors, what are connectors, what is a connector, what\'s a connector, days, 14 days 
+keywords: 'concept, connectors, learn about connectors, service connectors, what are connectors, what is a connector, what"s a connector, days, 14 days' 
 summary: ほとんどの場合、クラウドまたはオンプレミスネットワークにコネクタを導入する必要があります。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。 
 ---
 = コネクタについて説明します
