@@ -16,22 +16,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/>
-  
-  <meta http-equiv="nss-product" content="OnCommand Cloud Manager"/>
-  
-  <meta name="description" content="グローバルファイルキャッシュを介して共有ファイルにアクセスするためのベストプラクティスについて、ユーザーにトレーニングを行います。">
-  <meta name="keywords" content=" global file cache, training">
-  
-  
-
-  <!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta http-equiv="nss-product" content="OnCommand Cloud Manager"/><meta name="description" content="グローバルファイルキャッシュを介して共有ファイルにアクセスするためのベストプラクティスについて、ユーザーにトレーニングを行います。">
+  <meta name="keywords" content=" global file cache, training"><!-- Icons -->
   <link rel="icon" href="/ja-jp/occm38/images/favicon.ico" type="image/x-icon">
 
-  <!-- RSS Feed -->
-  
-
-  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
 
   <!-- Elastic Search -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
@@ -61,27 +50,11 @@
   
   <link rel="stylesheet" href="/ja-jp/occm38/css/landing-page.css" type="text/css">
   <link rel="stylesheet" href="/ja-jp/occm38/css/tabbed-blocks.css" type="text/css">
-  <link rel="stylesheet" href='/ja-jp/occm38/css/product-family.css' type="text/css">
-  
-
-  
-  <link rel='stylesheet' href='/ja-jp/occm38/css/na-feature.css' type='text/css'>
-  
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel='stylesheet' href='/ja-jp/occm38/css/na-feature.css' type='text/css'><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-  <!-- Used to import Promise for IE. Required for SearchKit -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
-  
-    <script src='/ja-jp/occm38/js/na-search.js'></script>
-  
 
-  
-  <script src='/ja-jp/occm38/js/na-pagenav.js'></script>
-  
-
-  <link rel='stylesheet' href='/ja-jp/occm38/css/prism.css' type='text/css'>
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/occm38/js/na-search.js'></script><script src='/ja-jp/occm38/js/na-pagenav.js'></script><link rel='stylesheet' href='/ja-jp/occm38/css/prism.css' type='text/css'>
   <link rel='stylesheet' href='/ja-jp/occm38/css/prism-netapp.css' type='text/css'>
 
 
@@ -99,9 +72,7 @@
   <script src='/ja-jp/occm38/js/jquery.navgoco.min.js'></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src='/ja-jp/occm38/js/toc.js'></script>
-  <script src='/ja-jp/occm38/js/customscripts.js'></script>
-
-  <script>
+  <script src='/ja-jp/occm38/js/customscripts.js'></script><script>
       $(document).ready(function() {
           
           var collapseOnInit = true;
@@ -160,7 +131,6 @@
   }
   </script>
   <script src='/ja-jp/occm38/js/version-dropdown.js'></script>
-  <script src='/ja-jp/occm38/js/product-family.js'></script>
   <script src='/ja-jp/occm38/js/FileSaver.min.js'></script>
   <script src='/ja-jp/occm38/js/jszip-utils.min.js'></script>
   <script src='/ja-jp/occm38/js/jszip.min.js'></script>
@@ -173,6 +143,25 @@
       <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
       <div class="n-off-canvas-menu__content-wrap">
         <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/occm38/issues/new?body=Page%3A%20[エンドユーザトレーニング](https://docs.netapp.com/ja-jp/occm38/concept_gfc_enduser_training.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/concept_gfc_enduser_training.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/occm38/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
   <!-- Start top_hat -->
   <div class="n-top-hat">
     <div class="n-container">
@@ -2193,26 +2182,22 @@
   
 
   <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
-    <!-- Begin of page container -->
-    <article class="page-content">
+    <!-- Begin of page container --><article class="page-content">
       <div class="ie-utility">
   <div class="ie-menu">
     <div class="n-breadcrumb">
       <ul class="n-breadcrumb__list">
         <li class="n-breadcrumb__list-item">
-          <a href="https://www.netapp.com">ホーム</a>
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
         </li>
-        <li class="n-breadcrumb__list-item">
-          <a href="https://docs.netapp.com">ドキュメント</a>
-        </li>
+        
+
         
 
         <li class="n-breadcrumb__list-item">
           <a href="/ja-jp/occm38/">Cloud&nbsp;Manager&nbsp;3.8</a>
         </li>
-        <li class="n-breadcrumb__list-item">
-          エンドユーザトレーニング
-        </li>
+
       </ul>
     </div>
     <div style="clear: both"></div><!-- Main needs to have height -->
@@ -2246,7 +2231,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-02-17 07:08:26 +0000">02/17/2022</time>
+    <time datetime="2022-03-14 14:42:13 +0000">03/14/2022</time>
     
   
 
@@ -2263,7 +2248,6 @@
 
 
 </p>
-
 
 <div class="paragraph lead">
 <p>グローバルファイルキャッシュを介して共有ファイルにアクセスするためのベストプラクティスについて、ユーザーにトレーニングを行います。</p>
@@ -2301,27 +2285,7 @@
     <!-- Page Container -->
   </div>
 
-  
-  <!-- Start Page Toolbar -->
-  <div class="page-nav-toolbar">
-    <div id="version-dropdown"></div>
-    <div class="page-nav-contribute"  >
-      <a target="_blank" href="https://github.com/NetAppDocs/occm38/issues/new?body=Page%3A%20[エンドユーザトレーニング](https://docs.netapp.com/ja-jp/occm38/concept_gfc_enduser_training.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
-      <a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/concept_gfc_enduser_training.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
-      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/occm38/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
-    </div>
-    <div class="page-nav-container">
-      <nav class="page-nav-fixed">
-        <div class="page-nav-title">このページ</div>
-        <div class="page-nav-links">
-          <ul class="page-nav-inner" id="page-menu"></ul>
-        </div>
-      </nav>
-    </div>
-  </div>
-  
-  <div style="clear: both"></div><!-- Main needs to have height -->
-</div>
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
 
         </main>
 
@@ -2423,9 +2387,7 @@
 </div>
 </footer>
 
-      </div>
-
-      <!-- Elasticsearch JS -->
+      </div><!-- Elasticsearch JS -->
       <script type="text/javascript" src='/ja-jp/occm38/js/bundle.js'></script>
 
       <!-- Syntax Highlighting -->
@@ -2440,7 +2402,4 @@
     </script>
     <script src='/ja-jp/occm38/js/www-ntap.js'></script>
     <script src='/ja-jp/occm38/js/tabbed-blocks.js'></script>
-  </body>
-
-  
-</html>
+  </body></html>
