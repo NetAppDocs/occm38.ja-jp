@@ -7,6 +7,7 @@ summary: クラウドボリュームで Windows Active Directory （ AD ）サ�
 = Windows AD サーバ用の AWS セキュリティグループの設定
 :toc: macro
 :hardbreaks:
+:allow-uri-read: 
 :toc: 
 :nofooter: 
 :icons: font

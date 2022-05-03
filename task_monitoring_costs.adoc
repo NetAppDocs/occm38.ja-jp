@@ -6,6 +6,7 @@ summary: Cloud Manager では、 AWS での Cloud Volumes ONTAP の実行に関�
 ---
 = AWS のリソースコストを監視する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

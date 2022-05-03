@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP 9.6 システムでデータ階層化に使用さ�
 ---
 = Cloud Manager の GCP クレデンシャルとサブスクリプションの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: ボリュームおよびアグリゲートを管理することで、 C
 ---
 = ストレージのプロビジョニング
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

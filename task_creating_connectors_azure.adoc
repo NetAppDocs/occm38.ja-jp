@@ -6,6 +6,7 @@ summary: Cloud Manager のほとんどの機能を使用するには、 Account 
 ---
 = Cloud Manager から Azure にコネクタを作成する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -15,7 +16,7 @@ summary: Cloud Manager のほとんどの機能を使用するには、 Account 
 [role="lead"]
 Cloud Manager のほとんどの機能を使用するには、 Account Admin が _ Connector を導入する必要があります。 link:concept_connectors.html["コネクタが必要になるタイミングを学習します"]。Connector を使用すると、 Cloud Manager でパブリッククラウド環境内のリソースとプロセスを管理できます。
 
-このページでは、 Cloud Manager から直接 Azure でコネクタを作成する方法について説明します。オプションとして、を選択することもできます link:task_launching_azure_mktp.html["Azure Marketplace からコネクタを作成します"]またはをに設定します 。
+このページでは、 Cloud Manager から直接 Azure でコネクタを作成する方法について説明します。オプションとして、を選択することもできます link:task_launching_azure_mktp.html["Azure Marketplace からコネクタを作成します"]またはをに設定します link:task_installing_linux.html["ソフトウェアをダウンロードして、ご使用のホストにインストールします"]。
 
 これらの手順は、 Account Admin ロールを持つユーザが実行する必要があります。ワークスペース管理者はコネクタを作成できません。
 

@@ -6,6 +6,7 @@ summary: 'Cloud Manager のインターフェイスには、 SaaS ベースの�
 ---
 = Cloud Manager にログインしています
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

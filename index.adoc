@@ -5,6 +5,7 @@ summary: Cloud Manager を使用すると、 IT エキスパートとクラウ�
 ---
 = Cloud Manager および Cloud Volumes ONTAP のドキュメント
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

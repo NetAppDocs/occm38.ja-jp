@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP がデフォルトでどのように設定されて
 ---
 = Cloud Volumes ONTAP のデフォルト設定
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

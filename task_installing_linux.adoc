@@ -6,6 +6,7 @@ summary: コネクタを作成する最も一般的な方法は、 Cloud Manager
 ---
 = 既存の Linux ホストに Connector ソフトウェアをインストールします
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -108,7 +109,7 @@ Cloud Manager がパブリッククラウド環境内のリソースやプロセ
 * Azure link:task_adding_azure_accounts.html["Azure アカウントをセットアップして、に追加します Cloud Manager の略"]。
 * GCP ： Cloud Manager がプロジェクト内で Cloud Volumes ONTAP システムを作成および管理するために必要な権限を持つサービスアカウントを設定します。
 +
-.. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["GCP で役割を作成します"^] で定義した権限を含むポリシーを作成します。
+.. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["GCP で役割を作成します"^] で定義した権限を含むポリシーを作成します https://occm-sample-policies.s3.amazonaws.com/Policy_for_Cloud_Manager_3.8.0_GCP.yaml["GCP 向け Cloud Manager ポリシー"^]。
 .. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["GCP サービスアカウントを作成し、カスタムロールを適用します を作成しました"^]。
 .. https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#changeserviceaccountandscopes["このサービスアカウントを Connector VM に関連付けます"^]。
 .. Cloud Volumes ONTAP を他のプロジェクトに導入する場合は、 https://cloud.google.com/iam/docs/granting-changing-revoking-access#granting-console["クラウドでサービスアカウントを追加してアクセスを許可します そのプロジェクトに対するマネージャの役割"^]。プロジェクトごとにこの手順を繰り返す必要があります。

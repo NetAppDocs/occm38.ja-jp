@@ -7,6 +7,7 @@ summary: Storage VM は ONTAP 内で実行される仮想マシンであり、�
 = Storage VM の管理
 :toc: macro
 :hardbreaks:
+:allow-uri-read: 
 :toc: 
 :nofooter: 
 :icons: font

@@ -6,6 +6,7 @@ summary: 初期セットアップの実行後、ユーザー、ワークスペ�
 ---
 = ユーザ、ワークスペース、コネクタ、およびサブスクリプションの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

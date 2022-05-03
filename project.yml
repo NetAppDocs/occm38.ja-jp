@@ -8,7 +8,7 @@ settings:
   prod:
     pdf_enabled: true
     harmony_enabled: false
-  langs: ja-jp,us-en,zh-cn,ko-kr
+  langs: ja-jp,us-en,zh-cn,zh-tw,ko-kr
 sidebar:
   entries:
   - title: Cloud Manager のドキュメント

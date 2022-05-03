@@ -6,6 +6,7 @@ summary: ユーザが Cloud Manager にログインする前に、そのユー�
 ---
 = ネットワークの概要
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

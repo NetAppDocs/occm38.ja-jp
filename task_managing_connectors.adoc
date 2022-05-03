@@ -6,6 +6,7 @@ summary: 1 つ以上のコネクタを作成した後、コネクタを切り替
 ---
 = 既存のコネクタの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

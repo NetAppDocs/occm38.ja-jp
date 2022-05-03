@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP システムは、 AWS や Azure からではなく
 ---
 = Cloud Volumes ONTAP 作業環境を削除する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

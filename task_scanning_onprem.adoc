@@ -6,6 +6,7 @@ summary: オンプレミスの ONTAP データを Cloud Volumes ONTAP 作業環�
 ---
 = SnapMirror を使用した、クラウド準拠のオンプレミス ONTAP データのスキャン
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

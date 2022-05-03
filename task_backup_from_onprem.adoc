@@ -6,6 +6,7 @@ summary: オンプレミスの ONTAP システムからクラウドの低コス�
 ---
 = オンプレミスの ONTAP システムからへのデータのバックアップ クラウド
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -85,14 +86,14 @@ image:screenshot_backup_to_s3_restore_icon.gif["ボリュームを選択した�
 Azure BLOB ストレージへのボリュームのバックアップを開始する前に、次の要件を参照して、サポートされている構成があることを確認してください。
 
 サポートされている ONTAP のバージョン:: ONTAP 9.7P5 以降
-クラスタネットワークの要件::
+クラスタネットワークの要件:: クラスタ間 LIF は、バックアップ対象のボリュームをホストする各 ONTAP ノードに必要です。LIF は、 ONTAP がオブジェクトストレージへの接続に使用する IPspace に関連付けられている必要があります。管理 SVM は IPspace に配置する必要があります。 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["IPspace の詳細については、こちらをご覧ください"^]。
 +
 --
 クラウドへのバックアップをセットアップすると、 IPspace で使用するように求められます。各 LIF を関連付ける IPspace を選択する必要があります。これは、「デフォルト」の IPspace または作成したカスタム IPspace です。
 
 --
 サポートされている Azure リージョン:: クラウドへのバックアップは、すべての Azure リージョンでサポートされています https://cloud.netapp.com/cloud-volumes-global-regions["Cloud Volume がサポートされている場合"^]。
-ライセンス要件::
+ライセンス要件:: Backup to Cloud PAYGO ライセンスの場合は、へのサブスクリプション https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Azure Marketplace Cloud Manager のバックアップソリューション"^] は、クラウドへのバックアップを有効にする前に必要です。クラウドへのバックアップの請求は、このサブスクリプションを通じて行われます。
 +
 --
 Backup to Cloud BYOL ライセンスを利用するには、ライセンスの期間と容量にサービスを使用できるように、ネットアップから提供されたシリアル番号が必要です。を参照してください link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["バックアップ BYOL ライセンスを追加および更新する"^]。

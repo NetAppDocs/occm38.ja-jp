@@ -6,6 +6,7 @@ summary: Cloud Manager 作業環境間でデータをレプリケートできま
 ---
 = システム間でのデータのレプリケーション
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

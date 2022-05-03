@@ -6,6 +6,7 @@ summary: AWS および Azure の一部の Cloud Volumes ONTAP 構成にはロー
 ---
 = Flash Cache
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

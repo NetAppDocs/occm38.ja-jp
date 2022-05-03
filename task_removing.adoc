@@ -6,6 +6,7 @@ summary: アカウント管理者は、 Cloud Volumes ONTAP 作業環境を削�
 ---
 = Cloud Volumes ONTAP の動作環境を削除しています
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

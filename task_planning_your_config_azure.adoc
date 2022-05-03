@@ -6,6 +6,7 @@ summary: Azure で Cloud Volumes ONTAP を導入する場合は、ワークロ�
 ---
 = Azure での Cloud Volumes ONTAP 構成の計画
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -37,7 +38,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_limits_azure_97.html
 
 Cloud Volumes ONTAP システムのサイジングを行うことで、パフォーマンスと容量の要件を満たすのに役立ちます。VM タイプ、ディスクタイプ、およびディスクサイズを選択する際には、次の点に注意してください。
 
-仮想マシンのタイプ::
+仮想マシンのタイプ:: でサポートされている仮想マシンタイプを確認します http://docs.netapp.com/cloud-volumes-ontap/us-en/index.html["Cloud Volumes ONTAP リリースノート"^] サポートされている各 VM タイプの詳細を確認します。各 VM タイプがサポートするデータディスクの数には制限があることに注意してください。
 +
 --
 * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general#dsv2-series["Azure のドキュメント：「汎用仮想マシンのサイズ"^]
@@ -45,7 +46,7 @@ Cloud Volumes ONTAP システムのサイジングを行うことで、パフォ
 
 
 --
-Azure のディスクタイプ::
+Azure のディスクタイプ:: Cloud Volumes ONTAP 用のボリュームを作成する場合は、 ONTAP がディスクとして使用する基盤となるクラウドストレージを選択する必要があります。
 +
 --
 HA システムでは、 Premium ページ BLOB を使用します。一方、シングルノードシステムでは、次の 2 種類の Azure Managed Disks を使用できます。
@@ -59,7 +60,7 @@ HA システムでは、 Premium ページ BLOB を使用します。一方、�
 
 
 --
-Azure のディスクサイズ::
+Azure のディスクサイズ:: Cloud Volumes ONTAP インスタンスを起動するときは、アグリゲートのデフォルトのディスクサイズを選択する必要があります。Cloud Manager では、このディスクサイズを初期アグリゲートに使用します。また、簡易プロビジョニングオプションを使用した場合に作成される追加のアグリゲートにも使用します。別のディスクサイズを使用するアグリゲートを作成できます デフォルトでは、です link:task_provisioning_storage.html#creating-aggregates["高度な割り当てオプションを使用する"]。
 +
 --
 

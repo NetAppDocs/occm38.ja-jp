@@ -6,6 +6,7 @@ summary: データを StorageGRID に階層化することで、オンプレミ�
 ---
 = オンプレミスの ONTAP クラスタから StorageGRID へデータを階層化する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -84,9 +85,8 @@ IPspace を使用すると、ネットワークトラフィックを分離して
 
 
 --
+サポートされるボリュームとアグリゲート:: クラウド階層化が可能なボリュームの総数は、 ONTAP システムのボリュームの数よりも少なくなる可能性があります。これは、一部のアグリゲートからボリュームを階層化できないためです。たとえば、 SnapLock ボリュームや MetroCluster 構成からはデータを階層化できません。については、 ONTAP のドキュメントを参照してください link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html["FabricPool でサポートされていない機能"^]。
 
-
-link:https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc[""]
 
 
 NOTE: Cloud Tiering は、 ONTAP 9.5 以降、 FlexGroup ボリュームをサポートしています。セットアップは他のボリュームと同じように機能します。
@@ -98,7 +98,7 @@ NOTE: Cloud Tiering は、 ONTAP 9.5 以降、 FlexGroup ボリュームをサ�
 StorageGRID は、次の要件を満たす必要があります。
 
 サポートされている StorageGRID のバージョン:: StorageGRID 10.3 以降がサポートされます。
-S3 クレデンシャル::
+S3 クレデンシャル:: StorageGRID への階層化を設定するときは、 S3 アクセスキーとシークレットキーを使用してクラウド階層化を提供する必要があります。Cloud Tiering は、キーを使用してバケットにアクセスします。
 +
 --
 これらのアクセスキーは、次の権限を持つユーザに関連付ける必要があります。

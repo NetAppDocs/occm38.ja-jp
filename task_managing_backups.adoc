@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP システムとオンプレミス ONTAP システ�
 ---
 = Cloud Volumes ONTAP システムとオンプレミスの ONTAP システムのバックアップの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

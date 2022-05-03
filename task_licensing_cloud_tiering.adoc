@@ -6,6 +6,7 @@ summary: 従量課金制のサブスクリプション、 FabricPool という O
 ---
 = Cloud Tiering のライセンスをセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

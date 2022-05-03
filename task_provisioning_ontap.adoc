@@ -6,6 +6,7 @@ summary: Cloud Manager からオンプレミスの ONTAP クラスタを検出�
 ---
 = ONTAP クラスタのストレージの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: プロジェクトに Cloud Manager を導入するには、 Google Clo
 ---
 = Google Cloud のプロジェクト、権限、アカウント
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: AWS Marketplace では、 Cloud Manager と Cloud Volumes ONTAP 向け�
 ---
 = AWS Marketplace の Cloud Manager と Cloud Volumes ONTAP のページ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

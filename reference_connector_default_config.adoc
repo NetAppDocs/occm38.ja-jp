@@ -6,6 +6,7 @@ summary: コネクタのトラブルシューティングが必要な場合は�
 ---
 = コネクタのデフォルト設定
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

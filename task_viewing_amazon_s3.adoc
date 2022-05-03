@@ -6,6 +6,7 @@ summary: Connector を AWS にインストールすると、 Cloud Manager は�
 ---
 = Amazon S3 バケットの表示
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

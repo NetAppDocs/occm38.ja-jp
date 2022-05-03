@@ -6,6 +6,7 @@ summary: 同期関係を作成する場合は、オンプレミスのデータ�
 ---
 = Linux ホストへのデータブローカーのインストール
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -60,7 +61,7 @@ SELinux では、データブローカーソフトウェアの更新をブロッ
 S3 バケットを含む同期関係でデータブローカーを使用する場合は、 Linux ホストで AWS にアクセスする準備をしておく必要があります。データブローカーをインストールする際、プログラム経由のアクセス権と特定の権限を持つ AWS ユーザに対して AWS キーを提供する必要があります。
 
 .手順
-. を使用して、 IAM ポリシーを作成します https://s3.amazonaws.com/metadata.datafabric.io/docs/on_prem_iam_policy.json["ネットアップが提供するポリシーです"^]。。
+. を使用して、 IAM ポリシーを作成します https://s3.amazonaws.com/metadata.datafabric.io/docs/on_prem_iam_policy.json["ネットアップが提供するポリシーです"^]。 https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html["AWS の手順を表示します。"^]。
 . プログラムによるアクセス権を持つ IAM ユーザを作成します。 https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html["AWS の手順を表示します。"^]。
 +
 データブローカーソフトウェアをインストールするときに AWS キーを指定する必要があるため、必ず AWS キーをコピーしてください。

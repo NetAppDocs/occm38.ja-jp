@@ -6,6 +6,7 @@ summary: パフォーマンスの結果を確認して、 Cloud Volumes ONTAP �
 ---
 = パフォーマンス
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

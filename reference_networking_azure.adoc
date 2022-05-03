@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP システムが適切に動作するように Azure
 ---
 = Azure で Cloud Volumes ONTAP を導入および管理するためのネットワーク要件
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -21,7 +22,7 @@ Cloud Volumes ONTAP システムが適切に動作するように Azure ネッ�
 
 Azure では、次のネットワーク要件を満たしている必要があります。
 
-Cloud Volumes ONTAP 用のアウトバウンドインターネットアクセス::
+Cloud Volumes ONTAP 用のアウトバウンドインターネットアクセス:: Cloud Volumes ONTAP では、ネットアップ AutoSupport にメッセージを送信するためにアウトバウンドインターネットアクセスが必要です。ネットアップ AutoSupport は、ストレージの健全性をプロアクティブに監視します。
 +
 --
 Cloud Volumes ONTAP が AutoSupport メッセージを送信できるように、ルーティングポリシーとファイアウォールポリシーで次のエンドポイントへの HTTP / HTTPS トラフィックを許可する必要があります。
@@ -35,7 +36,7 @@ link:task_setting_up_ontap_cloud.html["AutoSupport の設定方法について�
 
 --
 セキュリティグループ:: Cloud Manager ではセキュリティグループを作成する必要がないため、セキュリティグループを作成する必要はありません。独自のルールを使用する必要がある場合は、以下のセキュリティグループルールを参照してください。
-IP アドレスの数::
+IP アドレスの数:: Cloud Manager が Azure の Cloud Volumes ONTAP に次の数の IP アドレスを割り当てます。
 +
 --
 * シングルノード： 5 つの IP アドレス
@@ -50,7 +51,7 @@ TIP: LIF は、物理ポートに関連付けられた IP アドレスです。S
 
 
 --
-クラウドボリューム ONTAP から Azure BLOB ストレージへの接続により、データ階層化を実現します::
+クラウドボリューム ONTAP から Azure BLOB ストレージへの接続により、データ階層化を実現します:: コールドデータを Azure BLOB ストレージに階層化する場合は、 Cloud Manager に必要な権限があるかぎりパフォーマンス階層と大容量階層の間の接続を設定する必要はありません。Cloud Manager ポリシーに以下の権限が設定されている場合、 Cloud Manager は VNet サービスエンドポイントを有効にします。
 +
 --
 [source, json]
@@ -63,7 +64,7 @@ TIP: LIF は、物理ポートに関連付けられた IP アドレスです。S
 データ階層化の設定の詳細については、を参照してください link:task_tiering.html["コールドデータを低コストのオブジェクトストレージに階層化する"]。
 
 --
-他のネットワーク内の ONTAP システムへの接続::
+他のネットワーク内の ONTAP システムへの接続:: Azure の Cloud Volumes ONTAP システムと他のネットワークの ONTAP システムの間でデータをレプリケートするには、 Azure VNet と他のネットワーク（ AWS VPC や企業ネットワークなど）の間に VPN 接続が必要です。
 +
 --
 手順については、を参照してください https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal["Microsoft Azure のドキュメント：「 Create a Site-to-Site connection in the Azure portal"^]。

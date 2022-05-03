@@ -6,6 +6,7 @@ summary: データを Google Cloud Storage に階層化することで、オン�
 ---
 = オンプレミスの ONTAP クラスタから Google Cloud Storage へデータを階層化する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -49,7 +50,7 @@ Cloud Manager で、オンプレミスの作業環境を選択し、 * 階層化
 無償トライアルの終了後、従量課金制のサブスクリプション、 ONTAP 階層化ライセンス、またはその両方を組み合わせて使用して、クラウド階層化の料金を支払うことができます。
 
 * GCP Marketplace からサブスクライブするには、 [ * 階層化（ * Tiering ） ] > [ ライセンス（ Licensing ） ] をクリックし、 [ * サブスクライブ（ * Subscribe ） ] をクリックして、プロンプトに従います。
-* 階層化ライセンスを追加する場合は、 mailto ： ng-cloud-tiering@netapp.com ？ subject= Licensing [ 購入が必要な場合は当社にお問い合わせください ] を選択してから 。
+* 階層化ライセンスを追加する場合は、 mailto ： ng-cloud-tiering@netapp.com ？ subject= Licensing [ 購入が必要な場合は当社にお問い合わせください ] を選択してから link:task_licensing_cloud_tiering.html["Cloud Tiering から、クラスタにノードを追加してください"]。
 
 
 
@@ -97,9 +98,8 @@ IPspace を使用すると、ネットワークトラフィックを分離して
 
 
 --
+サポートされるボリュームとアグリゲート:: クラウド階層化が可能なボリュームの総数は、 ONTAP システムのボリュームの数よりも少なくなる可能性があります。これは、一部のアグリゲートからボリュームを階層化できないためです。たとえば、 SnapLock ボリュームや MetroCluster 構成からはデータを階層化できません。については、 ONTAP のドキュメントを参照してください link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html["FabricPool でサポートされていない機能"^]。
 
-
-link:https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc[""]
 
 
 NOTE: Cloud Tiering は、 FlexGroup ボリュームをサポートしています。セットアップは他のボリュームと同じように機能します。

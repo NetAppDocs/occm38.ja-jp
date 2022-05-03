@@ -6,6 +6,7 @@ summary: NetApp Cloud Central に登録して、ネットアップのクラウ�
 ---
 = NetApp Cloud Central に登録する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

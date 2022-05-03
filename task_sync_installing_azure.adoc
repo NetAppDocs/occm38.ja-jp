@@ -6,6 +6,7 @@ summary: 同期関係を作成する場合は、 Azure データブローカー�
 ---
 = Azure へのデータブローカーのインストール
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

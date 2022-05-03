@@ -6,6 +6,7 @@ summary: 必要に応じて、 Cloud Compliance のスキャンを停止して�
 ---
 = Cloud Compliance の無効化
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

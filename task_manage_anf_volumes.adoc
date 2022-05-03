@@ -6,6 +6,7 @@ summary: 作業環境のセットアップが完了したら、 Azure NetApp Fil
 ---
 = Azure NetApp Files 用のボリュームを作成および管理する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

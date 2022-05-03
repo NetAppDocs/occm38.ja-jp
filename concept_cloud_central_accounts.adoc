@@ -6,6 +6,7 @@ summary: Cloud Central アカウントはマルチテナンシーに対応して
 ---
 = アカウント設定：ユーザ、ワークスペース、コネクタ、およびサブスクリプション
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

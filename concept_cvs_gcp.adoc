@@ -6,6 +6,7 @@ summary: NetApp Cloud Volumes Service for Google Cloud を使用すると、マ�
 ---
 = Cloud Volumes Service for Google Cloud の詳細をご覧ください
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

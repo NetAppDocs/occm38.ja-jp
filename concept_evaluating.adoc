@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP は、ソフトウェアの代金を支払う前に
 ---
 = 評価中
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -15,7 +16,7 @@ summary: Cloud Volumes ONTAP は、ソフトウェアの代金を支払う前に
 [role="lead"]
 Cloud Volumes ONTAP は、ソフトウェアの代金を支払う前に評価できます。最も一般的な方法は、 PAYGO バージョンの最初の Cloud Volumes ONTAP システムを起動して 30 日間の無償トライアルを入手することです。BYOL の評価ライセンスもオプションです。
 
-コンセプトの実証のサポートが必要な場合は、にお問い合わせください https://cloud.netapp.com/contact-cds["営業チーム"^] または、から利用できるチャットオプションを使用して、連絡してください さらに、 Cloud Manager からも実行できます。
+コンセプトの実証のサポートが必要な場合は、にお問い合わせください https://cloud.netapp.com/contact-cds["営業チーム"^] または、から利用できるチャットオプションを使用して、連絡してください https://cloud.netapp.com["NetApp Cloud Central"^] さらに、 Cloud Manager からも実行できます。
 
 
 

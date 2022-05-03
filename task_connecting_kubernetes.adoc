@@ -6,6 +6,7 @@ summary: Cloud Manager では、 Kubernetes クラスタへの NetApp Trident �
 ---
 = Kubernetes 用の永続的ストレージとしての Cloud Volumes ONTAP の使用
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

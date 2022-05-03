@@ -6,6 +6,7 @@ summary: Cloud Compliance は、 Cloud Manager 用のデータプライバシー
 ---
 = Cloud Compliance の詳細をご確認ください
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -119,7 +120,7 @@ image:diagram_cloud_compliance_scan.png["クラウドプロバイダで実行さ
 
 初回スキャン後、 Cloud Compliance は各ボリュームを継続的にスキャンして差分変更を検出し、インスタンスの実行を維持することが重要な理由です。
 
-でスキャンを有効または無効にできます link:task_getting_started_compliance.html#enabling-and-disabling-compliance-scans-on-volumes["ボリュームレベル"^]、で 、および 。
+でスキャンを有効または無効にできます link:task_getting_started_compliance.html#enabling-and-disabling-compliance-scans-on-volumes["ボリュームレベル"^]、で link:task_scanning_s3.html#enabling-and-disabling-compliance-scans-on-s3-buckets["バケットレベル"^]、および link:task_scanning_databases.html#enabling-and-disabling-compliance-scans-on-database-schemas["データベーススキーマレベル"^]。
 
 
 
@@ -159,4 +160,4 @@ Cloud Manager を SaaS モードで使用する場合、 Cloud Manager への接
 * Cloud Compliance Viewer * ロールを持つユーザーは、コンプライアンス情報を表示し、アクセス権限を持つシステムのレポートを生成することのみができます。これらのユーザは、ボリューム、バケット、またはデータベーススキーマのスキャンを有効または無効にすることはできません。
 
 
-link:reference_user_roles.html["Cloud Manager のロールに関する詳細情報"^] そして方法 。
+link:reference_user_roles.html["Cloud Manager のロールに関する詳細情報"^] そして方法 link:task_managing_cloud_central_accounts.html#adding-users["特定のロールのユーザを追加します"^]。

@@ -6,6 +6,7 @@ summary: Cloud Manager に初めてログインするときは、 NetApp Cloud C
 ---
 = Cloud Central アカウントでのワークスペースとユーザのセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

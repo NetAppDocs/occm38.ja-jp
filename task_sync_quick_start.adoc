@@ -6,6 +6,7 @@ summary: Cloud Sync サービスを開始するには、いくつかの手順を
 ---
 = Cloud Sync のクイックスタート
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

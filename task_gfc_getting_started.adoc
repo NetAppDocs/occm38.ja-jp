@@ -6,6 +6,7 @@ summary: Cloud Manager を使用して、グローバルファイルキャッシ
 ---
 = はじめに
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -34,7 +35,7 @@ Cloud Manager を使用して、グローバルファイルキャッシュ管理
 ==== Cloud Volumes ONTAP を導入します
 
 [role="quick-margin-para"]
-Azure または AWS に Cloud Volumes ONTAP を導入し、 SMB ファイル共有を設定詳細については、を参照してください link:task_deploying_otc_azure.html["Azure で Cloud Volumes ONTAP を起動します"^] または 。
+Azure または AWS に Cloud Volumes ONTAP を導入し、 SMB ファイル共有を設定詳細については、を参照してください link:task_deploying_otc_azure.html["Azure で Cloud Volumes ONTAP を起動します"^] または link:task_deploying_otc_aws.html["AWS での Cloud Volumes ONTAP の起動"^]。
 
 
 
@@ -68,7 +69,7 @@ Azure または AWS に Cloud Volumes ONTAP を導入し、 SMB ファイル共�
 
 === ストレージプラットフォームとして Cloud Volumes ONTAP を導入
 
-現在のリリースでは、 Azure または AWS に導入された Cloud Volumes ONTAP がグローバルファイルキャッシュでサポートされています。前提条件、要件、および導入手順の詳細については、を参照してください link:task_deploying_otc_azure.html["Azure で Cloud Volumes ONTAP を起動します"^] または 。
+現在のリリースでは、 Azure または AWS に導入された Cloud Volumes ONTAP がグローバルファイルキャッシュでサポートされています。前提条件、要件、および導入手順の詳細については、を参照してください link:task_deploying_otc_azure.html["Azure で Cloud Volumes ONTAP を起動します"^] または link:task_deploying_otc_aws.html["AWS での Cloud Volumes ONTAP の起動"^]。
 
 次のグローバルファイルキャッシュの追加要件に注意してください。
 

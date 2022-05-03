@@ -6,6 +6,7 @@ summary: Cloud Manager で Cloud Volumes Service for Google Cloud の作業環�
 ---
 = Cloud Volumes Service for Google Cloud をセットアップします
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -85,7 +86,7 @@ Cloud Manager が Google Cloud プロジェクトにアクセスできるよう�
 
 
 
-詳細な手順については、 Google Cloud のトピックを参照してください link:https://cloud.google.com/iam/docs/creating-managing-service-accounts["サービスアカウントの作成と管理"^]、 および 。
+詳細な手順については、 Google Cloud のトピックを参照してください link:https://cloud.google.com/iam/docs/creating-managing-service-accounts["サービスアカウントの作成と管理"^]、 link:https://cloud.google.com/iam/docs/granting-changing-revoking-access["リソースへのアクセスの許可、変更、取り消しを行います"^]および link:https://cloud.google.com/iam/docs/creating-managing-service-account-keys["サービスアカウントキーの作成と管理"^]。
 
 
 

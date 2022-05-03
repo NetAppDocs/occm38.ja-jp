@@ -6,6 +6,7 @@ summary: BYOL システムを導入するには、 NetApp Support Site のアカ
 ---
 = Cloud Manager へのネットアップサポートサイトのアカウントの追加
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

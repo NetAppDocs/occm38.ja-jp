@@ -6,6 +6,7 @@ summary: Cloud Manager のほとんどの機能を使用するには、 Account 
 ---
 = Cloud Manager から GCP でコネクタを作成する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -38,7 +39,7 @@ https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-
 このサービスアカウントは、 Cloud Manager から作成するときに Connector VM に関連付けます。
 
 +
-.. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["GCP で役割を作成します"^] で定義した権限を含むポリシーを作成します。ここでも gcloud コマンドラインを使用する必要があります。
+.. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["GCP で役割を作成します"^] で定義した権限を含むポリシーを作成します https://occm-sample-policies.s3.amazonaws.com/Policy_for_Cloud_Manager_3.8.0_GCP.yaml["GCP 向け Cloud Manager ポリシー"^]。ここでも gcloud コマンドラインを使用する必要があります。
 +
 この YAML ファイルに含まれる権限は、手順 2a の権限とは異なります。
 

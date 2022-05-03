@@ -6,6 +6,7 @@ summary: Cloud Manager からクラウドプロバイダの処理を実行する
 ---
 = Cloud Manager でクラウドプロバイダの権限が使用される仕組み
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

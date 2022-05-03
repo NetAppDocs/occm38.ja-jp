@@ -6,6 +6,7 @@ summary: ボリュームごとに Snapshot ポリシーを作成して、ボリ�
 ---
 = クラウドボリュームの Snapshot を管理します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

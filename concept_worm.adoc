@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP システム上で Write Once Read Many （ WORM �
 ---
 = WORM ストレージ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: ネットアップによるサポートは Cloud Volumes ONTAP Explore 
 ---
 = 従量課金制システムの登録
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

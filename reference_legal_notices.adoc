@@ -6,6 +6,7 @@ summary: 著作権に関する声明、商標、特許などにアクセスで�
 ---
 = 法的通知
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

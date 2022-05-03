@@ -6,6 +6,7 @@ summary: Cloud Compliance では、 Amazon S3 バケットをスキャンして�
 ---
 = Cloud Compliance for Amazon S3 の利用を開始してください
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -56,7 +57,7 @@ Amazon S3 作業環境を選択し、 * 準拠の有効化 * をクリックし�
 S3 バケットのスキャンに固有の要件を次に示します。
 
 [[policy-requirements]]
-Cloud Compliance インスタンス用の IAM ロールを設定します::
+Cloud Compliance インスタンス用の IAM ロールを設定します:: Cloud Compliance では、アカウント内の S3 バケットに接続してスキャンするための権限が必要です。以下の権限を含む IAM ロールを設定します。Amazon S3 作業環境で Cloud Compliance を有効にすると、 Cloud Manager から IAM ロールを選択するよう求められます。
 +
 --
 [source, json]
@@ -89,7 +90,7 @@ Cloud Compliance インスタンス用の IAM ロールを設定します::
 }
 ----
 --
-Cloud Compliance から Amazon S3 への接続を提供::
+Cloud Compliance から Amazon S3 への接続を提供:: Cloud Compliance から Amazon S3 への接続が必要です。この接続を確立する最善の方法は、 VPC エンドポイントを介して S3 サービスに接続することです。手順については、を参照してください https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS のドキュメント：「 Creating a Gateway Endpoint"^]。
 +
 --
 VPC エンドポイントを作成するときは、 Cloud Compliance インスタンスに対応するリージョン、 VPC 、およびルーティングテーブルを選択してください。S3 エンドポイントへのトラフィックを有効にする発信 HTTPS ルールを追加するには、セキュリティグループも変更する必要があります。そうしないと、 Cloud Compliance は S3 サービスに接続できません。

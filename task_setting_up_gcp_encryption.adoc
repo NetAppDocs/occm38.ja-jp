@@ -6,6 +6,7 @@ summary: Google Cloud Storage では、データがディスクに書き込ま�
 ---
 = お客様が管理する暗号化キーを Cloud Volumes ONTAP で使用する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

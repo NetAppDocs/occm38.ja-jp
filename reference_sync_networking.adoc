@@ -6,6 +6,7 @@ summary: Cloud Sync 用のネットワークでは、データブローカーと
 ---
 = Cloud Sync のネットワークの概要
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Cloud Tiering は、複数の S3 ストレージクラスとほとん�
 ---
 = サポートされている S3 ストレージクラスとリージョン
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

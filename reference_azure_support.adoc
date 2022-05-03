@@ -6,6 +6,7 @@ summary: Cloud Tiering は、ホットアクセス階層とほとんどのリー
 ---
 = サポートされている Azure Blob アクセス階層とリージョン
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

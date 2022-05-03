@@ -6,6 +6,7 @@ summary: Spot の Cloud Analyzer サービスを利用すると、クラウド�
 ---
 = コンピューティングサービスの詳細については、こちらをご覧ください
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

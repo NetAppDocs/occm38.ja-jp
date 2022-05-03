@@ -6,6 +6,7 @@ summary: グローバルファイルキャッシュなどのネットアップ�
 ---
 = 追加情報
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

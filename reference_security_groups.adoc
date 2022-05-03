@@ -6,6 +6,7 @@ summary: Cloud Manager は、 Cloud Manager と Cloud Volumes ONTAP が正常に
 ---
 = AWS のセキュリティグループルール
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

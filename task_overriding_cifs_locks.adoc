@@ -6,6 +6,7 @@ summary: アカウント管理者は、 Cloud Manager で設定を有効にし�
 ---
 = Azure での Cloud Volumes ONTAP HA の CIFS ロックの無効化
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

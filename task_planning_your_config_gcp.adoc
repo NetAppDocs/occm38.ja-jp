@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP を導入する場合は、ワークロード要件
 ---
 = Google Cloud での Cloud Volumes ONTAP 構成の計画
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -37,7 +38,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_limits_gcp_97.html["
 
 Cloud Volumes ONTAP システムのサイジングを行うことで、パフォーマンスと容量の要件を満たすのに役立ちます。マシンタイプ、ディスクタイプ、およびディスクサイズを選択する際には、次の点に注意してください。
 
-マシンのタイプ::
+マシンのタイプ:: でサポートされているマシンタイプを確認します http://docs.netapp.com/cloud-volumes-ontap/us-en/index.html["Cloud Volumes ONTAP リリースノート"^] 次に、サポートされている各マシンタイプについて Google の詳細を確認します。ワークロードの要件を、マシンタイプの vCPU とメモリの数と一致させます。各 CPU コアは、ネットワークパフォーマンスを向上させることに注意してください。
 +
 --
 詳細については、以下を参照してください。
@@ -47,13 +48,13 @@ Cloud Volumes ONTAP システムのサイジングを行うことで、パフォ
 
 
 --
-GCP ディスクタイプ::
+GCP ディスクタイプ:: Cloud Volumes ONTAP 用のボリュームを作成する際には、 Cloud Volumes ONTAP がディスクに使用する基盤となるクラウドストレージを選択する必要があります。ディスクタイプには、 _Zonal SSD persistent disks _ または _Zonal standard persistent disks _ を指定できます。
 +
 --
 SSD 永続ディスクはランダム IOPS の高い処理速度を必要とするワークロードに最適ですが、標準的な永続ディスクは経済的で、シーケンシャル読み取り / 書き込み処理にも対応できます。詳細については、を参照してください https://cloud.google.com/compute/docs/disks/#pdspecs["Google Cloud のドキュメント：「ゾーン永続ディスク（標準および SSD ）」"^]。
 
 --
-GCP ディスクサイズ::
+GCP ディスクサイズ:: Cloud Volumes ONTAP システムを導入する際には、初期ディスクサイズを選択する必要があります。そのあと、システムの容量を Cloud Manager で管理できるようになりますが、アグリゲートを手動で作成する場合は、次の点に注意してください。
 +
 --
 * アグリゲート内のディスクはすべて同じサイズである必要があります。

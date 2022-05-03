@@ -6,6 +6,7 @@ summary: Cloud Manager からコネクタを直接作成することを推奨し
 ---
 = Azure Marketplace からコネクタを作成する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

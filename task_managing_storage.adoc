@@ -6,6 +6,7 @@ summary: Cloud Manager では、ボリューム、アグリゲート、 CIFS サ
 ---
 = 既存のストレージの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

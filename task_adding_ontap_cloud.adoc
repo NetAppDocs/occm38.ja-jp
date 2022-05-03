@@ -6,6 +6,7 @@ summary: 既存の Cloud Volumes ONTAP システムを検出して Cloud Manager
 ---
 = Cloud Manager に既存の Cloud Volumes ONTAP システムを追加
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

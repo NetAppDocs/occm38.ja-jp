@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP を使用すると、データ保護、セキュリ
 ---
 = Cloud Volumes ONTAP の詳細をご覧ください
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

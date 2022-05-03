@@ -6,6 +6,7 @@ summary: Cloud Sync では、ソース SMB 共有とターゲット SMB 共有�
 ---
 = SMB 共有間での ACL のコピー
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

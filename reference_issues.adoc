@@ -6,6 +6,7 @@ summary: 既知の問題は、このリリースの製品を正常に使用で�
 ---
 = 既知の問題
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -17,4 +18,4 @@ summary: 既知の問題は、このリリースの製品を正常に使用で�
 
 このリリースの Cloud Manager には既知の問題はありません。
 
-Cloud Volumes ONTAP の既知の問題については、を参照してください 。 https://docs.netapp.com/us-en/cloud-volumes-ontap/["Cloud Volumes ONTAP リリースノート"^] および ONTAP ソフトウェアについては、を参照してください。
+Cloud Volumes ONTAP の既知の問題については、を参照してください 。 https://docs.netapp.com/us-en/cloud-volumes-ontap/["Cloud Volumes ONTAP リリースノート"^] および ONTAP ソフトウェアについては、を参照してください https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["ONTAP リリースノート"^]。

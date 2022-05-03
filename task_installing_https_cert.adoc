@@ -6,6 +6,7 @@ summary: デフォルトでは、 Cloud Manager は Web コンソールへの HT
 ---
 = セキュアなアクセスのための HTTPS 証明書の管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP を導入したら、 NTP を使用してシステ�
 ---
 = Cloud Volumes ONTAP のセットアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

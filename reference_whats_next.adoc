@@ -6,6 +6,7 @@ summary: Cloud Manager にログインしてセットアップしたので、ユ
 ---
 = 次の手順
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

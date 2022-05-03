@@ -6,6 +6,7 @@ summary: ネットアップは、 Cloud Manager のサービスとしてのソ�
 ---
 = Cloud Manager を SaaS に移行
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: ほとんどの場合、クラウドまたはオンプレミスネッ�
 ---
 = コネクタについて説明します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

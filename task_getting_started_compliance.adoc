@@ -6,6 +6,7 @@ summary: AWS または Azure で Cloud Compliance for Azure NetApp Files また�
 ---
 = 『 Getting started with Cloud Compliance for Cloud Volumes ONTAP and Azure NetApp Files 』
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

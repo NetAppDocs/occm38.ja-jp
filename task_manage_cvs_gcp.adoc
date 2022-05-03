@@ -6,6 +6,7 @@ summary: Cloud Manager では、 Cloud Volumes Service for Google Cloud サブ�
 ---
 = Cloud Volumes Service for Google のボリュームを作成および管理する クラウド
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

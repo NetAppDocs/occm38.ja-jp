@@ -6,6 +6,7 @@ summary: Cloud Manager では、 Cloud Volumes Service for AWS サブスクリ�
 ---
 = Cloud Volumes Service for AWS を管理する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

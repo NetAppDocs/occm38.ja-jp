@@ -6,6 +6,7 @@ summary: 各 Cloud Volumes ONTAP BYOL システムには、アクティブなサ
 ---
 = ライセンス
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

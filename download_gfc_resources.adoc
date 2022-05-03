@@ -6,6 +6,7 @@ summary: グローバルファイルキャッシュエッジソフトウェア�
 ---
 = グローバルファイルキャッシュエッジインスタンスの展開を開始する前に
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -24,12 +25,12 @@ summary: グローバルファイルキャッシュエッジソフトウェア�
 * Windows Server 2016 仮想テンプレート：
 +
 https://repo.cloudsync.netapp.com/gfc/2K16_GFC_1_0_18_OVF.zip["NetApp GFC を含む Windows Server * 2016.OVA （ VMware vSphere 6.5 以降）"^]
-
+https://repo.cloudsync.netapp.com/gfc/2k16_GFC_1_0_0_18_VHD.zip["NetApp GFC を含む Windows Server 2016-0x （ Microsoft Hyper-V ）"^]
 
 * Windows Server 2019 仮想テンプレート：
 +
 https://repo.cloudsync.netapp.com/gfc/2K19_GFC_1_0_18_OVF.zip["Windows Server 206.OVA （ NetApp GFC を含む）（ VMware vSphere 6.5 以降）"^]
-
+https://repo.cloudsync.netapp.com/gfc/2k19_GFC_1_0_0_18_VHD.zip["NetApp GFC （ Microsoft Hyper-V ）を含む Windows Server 19VHDX"^]
 
 * グローバルファイルキャッシュエッジソフトウェア：
 +

@@ -6,6 +6,7 @@ summary: この FAQ は、質問に対する簡単な回答を探している場
 ---
 = Cloud Compliance についての FAQ です
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Cloud Sync のヘルプを表示したり、フォーラム、チャッ
 ---
 = Cloud Sync テクニカル FAQ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

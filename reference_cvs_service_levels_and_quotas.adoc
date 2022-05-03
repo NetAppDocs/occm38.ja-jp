@@ -6,6 +6,7 @@ summary: Cloud Volumes Service for AWS のコストは、選択したサービ�
 ---
 = サービスレベルと割り当て容量
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -112,7 +113,7 @@ Cloud Volumes Service for AWS は、 3 つのサービスレベルをサポー�
 
 左端の列は容量を示し、残りの列はサービスレベルに基づいて各容量ポイントで使用可能な MBps を定義します。
 
-を参照してください link:https://aws.amazon.com/marketplace/pp/B07MF4GHYW?qid=1595869056263&sr=0-2&ref_=srh_res_product_title["契約のサブスクリプション価格"] および  価格設定の詳細については、を参照してください。
+を参照してください link:https://aws.amazon.com/marketplace/pp/B07MF4GHYW?qid=1595869056263&sr=0-2&ref_=srh_res_product_title["契約のサブスクリプション価格"] および link:https://aws.amazon.com/marketplace/pp/B0848MXK74?qid=1595869056263&sr=0-1&ref_=srh_res_product_title["従量制のサブスクリプション料金"^] 価格設定の詳細については、を参照してください。
 
 [cols="15,15,15,15"]
 |===

@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP の高度な管理を実行する必要がある場
 ---
 = Cloud Volumes ONTAP に接続しています
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

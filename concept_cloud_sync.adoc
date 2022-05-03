@@ -6,6 +6,7 @@ summary: ネットアップのクラウド同期サービスは、データを�
 ---
 = Cloud Sync の概要
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -75,7 +76,7 @@ Cloud Sync の使用に関連するコストには、リソース料金とサー
 
 AWS または Azure から Cloud Sync サービスに加入すると、 1 時間あたりの料金を支払うか、年間の料金を支払うことができます。 link:task_sync_licensing.html["AWS または Azure でサブスクライブできます"]、どこに課金するかによって異なります。
 
-時間単位のサブスクリプション::
+時間単位のサブスクリプション:: 時間単位の従量課金制サブスクリプションでは、 Cloud Sync サービスは作成した同期関係の数に基づいて 1 時間ごとに料金を請求します。
 +
 --
 * https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-sync-service?tab=PlansAndPrice["Azure で価格を表示します"^]
@@ -83,7 +84,7 @@ AWS または Azure から Cloud Sync サービスに加入すると、 1 時間
 
 
 --
-年間サブスクリプション::
+年間サブスクリプション:: 年間サブスクリプションでは、事前に支払う 20 の同期関係のライセンスが提供されます。20 を超える同期関係を構築し、 Azure を利用したサブスクリプションの場合は、追加の関係料金が 1 時間単位で発生します。
 +
 --
 https://aws.amazon.com/marketplace/pp/B06XX5V3M2["AWS の年間価格を確認します"^]

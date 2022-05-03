@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP システムが適切に動作するように AWS �
 ---
 = Cloud Volumes ONTAP in AWS のネットワーク要件
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -21,7 +22,7 @@ Cloud Volumes ONTAP システムが適切に動作するように AWS ネット�
 
 AWS では、次の要件を満たす必要があります。
 
-Cloud Volumes ONTAP ノードのアウトバウンドインターネットアクセス::
+Cloud Volumes ONTAP ノードのアウトバウンドインターネットアクセス:: Cloud Volumes ONTAP ノードでは、ネットアップ AutoSupport にメッセージを送信するために、アウトバウンドインターネットアクセスが必要です。ネットアップ AutoSupport は、ストレージの健全性をプロアクティブに監視します。
 +
 --
 Cloud Volumes ONTAP から AutoSupport メッセージを送信できるように、ルーティングポリシーとファイアウォールポリシーで次のエンドポイントへの AWS HTTP/HTTPS トラフィックを許可する必要があります。
@@ -37,13 +38,13 @@ link:task_setting_up_ontap_cloud.html["AutoSupport の設定方法について�
 
 
 --
-HA メディエータのアウトバウンドインターネットアクセス::
+HA メディエータのアウトバウンドインターネットアクセス:: HA メディエータインスタンスは、 AWS EC2 サービスへのアウトバウンド接続を持っている必要があります。これにより、ストレージのフェイルオーバーを支援できます。接続を提供するには、パブリック IP アドレスを追加するか、プロキシサーバを指定するか、または手動オプションを使用します。
 +
 --
 手動オプションには、 NAT ゲートウェイまたはターゲットサブネットから AWS EC2 サービスへのインターフェイス VPC エンドポイントを指定できます。VPC エンドポイントの詳細については、を参照してください http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html["AWS ドキュメント：「 Interface VPC Endpoints 」（ AWS PrivateLink ）"^]。
 
 --
-IP アドレスの数::
+IP アドレスの数:: Cloud Manager から Cloud Volumes ONTAP に次の数の IP アドレスが AWS で割り当てられます。
 +
 --
 * シングルノード： IP アドレス × 6
@@ -60,7 +61,7 @@ TIP: LIF は、物理ポートに関連付けられた IP アドレスです。S
 
 --
 セキュリティグループ:: Cloud Manager ではセキュリティグループを作成する必要がないため、セキュリティグループを作成する必要はありません。自分で使用する必要がある場合は、を参照してください link:reference_security_groups.html["セキュリティグループのルール"]。
-Cloud Volumes ONTAP から AWS S3 への接続によるデータ階層化::
+Cloud Volumes ONTAP から AWS S3 への接続によるデータ階層化:: EBS をパフォーマンス階層として使用し、 AWS S3 を容量階層として使用する場合は、 Cloud Volumes ONTAP が S3 に接続されていることを確認する必要があります。この接続を提供する最善の方法は、 S3 サービスへの vPC エンドポイントを作成することです。手順については、を参照してください https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS のドキュメント：「 Creating a Gateway Endpoint"^]。
 +
 --
 vPC エンドポイントを作成するときは、 Cloud Volumes ONTAP インスタンスに対応するリージョン、 vPC 、およびルートテーブルを必ず選択してください。S3 エンドポイントへのトラフィックを有効にする発信 HTTPS ルールを追加するには、セキュリティグループも変更する必要があります。そうしないと、 Cloud Volumes ONTAP は S3 サービスに接続できません。
@@ -69,7 +70,7 @@ vPC エンドポイントを作成するときは、 Cloud Volumes ONTAP イン�
 
 --
 他のネットワーク内の ONTAP システムへの接続:: AWS の Cloud Volumes ONTAP システムと他のネットワークの ONTAP システムの間でデータをレプリケートするには、 AWS VPC と他のネットワーク（ Azure VNet や企業ネットワークなど）の間に VPN 接続が必要です。手順については、を参照してください https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/SetUpVPNConnections.html["AWS ドキュメント：「 Setting Up an AWS VPN Connection"^]。
-CIFS 用の DNS と Active Directory::
+CIFS 用の DNS と Active Directory:: CIFS ストレージをプロビジョニングする場合は、 AWS で DNS と Active Directory をセットアップするか、オンプレミスセットアップを AWS に拡張する必要があります。
 +
 --
 DNS サーバは、 Active Directory 環境に名前解決サービスを提供する必要があります。デフォルトの EC2 DNS サーバを使用するように DHCP オプションセットを設定できます。このサーバは、 Active Directory 環境で使用される DNS サーバであってはなりません。
@@ -88,7 +89,7 @@ DNS サーバは、 Active Directory 環境に名前解決サービスを提供�
 HA ペアの仕組みについては、を参照してください link:concept_ha.html["ハイアベイラビリティペア"]。
 
 可用性ゾーン:: この HA 導入モデルでは、複数の AZS を使用してデータの高可用性を確保します。各 Cloud Volumes ONTAP インスタンスと、 HA ペア間の通信チャネルを提供するメディエータインスタンスには、専用の AZ を使用する必要があります。
-NAS データおよびクラスタ / SVM 管理用のフローティング IP アドレス::
+NAS データおよびクラスタ / SVM 管理用のフローティング IP アドレス:: 複数の AZ に展開された HA configurations では、障害が発生した場合にノード間で移行するフローティング IP アドレスを使用します。VPC の外部からネイティブにアクセスすることはできません。ただし、その場合は除きます link:task_setting_up_transit_gateway.html["AWS 転送ゲートウェイを設定します"]。
 +
 --
 フローティング IP アドレスの 1 つはクラスタ管理用、 1 つはノード 1 の NFS/CIFS データ用、もう 1 つはノード 2 の NFS/CIFS データ用です。SVM 管理用の 4 つ目のフローティング IP アドレスはオプションです。
@@ -109,7 +110,7 @@ NOTE: Cloud Manager は、 iSCSI アクセス用と、 VPC 外のクライアン
 
 --
 外部からのフローティング IP アクセスを可能にする中継ゲートウェイ VPC:: link:task_setting_up_transit_gateway.html["AWS 転送ゲートウェイを設定します"] HA ペアが配置されている VPC の外部から HA ペアのフローティング IP アドレスにアクセスできるようにします。
-ルートテーブル::
+ルートテーブル:: Cloud Manager でフローティング IP アドレスを指定したあと、それらのフローティング IP アドレスへのルートを含むルーティングテーブルを選択する必要があります。これにより、 HA ペアへのクライアントアクセスが可能になります。
 +
 --
 vPC （メインルートテーブル）内のサブネットのルートテーブルが 1 つだけの場合、 Cloud Manager はそのルートテーブルにフローティング IP アドレスを自動的に追加します。ルーティングテーブルが複数ある場合は、 HA ペアの起動時に正しいルーティングテーブルを選択することが非常に重要です。そうしないと、一部のクライアントが Cloud Volumes ONTAP にアクセスできない場合があります。
@@ -119,7 +120,7 @@ vPC （メインルートテーブル）内のサブネットのルートテー�
 ルーティングテーブルの詳細については、を参照してください http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS のドキュメント：「 Route Tables"^]。
 
 --
-ネットアップの管理ツールとの連携::
+ネットアップの管理ツールとの連携:: 複数の AZ に展開された HA 構成でネットアップ管理ツールを使用するには、次の 2 つの接続オプションがあります。
 +
 --
 . ネットアップの管理ツールは、別の VPC とに導入できます link:task_setting_up_transit_gateway.html["AWS 転送ゲートウェイを設定します"]。ゲートウェイを使用すると、 VPC の外部からクラスタ管理インターフェイスのフローティング IP アドレスにアクセスできます。

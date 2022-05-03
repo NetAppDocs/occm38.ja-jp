@@ -6,6 +6,7 @@ summary: セキュリティポリシーが厳格な場合は、データイン�
 ---
 = 転送中のデータ暗号化を使用した NFS データの同期
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

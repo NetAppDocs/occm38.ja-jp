@@ -6,6 +6,7 @@ summary: Cloud Manager は、 Cloud Volumes ONTAP ストレージの簡易化さ
 ---
 = ストレージ管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

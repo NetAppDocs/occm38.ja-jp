@@ -6,6 +6,7 @@ summary: 同期関係を作成する場合は、 AWS データブローカーオ
 ---
 = AWS にデータブローカーをインストールする
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

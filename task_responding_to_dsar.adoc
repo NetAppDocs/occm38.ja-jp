@@ -6,6 +6,7 @@ summary: データ主体アクセス要求（ dsar ）に応答するには、�
 ---
 = データ主体アクセス要求に応答します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: このページのリソースを使用して、 Cloud Manager と Clou
 ---
 = コードとしてのインフラを自動化するためのリソース
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

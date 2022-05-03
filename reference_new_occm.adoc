@@ -6,6 +6,7 @@ summary: 通常、 Cloud Manager では毎月新しいリリースが導入さ�
 ---
 = Cloud Manager 3.8 の新機能
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -17,8 +18,8 @@ summary: 通常、 Cloud Manager では毎月新しいリリースが導入さ�
 
 
 TIP: 以前のリリースをお探しですか？link:https://docs.netapp.com/us-en/occm37/reference_new_occm.html["3.7 の新機能"^]
-
-
+link:https://docs.netapp.com/us-en/occm36/reference_new_occm.html["3.6 の新機能"^]
+link:https://docs.netapp.com/us-en/occm35/reference_new_occm.html["3.5 の新機能"^]
 
 
 
@@ -230,7 +231,7 @@ image:screenshot_connector_remove.gif["非アクティブなコネクタを削�
 
 * 現在クラウドプロバイダのクレデンシャルに関連付けられている Marketplace サブスクリプションを置き換えることができるようになりました。請求方法を変更する必要がある場合は、この変更を利用して、適切な Marketplace サブスクリプションを通じて課金されるようにすることができます。
 +
-詳細をご確認ください link:task_adding_aws_accounts.html["AWS の場合"]、 および 。
+詳細をご確認ください link:task_adding_aws_accounts.html["AWS の場合"]、 link:task_adding_azure_accounts.html["Azure の場合："]および link:task_adding_gcp_accounts.html["GCP で"]。
 
 
 

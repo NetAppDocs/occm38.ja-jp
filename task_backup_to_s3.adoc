@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP から Amazon S3 へのデータのバックアッ�
 ---
 = Amazon S3 へのデータのバックアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -76,7 +77,7 @@ S3 へのボリュームのバックアップを開始する前に、次の要�
 
 サポートされている ONTAP のバージョン:: Cloud Volumes ONTAP 9.6 以降
 サポートされている AWS リージョン:: クラウドへのバックアップは、すべての AWS リージョンでサポートされます https://cloud.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAP がサポートされている場合"^]。
-ライセンス要件::
+ライセンス要件:: Cloud Backup to Cloud 従量課金制のライセンスの場合は、 AWS Marketplace で Cloud Manager のサブスクリプションを選択できます。このサブスクリプションを使用すると、 Cloud Volumes ONTAP 9.6 以降（ PAYGO ）と Cloud Backup to Cloud を導入できます。必要です https://aws.amazon.com/marketplace/pp/B07QX2QLXX["この Cloud Manager サブスクリプションに登録してください"^] クラウドへのバックアップを有効にする前に、クラウドへのバックアップの請求は、このサブスクリプションを通じて行われます。
 +
 --
 Backup to Cloud BYOL ライセンスの場合は、 AWS Backup to Cloud サブスクリプションは必要ありません。シリアル番号はネットアップから提供される必要があります。この番号を使用すると、ライセンスの期間と容量にサービスを使用できます。を参照してください link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["バックアップ BYOL ライセンスを追加および更新する"^]。
@@ -84,7 +85,7 @@ Backup to Cloud BYOL ライセンスの場合は、 AWS Backup to Cloud サブ�
 また、バックアップを格納するストレージスペース用の AWS サブスクリプションが必要です。
 
 --
-AWS 権限が必要です::
+AWS 権限が必要です:: Cloud Manager に権限を提供する IAM ロールが必要です 最新の S3 権限を含める https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager ポリシー"^]。
 +
 --
 ポリシーの具体的な権限を次に示します。

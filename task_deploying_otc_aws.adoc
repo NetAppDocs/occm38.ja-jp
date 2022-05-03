@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP インスタンスは、単一システム構成ま
 ---
 = AWS での Cloud Volumes ONTAP の起動
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -214,7 +215,7 @@ image:screenshot_cot_vol.gif["スクリーンショット： Cloud Volumes ONTAP
 |===
 . * 使用状況プロファイル、ディスクタイプ、階層化ポリシー * ：必要に応じて、 Storage Efficiency 機能を有効にするかどうかを選択し、ボリューム階層化ポリシーを編集します。
 +
-詳細については、を参照してください link:task_planning_your_config.html#choosing-a-volume-usage-profile["ボリューム使用率プロファイルについて"] および 。
+詳細については、を参照してください link:task_planning_your_config.html#choosing-a-volume-usage-profile["ボリューム使用率プロファイルについて"] および link:concept_data_tiering.html["データ階層化の概要"]。
 
 . * レビューと承認 *: 選択内容を確認して確認します。
 +
@@ -448,7 +449,7 @@ image:screenshot_cot_vol.gif["スクリーンショット： Cloud Volumes ONTAP
 |===
 . * 使用状況プロファイル、ディスクタイプ、階層化ポリシー * ：必要に応じて、 Storage Efficiency 機能を有効にするかどうかを選択し、ボリューム階層化ポリシーを編集します。
 +
-詳細については、を参照してください link:task_planning_your_config.html#choosing-a-volume-usage-profile["ボリューム使用率プロファイルについて"] および 。
+詳細については、を参照してください link:task_planning_your_config.html#choosing-a-volume-usage-profile["ボリューム使用率プロファイルについて"] および link:concept_data_tiering.html["データ階層化の概要"]。
 
 . * レビューと承認 *: 選択内容を確認して確認します。
 +

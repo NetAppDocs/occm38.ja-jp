@@ -6,6 +6,7 @@ summary: 環境がすべての要件を満たしていることを確認した�
 ---
 = グローバルファイルキャッシュエッジインスタンスを展開します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

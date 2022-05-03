@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP を別々の AWS アカウントに導入する場�
 ---
 = Cloud Manager 用の AWS クレデンシャルとサブスクリプションの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

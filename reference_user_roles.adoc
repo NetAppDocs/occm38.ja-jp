@@ -6,6 +6,7 @@ summary: Account Admin 、 Workspace Admin 、 Cloud Compliance Viewer の各ロ
 ---
 = ロール
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

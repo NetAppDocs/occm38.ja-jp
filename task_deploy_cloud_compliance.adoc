@@ -6,6 +6,7 @@ summary: Cloud Manager のワークスペースに Cloud Compliance インスタ
 ---
 = Cloud Compliance の導入
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -26,7 +27,7 @@ Cloud Manager のワークスペースに Cloud Compliance インスタンスを
 ==== コネクタを作成します
 
 [role="quick-margin-para"]
-コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください link:task_creating_connectors_aws.html["AWS でコネクタを作成する"] または 。
+コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください link:task_creating_connectors_aws.html["AWS でコネクタを作成する"] または link:task_creating_connectors_azure.html["Azure でコネクタを作成する"]。
 
 
 
@@ -53,7 +54,7 @@ Cloud Compliance が Cloud Manager でスキャンする最初の 1TB のデー�
 
 == コネクタを作成しています
 
-コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください link:task_creating_connectors_aws.html["AWS でコネクタを作成する"] または 。ほとんどの場合、コネクタセットがあります Cloud Compliance をアクティブ化するのは、ほとんどの場合です ただし、ここで設定する必要がある場合もあります。
+コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください link:task_creating_connectors_aws.html["AWS でコネクタを作成する"] または link:task_creating_connectors_azure.html["Azure でコネクタを作成する"]。ほとんどの場合、コネクタセットがあります Cloud Compliance をアクティブ化するのは、ほとんどの場合です link:concept_connectors.html#when-a-connector-is-required["Cloud Manager の機能にはコネクタが必要です"]ただし、ここで設定する必要がある場合もあります。
 
 AWS または Azure で Cloud Compliance 用のコネクタを使用する必要があるシナリオがいくつかあります。
 
@@ -73,7 +74,7 @@ NOTE: Azure NetApp Files のスキャンを計画している場合は、スキ�
 
 Cloud Compliance を導入する前に、次の前提条件を確認し、サポートされている構成であることを確認してください。
 
-アウトバウンドインターネットアクセスを有効にします::
+アウトバウンドインターネットアクセスを有効にします:: Cloud Compliance にはアウトバウンドのインターネットアクセスが必要です。仮想ネットワークでインターネットアクセスにプロキシサーバを使用している場合は、 Cloud Compliance インスタンスがアウトバウンドのインターネットアクセスを使用して次のエンドポイントに接続していることを確認します。Cloud Manager は、コネクタと同じサブネットに Cloud Compliance インスタンスを導入します。
 +
 --
 [cols="43,57"]
@@ -97,7 +98,7 @@ Cloud Compliance を導入する前に、次の前提条件を確認し、サポ
 |===
 --
 Cloud Manager に必要な権限が割り当てられていることを確認します:: Cloud Manager に、リソースを導入する権限と Cloud Compliance インスタンスのセキュリティグループを作成する権限があることを確認します。最新の Cloud Manager 権限は、で確認できます https://mysupport.netapp.com/site/info/cloud-manager-policies["ネットアップが提供するポリシー"^]。
-vCPU の制限を確認してください::
+vCPU の制限を確認してください:: クラウドプロバイダの vCPU 制限によって、 16 コアのインスタンスの導入が許可されていることを確認してください。Cloud Manager が実行されているリージョン内の関連するインスタンスファミリーの vCPU 制限を確認する必要があります。
 +
 --
 AWS では、インスタンスファミリーは _On-Demand Standard Instances_ です。Azure では ' インスタンスファミリーは _Standard DSView3 Family _ です
@@ -109,7 +110,7 @@ vCPU の制限の詳細については、以下を参照してください。
 
 
 --
-Cloud Manager から Cloud Compliance にアクセスできることを確認::
+Cloud Manager から Cloud Compliance にアクセスできることを確認:: コネクタと Cloud Compliance インスタンスの間の接続を確認します。コネクタのセキュリティグループは、 Cloud Compliance インスタンスとの間のポート 80 経由のインバウンドおよびアウトバウンドトラフィックを許可する必要があります。
 +
 --
 この接続により、 Cloud Compliance インスタンスの導入が可能になり、コンプライアンスタブに情報を表示できます。
@@ -117,7 +118,7 @@ Cloud Manager から Cloud Compliance にアクセスできることを確認::
 --
 Azure NetApp Files の検出を設定します:: ボリュームをスキャンして Azure NetApp Files をスキャンする前に、 link:task_manage_anf.html["構成を検出するには、 Cloud Manager が設定されている必要があります"^]。
 Cloud Compliance の運用を継続できることを確認します:: データを継続的にスキャンするには、 Cloud Compliance インスタンスをオンのままにする必要があります。
-Web ブラウザから Cloud Compliance への接続を確認します::
+Web ブラウザから Cloud Compliance への接続を確認します:: Cloud Compliance を有効にしたら、ユーザが Cloud Compliance インスタンスに接続しているホストから Cloud Manager のインターフェイスにアクセスするようにします。
 +
 --
 Cloud Compliance インスタンスは、プライベート IP アドレスを使用して、インデックス付きデータがインターネットにアクセスできないようにします。そのため、 Cloud Manager へのアクセスに使用する Web ブラウザは、そのプライベート IP アドレスに接続する必要があります。この接続は、 AWS または Azure への直接接続（ VPN など）、または Cloud Compliance インスタンスと同じネットワーク内にあるホストから確立できます。

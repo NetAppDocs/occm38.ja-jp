@@ -6,6 +6,7 @@ summary: いくつかの手順で、 Cloud Volumes ONTAP for AWS を使い始め
 ---
 = Cloud Volumes ONTAP for AWS での作業の開始
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -20,7 +21,7 @@ summary: いくつかの手順で、 Cloud Volumes ONTAP for AWS を使い始め
 ==== コネクタを作成します
 
 [role="quick-margin-para"]
-を持っていなければ link:concept_connectors.html["コネクタ"] ただし、アカウント管理者がアカウントを作成する必要があります。 。
+を持っていなければ link:concept_connectors.html["コネクタ"] ただし、アカウント管理者がアカウントを作成する必要があります。 link:task_creating_connectors_aws.html["AWS でコネクタを作成する方法について説明します"]。
 
 [role="quick-margin-para"]
 最初の Cloud Volumes ONTAP 作業環境を作成する際、まだコネクタがない場合は、 Cloud Manager からコネクタの導入を求められます。

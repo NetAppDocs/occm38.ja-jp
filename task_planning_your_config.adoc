@@ -6,6 +6,7 @@ summary: AWS に Cloud Volumes ONTAP を導入する場合は、ワークロー�
 ---
 = AWS での Cloud Volumes ONTAP 構成の計画
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -52,7 +53,7 @@ Cloud Volumes ONTAP システムのサイジングを行うことで、パフォ
 
 --
 EBS ディスクタイプ:: 汎用 SSD は、 Cloud Volumes ONTAP で最も一般的なディスクタイプです。EBS ディスクのユースケースについては、を参照してください http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html["AWS ドキュメント：「 EBS Volume Types"^]。
-EBS ディスクサイズ::
+EBS ディスクサイズ:: Cloud Volumes ONTAP システムを起動するときに初期ディスクサイズを選択する必要があります。その後、次の操作を実行できます link:concept_storage_management.html["システムの容量を Cloud Manager で管理できます"]必要に応じて link:task_provisioning_storage.html#creating-aggregates["アグリゲートを自分で作成する"]、次の点に注意してください。
 +
 --
 * アグリゲート内のディスクはすべて同じサイズである必要があります。

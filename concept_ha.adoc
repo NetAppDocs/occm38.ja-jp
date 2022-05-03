@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP High Availability （ HA ）構成は、無停止�
 ---
 = AWS におけるハイアベイラビリティペア
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

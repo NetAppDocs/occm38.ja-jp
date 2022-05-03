@@ -6,6 +6,7 @@ summary: 最新バージョンを実行していない場合は、 Cloud Manager
 ---
 = それよりも前のバージョンの Cloud Manager のドキュメント
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

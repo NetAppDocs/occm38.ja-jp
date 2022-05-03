@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP for GCP の使用を開始するには、いくつ�
 ---
 = 『 Getting started with Cloud Volumes ONTAP for Google Cloud 』
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -20,7 +21,7 @@ Cloud Volumes ONTAP for GCP の使用を開始するには、いくつかの手�
 ==== コネクタを作成します
 
 [role="quick-margin-para"]
-を持っていなければ link:concept_connectors.html["コネクタ"] ただし、アカウント管理者がアカウントを作成する必要があります。 。
+を持っていなければ link:concept_connectors.html["コネクタ"] ただし、アカウント管理者がアカウントを作成する必要があります。 link:task_creating_connectors_gcp.html["GCP でコネクターを作成する方法を説明します"]。
 
 [role="quick-margin-para"]
 最初の Cloud Volumes ONTAP 作業環境を作成する際、まだコネクタがない場合は、 Cloud Manager からコネクタの導入を求められます。
@@ -59,7 +60,7 @@ Cloud Volumes ONTAP から低コストのオブジェクトストレージ（ Go
 ** 階層化サービスアカウントに Predefined_Storage Admin_role を割り当てます。
 ** Connector サービスアカウントを階層化サービスアカウントに「 _ サービスアカウントユーザー _ 」として追加します。
 +
-ユーザロールを指定できます https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["を作成するときにウィザードの手順 3 で行います 階層化サービスのアカウント"]または。
+ユーザロールを指定できます https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["を作成するときにウィザードの手順 3 で行います 階層化サービスのアカウント"]または https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_user_for_a_service_account["サービスアカウントの作成後にロールを付与します"^]。
 
 +
 Cloud Volumes ONTAP の作業環境を作成した場合、後で階層化サービスアカウントを選択する必要があります。

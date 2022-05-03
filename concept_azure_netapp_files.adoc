@@ -6,6 +6,7 @@ summary: Azure NetApp Files を使用すると、パフォーマンスを重視�
 ---
 = Azure NetApp Files の詳細をご覧ください
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

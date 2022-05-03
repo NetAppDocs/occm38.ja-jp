@@ -6,6 +6,7 @@ summary: AWS 転送ゲートウェイを設定して、 Cloud Volumes ONTAP が�
 ---
 = での HA ペアの AWS 転送ゲートウェイのセットアップ 複数の AZ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP から Azure Blob Storage へのデータのバッ�
 ---
 = Azure BLOB ストレージへのデータのバックアップ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -86,7 +87,7 @@ Azure Blob Storage へのボリュームのバックアップを開始する前�
 
 サポートされている ONTAP のバージョン:: Cloud Volumes ONTAP 9.7 以降。
 サポートされている Azure リージョン:: クラウドへのバックアップは、すべての Azure リージョンでサポートされています https://cloud.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAP がサポートされている場合"^]。
-ライセンス要件::
+ライセンス要件:: クラウドへのバックアップライセンスは、クラウドへのバックアップを有効にする前に、 Azure Marketplace でのサブスクリプションが必要です。クラウドへのバックアップの請求は、このサブスクリプションを通じて行われます。 link:task_deploying_otc_azure.html["作業環境ウィザードの詳細 & 資格情報ページから購読できます"^]。
 +
 --
 Backup to Cloud BYOL ライセンスを利用するには、ライセンスの期間と容量にサービスを使用できるように、ネットアップから提供されたシリアル番号が必要です。を参照してください link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["バックアップ BYOL ライセンスを追加および更新する"^]。

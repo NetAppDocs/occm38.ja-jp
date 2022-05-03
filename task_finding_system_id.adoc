@@ -6,6 +6,7 @@ summary: 作業の開始を支援するために、ネットアップの担当�
 ---
 = Cloud Manager システム ID を確認する
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

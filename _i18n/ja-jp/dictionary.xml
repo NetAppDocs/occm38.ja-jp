@@ -4381,7 +4381,6 @@
   <block id="15791d531460b4c275e03017399fcd1a" category="inline-link">IPspace の詳細については、こちらをご覧ください</block>
   <block id="cfff9c55ea85b0db9b604bdef2f48d4d" category="paragraph">IPspace を使用すると、ネットワークトラフィックを分離してプライバシーとセキュリティを確保することができます。<block ref="099fdf6e8ad70f15bd41fe67513de18c" category="inline-link-rx"></block>。</block>
   <block id="96788f015626d24d63f6f02843be51c3" category="paragraph">データの階層化を設定すると、使用する IPspace を入力するように求められます。各 LIF を関連付ける IPspace を選択する必要があります。これは、「デフォルト」の IPspace または作成したカスタム IPspace です。</block>
-  <block id="5256a5fac0172e085440941ea452e8ce" category="paragraph"><block ref="5256a5fac0172e085440941ea452e8ce" category="inline-link-macro-rx"></block></block>
   <block id="c3fb869301bdf0050425864a1c816fd8" category="admonition">Cloud Tiering は、 FlexGroup ボリュームをサポートしています。セットアップは他のボリュームと同じように機能します。</block>
   <block id="d32e4305e9f04e1cbc37d3e892619ee7" category="section-title">コネクタの作成または切り替え</block>
   <block id="6f8de70a130cd2e986950accf1528a82" category="paragraph">データをクラウドに階層化するにはコネクタが必要です。データを Google Cloud Storage に階層化する場合は、 Google Cloud Platform VPC でコネクタが使用可能である必要があります。新しいコネクターを作成するか、現在選択されているコネクターが GCP にあることを確認する必要があります。</block>
@@ -8107,4 +8106,7 @@
   <block id="7a4e5e5bc542eae2d10e3506f839f2ae" category="sidebar">の問題のトラブルシューティング</block>
   <block id="93168a8084b3e838d2932c4734bd234e" category="sidebar">以前のバージョン</block>
   <block id="a2094a820fb2286793839bfc11f36fa6" category="doc">Cloud Manager 3.8 の新機能</block>
+  <block id="ac711435545c1b14c721179de8ab94a0" category="list-text">サポートされるボリュームとアグリゲート</block>
+  <block id="cbd3171b775ecc9b275479726c41ccec" category="inline-link-macro">FabricPool でサポートされていない機能</block>
+  <block id="80be9dc982f371739dd1f289a1ea008c" category="list-text">クラウド階層化が可能なボリュームの総数は、 ONTAP システムのボリュームの数よりも少なくなる可能性があります。これは、一部のアグリゲートからボリュームを階層化できないためです。たとえば、 SnapLock ボリュームや MetroCluster 構成からはデータを階層化できません。については、 ONTAP のドキュメントを参照してください <block ref="735d4f7c28454cb31dcb5e7ad1dd69d6" category="inline-link-macro-rx"></block>。</block>
 </blocks>

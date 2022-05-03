@@ -6,6 +6,7 @@ summary: Cloud Manager のほとんどの機能を使用するには、 Account 
 ---
 = Cloud Manager からコネクタを作成します
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -26,7 +27,7 @@ TIP: 最初の Cloud Volumes ONTAP 作業環境を作成する際、まだコネ
 
 == AWS でコネクタを作成する
 
-Cloud Manager では、ユーザインターフェイスから AWS に直接コネクタを作成できます。オプションとして、を選択することもできます link:task_launching_aws_mktp.html["AWS Marketplace からコネクタを作成します"]または 。
+Cloud Manager では、ユーザインターフェイスから AWS に直接コネクタを作成できます。オプションとして、を選択することもできます link:task_launching_aws_mktp.html["AWS Marketplace からコネクタを作成します"]または link:task_installing_linux.html["ソフトウェアをダウンロードして、ご使用のホストにインストールします"]。
 
 .必要なもの
 * IAM 用の AWS アクセスキーとシークレットキー を持つユーザ https://mysupport.netapp.com/site/info/cloud-manager-policies["必要な権限"^]。
@@ -69,7 +70,7 @@ NOTE: コネクタへの着信トラフィックは、開始しない限りあ�
 
 == Azure でコネクタを作成する
 
-Cloud Manager では、ユーザインターフェイスから直接 Azure にコネクタを作成できます。オプションとして、を選択することもできます link:task_launching_azure_mktp.html["Azure Marketplace からコネクタを作成します"]またはをに設定します 。
+Cloud Manager では、ユーザインターフェイスから直接 Azure にコネクタを作成できます。オプションとして、を選択することもできます link:task_launching_azure_mktp.html["Azure Marketplace からコネクタを作成します"]またはをに設定します link:task_installing_linux.html["ソフトウェアをダウンロードして、ご使用のホストにインストールします"]。
 
 .必要なもの
 * 。 https://mysupport.netapp.com/site/info/cloud-manager-policies["必要な権限"^] 使用している Azure アカウントに対して。

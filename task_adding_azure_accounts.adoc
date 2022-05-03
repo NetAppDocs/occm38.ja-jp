@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP システムを作成するときは、 Azure の�
 ---
 = Cloud Manager の Azure クレデンシャルとサブスクリプションの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

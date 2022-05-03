@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP のパフォーマンスの監視を開始するに
 ---
 = AWS で Cloud Volumes ONTAP を監視しています
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -60,7 +61,7 @@ AWS に Cloud Manager 3.8.4 以降を新規インストールしている必要�
 サポートされる Cloud Volumes ONTAP のバージョン:: AWS 内の任意のバージョンの Cloud Volumes ONTAP 。
 Cloud Insights の要件:: Cloud Insights の新規のお客様である必要があります。Cloud Insights テナントがすでにある場合は、監視はサポートされません。
 Cloud Central の E メールアドレス:: Cloud Central ユーザアカウントの E メールアドレスは、業務用 E メールアドレスである必要があります。Cloud Insights テナントの作成時には、 Gmail や Hotmail などの無料のメールドメインはサポートされていません。
-Acquisition Unit のネットワーク::
+Acquisition Unit のネットワーク:: Acquisition Unit は、 Cloud Insights サーバへの接続に双方向認証を使用します。認証するには、クライアント証明書を Cloud Insights サーバに渡す必要があります。これを実現するには、データを復号化せずに HTTP 要求を Cloud Insights サーバに転送するようにプロキシを設定する必要があります。
 +
 --
 Acquisition Unit は、 Cloud Insights との通信に次の 2 つのエンドポイントを使用します。Acquisition Unit サーバと Cloud Insights の間にファイアウォールがある場合は、ファイアウォールルールを設定する際に次のエンドポイントが必要です。
@@ -78,7 +79,7 @@ https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
 Cloud Insights ドメインとテナント ID の特定についてサポートが必要な場合は、製品内チャットでお問い合わせください。
 
 --
-コネクタのネットワーク::
+コネクタのネットワーク:: Acquisition Unit と同様に、コネクタは Cloud Insights テナントにアウトバウンド接続する必要があります。しかし、コネクタが接触するエンドポイントはわずかに異なります。テナントの短縮 ID を使用してテナントホストの URL にアクセスします。
 +
 --
  https://<your-short-tenant-ID>.<Cloud Insights Domain>

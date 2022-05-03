@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP BYOL システムライセンスを追加して、�
 ---
 = Cloud Volumes ONTAP の BYOL ライセンスの管理
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

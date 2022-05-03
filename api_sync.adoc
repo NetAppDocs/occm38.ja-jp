@@ -6,6 +6,7 @@ summary: Web UI で使用できるクラウド同期機能は、 RESTful API で
 ---
 = クラウド同期 API
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

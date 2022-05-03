@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP ハイアベイラビリティ（ HA ）ペアは�
 ---
 = Azure のハイアベイラビリティペア
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

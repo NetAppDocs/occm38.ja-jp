@@ -6,6 +6,7 @@ summary: Cloud Manager で Azure NetApp Files 作業環境を作成し、ネッ�
 ---
 = Azure NetApp Files をセットアップしています
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

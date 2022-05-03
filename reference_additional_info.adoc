@@ -6,6 +6,7 @@ summary: Cloud Manager と Cloud Volumes ONTAP の詳細については、ビデ
 ---
 = ヘルプを参照したり、詳細情報を参照したりするには
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
