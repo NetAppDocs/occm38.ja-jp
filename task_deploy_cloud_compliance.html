@@ -45,12 +45,52 @@
   <link rel="stylesheet" href='/ja-jp/occm38/css/na-utility.css' type='text/css'>
   <link rel="stylesheet" href='/ja-jp/occm38/css/na-sidebar.css' type='text/css'>
   <link rel='stylesheet' href='/ja-jp/occm38/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/occm38/css/custom-dropdown.css' type='text/css'>
   <link rel='stylesheet' href='/ja-jp/occm38/css/na-pagenav.css' type='text/css'>
 
   
   <link rel="stylesheet" href="/ja-jp/occm38/css/landing-page.css" type="text/css">
   <link rel="stylesheet" href="/ja-jp/occm38/css/tabbed-blocks.css" type="text/css">
-  <link rel='stylesheet' href='/ja-jp/occm38/css/na-feature.css' type='text/css'><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/ja-jp/occm38/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
   <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
@@ -60,15 +100,6 @@
 
   <script src='/ja-jp/occm38/js/na-utility.js'></script>
   <script src='/ja-jp/occm38/js/clouddocs.js'></script>
-  <script>
-  if (document.location.hostname === "docs.netapp.com") {
-    var head = document.getElementsByTagName('head')[0];
-    var adobe = document.createElement("script");
-    adobe.type = "text/javascript";
-    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
-    head.appendChild(adobe);
-  }
-  </script>
   <script src='/ja-jp/occm38/js/jquery.navgoco.min.js'></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src='/ja-jp/occm38/js/toc.js'></script>
@@ -121,16 +152,8 @@
               $("#tg-sb-icon").toggleClass('fa-toggle-off');
           });
       });
-  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
-  <script>
-  if (document.location.hostname === "docs.netapp.com") {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-81697994-3');
-  }
   </script>
-  <script src='/ja-jp/occm38/js/version-dropdown.js'></script>
+  <script src='/ja-jp/occm38/js/custom-dropdown.js'></script>
   <script src='/ja-jp/occm38/js/FileSaver.min.js'></script>
   <script src='/ja-jp/occm38/js/jszip-utils.min.js'></script>
   <script src='/ja-jp/occm38/js/jszip.min.js'></script>
@@ -138,20 +161,15 @@
 </head>
 
 
-  <body class role="document">
+  <body class role="document" data-flavor="">
     <div id="page" class="n-off-canvas-menu">
       <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
       <div class="n-off-canvas-menu__content-wrap">
         <header class="site-header" id="banner">
   
   <!-- Start Page Toolbar -->
-  <div class="page-nav-toolbar">
-    <div id="version-dropdown"></div>
-    <div class="page-nav-contribute"  >
-      <a target="_blank" href="https://github.com/NetAppDocs/occm38/issues/new?body=Page%3A%20[Cloud Compliance の導入](https://docs.netapp.com/ja-jp/occm38/task_deploy_cloud_compliance.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
-      <a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/task_deploy_cloud_compliance.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
-      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/occm38/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
-    </div>
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/occm38/issues/new?body=Page%3A%20[Cloud Compliance の導入](https://docs.netapp.com/ja-jp/occm38/task_deploy_cloud_compliance.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a><a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/task_deploy_cloud_compliance.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/occm38/images/edit-sm.svg" class="github-icon" />GitHub で編集</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/occm38/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">このページ</div>
@@ -161,6 +179,7 @@
       </nav>
     </div>
   </div>
+  
   
   <!-- Start top_hat -->
   <div class="n-top-hat">
@@ -244,7 +263,8 @@
           data-did-you-mean="{suggestion} を検索" 
           data-no-results-found-did-you-mean="{query} に該当する結果はありません。{suggestion} の間違いではありませんか?" 
           data-results-found="{hitCount} 件見つかりました"  
-          data-sk-es-pf-indexes=""></div>
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
           <button class="n-property-bar__search-toggle-button" type="button">
             <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
               <title>search</title>
@@ -272,13 +292,15 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/occm38/task_deploy_cloud_compliance.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/ja-jp/occm38/task_deploy_cloud_compliance.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/occm38/task_deploy_cloud_compliance.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  <a href="https://docs.netapp.com/ko-kr/occm38/task_deploy_cloud_compliance.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
                   <a href="https://docs.netapp.com/zh-cn/occm38/task_deploy_cloud_compliance.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/occm38/task_deploy_cloud_compliance.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                  <a href="https://docs.netapp.com/zh-tw/occm38/task_deploy_cloud_compliance.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -333,6 +355,9 @@
 </div>
 <div class="n-pdf-body-container">
   <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
         <a target="_blank" href="/ja-jp/occm38/pdfs/fullsite-sidebar/Cloud_Manager_および_Cloud_Volumes_ONTAP_のドキュメント.pdf" >
           <img src="/ja-jp/occm38/images/pdf.png" width="16" height="16"/>このドキュメントサイトのPDF</a>
 
@@ -341,6 +366,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/リリースノート.pdf" 
@@ -354,6 +382,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/クラウドマネージャ.pdf" 
@@ -397,6 +428,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Manager_の使用を開始.pdf" 
@@ -418,6 +452,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Central_アカウントをセットアップします.pdf" 
@@ -444,6 +481,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/コネクタをセットアップします.pdf" 
@@ -487,6 +527,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_ONTAP_を管理します.pdf" 
@@ -500,6 +543,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/詳細はこちら.pdf" 
@@ -515,6 +561,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ストレージ.pdf" 
@@ -547,6 +596,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ハイアベイラビリティペア.pdf" 
@@ -596,6 +648,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/AWS_を始めましょう.pdf" 
@@ -613,6 +668,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ネットワークをセットアップします.pdf" 
@@ -656,6 +714,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Azure_で始めましょう.pdf" 
@@ -686,6 +747,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/GCP_を始めましょう.pdf" 
@@ -718,6 +782,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ストレージをプロビジョニングおよび管理する.pdf" 
@@ -754,6 +821,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/パフォーマンスを監視.pdf" 
@@ -782,6 +852,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/管理.pdf" 
@@ -833,6 +906,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ファイルサービスを使用してボリュームをプロビジョニング.pdf" 
@@ -846,6 +922,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Azure_NetApp_Files_の特長.pdf" 
@@ -874,6 +953,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_Service_for_AWS.pdf" 
@@ -893,6 +975,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
@@ -928,6 +1013,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_Service_for_GCP.pdf" 
@@ -967,6 +1055,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/ONTAP_クラスタを管理します.pdf" 
@@ -993,6 +1084,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/クラウドへのバックアップ.pdf" 
@@ -1008,6 +1102,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
@@ -1047,6 +1144,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データをコピーして同期.pdf" 
@@ -1062,6 +1162,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
@@ -1081,6 +1184,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データブローカーのインストール方法.pdf" 
@@ -1124,6 +1230,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/チュートリアル.pdf" 
@@ -1165,6 +1274,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データプライバシーに関する分析情報を入手できます.pdf" 
@@ -1180,6 +1292,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
@@ -1204,6 +1319,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データソースでスキャンをアクティブ化します.pdf" 
@@ -1262,6 +1380,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/リアルタイムのグローバルファイル共有を有効にします.pdf" 
@@ -1298,6 +1419,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/クラウドコンピューティングのコストを最適化.pdf" 
@@ -1324,6 +1448,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/データをクラウドに階層化.pdf" 
@@ -1339,6 +1466,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
@@ -1375,6 +1505,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
@@ -1414,6 +1547,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Cloud_Manager_の管理.pdf" 
@@ -1429,6 +1565,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/コネクタを管理します.pdf" 
@@ -1444,6 +1583,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/コネクタを作成するさまざまな方法.pdf" 
@@ -1485,6 +1627,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/クレデンシャルを管理する.pdf" 
@@ -1498,6 +1643,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/AWS.pdf" 
@@ -1524,6 +1672,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/Azure.pdf" 
@@ -1550,6 +1701,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/GCP.pdf" 
@@ -1597,6 +1751,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
@@ -1634,6 +1791,9 @@
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
+          
+          
+          
           <a target="_blank" 
             
               href="/ja-jp/occm38/pdfs/sidebar/API_と自動化を活用.pdf" 
@@ -2178,6 +2338,7 @@
 <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
 <script>$("li.active").parents('li').toggleClass("active");</script>
 
+
   </div>
   
 
@@ -2231,20 +2392,9 @@
 <p class="page-details">
   
     
-    <time datetime="2022-03-14 14:42:13 +0000">03/14/2022</time>
+    <time datetime="2022-05-03 06:04:29 +0000">05/03/2022</time>
     
   
-
-<span>寄稿者
-  <a target="_blank" href="https://github.com/netapp-bcammett">
-    <img  class="avatar avatar-small"
-          alt="netapp-bcammett"
-          width="20" height="20"
-          src="https://avatars.githubusercontent.com/u/18287750?v=4"
-          style="border-radius: 50%;"/>
-  </a>
-  
-</span>
 
 
 </p>
@@ -2265,7 +2415,7 @@
 <div class="sect3">
 <h4 id="コネクタを作成します">コネクタを作成します</h4>
 <div class="paragraph quick-margin-para">
-<p>コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください <a href="task_creating_connectors_aws.html">"AWS でコネクタを作成する"</a> または 。</p>
+<p>コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください <a href="task_creating_connectors_aws.html">"AWS でコネクタを作成する"</a> または <a href="task_creating_connectors_azure.html">"Azure でコネクタを作成する"</a>。</p>
 </div>
 </div>
 <div class="sect3">
@@ -2292,7 +2442,7 @@
 <h2 id="コネクタを作成しています">コネクタを作成しています</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください <a href="task_creating_connectors_aws.html">"AWS でコネクタを作成する"</a> または 。ほとんどの場合、コネクタセットがあります Cloud Compliance をアクティブ化するのは、ほとんどの場合です ただし、ここで設定する必要がある場合もあります。</p>
+<p>コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください <a href="task_creating_connectors_aws.html">"AWS でコネクタを作成する"</a> または <a href="task_creating_connectors_azure.html">"Azure でコネクタを作成する"</a>。ほとんどの場合、コネクタセットがあります Cloud Compliance をアクティブ化するのは、ほとんどの場合です <a href="concept_connectors.html#when-a-connector-is-required">"Cloud Manager の機能にはコネクタが必要です"</a>ただし、ここで設定する必要がある場合もあります。</p>
 </div>
 <div class="paragraph">
 <p>AWS または Azure で Cloud Compliance 用のコネクタを使用する必要があるシナリオがいくつかあります。</p>
@@ -2337,6 +2487,7 @@ Azure NetApp Files のスキャンを計画している場合は、スキャン�
 <dl>
 <dt class="hdlist1">アウトバウンドインターネットアクセスを有効にします</dt>
 <dd>
+<p>Cloud Compliance にはアウトバウンドのインターネットアクセスが必要です。仮想ネットワークでインターネットアクセスにプロキシサーバを使用している場合は、 Cloud Compliance インスタンスがアウトバウンドのインターネットアクセスを使用して次のエンドポイントに接続していることを確認します。Cloud Manager は、コネクタと同じサブネットに Cloud Compliance インスタンスを導入します。</p>
 <div class="openblock">
 <div class="content">
 <table class="tableblock frame-all grid-all stretch">
@@ -2382,6 +2533,7 @@ Azure NetApp Files のスキャンを計画している場合は、スキャン�
 </dd>
 <dt class="hdlist1">vCPU の制限を確認してください</dt>
 <dd>
+<p>クラウドプロバイダの vCPU 制限によって、 16 コアのインスタンスの導入が許可されていることを確認してください。Cloud Manager が実行されているリージョン内の関連するインスタンスファミリーの vCPU 制限を確認する必要があります。</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -2405,6 +2557,7 @@ Azure NetApp Files のスキャンを計画している場合は、スキャン�
 </dd>
 <dt class="hdlist1">Cloud Manager から Cloud Compliance にアクセスできることを確認</dt>
 <dd>
+<p>コネクタと Cloud Compliance インスタンスの間の接続を確認します。コネクタのセキュリティグループは、 Cloud Compliance インスタンスとの間のポート 80 経由のインバウンドおよびアウトバウンドトラフィックを許可する必要があります。</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -2423,6 +2576,7 @@ Azure NetApp Files のスキャンを計画している場合は、スキャン�
 </dd>
 <dt class="hdlist1">Web ブラウザから Cloud Compliance への接続を確認します</dt>
 <dd>
+<p>Cloud Compliance を有効にしたら、ユーザが Cloud Compliance インスタンスに接続しているホストから Cloud Manager のインターフェイスにアクセスするようにします。</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -2630,98 +2784,122 @@ Your browser does not support the video tag.
   <div class="n-footer__bottom">
     <div class="n-container">
       <div class="n-footer__bottom-left">
-
         <div class="n-footer__copyright">
           <ul class="n-footer__copyright-list">
             <li class="n-footer__copyright-link">
-            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
             </li>
-
-</ul>
-</div>
-<div class="n-footer__social-links">
-<ul class="n-footer__social-link-list">
-<li class="n-footer__social-link-list-item">
-<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
-<span class="n-footer__social-link-text">blog</span>
-<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
-  <title>blog@</title>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/occm38/common/svg/sprite.svg#blog"></use>
-</svg>
-
-</a>
-</li>
-<li class="n-footer__social-link-list-item">
-<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
-<span class="n-footer__social-link-text">community</span>
-<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
-<title>community@</title>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/occm38/common/svg/sprite.svg#comments"></use>
-</svg>
-
-</a>
-</li>
-<li class="n-footer__social-link-list-item">
-<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
-<span class="n-footer__social-link-text">twitter</span>
-<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
-<title>twitter@</title>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/occm38/common/svg/sprite.svg#twitter"></use>
-</svg>
-
-</a>
-</li>
-<li class="n-footer__social-link-list-item">
-<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
-<span class="n-footer__social-link-text">facebook</span>
-<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
-<title>facebook@</title>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/occm38/common/svg/sprite.svg#facebook"></use>
-</svg>
-
-</a>
-</li>
-<li class="n-footer__social-link-list-item">
-<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
-<span class="n-footer__social-link-text">linkedin</span>
-<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
-<title>linkedin@</title>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/occm38/common/svg/sprite.svg#linkedin"></use>
-</svg>
-
-</a>
-</li>
-<li class="n-footer__social-link-list-item">
-<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
-<span class="n-footer__social-link-text">youtube</span>
-<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
-<title>youtube@</title>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/occm38/common/svg/sprite.svg#youtube"></use>
-</svg>
-
-</a>
-</li>
-<li class="n-footer__social-link-list-item">
-<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
-<span class="n-footer__social-link-text">slideshare</span>
-<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
-<title>slideshare@</title>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/occm38/common/svg/sprite.svg#slideshare"></use>
-</svg>
-
-</a>
-</li>
-</ul>
-</div>
-
-</div>
-<div class="n-footer__bottom-right">
-  <p class="n-footer__fine-print">Web サイトについてのフィードバックを<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">お寄せください</a>
-  <a href="https://docs.netapp.com/ja-jp/announcements/" class="n-footer__copyright">お知らせ</a>
-  </p>
-</div>
-</div>
-</div>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">利用条件</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">プライバシー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">クッキー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">クッキーの設定</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">Web サイトについてのフィードバックを</span>
+              <a target="_self" href="javascript:netapp_mailto()">お寄せください</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/ja-jp/announcements/">お知らせ</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/occm38/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/occm38/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/occm38/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/occm38/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/occm38/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/occm38/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/occm38/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
       </div><!-- Elasticsearch JS -->
