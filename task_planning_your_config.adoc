@@ -70,7 +70,7 @@ EBS ディスクのパフォーマンスの詳細については、を参照し�
 
 AWS での Cloud Volumes ONTAP システムのサイジングに関する詳細については、次のビデオを参照してください。
 
-video::GELcXmOuYPw[youtube, width=848,height=480]
+video::GELcXmOuYPw[youtube,width=848,height=480]
 
 
 == Flash Cache をサポートする構成を選択しています

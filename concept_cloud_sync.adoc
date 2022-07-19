@@ -22,7 +22,7 @@ summary: ネットアップのクラウド同期サービスは、データを�
 
 Cloud Sync の概要については、次のビデオをご覧ください。
 
-video::oZNJtLvgNfQ[youtube, width=848,height=480]
+video::oZNJtLvgNfQ[youtube,width=848,height=480]
 
 
 == Cloud Sync の仕組み
