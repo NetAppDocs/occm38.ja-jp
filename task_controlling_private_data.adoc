@@ -20,15 +20,15 @@ summary: 組織内の個人データと機密性の高い個人データに関�
 
 image:screenshot_compliance_dashboard.png["Cloud Compliance ダッシュボードのスクリーンショット"]
 
-一部の作業環境のデータだけを表示する場合は、 <<Viewing data from specific working environments,それらの作業環境を選択します>>。
+一部の作業環境のデータだけを表示する場合は、  data from specific working environments,それらの作業環境を選択します。
 
 
 
 == 個人データ
 
-Cloud Compliance は、データ内の特定の単語、文字列、パターン（ Regex ）を自動的に識別します。たとえば、個人識別情報（ PII ）、クレジットカード番号、社会保障番号、銀行口座番号などです。 <<Types of personal data,すべてのリストを参照してください>>。
+Cloud Compliance は、データ内の特定の単語、文字列、パターン（ Regex ）を自動的に識別します。たとえば、個人識別情報（ PII ）、クレジットカード番号、社会保障番号、銀行口座番号などです。  of personal data,すべてのリストを参照してください。
 
-一部のタイプの個人データについては、 Cloud Compliance は _ 近接性検証 _ を使用してその結果を検証します。検証は、見つかった個人データに近接した 1 つまたは複数の定義済みキーワードを検索することによって行われます。たとえば、 Cloud Compliance は米国を識別しますソーシャルセキュリティ番号（ SSN ）は、 IT の横に近接語（ _SSN_or_social security_ など）が表示されている場合、 SSN として表示されます。 <<Types of personal data,以下のリストを参照してください>> Cloud Compliance がプロキシミティ検証を使用する状況を示します。
+一部のタイプの個人データについては、 Cloud Compliance は _ 近接性検証 _ を使用してその結果を検証します。検証は、見つかった個人データに近接した 1 つまたは複数の定義済みキーワードを検索することによって行われます。たとえば、 Cloud Compliance は米国を識別しますソーシャルセキュリティ番号（ SSN ）は、 IT の横に近接語（ _SSN_or_social security_ など）が表示されている場合、 SSN として表示されます。  of personal data,以下のリストを参照してください Cloud Compliance がプロキシミティ検証を使用する状況を示します。
 
 
 
@@ -61,7 +61,7 @@ image:screenshot_compliance_investigation_filtered.png["調査ページで結果
 
 === 個人データの種類
 
-ファイルに含まれる個人データは、一般的な個人データまたは国 ID です。3 番目の列は、 Cloud Compliance で使用されているかどうかを示します <<Personal data,近接性検証>> 識別子の調査結果を検証します。
+ファイルに含まれる個人データは、一般的な個人データまたは国 ID です。3 番目の列は、 Cloud Compliance で使用されているかどうかを示します  data,近接性検証 識別子の調査結果を検証します。
 
 [cols="20,50,18"]
 |===
@@ -173,7 +173,7 @@ image:screenshot_compliance_investigation_filtered.png["調査ページで結果
 
 == 機密性の高い個人データ
 
-Cloud Compliance は、などのプライバシー規制に従って、機密性の高い特別な個人情報を自動的に識別します https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&from=EN#d1e2051-1-1["GDPR の第 9 、 10 記事"^]。たとえば、人の健康、民族の起源、性的指向に関する情報などです。 <<Types of sensitive personal data,すべてのリストを参照してください>>。
+Cloud Compliance は、などのプライバシー規制に従って、機密性の高い特別な個人情報を自動的に識別します https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&from=EN#d1e2051-1-1["GDPR の第 9 、 10 記事"^]。たとえば、人の健康、民族の起源、性的指向に関する情報などです。  of sensitive personal data,すべてのリストを参照してください。
 
 Cloud Compliance は、人工知能（ AI ）、自然言語処理（ NLP ）、機械学習（ ML ）、コグニティブコンピューティング（ CC ）を使用して、スキャンするコンテンツの意味を理解し、エンティティを抽出してそれに応じて分類します。
 
@@ -219,7 +219,7 @@ ICD-10-CM Medical Codes:: 医療および医療業界で使用されるコード
 
 == カテゴリ
 
-Cloud Compliance は、スキャンしたデータをさまざまなタイプのカテゴリに分類します。カテゴリは、各ファイルのコンテンツとメタデータの AI 分析に基づくトピックです。 <<Types of categories,カテゴリのリストを参照してください>>。
+Cloud Compliance は、スキャンしたデータをさまざまなタイプのカテゴリに分類します。カテゴリは、各ファイルのコンテンツとメタデータの AI 分析に基づくトピックです。  of categories,カテゴリのリストを参照してください。
 
 カテゴリを使用すると、保有している情報の種類を表示して、データの状況を把握することができます。たとえば、履歴書や従業員契約などのカテゴリには機密データを含めることができます。結果を調査すると、従業員契約が安全でない場所に保存されていることがわかります。その後、その問題を修正できます。
 
@@ -344,7 +344,7 @@ Cloud Compliance では、次のようにデータが分類されます。
 
 == ファイルの種類
 
-Cloud Compliance は、スキャンしたデータをファイルタイプ別に分類し、ファイルタイプを確認すると、特定のファイルタイプが正しく保存されない可能性があるため、機密データを制御するのに役立ちます。 <<Types of files,ファイルタイプのリストを参照してください>>。
+Cloud Compliance は、スキャンしたデータをファイルタイプ別に分類し、ファイルタイプを確認すると、特定のファイルタイプが正しく保存されない可能性があるため、機密データを制御するのに役立ちます。  of files,ファイルタイプのリストを参照してください。
 
 たとえば ' 組織に関する非常に機密性の高い情報を含む CAD ファイルを保存する場合がありますセキュリティで保護されていない場合は、権限を制限するか、ファイルを別の場所に移動することで、機密データを制御できます。
 

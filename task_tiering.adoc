@@ -29,9 +29,9 @@ summary: ホットデータ用の SSD または HDD の高パフォーマンス�
 
 ==== Cloud Volumes ONTAP とオブジェクトストレージ間の接続を確認します
 
-* AWS では、 S3 への VPC エンドポイントが必要です。 <<Requirements to tier cold data to AWS S3,詳細はこちら。>>。
-* Azure では、 Cloud Manager に必要な権限が付与されていれば何も実行する必要はありません。 <<Requirements to tier cold data to Azure Blob storage,詳細はこちら。>>。
-* GCP の場合、プライベート Google アクセスのサブネットを設定し、サービスアカウントを設定する必要があります。 <<Requirements to tier cold data to a Google Cloud Storage bucket,詳細はこちら。>>。
+* AWS では、 S3 への VPC エンドポイントが必要です。  to tier cold data to AWS S3,詳細はこちら。。
+* Azure では、 Cloud Manager に必要な権限が付与されていれば何も実行する必要はありません。  to tier cold data to Azure Blob storage,詳細はこちら。。
+* GCP の場合、プライベート Google アクセスのサブネットを設定し、サービスアカウントを設定する必要があります。  to tier cold data to a Google Cloud Storage bucket,詳細はこちら。。
 
 
 
@@ -205,4 +205,4 @@ Cloud Volumes ONTAP を導入したら、アクセスされていないアクセ
 
 いいえ、既存のアグリゲートではデータ階層化を有効にできません。データ階層化は新しいアグリゲートでのみ有効にできます。
 
-新しいアグリゲートでデータ階層化を有効にすることもできます link:task_provisioning_storage.html#creating-aggregates["アグリゲートを自分で作成する"] または <<Tiering data from read-write volumes,データの階層化を有効にして新しいボリュームを作成します>>。データ階層化が有効なアグリゲートがない場合、 Cloud Manager はボリュームの新しいアグリゲートを作成します。
+新しいアグリゲートでデータ階層化を有効にすることもできます link:task_provisioning_storage.html#creating-aggregates["アグリゲートを自分で作成する"] または  data from read-write volumes,データの階層化を有効にして新しいボリュームを作成します。データ階層化が有効なアグリゲートがない場合、 Cloud Manager はボリュームの新しいアグリゲートを作成します。

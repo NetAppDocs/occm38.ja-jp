@@ -34,7 +34,7 @@ Cloud Manager のワークスペースに Cloud Compliance インスタンスを
 ==== 前提条件を確認する
 
 [role="quick-margin-para"]
-クラウド環境が前提条件を満たしていることを確認します。これには、クラウドコンプライアンスインスタンス用の vCPU 16 個、インスタンス用のアウトバウンドインターネットアクセス、ポート 80 経由のコネクタとクラウドコンプライアンスの接続などが含まれます。 <<Reviewing prerequisites,すべてのリストを参照してください>>。
+クラウド環境が前提条件を満たしていることを確認します。これには、クラウドコンプライアンスインスタンス用の vCPU 16 個、インスタンス用のアウトバウンドインターネットアクセス、ポート 80 経由のコネクタとクラウドコンプライアンスの接続などが含まれます。  prerequisites,すべてのリストを参照してください。
 
 
 
@@ -159,7 +159,7 @@ Cloud Compliance が Cloud Manager ワークスペースでスキャンする最
 
 image:screenshot_compliance_subscribe.png["スキャンされているデータの量を示すスクリーンショットと、サービスにサブスクライブするための [ サブスクライブ（ Subscribe ） ] ボタン。"]
 
-* 注： * Cloud Compliance から登録を求められたものの、すでに Azure サブスクリプションをお持ちの場合は、古い * Cloud Manager * サブスクリプションを使用している可能性があるため、新しい * NetApp Cloud Manager * サブスクリプションに変更する必要があります。を参照してください<<Changing to the new Cloud Manager plan in Azure,Azure で新しい NetApp Cloud Manager プランに変更>> を参照してください。
+* 注： * Cloud Compliance から登録を求められたものの、すでに Azure サブスクリプションをお持ちの場合は、古い * Cloud Manager * サブスクリプションを使用している可能性があるため、新しい * NetApp Cloud Manager * サブスクリプションに変更する必要があります。を参照してください to the new Cloud Manager plan in Azure,Azure で新しい NetApp Cloud Manager プランに変更 を参照してください。
 
 これらの手順は、 _Account Admin_role 権限を持つユーザが実行する必要があります。
 

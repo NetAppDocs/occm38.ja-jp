@@ -17,8 +17,8 @@ summary: Cloud Sync では、ソース SMB 共有とターゲット SMB 共有�
 Cloud Sync では、ソース SMB 共有とターゲット SMB 共有の間でアクセス制御リスト（ ACL ）をコピーできます。必要に応じて、 Robocopy を使用して手動で ACL を保存することができます。
 
 .選択肢
-* <<Setting up Cloud Sync to copy ACLs between SMB servers,ACL を自動的にコピーするように Cloud Sync を設定します>>
-* <<Manually copying ACLs,ACL を手動でコピーします>>
+*  up Cloud Sync to copy ACLs between SMB servers,ACL を自動的にコピーするように Cloud Sync を設定します
+*  copying ACLs,ACL を手動でコピーします
 
 
 

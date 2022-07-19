@@ -79,7 +79,7 @@ image:screenshot_cloud_compliance_we_scan_config.png["Cloud Compliance インス
 
 
 
-を参照してください <<Enabling and disabling compliance scans on volumes,ボリュームのコンプライアンススキャンの有効化と無効化>> を参照してください。
+を参照してください  and disabling compliance scans on volumes,ボリュームのコンプライアンススキャンの有効化と無効化 を参照してください。
 
 Cloud Compliance は、それぞれの作業環境でデータのスキャンを開始します。結果は、 Cloud Compliance ダッシュボードで最初のスキャンが完了するとすぐに表示されます。所要時間はデータ量によって異なります。数分から数時間かかる場合もあります。
 

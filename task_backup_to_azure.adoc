@@ -87,7 +87,7 @@ Azure Blob Storage へのボリュームのバックアップを開始する前�
 
 サポートされている ONTAP のバージョン:: Cloud Volumes ONTAP 9.7 以降。
 サポートされている Azure リージョン:: クラウドへのバックアップは、すべての Azure リージョンでサポートされています https://cloud.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAP がサポートされている場合"^]。
-ライセンス要件:: クラウドへのバックアップライセンスは、クラウドへのバックアップを有効にする前に、 Azure Marketplace でのサブスクリプションが必要です。クラウドへのバックアップの請求は、このサブスクリプションを通じて行われます。 link:task_deploying_otc_azure.html["作業環境ウィザードの詳細 & 資格情報ページから購読できます"^]。
+ライセンス要件:: クラウドへのバックアップライセンスは、クラウドへのバックアップを有効にする前に、 Azure Marketplace でのサブスクリプションが必要です。クラウドへのバックアップの請求は、このサブスクリプションを通じて行われます。 link:task_deploying_otc_azure.html["作業環境ウィザードの詳細  資格情報ページから購読できます"^]。
 +
 --
 Backup to Cloud BYOL ライセンスを利用するには、ライセンスの期間と容量にサービスを使用できるように、ネットアップから提供されたシリアル番号が必要です。を参照してください link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["バックアップ BYOL ライセンスを追加および更新する"^]。
@@ -104,7 +104,7 @@ Backup to Cloud BYOL ライセンスを利用するには、ライセンスの�
 クラウドへのバックアップは、作業環境ウィザードではデフォルトで有効になっています。このオプションは必ず有効にしておいてください。
 
 
-NOTE: リソースグループの名前を選択する場合は、 Cloud Volumes ONTAP の導入時に * disable * Backup to Cloud と入力します。の手順に従います <<enabling-backup-to-cloud-on-an-existing-system,既存のシステムでクラウドへのバックアップを有効化>> Backup to Cloud を有効にして、リソースグループを選択します。
+NOTE: リソースグループの名前を選択する場合は、 Cloud Volumes ONTAP の導入時に * disable * Backup to Cloud と入力します。の手順に従います ,既存のシステムでクラウドへのバックアップを有効化 Backup to Cloud を有効にして、リソースグループを選択します。
 
 .手順
 . [ Cloud Volumes ONTAP の作成 *] をクリックします。

@@ -30,7 +30,7 @@ Cloud Manager は、 Cloud Volumes ONTAP の新しいバージョンが利用可
 
 image:screenshot_cot_upgrade.gif["スクリーンショット：作業環境を選択した後に [ 作業環境 ] ページに表示される新しいバージョンの通知を示します。"]
 
-この通知からアップグレードプロセスを開始できます。アップグレードプロセスを自動化するには、 S3 バケットからソフトウェアイメージを取得し、イメージをインストールしてから、システムを再起動します。詳細については、を参照してください <<Upgrading Cloud Volumes ONTAP from Cloud Manager notifications>>。
+この通知からアップグレードプロセスを開始できます。アップグレードプロセスを自動化するには、 S3 バケットからソフトウェアイメージを取得し、イメージをインストールしてから、システムを再起動します。詳細については、を参照してください  Cloud Volumes ONTAP from Cloud Manager notifications。
 
 
 NOTE: AWS の HA システムの場合、 Cloud Manager のアップグレードプロセスの一環として HA メディエーターがアップグレードされることがあります。
@@ -46,14 +46,14 @@ Cloud Manager には、 Cloud Volumes ONTAP ソフトウェアを更新するた
 このオプションは、 Cloud Manager が S3 バケットにアクセスしてソフトウェアをアップグレードできない場合、パッチが提供されている場合、またはソフトウェアを特定のバージョンにダウングレードする場合に役立ちます。
 
 +
-詳細については、を参照してください <<Upgrading or downgrading Cloud Volumes ONTAP by using an HTTP or FTP server>>。
+詳細については、を参照してください  or downgrading Cloud Volumes ONTAP by using an HTTP or FTP server。
 
 * システムの代替イメージを使用してソフトウェアを更新します
 +
 このオプションを使用すると、代替ソフトウェアイメージをデフォルトイメージにすることで、以前のバージョンにダウングレードできます。このオプションは HA ペアでは使用できません。
 
 +
-詳細については、を参照してください <<Downgrading Cloud Volumes ONTAP by using a local image>>。
+詳細については、を参照してください  Cloud Volumes ONTAP by using a local image。
 
 
 
@@ -63,11 +63,11 @@ Cloud Manager には、 Cloud Volumes ONTAP ソフトウェアを更新するた
 
 アップグレードまたはダウングレードを実行する前に、システムの準備ができていることを確認し、必要な設定変更を行う必要があります。
 
-* <<Planning for downtime>>
-* <<Reviewing version requirements>>
-* <<Verifying that automatic giveback is still enabled>>
-* <<Suspending SnapMirror transfers>>
-* <<Verifying that aggregates are online>>
+*  for downtime
+*  version requirements
+*  that automatic giveback is still enabled
+*  SnapMirror transfers
+*  that aggregates are online
 
 
 

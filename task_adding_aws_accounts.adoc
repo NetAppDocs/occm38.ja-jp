@@ -23,8 +23,8 @@ NOTE: Cloud Manager からコネクタを導入すると、 Cloud Manager はコ
 
 * 選択肢 *
 
-* <<Granting permissions by providing AWS keys>>
-* <<Granting permissions by assuming IAM roles in other accounts>>
+*  permissions by providing AWS keys
+*  permissions by assuming IAM roles in other accounts
 
 
 .AWS クレデンシャルを安全にローテーションするにはどうすればよいですか。
@@ -56,7 +56,7 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html["AW
 
 
 
-これで、アカウントに必要な権限が付与されました。 <<Adding AWS credentials to Cloud Manager,これで、 Cloud Manager に追加できます>>。
+これで、アカウントに必要な権限が付与されました。  AWS credentials to Cloud Manager,これで、 Cloud Manager に追加できます。
 
 
 
@@ -100,7 +100,7 @@ image:screenshot_iam_create_role.gif["AWS IAM コンソールの Create role ペ
 
 
 
-これで、アカウントに必要な権限が付与されました。 <<Adding AWS credentials to Cloud Manager,これで、 Cloud Manager に追加できます>>。
+これで、アカウントに必要な権限が付与されました。  AWS credentials to Cloud Manager,これで、 Cloud Manager に追加できます。
 
 
 

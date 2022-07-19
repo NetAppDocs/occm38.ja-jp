@@ -52,7 +52,7 @@ Cloud Compliance では、次の種類のデータソースからデータをス
 +
 link:task_deploy_cloud_compliance.html#subscribing-to-the-cloud-compliance-service["登録方法については、こちらをご覧ください"^]。
 
-* Cloud Compliance をインストールするにはクラウドインスタンスを導入する必要があるため、導入先のクラウドプロバイダから料金が発生します。を参照してください <<The Cloud Compliance instance,各クラウドに導入されるインスタンスのタイプ プロバイダ>>
+* Cloud Compliance をインストールするにはクラウドインスタンスを導入する必要があるため、導入先のクラウドプロバイダから料金が発生します。を参照してください  Cloud Compliance instance,各クラウドに導入されるインスタンスのタイプ プロバイダ
 * Cloud Compliance では、コネクタを導入しておく必要があります。多くの場合、 Cloud Manager で他のストレージとサービスを使用しているため、すでにコネクタが用意されています。Connector インスタンスを使用すると、導入先のクラウドプロバイダから料金が発生します。を参照してください link:reference_cloud_mgr_reqs.html["クラウドプロバイダごとに導入されるインスタンスのタイプ"^]。
 
 

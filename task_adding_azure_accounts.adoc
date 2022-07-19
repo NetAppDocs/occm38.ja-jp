@@ -32,11 +32,11 @@ Cloud Manager には、 Azure でアクションを実行するための権限�
 image:diagram_azure_authentication.png["API コールを発信する前に Azure Active Directory から認証と承認を取得するクラウドマネージャを示す概念図。Active Directory において、 Cloud Manager Operator ロールで権限を定義し、Azure サブスクリプションと、 Cloud Manger アプリケーションを表すサービスプリンシパルオブジェクトに関連付けています。"]
 
 .手順
-. <<Creating an Azure Active Directory application,Azure Active Directory アプリケーションを作成します>>。
-. <<Assigning the application to a role,アプリケーションをロールに割り当てます>>。
-. <<Adding Windows Azure Service Management API permissions,Windows Azure Service Management API 権限を追加します>>。
-. <<Getting the application ID and directory ID,アプリケーション ID とディレクトリ ID を取得します>>。
-. <<Creating a client secret,クライアントシークレットを作成します>>。
+.  an Azure Active Directory application,Azure Active Directory アプリケーションを作成します。
+.  the application to a role,アプリケーションをロールに割り当てます。
+.  Windows Azure Service Management API permissions,Windows Azure Service Management API 権限を追加します。
+.  the application ID and directory ID,アプリケーション ID とディレクトリ ID を取得します。
+.  a client secret,クライアントシークレットを作成します。
 
 
 
@@ -197,9 +197,9 @@ image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にあ
 . 資格情報の追加 * をクリックし、 * Microsoft Azure * を選択します。
 . 必要な権限を付与する Azure Active Directory サービスプリンシパルに関する情報を入力します。
 +
-** アプリケーション（クライアント） ID ：を参照してください <<Getting the application ID and directory ID>>。
-** ディレクトリ（テナント） ID ：を参照してください <<Getting the application ID and directory ID>>。
-** クライアントシークレット：を参照してください <<Creating a client secret>>。
+** アプリケーション（クライアント） ID ：を参照してください  the application ID and directory ID。
+** ディレクトリ（テナント） ID ：を参照してください  the application ID and directory ID。
+** クライアントシークレット：を参照してください  a client secret。
 
 
 . ポリシーの要件が満たされていることを確認し、 [* Continue （続行） ] をクリックします。

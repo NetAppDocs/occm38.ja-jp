@@ -143,7 +143,7 @@ curl <uri>-o data_broker_installer.sh -x <proxy_host>: <proxy_port>`
 curl <uri>-o data_broker_installer.sh -x <proxy_username>:<proxy_password>@<proxy_host>:<proxy_port>`
 
 +
-URI:: Cloud Sync の指示ページにインストールファイルの URI が表示され、オンプレミスのデータブローカーを導入するプロンプトに従ってロードされます。この URI はリンクが動的に生成され、 1 回しか使用できないため、ここでは繰り返し使用されません。 <<Installing the data broker,Cloud Sync から URI を取得するには、次の手順を実行します。>>。
+URI:: Cloud Sync の指示ページにインストールファイルの URI が表示され、オンプレミスのデータブローカーを導入するプロンプトに従ってロードされます。この URI はリンクが動的に生成され、 1 回しか使用できないため、ここでは繰り返し使用されません。  the data broker,Cloud Sync から URI を取得するには、次の手順を実行します。。
 
 
 
@@ -167,8 +167,8 @@ NOTE: 以下に示す各コマンドには、 AWS アクセスと GCP アクセ�
 「 sudo -s chmod +x data_broker_installer.sh 」 / data_broker_installer.sh - A <AWS_access_key> -s <AWS_secret_key> -g <absolute_path-to-the _json _file> -h <proxy_host> -p <proxy_port> -u <proxy_username> -w <proxy_password>
 
 +
-AWS キー:: これらはユーザに適切なキーです 準備しておきます <<Enabling access to AWS,次の手順を実行します>>。AWS のキーはデータブローカーに格納され、オンプレミスネットワークやクラウドネットワークで実行されます。ネットアップでは、データブローカー以外でキーを使用していません。
-JSON ファイル:: この JSON ファイルにサービスアカウントが含まれています 準備しておく必要があるキー <<Enabling access to Google Cloud,次の手順を実行します>>。
+AWS キー:: これらはユーザに適切なキーです 準備しておきます  access to AWS,次の手順を実行します。AWS のキーはデータブローカーに格納され、オンプレミスネットワークやクラウドネットワークで実行されます。ネットアップでは、データブローカー以外でキーを使用していません。
+JSON ファイル:: この JSON ファイルにサービスアカウントが含まれています 準備しておく必要があるキー  access to Google Cloud,次の手順を実行します。
 
 
 

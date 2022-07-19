@@ -92,7 +92,7 @@ image:screenshot_create_data_broker.gif["AWS 、 Azure 、 GCP 、オンプレ�
 video::video_cloud_sync.mp4[width=848,height=480]
 . AWS アクセスキーを入力した場合は、インスタンスの場所を選択し、キーペアを選択し、パブリック IP アドレスを有効にするかどうかを選択します。既存の IAM ロールを選択した場合は、 Cloud Sync によってロールが作成されるようにこのフィールドを空白のままにします。
 +
-独自の IAM ロールを選択した場合は、 <<iam,必要な権限を指定する必要があります>>。
+独自の IAM ロールを選択した場合は、 ,必要な権限を指定する必要があります。
 
 +
 image:screenshot_aws_data_broker.gif["AWS にデータブローカーを導入する際に提供する必要がある情報のスクリーンショット。"]

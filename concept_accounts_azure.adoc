@@ -28,7 +28,7 @@ image:diagram_permissions_initial_azure.png["クラウドセントラルの導�
 
 Cloud Volumes ONTAP 用の新しい作業環境を作成すると、 Cloud Manager でデフォルトで次の Azure クレデンシャルが選択されます。
 
-image:screenshot_accounts_select_azure.gif["Details & Credentials ページに Switch Account オプションを示すスクリーンショット。"]
+image:screenshot_accounts_select_azure.gif["Details  Credentials ページに Switch Account オプションを示すスクリーンショット。"]
 
 
 

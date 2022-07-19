@@ -25,7 +25,7 @@ IMPORTANT: すべてのディスクとアグリゲートは、 Cloud Manager か
 
 Cloud Volumes ONTAP システムの起動後にストレージの追加が必要になった場合は、 Cloud Manager から NFS 、 CIFS 、または iSCSI 用の新しい FlexVol ボリュームを作成できます。
 
-iSCSI ボリュームを作成すると、 Cloud Manager によって自動的に LUN が作成されます。ボリュームごとに 1 つの LUN だけを作成することでシンプルになり、管理は不要になります。ボリュームを作成したら、 <<Connecting a LUN to a host,IQN を使用して、から LUN に接続します ホスト>>。
+iSCSI ボリュームを作成すると、 Cloud Manager によって自動的に LUN が作成されます。ボリュームごとに 1 つの LUN だけを作成することでシンプルになり、管理は不要になります。ボリュームを作成したら、  a LUN to a host,IQN を使用して、から LUN に接続します ホスト。
 
 
 NOTE: LUN は、 System Manager または CLI を使用して追加で作成できます。

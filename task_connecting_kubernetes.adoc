@@ -32,7 +32,7 @@ NOTE: Kubernetes 機能は、オンプレミスの ONTAP クラスタではサ�
 ==== 前提条件を確認する
 
 [role="quick-margin-para"]
-Kubernetes クラスタと Cloud Volumes ONTAP の接続、 Kubernetes クラスタとコネクタの間の接続、 1.14 以上の Kubernetes バージョン、クラスタ内の少なくとも 1 つのワーカーノードなど、環境が前提条件を満たしていることを確認します。 <<Reviewing prerequisites,すべてのリストを参照してください>>。
+Kubernetes クラスタと Cloud Volumes ONTAP の接続、 Kubernetes クラスタとコネクタの間の接続、 1.14 以上の Kubernetes バージョン、クラスタ内の少なくとも 1 つのワーカーノードなど、環境が前提条件を満たしていることを確認します。  prerequisites,すべてのリストを参照してください。
 
 
 
