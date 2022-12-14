@@ -16,7 +16,7 @@ Cloud Manager を使用すると、 IT エキスパートとクラウドアー�
 
 
 
-== 新機能をご紹介します
+== 最新情報をご確認ください
 
 * link:reference_key_changes.html["Cloud Manager の重要な変更点"]
 * link:reference_new_occm.html["Cloud Manager の新機能"]

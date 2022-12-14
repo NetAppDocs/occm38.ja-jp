@@ -19,6 +19,7 @@ BYOL システムを導入するには、 NetApp Support Site のアカウント
 次のビデオを視聴して、ネットアップサポートサイトのアカウントを Cloud Manager に追加する方法をご確認ください。または、下にスクロールして手順を確認します。
 
 video::V2fLTyztqYQ[youtube,width=848,height=480]
+.必要なもの
 Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
 
 .手順
@@ -42,6 +43,7 @@ image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にあ
 . [ アカウントの作成 ] をクリックします。 *
 
 
+.次の手順
 新しい Cloud Volumes ONTAP システムの作成時や既存のシステムの登録時に、ユーザがアカウントを選択できるようになりました。
 
 * link:task_deploying_otc_aws.html["AWS での Cloud Volumes ONTAP の起動"]

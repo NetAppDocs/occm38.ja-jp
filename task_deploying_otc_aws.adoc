@@ -34,6 +34,7 @@ NOTE: コネクタを作成するには、アカウント管理者である必�
 * CIFS を使用する場合は、 DNS と Active Directory を設定しておく必要があります。詳細については、を参照してください link:reference_networking_aws.html["Cloud Volumes ONTAP in AWS のネットワーク要件"]。
 
 
+.このタスクについて
 作業環境を作成した直後に、 Cloud Manager は指定された vPC でテストインスタンスを起動して接続を確認します。成功すると、 Cloud Manager はすぐにインスタンスを終了し、 Cloud Volumes ONTAP システムの導入を開始します。Cloud Manager が接続を確認できない場合、作業環境の作成は失敗します。テストインスタンスは、 t2.nano （デフォルトの vPC テナンシーの場合）または m3.medium （専用の vPC テナンシーの場合）のいずれかです。
 
 .手順
@@ -227,6 +228,7 @@ image:screenshot_cot_vol.gif["スクリーンショット： Cloud Volumes ONTAP
 
 
 
+.結果
 Cloud Manager が Cloud Volumes ONTAP インスタンスを起動します。タイムラインで進行状況を追跡できます。
 
 Cloud Volumes ONTAP インスタンスの起動時に問題が発生した場合は、障害メッセージを確認してください。また、作業環境を選択して、 [ 環境の再作成 ] をクリックすることもできます。
@@ -259,8 +261,10 @@ NOTE: コネクタを作成するには、アカウント管理者である必�
 * CIFS を使用する場合は、 DNS と Active Directory を設定しておく必要があります。詳細については、を参照してください link:reference_networking_aws.html["Cloud Volumes ONTAP in AWS のネットワーク要件"]。
 
 
+.制限事項
 現時点では、 AWS アウトポストで HA ペアがサポートされていません。
 
+.このタスクについて
 作業環境を作成した直後に、 Cloud Manager は指定された vPC でテストインスタンスを起動して接続を確認します。成功すると、 Cloud Manager はすぐにインスタンスを終了し、 Cloud Volumes ONTAP システムの導入を開始します。Cloud Manager が接続を確認できない場合、作業環境の作成は失敗します。テストインスタンスは、 t2.nano （デフォルトの vPC テナンシーの場合）または m3.medium （専用の vPC テナンシーの場合）のいずれかです。
 
 .手順
@@ -461,6 +465,7 @@ image:screenshot_cot_vol.gif["スクリーンショット： Cloud Volumes ONTAP
 
 
 
+.結果
 Cloud Manager が Cloud Volumes ONTAP HA ペアを起動します。タイムラインで進行状況を追跡できます。
 
 HA ペアの起動で問題が発生した場合は、障害メッセージを確認します。また、作業環境を選択して、 [ 環境の再作成 ] をクリックすることもできます。

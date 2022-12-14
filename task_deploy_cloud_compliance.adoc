@@ -24,28 +24,28 @@ Cloud Manager のワークスペースに Cloud Compliance インスタンスを
 
 
 
-==== コネクタを作成します
+==== image:number1.png["番号 1"] コネクタを作成します
 
 [role="quick-margin-para"]
 コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください link:task_creating_connectors_aws.html["AWS でコネクタを作成する"] または link:task_creating_connectors_azure.html["Azure でコネクタを作成する"]。
 
 
 
-==== 前提条件を確認する
+==== image:number2.png["番号2."] 前提条件を確認する
 
 [role="quick-margin-para"]
-クラウド環境が前提条件を満たしていることを確認します。これには、クラウドコンプライアンスインスタンス用の vCPU 16 個、インスタンス用のアウトバウンドインターネットアクセス、ポート 80 経由のコネクタとクラウドコンプライアンスの接続などが含まれます。  prerequisites,すべてのリストを参照してください。
+クラウド環境が前提条件を満たしていることを確認します。これには、クラウドコンプライアンスインスタンス用の vCPU 16 個、インスタンス用のアウトバウンドインターネットアクセス、ポート 80 経由のコネクタとクラウドコンプライアンスの接続などが含まれます。 <<前提条件の確認,すべてのリストを参照してください>>。
 
 
 
-==== Cloud Compliance の導入
+==== image:number3.png["番号3."] Cloud Compliance の導入
 
 [role="quick-margin-para"]
 インストールウィザードを起動して、 Cloud Manager に Cloud Compliance インスタンスを導入します。
 
 
 
-==== Cloud Compliance サービスに登録
+==== image:number4.png["番号4."] Cloud Compliance サービスに登録
 
 [role="quick-margin-para"]
 Cloud Compliance が Cloud Manager でスキャンする最初の 1TB のデータは無料です。その後もデータのスキャンを続行するには、 AWS または Azure Marketplace へのサブスクリプションが必要です。
@@ -145,8 +145,10 @@ image:screenshot_cloud_compliance_wizard_start.png["新しいインスタンス�
 . インスタンスが展開されたら、 * 設定に進む * をクリックして _ スキャン設定 _ ページに移動します。
 
 
+.結果
 Cloud Manager によってクラウドプロバイダに Cloud Compliance インスタンスが導入されます。
 
+.次のステップ
 スキャン設定ページから、コンプライアンスのためにスキャンする作業環境、ボリューム、およびバケットを選択できます。特定のデータベーススキーマをスキャンするために、データベースサーバに接続することもできます。これらのデータソースのいずれかで Cloud Compliance をアクティブ化します。
 
 
@@ -159,8 +161,9 @@ Cloud Compliance が Cloud Manager ワークスペースでスキャンする最
 
 image:screenshot_compliance_subscribe.png["スキャンされているデータの量を示すスクリーンショットと、サービスにサブスクライブするための [ サブスクライブ（ Subscribe ） ] ボタン。"]
 
-* 注： * Cloud Compliance から登録を求められたものの、すでに Azure サブスクリプションをお持ちの場合は、古い * Cloud Manager * サブスクリプションを使用している可能性があるため、新しい * NetApp Cloud Manager * サブスクリプションに変更する必要があります。を参照してください to the new Cloud Manager plan in Azure,Azure で新しい NetApp Cloud Manager プランに変更 を参照してください。
+* 注： * Cloud Compliance から登録を求められたものの、すでに Azure サブスクリプションをお持ちの場合は、古い * Cloud Manager * サブスクリプションを使用している可能性があるため、新しい * NetApp Cloud Manager * サブスクリプションに変更する必要があります。を参照してください<<Azure で新しい Cloud Manager プランに変更,Azure で新しい NetApp Cloud Manager プランに変更>> を参照してください。
 
+.手順
 これらの手順は、 _Account Admin_role 権限を持つユーザが実行する必要があります。
 
 . Cloud Manager コンソールの右上にある設定アイコンをクリックし、 * クレデンシャル * を選択します。
@@ -206,6 +209,7 @@ video::video_subscribing_azure.mp4[width=848,height=480]
 
 NOTE: 既存のサブスクリプションに特別なプライベートオファーが付随して発行された場合、ネットアップに連絡して、コンプライアンスを含む新しい特別なプライベートオファーを発行できるようにする必要があります。
 
+.手順
 これらの手順は、前述のように新しいサブスクリプションを追加するのと似ていますが、いくつかの場所で異なります。
 
 . Cloud Manager コンソールの右上にある設定アイコンをクリックし、 * クレデンシャル * を選択します。

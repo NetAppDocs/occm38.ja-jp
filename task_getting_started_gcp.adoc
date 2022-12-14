@@ -18,7 +18,7 @@ Cloud Volumes ONTAP for GCP の使用を開始するには、いくつかの手�
 
 
 
-==== コネクタを作成します
+==== image:number1.png["番号 1"] コネクタを作成します
 
 [role="quick-margin-para"]
 を持っていなければ link:concept_connectors.html["コネクタ"] ただし、アカウント管理者がアカウントを作成する必要があります。 link:task_creating_connectors_gcp.html["GCP でコネクターを作成する方法を説明します"]。
@@ -28,15 +28,16 @@ Cloud Volumes ONTAP for GCP の使用を開始するには、いくつかの手�
 
 
 
-==== 構成を計画
+==== image:number2.png["番号2."] 構成を計画
 
 [role="quick-margin-para"]
 Cloud Manager には、ワークロードの要件に応じた事前設定パッケージが用意されています。または、独自の設定を作成することもできます。独自の設定を選択する場合は、使用可能なオプションを理解しておく必要があります。 link:task_planning_your_config_gcp.html["詳細はこちら。"]。
 
 
 
-==== ネットワークをセットアップします
+==== image:number3.png["番号3."] ネットワークをセットアップします
 
+[role="quick-margin-list"]
 . VPC とサブネットがコネクタと Cloud Volumes ONTAP 間の接続をサポートしていることを確認します。
 . ターゲット VPC からのアウトバウンドインターネットアクセスを有効にして、コネクタと Cloud Volumes ONTAP が複数のエンドポイントに接続できるようにします。
 +
@@ -49,11 +50,12 @@ link:reference_networking_gcp.html["ネットワーク要件の詳細につい�
 
 
 
-==== データ階層化用の GCP をセットアップします
+==== image:number4.png["番号4."] データ階層化用の GCP をセットアップします
 
 [role="quick-margin-para"]
 Cloud Volumes ONTAP から低コストのオブジェクトストレージ（ Google Cloud Storage バケット）にコールドデータを階層化するには、 2 つの要件を満たす必要があります。
 
+[role="quick-margin-list"]
 . https://cloud.google.com/vpc/docs/configure-private-google-access["プライベート Google アクセス用の Cloud Volumes ONTAP サブネットを設定します"^]。
 . https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["データ階層化用のサービスアカウントを設定します"^]：
 +
@@ -74,11 +76,12 @@ Cloud Volumes ONTAP の作業環境を作成した場合、後で階層化サー
 
 
 
-==== Google Cloud API を有効にします
+==== image:number5.png["番号5."] Google Cloud API を有効にします
 
 [role="quick-margin-para"]
 https://cloud.google.com/apis/docs/getting-started#enabling_apis["プロジェクトで次の Google Cloud API を有効にします"^]。これらの API は、コネクタと Cloud Volumes ONTAP を導入するために必要です。
 
+[role="quick-margin-list"]
 * Cloud Deployment Manager V2 API
 * クラウドロギング API
 * Cloud Resource Manager API の略
@@ -88,7 +91,7 @@ https://cloud.google.com/apis/docs/getting-started#enabling_apis["プロジェ�
 
 
 
-==== Cloud Manager を使用して Cloud Volumes ONTAP を起動します
+==== image:number6.png["番号6."] Cloud Manager を使用して Cloud Volumes ONTAP を起動します
 
 [role="quick-margin-para"]
 [ 作業環境の追加 ] をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を実行します。 link:task_deploying_gcp.html["詳細な手順を参照してください"]。

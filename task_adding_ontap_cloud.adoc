@@ -16,6 +16,7 @@ summary: 既存の Cloud Volumes ONTAP システムを検出して Cloud Manager
 [role="lead"]
 既存の Cloud Volumes ONTAP システムを検出して Cloud Manager に追加できます。この処理は、新しい Cloud Manager システムを導入した場合に実行できます。
 
+.作業を開始する前に
 Cloud Volumes ONTAP 管理者ユーザアカウントのパスワードを知っている必要があります。
 
 .手順
@@ -30,4 +31,5 @@ image:screenshot_discover.gif["既存の Cloud Volumes ONTAP システムを検�
 . [ 資格情報 ] ページで、 Cloud Volumes ONTAP 管理者ユーザーのパスワードを入力し、 [ * 移動 ] をクリックします。
 
 
+.結果
 Cloud Manager によって Cloud Volumes ONTAP インスタンスがワークスペースに追加されます。

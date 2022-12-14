@@ -24,11 +24,12 @@ summary: データを Azure BLOB ストレージに階層化することによ�
 
 
 
-==== Azure BLOB ストレージへのデータの階層化を準備する
+==== image:number1.png["番号 1"] Azure BLOB ストレージへのデータの階層化を準備する
 
 [role="quick-margin-para"]
 次のものが必要です。
 
+[role="quick-margin-list"]
 * ONTAP 9.4 以降を実行し、かつ Azure Blob Storage への HTTPS 接続を備えたオール SSD アグリゲートを含む AFF または FAS システム。
 * Azure VNet にインストールされるコネクタ。
 * データセンター内の ONTAP クラスタ、 Azure BLOB ストレージ、およびクラウド階層化サービスへのアウトバウンド HTTPS 接続を可能にするコネクタのネットワーク。
@@ -36,18 +37,19 @@ summary: データを Azure BLOB ストレージに階層化することによ�
 
 
 
-==== 階層化をセットアップする
+==== image:number2.png["数値 2."] 階層化をセットアップする
 
 [role="quick-margin-para"]
 Cloud Manager で、オンプレミスの作業環境を選択し、 * 階層化の設定 * をクリックして、プロンプトに従って Azure Blob Storage にデータを階層化します。
 
 
 
-==== ライセンスをセットアップする
+==== image:number3.png["番号3."] ライセンスをセットアップする
 
 [role="quick-margin-para"]
 無償トライアルの終了後、従量課金制のサブスクリプション、 ONTAP 階層化ライセンス、またはその両方を組み合わせて使用して、クラウド階層化の料金を支払うことができます。
 
+[role="quick-margin-list"]
 * Azure Marketplace からサブスクライブするには、 * Tiering > Licensing * をクリックし、 * Subscribe * をクリックして、プロンプトに従います。
 * 階層化ライセンスを追加する場合は、 mailto ： ng-cloud-tiering@netapp.com ？ subject= Licensing [ 購入が必要な場合は当社にお問い合わせください ] を選択してから link:task_licensing_cloud_tiering.html["Cloud Tiering から、クラスタにノードを追加してください"]。
 
@@ -140,6 +142,7 @@ ONTAP クラスタから VNet への ExpressRoute または VPN 接続があり�
 
 Azure 環境を準備したら、最初のクラスタからアクセス頻度の低いデータの階層化を開始します。
 
+.必要なもの
 link:task_discovering_ontap.html["オンプレミスの作業環境"]。
 
 .手順
@@ -176,8 +179,10 @@ image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_volumes_selec
 
 
 
+.結果
 クラスタのボリュームから Azure Blob オブジェクトストレージへのデータ階層化のセットアップが完了しました。
 
+.次の手順
 link:task_licensing_cloud_tiering.html["Cloud Tiering サービスに登録してください"]。
 
 また、クラスタを追加したり、クラスタ上のアクティブなデータと非アクティブなデータに関する情報を確認したりすることもできます。詳細については、を参照してください link:task_managing_tiering.html["クラスタからのデータ階層化の管理"]。

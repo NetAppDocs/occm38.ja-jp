@@ -22,6 +22,7 @@ summary: 必要に応じて、 Cloud Compliance のスキャンを停止して�
 
 スキャンを非アクティブ化すると、 Cloud Compliance はシステム上のデータをスキャンしなくなり、インデックス付けされたコンプライアンス分析情報を Cloud Compliance インスタンスから削除します（作業環境またはデータベース自体のデータは削除されません）。
 
+.手順
 _Scan Configuration_page で、をクリックします image:screenshot_gallery_options.gif["[ 詳細 ] ボタン"] ボタンをクリックして作業環境を選択し、 * コンプライアンスの非アクティブ化 * をクリックします。
 
 image:screenshot_deactivate_compliance_scan.png["アクションアイコンのスクリーンショット。スキャンを非活動化（ Deactivate scan ）を選択できます。このオプションは、作業環境ページで作業環境を選択した後で使用できます。"]

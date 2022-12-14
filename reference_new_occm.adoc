@@ -54,11 +54,11 @@ Cloud Tiering には、次の 2 つの更新がリリースされてい
 
 == Cloud Manager 3.8.9 （ 2020 年 10 月 4 日）
 
-*  Compliance enhancements
-*  Volumes Service for AWS enhancements
-*  Sync integration
-*  management enhancements
-*  for Government regions
+* <<Cloud Compliance の機能拡張>>
+* <<Cloud Volumes Service for AWS の機能拡張>>
+* <<Cloud Sync の統合>>
+* <<アカウント管理の機能拡張>>
+* <<政府地域の変更>>
 
 
 
@@ -162,12 +162,12 @@ link:concept_gfc.html["グローバルファイルキャッシュの詳細につ
 
 == Cloud Manager 3.8.8 （ 2020 年 9 月 9 日）
 
-*  for Cloud Volumes Service for Google Cloud
-*  to Cloud now supports on-premises ONTAP clusters
-*  to Cloud enhancements
-*  Compliance enhancements
-*  navigation
-*  improvements
+* <<Cloud Volumes Service for Google Cloud のサポート>>
+* <<クラウドへのバックアップで、オンプレミスの ONTAP クラスタがサポートされるようになりました>>
+* <<クラウドへのバックアップの機能拡張>>
+* <<Cloud Compliance の機能拡張>>
+* <<ナビゲーションが更新されました>>
+* <<管理の改善>>
 
 
 
@@ -253,13 +253,13 @@ https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.8
 
 == Cloud Manager 3.8.7 （ 2020 年 8 月 3 日）
 
-*  software-as-a-service experience
-*  Volumes ONTAP enhancements
-*  NetApp Files enhancements
-*  Volumes Service for AWS enhancements
-*  Compliance enhancements
-*  to Cloud enhancements
-*  for Global File Cache
+* <<新しいソフトウェアサービスエクスペリエンス>>
+* <<Cloud Volumes ONTAP の機能拡張>>
+* <<Azure NetApp Files の機能拡張>>
+* <<Cloud Volumes Service for AWS の機能拡張>>
+* <<Cloud Compliance の機能拡張>>
+* <<クラウドへのバックアップの機能拡張>>
+* <<グローバルファイルキャッシュのサポート>>
 
 
 
@@ -488,8 +488,8 @@ Cloud Manager からこのエンドポイントへのアクセスがファイア
 
 == Cloud Manager 3.8.6 （ 2020 年 7 月 6 日）
 
-*  for iSCSI volumes
-*  for the All tiering policy
+* <<iSCSI ボリュームのサポート>>
+* <<「すべて」の階層化ポリシーがサポートされます>>
 
 
 
@@ -519,9 +519,9 @@ Cloud Volumes ONTAP のボリュームを作成または変更するときに、
 
 == Cloud Manager 3.8.5 （ 2020 年 5 月 31 日）
 
-*  subscription required in the Azure Marketplace
-*  to Cloud enhancements
-*  Compliance enhancements
+* <<Azure Marketplace での新しいサブスクリプションが必要です>>
+* <<クラウドへのバックアップの機能拡張>>
+* <<Cloud Compliance の機能拡張>>
 
 
 
@@ -601,11 +601,11 @@ Cloud Manager 3.8.4 では、次の点が改善されました。
 
 == Cloud Manager 3.8.3 （ 2020 年 4 月 5 日）
 
-*  Tiering integration
-*  migration to Azure NetApp Files
-*  Compliance enhancements
-*  to S3 enhancements
-*  volumes using APIs
+* <<Cloud Tiering との統合>>
+* <<Azure NetApp Files へのデータ移行>>
+* <<Cloud Compliance の機能拡張>>
+* <<S3 へのバックアップの機能拡張>>
+* <<API を使用した iSCSI ボリューム>>
 
 
 
@@ -683,10 +683,10 @@ Cloud Manager API で iSCSI ボリュームを作成できるようになりま�
 
 == Cloud Manager 3.8.2 （ 2020 年 3 月 1 日）
 
-*  S3 working environments
-*  Compliance enhancements
-*  version for volumes
-*  for Azure US Gov regions
+* <<Amazon S3 作業環境>>
+* <<Cloud Compliance の機能拡張>>
+* <<ボリュームの NFS バージョン>>
+* <<Azure US Gov リージョンのサポート>>
 
 
 
@@ -786,9 +786,9 @@ link:task_backup_to_s3.html["S3 へのバックアップに関する詳細情報
 
 == Cloud Manager 3.8.1 （ 2020 年 2 月 2 日）
 
-*  Compliance enhancements
-*  to accounts and subscriptions
-*  enhancements
+* <<Cloud Compliance の機能拡張>>
+* <<アカウントとサブスクリプションの機能が強化されました>>
+* <<スケジュールの機能拡張>>
 
 
 
@@ -869,8 +869,8 @@ image:screenshot_timeline.gif["Cloud Manager に表示されるタイムライ�
 
 == Cloud Manager 3.8 （ 2020 年 1 月 8 日）
 
-*  enhancements in Azure
-*  tiering enhancements in GCP
+* <<Azure の HA 機能が強化されました>>
+* <<GCP のデータ階層化機能の強化>>
 
 
 

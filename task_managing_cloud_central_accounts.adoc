@@ -49,6 +49,7 @@ image:screenshot_associate_user.gif["ロールと関連するワークスペー�
 . [ ユーザーの関連付け ] をクリックします。
 
 
+.結果
 ユーザには、 NetApp Cloud Central の「 Account Association 」というタイトルの E メールが送信されます。 E メールには、 Cloud Manager にアクセスするために必要な情報が記載されています。
 
 
@@ -69,6 +70,7 @@ image:screenshot_associate_user_workspace.gif["ユーザテーブルでユーザ
 . [ ユーザーの関連付けを解除（ Disassociate User ） ] をクリックし、 [ 関連付けを解除（ Disassociate ） ] をクリックして
 
 
+.結果
 ユーザはこの Cloud Central アカウントのリソースにアクセスできなくなります。
 
 
@@ -90,6 +92,7 @@ image:screenshot_associate_user_workspace.gif["ユーザテーブルでユーザ
 . ユーザーに関連付けるワークスペースを選択し、 * 適用 * をクリックします。
 
 
+.結果
 コネクタがワークスペースにも関連付けられていれば、ユーザは Cloud Manager からこれらのワークスペースにアクセスできるようになりました。
 
 

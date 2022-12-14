@@ -24,11 +24,12 @@ summary: データを StorageGRID に階層化することで、オンプレミ�
 
 
 
-==== データを StorageGRID に階層化する準備をします
+==== image:number1.png["番号 1"] データを StorageGRID に階層化する準備をします
 
 [role="quick-margin-para"]
 次のものが必要です。
 
+[role="quick-margin-list"]
 * FAS 9.4 以降を実行しているオール SSD アグリゲートを含む AFF または ONTAP システム。ユーザ指定のポートから StorageGRID への接続に使用します。
 * StorageGRID 10.3 以降で、 S3 権限を持つ AWS アクセスキーが使用されています。
 * オンプレミスにインストールされているコネクタ。
@@ -37,7 +38,7 @@ summary: データを StorageGRID に階層化することで、オンプレミ�
 
 
 
-==== 階層化をセットアップする
+==== image:number2.png["番号 2"] 階層化をセットアップする
 
 [role="quick-margin-para"]
 オンプレミスの作業環境を選択し、「 * 階層化の設定」をクリックして、プロンプトに従ってデータを StorageGRID に階層化します。
@@ -186,6 +187,8 @@ image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_volumes_selec
 
 
 
+.結果
 これで、クラスタのボリュームから StorageGRID へのデータ階層化が設定されました。
 
+.次の手順
 クラスタを追加したり、クラスタ上のアクティブなデータとアクセス頻度の低いデータに関する情報を確認したりできます。詳細については、を参照してください link:task_managing_tiering.html["クラスタからのデータ階層化の管理"]。

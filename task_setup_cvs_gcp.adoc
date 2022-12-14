@@ -24,21 +24,21 @@ Cloud Manager で Cloud Volumes Service for Google Cloud の作業環境を作�
 
 
 
-==== Cloud Volumes Service API を有効にします
+==== image:number1.png["番号 1"] Cloud Volumes Service API を有効にします
 
 [role="quick-margin-para"]
 Google で、 Cloud Volumes Service for GCP API を有効にして、 Cloud Manager がサブスクリプションとクラウドボリュームを管理できるようにします。
 
 
 
-==== GCP サービスアカウントを作成し、クレデンシャルをダウンロードします
+==== image:number2.png["番号2."] GCP サービスアカウントを作成し、クレデンシャルをダウンロードします
 
 [role="quick-margin-para"]
 Google から GCP サービスアカウントと GCP ロールを作成し、 Cloud Manager が Cloud Volumes Service for GCP アカウントにアクセスできるようにします。
 
 
 
-==== GCP 向け Cloud Volumes Service 作業環境を作成します
+==== image:number3.png["番号3."] GCP 向け Cloud Volumes Service 作業環境を作成します
 
 [role="quick-margin-para"]
 Cloud Manager で、 * 作業環境の追加 * > * Google Cloud * > * Cloud Volumes Service * をクリックし、サービスアカウントと Google Cloud プロジェクトの詳細を指定します。
@@ -101,6 +101,7 @@ Google Cloud Console からすでにボリュームを作成しているかど�
 
 TIP: 複数の GCP プロジェクトにサブスクリプションとボリュームがある場合は、プロジェクトごとにこのタスクを実行する必要があります。
 
+.作業を開始する前に
 各プロジェクトのサブスクリプションを追加する際は、次の情報を確認しておく必要があります。
 
 * サービスアカウントのクレデンシャル（ダウンロードした JSON 秘密鍵）
@@ -126,6 +127,7 @@ image:screenshot_add_cvs_gcp_credentials.png["Cloud Volumes Service for GCP サ�
 
 
 
+.結果
 Cloud Manager に Cloud Volumes Service for Google Cloud の作業環境が表示されます。
 
 image:screenshot_cvs_gcp_cloud.png["Cloud Volumes Service for Google Cloud 作業環境のスクリーンショット。"]
@@ -134,4 +136,5 @@ image:screenshot_cvs_gcp_cloud.png["Cloud Volumes Service for Google Cloud 作�
 
 このサブスクリプションにクラウドボリュームが存在しない場合は、ここで作成します。
 
+.次の手順
 link:task_manage_cvs_gcp.html["ボリュームの作成と管理を開始します"]。

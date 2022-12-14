@@ -32,35 +32,35 @@ Cloud Manager を使用して、グローバルファイルキャッシュ管理
 
 
 
-==== Cloud Volumes ONTAP を導入します
+==== image:number1.png["番号 1"] Cloud Volumes ONTAP を導入します
 
 [role="quick-margin-para"]
 Azure または AWS に Cloud Volumes ONTAP を導入し、 SMB ファイル共有を設定詳細については、を参照してください link:task_deploying_otc_azure.html["Azure で Cloud Volumes ONTAP を起動します"^] または link:task_deploying_otc_aws.html["AWS での Cloud Volumes ONTAP の起動"^]。
 
 
 
-==== グローバルファイルキャッシュ管理サーバーを展開します
+==== image:number2.png["番号2."] グローバルファイルキャッシュ管理サーバーを展開します
 
 [role="quick-margin-para"]
 グローバルファイルキャッシュ管理サーバのインスタンスを、 Cloud Volumes ONTAP のインスタンスと同じ作業環境に導入します。
 
 
 
-==== グローバルファイルキャッシュコアを展開します
+==== image:number3.png["番号3."] グローバルファイルキャッシュコアを展開します
 
 [role="quick-margin-para"]
 グローバルファイルキャッシュコアのインスタンスまたは複数のインスタンスを、 Cloud Volumes ONTAP のインスタンスと同じ作業環境に展開し、 Active Directory ドメインに参加させます。
 
 
 
-==== グローバルファイルキャッシュのライセンスを取得します
+==== image:number4.png["番号4."] グローバルファイルキャッシュのライセンスを取得します
 
 [role="quick-margin-para"]
 グローバルファイルキャッシュコアインスタンスに、グローバルファイルキャッシュライセンス管理サーバ（ LMS ）サービスを設定します。NSS のクレデンシャル、またはネットアップから提供されたお客様 ID を使用して、サブスクリプションをアクティブ化する必要があります。
 
 
 
-==== グローバルファイルキャッシュエッジインスタンスを配置します
+==== image:number5.png["番号5."] グローバルファイルキャッシュエッジインスタンスを配置します
 
 [role="quick-margin-para"]
 を参照してください link:task_deploy_gfc_edge_instances.html["グローバルファイルキャッシュエッジインスタンスの配置"^] グローバルファイルキャッシュエッジインスタンスを各リモートロケーションに配置するには、次の手順を実行します。この手順は、 Cloud Manager では実行されません。
@@ -162,6 +162,7 @@ image:screenshot_gfc_license2.png["Global File Cache License Registration ペー
 
 
 
+.次の手順
 構成をサポートするために複数のグローバルファイルキャッシュコアを導入する必要があると判断した場合は、ダッシュボードで * コアインスタンスの追加 * をクリックし、導入ウィザードに従います。
 
 コアの導入を完了したら、を実行する必要があります link:download_gfc_resources.html["グローバルファイルキャッシュエッジインスタンスを配置します"^] 各リモートオフィスに配置できます。

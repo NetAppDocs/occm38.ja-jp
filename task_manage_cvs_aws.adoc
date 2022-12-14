@@ -27,6 +27,7 @@ Cloud Volumes Service ユーザインターフェイスからすでにボリュ�
 
 TIP: 複数の AWS リージョンにサブスクリプションとボリュームが含まれている場合は、リージョンごとにこのタスクを実行する必要があります。
 
+.作業を開始する前に
 各地域でサブスクリプションを追加する場合は、次の情報を入手しておく必要があります。
 
 * Cloud Volumes API のキーとシークレットキー： https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html#finding-the-api-url-api-key-and-secret-key["取得するには、 Cloud Volumes Service for AWS のドキュメントを参照してください この情報"^]。
@@ -52,6 +53,7 @@ image:screenshot_add_cvs_aws_credentials.png["Cloud Volumes Service のクレデ
 
 
 
+.結果
 Cloud Manager の作業環境のページに Cloud Volumes Service for AWS の設定が表示されます。
 
 image:screenshot_cvs_aws_cloud.gif["Cloud Volumes Service for AWS の作業環境のページ上のスクリーンショット。"]
@@ -183,6 +185,7 @@ TIP: クラウドボリュームが Windows Active Directory サーバと正し�
 
 新しいボリュームが作業環境に追加されます。
 
+.完了後
 この AWS サブスクリプションで最初に作成されたボリュームの場合は、 AWS の管理コンソールを起動して、この AWS リージョンで使用される 2 つの仮想インターフェイスを受け入れ、すべてのクラウドボリュームを接続する必要があります。を参照してください https://docs.netapp.com/us-en/cloud_volumes/aws/media/cvs_aws_account_setup.pdf["『 NetApp Cloud Volumes Service for AWS Account Setup Guide 』を参照してください"^] を参照してください。
 
 [Add Volume] ボタンをクリックしてから 10 分以内にインターフェイスを受け入れる必要があります。そうしないと、システムがタイムアウトする場合があります。この場合は、 cvs-support@netapp.com に AWS のお客様 ID とネットアップのシリアル番号を E メールで送信してください。サポートが問題を解決し、オンボーディングプロセスを再開できます。

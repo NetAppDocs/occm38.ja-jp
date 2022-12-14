@@ -18,7 +18,7 @@ summary: いくつかの手順で、 Cloud Volumes ONTAP for Azure を使い始�
 
 
 
-==== コネクタを作成します
+==== image:number1.png["番号 1"] コネクタを作成します
 
 [role="quick-margin-para"]
 を持っていなければ link:concept_connectors.html["コネクタ"] ただし、アカウント管理者がアカウントを作成する必要があります。 link:task_creating_connectors_azure.html["Azure でコネクタを作成する方法について説明します"]。
@@ -28,15 +28,16 @@ summary: いくつかの手順で、 Cloud Volumes ONTAP for Azure を使い始�
 
 
 
-==== 構成を計画
+==== image:number2.png["番号2."] 構成を計画
 
 [role="quick-margin-para"]
 Cloud Manager には、ワークロードの要件に応じた事前設定パッケージが用意されています。または、独自の設定を作成することもできます。独自の設定を選択する場合は、使用可能なオプションを理解しておく必要があります。 link:task_planning_your_config_azure.html["詳細はこちら。"]。
 
 
 
-==== ネットワークをセットアップします
+==== image:number3.png["番号3."] ネットワークをセットアップします
 
+[role="quick-margin-list"]
 . VNet とサブネットがコネクタと Cloud Volumes ONTAP 間の接続をサポートすることを確認します。
 . ターゲット VNet からのアウトバウンドインターネットアクセスを有効にして、コネクタと Cloud Volumes ONTAP が複数のエンドポイントに接続できるようにします。
 +
@@ -49,7 +50,7 @@ link:reference_networking_azure.html["ネットワーク要件の詳細につい
 
 
 
-==== Cloud Manager を使用して Cloud Volumes ONTAP を起動します
+==== image:number4.png["番号4."] Cloud Manager を使用して Cloud Volumes ONTAP を起動します
 
 [role="quick-margin-para"]
 [ 作業環境の追加 ] をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を実行します。 link:task_deploying_otc_azure.html["詳細な手順を参照してください"]。

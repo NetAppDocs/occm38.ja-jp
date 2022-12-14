@@ -16,6 +16,7 @@ summary: Cloud Volumes ONTAP システムは、 AWS や Azure からではなく
 [role="lead"]
 Cloud Volumes ONTAP システムは、クラウドプロバイダのコンソールからではなく、 Cloud Manager から削除することを推奨します。たとえば、 AWS からライセンスが有効な Cloud Volumes ONTAP インスタンスを終了すると、別のインスタンスでこのライセンスキーを使用できなくなります。ライセンスをリリースするには、作業環境を Cloud Manager から削除する必要があります。
 
+.このタスクについて
 作業環境を削除すると、 Cloud Manager はインスタンスを終了し、ディスクとスナップショットを削除します。
 
 

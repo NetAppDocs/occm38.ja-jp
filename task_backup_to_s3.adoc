@@ -24,8 +24,9 @@ Cloud Volumes ONTAP から Amazon S3 へのデータのバックアップを開�
 
 
 
-==== 構成がサポートされていることを確認します
+==== image:number1.png["番号 1"] 構成がサポートされていることを確認します
 
+[role="quick-margin-list"]
 * Cloud Volumes ONTAP 9.6 以降を AWS で実行している。
 * に登録しておきます https://aws.amazon.com/marketplace/pp/B07QX2QLXX["Cloud Manager Marketplace のバックアップソリューション"^]またはを購入したことが必要です link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["アクティブ化されます"^] NetApp の Backup to Cloud BYOL ライセンス。
 * Cloud Manager に権限を提供する IAM ロールにはが含まれています 最新のものから S3 権限 https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager ポリシー"^]。
@@ -33,8 +34,9 @@ Cloud Volumes ONTAP から Amazon S3 へのデータのバックアップを開�
 
 
 
-==== 新規または既存のシステムでクラウドへのバックアップを有効化
+==== image:number2.png["番号2."] 新規または既存のシステムでクラウドへのバックアップを有効化
 
+[role="quick-margin-list"]
 * 新しいシステム：クラウドへのバックアップは、作業環境ウィザードではデフォルトで有効になります。このオプションは必ず有効にしておいてください。
 * 既存のシステム：作業環境を選択し、右パネルのクラウドへのバックアップサービスの横にある * アクティブ化 * をクリックして、セットアップウィザードに従います。
 +
@@ -44,7 +46,7 @@ image:screenshot_backup_to_s3_icon.gif["作業環境を選択したあとに使�
 
 
 
-==== バックアップポリシーを定義
+==== image:number3.png["番号3."] バックアップポリシーを定義
 
 [role="quick-margin-para"]
 デフォルトポリシーでは、毎日ボリュームがバックアップされ、各ボリュームの最新の 30 個のバックアップコピーが保持されます。週単位または月単位のバックアップに変更するか、システム定義のポリシーの中からいくつかのオプションを選択します。保持するバックアップコピーの数を変更することもできます。
@@ -54,14 +56,14 @@ image:screenshot_backup_settings.png["クラウドへのバックアップ設定
 
 
 
-==== バックアップするボリュームを選択します
+==== image:number4.png["番号4."] バックアップするボリュームを選択します
 
 [role="quick-margin-para"]
 Select Volumes （ボリュームの選択）ページで、バックアップするボリュームを特定します。
 
 
 
-==== 必要に応じて、データをリストアします
+==== image:number5.png["番号5."] 必要に応じて、データをリストアします
 
 [role="quick-margin-para"]
 バックアップリストからボリュームを選択し、バックアップを選択して、バックアップから新しいボリュームにデータをリストアします。
@@ -137,8 +139,10 @@ image:screenshot_backup_to_s3.gif["は、作業環境ウィザードのクラウ
 . ウィザードの各ページを設定し、システムを導入します。
 
 
+.結果
 クラウドへのバックアップはシステムで有効になり、ボリュームが毎日バックアップされ、最新の 30 個のバックアップコピーが保持されます。
 
+.次の手順
 link:task_managing_backups.html["バックアップの管理では、バックアップスケジュールの変更、ボリュームのリストアなどを行うことができます"^]。
 
 
@@ -165,6 +169,8 @@ image:screenshot_backup_select_volumes.png["バックアップするボリュー
 
 
 
+.結果
 クラウドへのバックアップは、選択した各ボリュームの初期バックアップの作成を開始します。
 
+.次の手順
 link:task_managing_backups.html["バックアップの管理では、バックアップスケジュールの変更、ボリュームのリストアなどを行うことができます"^]。

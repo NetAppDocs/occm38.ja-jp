@@ -24,21 +24,21 @@ Cloud Manager で Azure NetApp Files 作業環境を作成し、ネットアッ�
 
 
 
-==== アクセス権のリクエスト
+==== image:number1.png["番号 1"] アクセス権のリクエスト
 
 [role="quick-margin-para"]
 https://aka.ms/azurenetappfiles["オンラインリクエストを送信します"^] Azure NetApp Files へのアクセスを許可する必要があります。
 
 
 
-==== Azure AD アプリケーションをセットアップする
+==== image:number2.png["番号2."] Azure AD アプリケーションをセットアップする
 
 [role="quick-margin-para"]
 Azure から Azure AD アプリケーションに権限を付与し、アプリケーション（クライアント） ID 、ディレクトリ（テナント） ID 、クライアントシークレットの値をコピーします。
 
 
 
-==== Azure NetApp Files 作業環境を作成します
+==== image:number3.png["番号3."] Azure NetApp Files 作業環境を作成します
 
 [role="quick-margin-para"]
 Cloud Manager で、 * 作業環境の追加 * > * Microsoft Azure * > * Azure NetApp Files * をクリックし、 AD アプリケーションの詳細を指定します。
@@ -61,6 +61,7 @@ Cloud Manager で Azure NetApp Files を設定および管理するには権限�
 
 Cloud Manager でロールベースアクセス制御に使用できる Azure Active Directory （ AD ）アプリケーションとサービスプリンシパルを作成します。
 
+.作業を開始する前に
 Azure で Active Directory アプリケーションを作成してロールに割り当てるための適切な権限が必要です。詳細については、を参照してください https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/["Microsoft Azure のドキュメント：「 Required permissions"^]。
 
 .手順
@@ -102,6 +103,7 @@ image:screenshot_anf_client_secret.gif["Azure AD サービスプリンシパル�
 
 
 
+.結果
 これで AD アプリケーションがセットアップされ、アプリケーション（クライアント） ID 、ディレクトリ（テナント） ID 、およびクライアントシークレットの値をコピーしました。この情報は、 Azure NetApp Files 作業環境を追加するときに、 Cloud Manager で入力する必要があります。
 
 
@@ -172,8 +174,10 @@ image:screenshot_anf_details.gif["Azure NetApp Files 作業環境の作成に必
 . [ 追加（ Add ） ] をクリックします。
 
 
+.結果
 これで Azure NetApp Files の作業環境が作成されました。
 
 image:screenshot_anf_we.gif["Azure NetApp Files 作業環境のスクリーンショット。"]
 
+.次の手順
 link:task_manage_anf_volumes.html["ボリュームの作成と管理を開始します"]。

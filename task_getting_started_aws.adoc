@@ -18,7 +18,7 @@ summary: いくつかの手順で、 Cloud Volumes ONTAP for AWS を使い始め
 
 
 
-==== コネクタを作成します
+==== image:number1.png["番号 1"] コネクタを作成します
 
 [role="quick-margin-para"]
 を持っていなければ link:concept_connectors.html["コネクタ"] ただし、アカウント管理者がアカウントを作成する必要があります。 link:task_creating_connectors_aws.html["AWS でコネクタを作成する方法について説明します"]。
@@ -28,15 +28,16 @@ summary: いくつかの手順で、 Cloud Volumes ONTAP for AWS を使い始め
 
 
 
-==== 構成を計画
+==== image:number2.png["番号2."] 構成を計画
 
 [role="quick-margin-para"]
 Cloud Manager には、ワークロードの要件に応じた事前設定パッケージが用意されています。または、独自の設定を作成することもできます。独自の設定を選択する場合は、使用可能なオプションを理解しておく必要があります。 link:task_planning_your_config.html["詳細はこちら。"]。
 
 
 
-==== ネットワークをセットアップします
+==== image:number3.png["番号3."] ネットワークをセットアップします
 
+[role="quick-margin-list"]
 . VPC とサブネットがコネクタと Cloud Volumes ONTAP 間の接続をサポートしていることを確認します。
 . ターゲット VPC からのアウトバウンドインターネットアクセスを有効にして、コネクタと Cloud Volumes ONTAP が複数のエンドポイントに接続できるようにします。
 +
@@ -53,14 +54,14 @@ link:reference_networking_aws.html["ネットワーク要件の詳細につい�
 
 
 
-==== AWS KMS を設定します
+==== image:number4.png["番号4."] AWS KMS を設定します
 
 [role="quick-margin-para"]
 Cloud Volumes ONTAP で Amazon 暗号化を使用する場合は、アクティブなカスタマーマスターキー（ CMK ）が存在することを確認する必要があります。また、コネクタに「 a_key user__ 」という権限を付与する IAM ロールを追加して、各 CMK のキーポリシーを変更する必要があります。 link:task_setting_up_kms.html["詳細はこちら。"]。
 
 
 
-==== Cloud Manager を使用して Cloud Volumes ONTAP を起動します
+==== image:number5.png["番号5."] Cloud Manager を使用して Cloud Volumes ONTAP を起動します
 
 [role="quick-margin-para"]
 [ 作業環境の追加 ] をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を実行します。 link:task_deploying_otc_aws.html["詳細な手順を参照してください"]。

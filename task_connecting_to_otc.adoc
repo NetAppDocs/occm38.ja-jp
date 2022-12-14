@@ -21,6 +21,7 @@ Cloud Volumes ONTAP の高度な管理を実行する必要がある場合は、
 
 一部の Cloud Volumes ONTAP タスクを System Manager から実行する必要が生じることがあります。 System Manager は、 Cloud Volumes ONTAP システム上で稼働するブラウザベースの管理ツールです。たとえば、 LUN を作成する場合は、 System Manager を使用する必要があります。
 
+.作業を開始する前に
 Cloud Manager にアクセスするコンピュータは、 Cloud Volumes ONTAP にネットワーク接続している必要があります。たとえば、 AWS または Azure の Jump ホストから Cloud Manager にログインする必要がある場合があります。
 
 
@@ -36,6 +37,7 @@ System Manager が新しいブラウザタブにロードされます。
 . ログイン画面で、 [ ユーザー名 ] フィールドに「 * admin * 」と入力し、作業環境の作成時に指定したパスワードを入力して、 [ * サインイン * ] をクリックします。
 
 
+.結果
 System Manager コンソールがロードされます。これで、 Cloud Volumes ONTAP の管理に使用できるようになりました。
 
 
@@ -44,6 +46,7 @@ System Manager コンソールがロードされます。これで、 Cloud Volu
 
 Cloud Volumes ONTAP CLI を使用すると、すべての管理コマンドを実行できます。高度なタスクを実行する場合や、 CLI を使用する場合に適しています。Secure Shell （ SSH ）を使用して CLI に接続できます。
 
+.作業を開始する前に
 SSH を使用して Cloud Volumes に接続するホスト ONTAP は、 Cloud Volumes ONTAP にネットワーク接続している必要があります。たとえば、 AWS または Azure の Jump ホストから SSH を使用する必要がある場合があります。
 
 

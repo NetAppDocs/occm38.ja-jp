@@ -67,6 +67,7 @@ image:screenshot_set_up_cloud_manager.gif["Cloud Manager のセットアップ�
 
 
 
+.結果
 これでコネクタがインストールされ、セットアップされました。Cloud Volumes ONTAP を Azure に導入するには、 Azure の権限を付与する必要があります。
 
 
@@ -123,4 +124,5 @@ NOTE: Cloud Manager Operator は、で指定されたデフォルトの名前で
 
 
 
+.結果
 Connector には、パブリッククラウド環境内のリソースとプロセスを管理するために必要な権限が付与されました。Cloud Manager は、新しい作業環境の作成時にこのコネクタを自動的に使用します。ただし、コネクタが複数ある場合は、が必要です link:task_managing_connectors.html["スイッチを切り替えます"]。

@@ -24,28 +24,28 @@ Cloud Compliance でデータベーススキーマのスキャンを開始する
 
 
 
-==== データベースの前提条件を確認する
+==== image:number1.png["番号 1"] データベースの前提条件を確認する
 
 [role="quick-margin-para"]
 データベースがサポートされていること、およびデータベースへの接続に必要な情報があることを確認します。
 
 
 
-==== Cloud Compliance インスタンスを導入します
+==== image:number2.png["番号2."] Cloud Compliance インスタンスを導入します
 
 [role="quick-margin-para"]
 link:task_deploy_cloud_compliance.html["Cloud Manager に Cloud Compliance を導入"^] インスタンスが展開されていない場合。
 
 
 
-==== データベースサーバを追加します
+==== image:number3.png["番号3."] データベースサーバを追加します
 
 [role="quick-margin-para"]
 アクセスするデータベースサーバを追加します。
 
 
 
-==== スキーマを選択します
+==== image:number4.png["番号4."] スキーマを選択します
 
 [role="quick-margin-para"]
 スキャンするスキーマを選択します。
@@ -133,6 +133,7 @@ image:screenshot_compliance_select_schemas.png["スキャンするスキーマ�
 
 
 
+.結果
 Cloud Compliance によって、有効にしたデータベーススキーマのスキャンが開始されます。エラーが発生した場合は、エラーを修正するために必要なアクションとともに、 [ ステータス ] 列に表示されます。
 
 

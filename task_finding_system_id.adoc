@@ -16,6 +16,7 @@ summary: 作業の開始を支援するために、ネットアップの担当�
 [role="lead"]
 作業を開始する際に、ネットアップの担当者から Cloud Manager システム ID の入力を求められることがあります。この ID は通常、ライセンスの取得やトラブルシューティングの目的で使用されます。
 
+.必要なもの
 Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
 
 .手順

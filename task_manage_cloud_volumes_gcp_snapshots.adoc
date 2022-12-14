@@ -116,4 +116,5 @@ image:screenshot_cvs_restore_snapshot.png["リストア先の Snapshot コピー
 
 
 
+.完了後
 に進みます link:task_manage_cvs_gcp.html#mount-cloud-volumes["クラウドボリュームをマウント"^]。

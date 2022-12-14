@@ -16,6 +16,7 @@ summary: Cloud Manager では、 AWS での Cloud Volumes ONTAP の実行に関�
 [role="lead"]
 Cloud Manager では、 AWS での Cloud Volumes ONTAP の実行に関連するリソースコストを確認できます。また、ネットアップの機能を使用してストレージコストを削減し、どれだけのコストを節約したかを確認することもできます。
 
+.このタスクについて
 ページを更新すると、 Cloud Manager によってコストが更新されます。最終的なコストの詳細については、 AWS を参照してください。
 
 .ステップ

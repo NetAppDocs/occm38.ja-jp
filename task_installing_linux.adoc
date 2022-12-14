@@ -101,8 +101,10 @@ image:screenshot_set_up_cloud_manager.gif["セットアップ画面のスクリ�
 
 
 
+.結果
 これで、 Connector がインストールされ、 Cloud Central アカウントでセットアップされました。Cloud Manager は、新しい作業環境の作成時にこのコネクタを自動的に使用します。
 
+.完了後
 Cloud Manager がパブリッククラウド環境内のリソースやプロセスを管理できるように、権限を設定します。
 
 * AWS link:task_adding_aws_accounts.html["AWS アカウントをセットアップして、に追加します Cloud Manager の略"]。

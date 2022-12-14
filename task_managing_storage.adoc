@@ -119,8 +119,10 @@ NOTE: Cloud Manager は、選択したディスクタイプを使用する既存
 
 アグリゲートの管理を自分で行うには、ディスクの追加、アグリゲートに関する情報の表示、およびアグリゲートの削除を行います。
 
+.作業を開始する前に
 アグリゲートを削除する場合は、まずアグリゲート内のボリュームを削除しておく必要があります。
 
+.このタスクについて
 アグリゲートのスペースが不足している場合は、 OnCommand System Manager を使用してボリュームを別のアグリゲートに移動できます。
 
 .手順
@@ -196,6 +198,7 @@ DNS サーバまたは Active Directory ドメインを変更した場合は、�
 . [ 保存（ Save ） ] をクリックします。
 
 
+.結果
 Cloud Volumes ONTAP は CIFS サーバを変更して更新します。
 
 
@@ -223,11 +226,11 @@ System Manager でボリュームを移動するには、ボリュームとデ�
 Cloud Manager では、容量の問題を回避するためにボリュームの移動が必要であることを示す Action Required メッセージが表示される場合がありますが、問題を修正するための推奨事項を提示することはできません。この場合は、問題の解決方法を特定してから、 1 つ以上のボリュームを移動する必要があります。
 
 .手順
-.  how to correct capacity issues,問題を解決する方法を認識する。。
+. <<容量の問題を解決する方法を特定する,問題を解決する方法を認識する。>>。
 . 分析に基づいて、容量の問題を回避するためにボリュームを移動します。
 +
-**  volumes to another system to avoid capacity issues,ボリュームを別のシステムに移動します。。
-**  volumes to another aggregate to avoid capacity issues,ボリュームを同じシステム上の別のアグリゲートに移動します。。
+** <<容量の問題を回避するためにボリュームを別のシステムに移動する,ボリュームを別のシステムに移動します。>>。
+** <<ボリュームを別のアグリゲートに移動して、容量の問題を回避します,ボリュームを同じシステム上の別のアグリゲートに移動します。>>。
 
 
 
@@ -282,6 +285,7 @@ image:screenshot_aggr_volumes.gif["スクリーンショット：アグリゲー
 
 1 つ以上のボリュームを別の Cloud Volumes ONTAP システムに移動して、容量の問題を回避できます。システムがディスクの上限に達した場合は、この操作が必要になることがあります。
 
+.このタスクについて
 このタスクの手順に従って、次のアクションが必要なメッセージを修正できます。
 
  Moving a volume is necessary to avoid capacity issues; however, Cloud Manager cannot perform this action for you because the system has reached the disk limit.
@@ -311,6 +315,7 @@ image:screenshot_aggr_volumes.gif["スクリーンショット：アグリゲー
 
 1 つ以上のボリュームを別のアグリゲートに移動して、容量の問題を回避できます。
 
+.このタスクについて
 このタスクの手順に従って、次のアクションが必要なメッセージを修正できます。
 
  Moving two or more volumes is necessary to avoid capacity issues; however, Cloud Manager cannot perform this action for you.

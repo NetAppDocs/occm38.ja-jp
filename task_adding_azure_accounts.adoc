@@ -27,16 +27,17 @@ NOTE: Cloud Manager からコネクタを導入すると、コネクタを導入
 
 Cloud Manager には、 Azure でアクションを実行するための権限が必要です。Azure アカウントに必要な権限を付与するには、 Azure Active Directory でサービスプリンシパルを作成して設定し、 Cloud Manager で必要な Azure クレデンシャルを取得します。
 
+.このタスクについて
 次の図は、 Cloud Manager が Azure で操作を実行するための権限を取得する方法を示しています。1 つ以上の Azure サブスクリプションに関連付けられたサービスプリンシパルオブジェクトは、 Azure Active Directory の Cloud Manager を表し、必要な権限を許可するカスタムロールに割り当てられます。
 
 image:diagram_azure_authentication.png["API コールを発信する前に Azure Active Directory から認証と承認を取得するクラウドマネージャを示す概念図。Active Directory において、 Cloud Manager Operator ロールで権限を定義し、Azure サブスクリプションと、 Cloud Manger アプリケーションを表すサービスプリンシパルオブジェクトに関連付けています。"]
 
 .手順
-.  an Azure Active Directory application,Azure Active Directory アプリケーションを作成します。
-.  the application to a role,アプリケーションをロールに割り当てます。
-.  Windows Azure Service Management API permissions,Windows Azure Service Management API 権限を追加します。
-.  the application ID and directory ID,アプリケーション ID とディレクトリ ID を取得します。
-.  a client secret,クライアントシークレットを作成します。
+. <<Azure Active Directory アプリケーションの作成,Azure Active Directory アプリケーションを作成します>>。
+. <<アプリケーションをロールに割り当てます,アプリケーションをロールに割り当てます>>。
+. <<Windows Azure Service Management API 権限を追加しています,Windows Azure Service Management API 権限を追加します>>。
+. <<アプリケーション ID とディレクトリ ID を取得しています,アプリケーション ID とディレクトリ ID を取得します>>。
+. <<クライアントシークレットの作成,クライアントシークレットを作成します>>。
 
 
 
@@ -45,6 +46,7 @@ image:diagram_azure_authentication.png["API コールを発信する前に Azure
 
 Cloud Manager でロールベースアクセス制御に使用できる Azure Active Directory （ AD ）アプリケーションとサービスプリンシパルを作成します。
 
+.作業を開始する前に
 Azure で Active Directory アプリケーションを作成してロールに割り当てるための適切な権限が必要です。詳細については、を参照してください https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/["Microsoft Azure のドキュメント：「 Required permissions"^]。
 
 .手順
@@ -64,6 +66,7 @@ image:screenshot_azure_ad.gif["は、 Microsoft Azure の Active Directory サ�
 . [*Register] をクリックします。
 
 
+.結果
 AD アプリケーションとサービスプリンシパルを作成しておきます。
 
 
@@ -179,6 +182,7 @@ image:screenshot_azure_client_secret.gif["Azure AD サービスプリンシパ�
 
 
 
+.結果
 これでサービスプリンシパルが設定され、アプリケーション（クライアント） ID 、ディレクトリ（テナント） ID 、およびクライアントシークレットの値をコピーしました。この情報は、 Cloud Manager で Azure アカウントを追加するときに入力する必要があります。
 
 
@@ -187,6 +191,7 @@ image:screenshot_azure_client_secret.gif["Azure AD サービスプリンシパ�
 
 必要な権限を Azure アカウントに付与したら、そのアカウントのクレデンシャルを Cloud Manager に追加できます。これにより、そのアカウントで Cloud Volumes ONTAP システムを起動できます。
 
+.必要なもの
 Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
 
 .手順
@@ -197,9 +202,9 @@ image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にあ
 . 資格情報の追加 * をクリックし、 * Microsoft Azure * を選択します。
 . 必要な権限を付与する Azure Active Directory サービスプリンシパルに関する情報を入力します。
 +
-** アプリケーション（クライアント） ID ：を参照してください  the application ID and directory ID。
-** ディレクトリ（テナント） ID ：を参照してください  the application ID and directory ID。
-** クライアントシークレット：を参照してください  a client secret。
+** アプリケーション（クライアント） ID ：を参照してください <<アプリケーション ID とディレクトリ ID を取得しています>>。
+** ディレクトリ（テナント） ID ：を参照してください <<アプリケーション ID とディレクトリ ID を取得しています>>。
+** クライアントシークレット：を参照してください <<クライアントシークレットの作成>>。
 
 
 . ポリシーの要件が満たされていることを確認し、 [* Continue （続行） ] をクリックします。
@@ -210,6 +215,7 @@ image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にあ
 . [ 追加（ Add ） ] をクリックします。
 
 
+.結果
 これで、から別のクレデンシャルセットに切り替えることができます [ 詳細と資格情報 ] ページ link:task_deploying_otc_azure.html["新しい作業環境を作成する場合"]：
 
 image:screenshot_accounts_switch_azure.gif["[ 詳細と資格情報 ] ページで [ 資格情報の編集 ] をクリックした後で資格情報を選択する方法を示すスクリーンショット"]
@@ -226,6 +232,7 @@ Cloud Manager にクレデンシャルを追加したあとに、 Azure Marketpl
 * 既存の Azure Marketplace サブスクリプションを新しいサブスクリプションに置き換える場合。
 
 
+.必要なもの
 Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
 
 .手順
@@ -249,6 +256,7 @@ video::video_subscribing_azure.mp4[width=848,height=480]
 
 Cloud Manager では、 Cloud Volumes ONTAP を導入する Azure クレデンシャルと Azure サブスクリプションを選択できます。管理対象に別の Azure サブスクリプションを選択することはできません を関連付けない限り、アイデンティティプロファイルを作成します https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["管理された ID"^] それらの登録と。
 
+.このタスクについて
 管理対象 ID はです link:concept_accounts_azure.html["最初の Azure アカウント"] Cloud Manager からコネクタを導入する場合。コネクタを導入すると、 Cloud Manager Operator ロールが作成され、 Connector 仮想マシンに割り当てられます。
 
 .手順
@@ -274,6 +282,7 @@ NOTE: Cloud Manager Operator は、で指定されたデフォルトの名前で
 . 追加のサブスクリプションについても、この手順を繰り返します。
 
 
+.結果
 新しい作業環境を作成するときに、管理対象 ID プロファイルに対して複数の Azure サブスクリプションから選択できるようになりました。
 
 image:screenshot_accounts_switch_azure_subscription.gif["Microsoft Azure プロバイダアカウントを選択する際に複数の Azure サブスクリプションを選択できる機能を示すスクリーンショット。"]

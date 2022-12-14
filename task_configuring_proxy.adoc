@@ -41,4 +41,5 @@ NOTE: Cloud Manager では、 @ 文字を含むパスワードはサポートさ
 
 
 
+.結果
 プロキシサーバを指定すると、 AutoSupport メッセージの送信時にプロキシサーバを使用するように、新しい Cloud Volumes ONTAP システムが自動的に設定されます。ユーザが Cloud Volumes ONTAP システムを作成する前にプロキシサーバを指定しなかった場合は、 System Manager を使用して、各システムの AutoSupport オプションでプロキシサーバを手動で設定する必要があります。

@@ -43,28 +43,22 @@
   <block id="a2339cfda7d84d9a5669a786d1bfae4a" category="doc">Azure BLOB ストレージへのデータのバックアップ</block>
   <block id="06ad314b340900d226b1196e1fe289e9" category="section-title">クイックスタート</block>
   <block id="2433628c53fed80ea9d352a1bcd9ce45" category="paragraph">これらの手順を実行してすぐに作業を開始するか、残りのセクションまでスクロールして詳細を確認してください。</block>
-  <block id="b70f6a951e89b0cf19d78de39f9fd2ce" category="section-title">構成がサポートされていることを確認します</block>
   <block id="a9dc386f711cf9e3429428a37297513b" category="list-text">Cloud Volumes ONTAP 9.7 以降を Azure で実行している。</block>
   <block id="fc054407571c2d4dfcfbb5057d24c238" category="list-text">バックアップを格納するストレージスペースに対する有効なクラウドプロバイダのサブスクリプションが必要です。</block>
   <block id="e44764e5848db6ece6d5d4bce23a85b7" category="inline-link-macro">アクティブ化されます</block>
   <block id="d8041f5f7cbb5dd5c2cd0da050735190" category="inline-link">Cloud Manager Marketplace のバックアップソリューション</block>
   <block id="7caa7d84d6547188e47ffcb0be6f2373" category="list-text">に登録しておきます<block ref="98d4a0895eea9c88efbf5ab4a5fd7d0d" category="inline-link-rx"></block>またはを購入したことが必要です <block ref="c942a36ea33b164eca0107356f810d5d" category="inline-link-macro-rx"></block> NetApp の Backup to Cloud BYOL ライセンス。</block>
-  <block id="21141a322ad2040a54d2c2957607307b" category="section-title">新規または既存のシステムでクラウドへのバックアップを有効化</block>
   <block id="67ad4c40f95c49285697342cebd0af58" category="list-text">新しいシステム：クラウドへのバックアップは、作業環境ウィザードではデフォルトで有効になります。このオプションは必ず有効にしておいてください。</block>
   <block id="ef39f67c43eadad86d27163809a329fc" category="list-text">既存のシステム：作業環境を選択し、右パネルのクラウドへのバックアップサービスの横にある * アクティブ化 * をクリックして、セットアップウィザードに従います。</block>
   <block id="c7ecc14f8fa26e1d6657e9a01121e29f" category="inline-image-macro">作業環境を選択したあとに使用できるクラウドへのバックアップのアクティブ化ボタンを示すスクリーンショット。</block>
   <block id="556ce68392a2e140efc2991cd6ddccb1" category="paragraph"><block ref="556ce68392a2e140efc2991cd6ddccb1" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="fa355815803dc5765178ceb1a5091ac0" category="section-title">プロバイダの詳細を入力します</block>
   <block id="35c50ff2b0fba9cbb66e1c842e12a18b" category="paragraph">プロバイダサブスクリプションを選択し、新しいリソースグループを作成するか、既存のリソースグループを使用するかを選択します。</block>
   <block id="b3687d4bedfe2e9ab363a8d2ef4b5fdc" category="inline-image-macro">バッキング時にクラウドプロバイダの詳細を示すスクリーンショット オンプレミスクラスタから Azure Blob にボリュームをバックアップ 階層</block>
   <block id="fa0d193d29fc897ab8a709518824c7a6" category="paragraph"><block ref="fa0d193d29fc897ab8a709518824c7a6" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="8c7aea6416cccda4e0738853d382a1a2" category="section-title">バックアップポリシーを定義</block>
   <block id="5d18ed69da47d4e04504b49903b39651" category="paragraph">デフォルトポリシーでは、毎日ボリュームがバックアップされ、各ボリュームの最新の 30 個のバックアップコピーが保持されます。週単位または月単位のバックアップに変更するか、システム定義のポリシーの中からいくつかのオプションを選択します。</block>
   <block id="b4f3e4fd8965718a9b0fdc725d353fdd" category="inline-image-macro">クラウドへのバックアップ設定を示すスクリーンショット。この機能を有効または無効にして、バックアップの保持期間を選択できます。</block>
   <block id="809fab9725736c8c10eeae3c9a8f1692" category="paragraph"><block ref="809fab9725736c8c10eeae3c9a8f1692" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="cf91ffe6a0830c1180e10ae661bd5c8f" category="section-title">バックアップするボリュームを選択します</block>
   <block id="5cde40f10c1d60503db5310912101a08" category="paragraph">Select Volumes （ボリュームの選択）ページで、バックアップするボリュームを特定します。</block>
-  <block id="813dc01dbd6a87212ea12478d22b116a" category="section-title">必要に応じて、データをリストアします</block>
   <block id="fa9c85c73a4cedafbdb19abab91af3de" category="paragraph">バックアップリストからボリュームを選択し、バックアップを選択して、バックアップから新しいボリュームにデータをリストアします。</block>
   <block id="e73b6f86fed29437a1aff0fcd7855fdd" category="inline-image-macro">ボリュームを選択したあとのバックアップのリストアアイコンのスクリーンショット。</block>
   <block id="64ba49ffeb3c11e2c16eee272880a790" category="paragraph"><block ref="64ba49ffeb3c11e2c16eee272880a790" category="inline-image-macro-rx" type="image"></block></block>
@@ -927,12 +921,9 @@
   <block id="3b6a33cf0809abb96a9b60d73429a5d2" category="paragraph">Cloud Manager からコネクタのマシンタイプの変更手順が表示されます。</block>
   <block id="0f38e94111b0a99c65034e5b5ced0468" category="summary">Cloud Manager で Azure NetApp Files 作業環境を作成し、ネットアップアカウント、容量プール、ボリューム、 Snapshot を作成および管理します。</block>
   <block id="269d61ef3d753fded2f13b5270f8abc6" category="doc">Azure NetApp Files をセットアップしています</block>
-  <block id="5f6b33406fc95573e988fe8daabf4cb4" category="section-title">アクセス権のリクエスト</block>
   <block id="49b6b023bfe8fe3809444ab0e4497bf2" category="inline-link">オンラインリクエストを送信します</block>
   <block id="1caa8ec9d5d4510ddcd593ec35fdc1cc" category="paragraph"><block ref="a88de637f412a55aeae4f759550b1584" category="inline-link-rx"></block> Azure NetApp Files へのアクセスを許可する必要があります。</block>
-  <block id="9f6195430155a4712fbd4733de1876ca" category="section-title">Azure AD アプリケーションをセットアップする</block>
   <block id="5ef8b3581bd08eb7bd7df9da47cee4d9" category="paragraph">Azure から Azure AD アプリケーションに権限を付与し、アプリケーション（クライアント） ID 、ディレクトリ（テナント） ID 、クライアントシークレットの値をコピーします。</block>
-  <block id="c5c12e22be965b4ae0e9fc5e1618bdbe" category="section-title">Azure NetApp Files 作業環境を作成します</block>
   <block id="2ce12157a5c44e5f94e50d438ab296af" category="paragraph">Cloud Manager で、 * 作業環境の追加 * &gt; * Microsoft Azure * &gt; * Azure NetApp Files * をクリックし、 AD アプリケーションの詳細を指定します。</block>
   <block id="e3aa2722b812f0aa7a19ceb76f107e90" category="section-title">アクセスを要求中です</block>
   <block id="bd797c387b743ce2a482b731a0134c98" category="inline-link">オンラインリクエストを送信しています</block>
@@ -1028,7 +1019,6 @@
   <block id="c41bec28a27c5fd23d2f1cff69d7c0e5" category="inline-link-macro">AWS Marketplace からコネクタを作成します</block>
   <block id="12d154e96ea07eeb54a28022d8488170" category="inline-link-macro">ソフトウェアをダウンロードして、ご使用のホストにインストールします</block>
   <block id="eca70e93ee18367f7ae09ed47f9b099e" category="paragraph">Cloud Manager では、ユーザインターフェイスから AWS に直接コネクタを作成できます。オプションとして、を選択することもできます <block ref="fe9076ecc1b2642d0fbb2a7b96074339" category="inline-link-macro-rx"></block>または <block ref="66a10ea6ad2e5c9bab6bcd2bf789a40b" category="inline-link-macro-rx"></block>。</block>
-  <block id="a711863513c11f3a6d86294acc7be0ba" category="list-title">必要なもの</block>
   <block id="21c199e82e474a9a5607a2b9ccb8e66f" category="inline-link">必要な権限</block>
   <block id="bd76e6e4e18e9fc3af923fc3437df23d" category="list-text">IAM 用の AWS アクセスキーとシークレットキー を持つユーザ<block ref="a18b1518901620e43c44c260945ff7cb" category="inline-link-rx"></block>。</block>
   <block id="696168c9b9e3d6be0b4ff452721f4186" category="list-text">選択した AWS リージョン内の VPC 、サブネット、キーペア。</block>
@@ -1812,7 +1802,6 @@
   <block id="4f6582928260ec95d5382830f415104b" category="section-title">サポートされている NFS のバージョン</block>
   <block id="30fe527571ab3736d66f7bc649438aab" category="list-text">NFS サーバでは、データ転送時の暗号化が NFS バージョン 3 、 4.0 、 4.1 、 4.2 でサポートされています。</block>
   <block id="e58f770a9e62d5d72c5f922745500d31" category="list-text">Azure NetApp Files では、 NFS バージョン 3 および 4.1 でデータ転送時の暗号化がサポートされます。</block>
-  <block id="5dd0043a7a3026397ee9f077316f20ec" category="section-title">作業を開始するために必要なもの</block>
   <block id="361bdd51b5ace70652d40497007eff5d" category="paragraph">次のものを用意してください。</block>
   <block id="174c6b9a002fb36254a3e4a0f2937473" category="inline-link-macro">移行元と移行先の要件</block>
   <block id="fa9cb864928bd5610ae849ad0340a933" category="list-text">に対応した 2 台の NFS サーバ <block ref="f046c01b012d351b8011cc50a30a4534" category="inline-link-macro-rx"></block> または、 2 つのサブネットまたはリージョンの Azure NetApp Files 。</block>
@@ -2670,7 +2659,6 @@
   <block id="61bf906af45af325c7dfcb3a82074169" category="paragraph">たとえば、 NFS サーバがデータセンターにあり、データブローカーが AWS にある場合、ネットワークから VPC へのネットワーク接続（ VPN または直接接続）が必要です。</block>
   <block id="39bb21e67daf5fcfbc9e0955f8a7891a" category="section-title">移行元と移行先の要件</block>
   <block id="f549fa5a7b8a70265d3f6f6fc5ae1943" category="paragraph">ソースとターゲットが次の要件を満たしていることを確認します。</block>
-  <block id="9cfdc815b5ee8427850a411b9e071aa5" category="section-title">AWS S3 バケット要件</block>
   <block id="776b1b85621fb63162558ee8334e89d2" category="paragraph">AWS S3 バケットが次の要件を満たしていることを確認します。</block>
   <block id="1bd06867721151f8850b5c1bed8ed410" category="section-title">AWS S3 でサポートされるデータブローカーの場所</block>
   <block id="8b10287f56fdcb032a0d3824c6e3f4d2" category="paragraph">S3 ストレージを含む同期関係では、 AWS または社内にデータブローカーを導入する必要があります。いずれの場合も、インストール時にデータブローカーを AWS アカウントに関連付けるように求められます。</block>
@@ -2691,7 +2679,6 @@
   <block id="e12f2cb93ea8b0df53b39ccf052346cd" category="paragraph">ロール ARN を見つけるには、 EC2 コンソールに移動し、データブローカーインスタンスを選択して、 Description タブから IAM ロールをクリックします。次に、ロール ARN を含む IAM コンソールに概要ページが表示されます。</block>
   <block id="27b29b1148f0a8d10712b93a6b2f07c0" category="inline-image-macro">ロール ARN を示す AWS IAM コンソールのスクリーンショット。</block>
   <block id="5413d4eaee8e3ec886af67b45688f61a" category="paragraph"><block ref="5413d4eaee8e3ec886af67b45688f61a" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="35db9398dd8bb61e970e384239370f98" category="section-title">Azure BLOB ストレージの要件</block>
   <block id="7e2fc8b47c3caa089d5e9782e7d982d2" category="paragraph">Azure BLOB ストレージが次の要件を満たしていることを確認します。</block>
   <block id="47a68bd0994db3020f105c7c17c88fc6" category="section-title">Azure BLOB でサポートされるデータブローカーの場所</block>
   <block id="d99926e63a4ae2a389096fce59c51d2a" category="paragraph">同期関係に Azure BLOB ストレージが含まれている場合、データブローカーは任意の場所に配置できます。</block>
@@ -2871,15 +2858,12 @@
   <block id="8d4073fa4a8e186f65d9241d17413d18" category="paragraph">キー管理サービス（ KMS ）を使用して AWS でデータ暗号化を有効にすると、 Cloud Volumes ONTAP のブートディスクとルートディスクも暗号化されます。これには、 HA ペアのメディエーターインスタンスのブートディスクが含まれます。ディスクは、作業環境の作成時に選択した CMK を使用して暗号化されます。</block>
   <block id="935ed33d4f306c34257930e1dcd058f4" category="summary">Cloud Manager のワークスペースに Cloud Compliance インスタンスを導入するには、いくつかの手順を実行します。</block>
   <block id="dea350e011f009a1445aafaebacfa743" category="doc">Cloud Compliance の導入</block>
-  <block id="94ee7072c2750da1997438a715efb7d4" category="section-title">コネクタを作成します</block>
   <block id="211751cb447d335f31ff23a277ab83a3" category="inline-link-macro">AWS でコネクタを作成する</block>
   <block id="b51a9186f236269e0e1206fe364d56ee" category="inline-link-macro">Azure でコネクタを作成する</block>
   <block id="a6ec169424c876a3beafbf48ef478e20" category="paragraph">コネクタがない場合は、 Azure または AWS でコネクタを作成します。を参照してください <block ref="ebbb74ad45f7f249f717d2bdfaffc41f" category="inline-link-macro-rx"></block> または <block ref="a403263a6ad418baf07244cc239ebdf2" category="inline-link-macro-rx"></block>。</block>
-  <block id="5de07b40dee2a8b07f30a0fd66bd33fa" category="section-title">前提条件を確認する</block>
   <block id="259ae55ab8dda4624f19d41ec0f1fb11" category="inline-xref">すべてのリストを参照してください</block>
   <block id="c200489a33ca47a799d7f09bc8d22aa4" category="paragraph">クラウド環境が前提条件を満たしていることを確認します。これには、クラウドコンプライアンスインスタンス用の vCPU 16 個、インスタンス用のアウトバウンドインターネットアクセス、ポート 80 経由のコネクタとクラウドコンプライアンスの接続などが含まれます。 <block ref="b4daa5ef39b091baf7fa2ac3acaf6a75" category="inline-xref-macro-rx"></block>。</block>
   <block id="4a1f512b650a2696f3108087546bc9a2" category="paragraph">インストールウィザードを起動して、 Cloud Manager に Cloud Compliance インスタンスを導入します。</block>
-  <block id="d563ee05b8dfe14ffc988a80f0520984" category="section-title">Cloud Compliance サービスに登録</block>
   <block id="001e2613757158acc9ab68d34ce92c4c" category="paragraph">Cloud Compliance が Cloud Manager でスキャンする最初の 1TB のデータは無料です。その後もデータのスキャンを続行するには、 AWS または Azure Marketplace へのサブスクリプションが必要です。</block>
   <block id="fac538f9dd8e319a064b204550937d1a" category="section-title">コネクタを作成しています</block>
   <block id="0dcd3a9f547bb6d7aade262e1f3e6add" category="inline-link-macro">Cloud Manager の機能にはコネクタが必要です</block>
@@ -3114,14 +3098,10 @@
   <block id="7093690eb19793c1f2d3b8debc16191d" category="summary">Cloud Compliance では、 Amazon S3 バケットをスキャンして、 S3 オブジェクトストレージに格納されている個人データや機密データを特定できます。Cloud Compliance は、ネットアップソリューション用に作成されたバケットであるかどうかに関係なく、アカウント内の任意のバケットをスキャンできます。</block>
   <block id="5e12fa55096bdeb19e73dc97e7a71822" category="doc">Cloud Compliance for Amazon S3 の利用を開始してください</block>
   <block id="91e06e9a9ef97681b798e2e5e007ba97" category="paragraph">これらの手順を実行すると、すぐに作業を開始できます。また、残りのセクションまでスクロールして詳細を確認することもできます。</block>
-  <block id="4e15cc0de53e4cc5b4b6be1bee6ff91e" category="section-title">クラウド環境で S3 の要件を設定します</block>
   <block id="35906e1717c463c928eabc55bf99a87e" category="paragraph">クラウド環境が Cloud Compliance の要件を満たしていることを確認します。たとえば、 IAM ロールの準備と Cloud Compliance から S3 への接続の設定を行います。 <block ref="3183643dfde9368e67ddf4561a2d0e52" category="inline-xref-macro-rx"></block>。</block>
-  <block id="20868b225962de2036ef9d5bc2678295" category="section-title">Cloud Compliance インスタンスを導入します</block>
   <block id="d20957b20cd100706f96215595e04a0e" category="inline-link-macro">Cloud Manager に Cloud Compliance を導入</block>
   <block id="9fcf5dbe9e6e262a016db06b59ec063e" category="paragraph"><block ref="fe08894adea8140c6d78c094e4fdf668" category="inline-link-macro-rx"></block> インスタンスが展開されていない場合。</block>
-  <block id="6a37db457059d4175170168e250fc5d5" category="section-title">S3 作業環境でコンプライアンスをアクティブ化します</block>
   <block id="5bc7a12136c721946cb4d5a297752b0c" category="paragraph">Amazon S3 作業環境を選択し、 * 準拠の有効化 * をクリックして、必要な権限を含む IAM ロールを選択します。</block>
-  <block id="09162861892ebffb9d1ff29eb7a64066" category="section-title">スキャンするバケットを選択します</block>
   <block id="345547811becbe9f20242ffdb6da631b" category="paragraph">スキャンするバケットを選択すると、 Cloud Compliance でスキャンが開始されます。</block>
   <block id="70288fd34cd20f5ab81e3765cff993f7" category="section-title">S3 の前提条件の確認</block>
   <block id="4e1dce91c337b5a8e7c199fe4f5f642e" category="paragraph">S3 バケットのスキャンに固有の要件を次に示します。</block>
@@ -3192,7 +3172,6 @@
   <block id="3c2924f934a5661e0d497d5b738270dd" category="paragraph">コネクタはアウトバウンドのインターネットアクセスがないと Cloud Volumes ONTAP を管理できないため、この手順は重要です。アウトバウンド接続を制限する必要がある場合は、のエンドポイントのリストを参照してください <block ref="7f949044ebce431b43c6da5a49601340" category="inline-link-macro-rx"></block>。</block>
   <block id="a5ee79c4e6a740f92d76e4ae26f7efd9" category="inline-link-macro">ネットワーク要件の詳細については、こちらをご覧ください</block>
   <block id="4395343556860da8f9b10c4effd627d0" category="paragraph"><block ref="5d8e04475b5a217fce7982022e91e25c" category="inline-link-macro-rx"></block>。</block>
-  <block id="161814f2b49992da7596b7b7fc9f77ae" category="section-title">Cloud Manager を使用して Cloud Volumes ONTAP を起動します</block>
   <block id="7e78cd436b6c8706972ddd93ac6ab72e" category="inline-link-macro">詳細な手順を参照してください</block>
   <block id="06130a67754ac90a776306a609d2731d" category="paragraph">[ 作業環境の追加 ] をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を実行します。 <block ref="51e8dfe79755b4e903e07f2a6b336caf" category="inline-link-macro-rx"></block>。</block>
   <block id="d3d4bcd36068d41a0acad7e8aad646db" category="list-text"><block ref="d3d4bcd36068d41a0acad7e8aad646db" category="inline-link-macro-rx"></block></block>
@@ -3207,7 +3186,6 @@
   <block id="53cf3c056570348be98fa2dc2bea3446" category="paragraph">これらの手順をすばやく開始するか、次のセクションで詳細を確認してください。</block>
   <block id="c0d5abaa52a2adc8b50cf6748143a972" category="section-title">Cloud Volumes Service API を有効にします</block>
   <block id="51854a19c4259f68487a6142b24a127b" category="paragraph">Google で、 Cloud Volumes Service for GCP API を有効にして、 Cloud Manager がサブスクリプションとクラウドボリュームを管理できるようにします。</block>
-  <block id="941f4f6727d625e704ae685f2dee59f4" category="section-title">GCP サービスアカウントを作成し、クレデンシャルをダウンロードします</block>
   <block id="5cbc65380785f69030370a41f6765916" category="paragraph">Google から GCP サービスアカウントと GCP ロールを作成し、 Cloud Manager が Cloud Volumes Service for GCP アカウントにアクセスできるようにします。</block>
   <block id="f4bbf329a370fd1140750ec443f5389d" category="section-title">GCP 向け Cloud Volumes Service 作業環境を作成します</block>
   <block id="dd50973260de02b147ef0408f27d7b00" category="paragraph">Cloud Manager で、 * 作業環境の追加 * &gt; * Google Cloud * &gt; * Cloud Volumes Service * をクリックし、サービスアカウントと Google Cloud プロジェクトの詳細を指定します。</block>
@@ -3348,7 +3326,6 @@
   <block id="572539efea3b8fc37d4d9f01097ce1b1" category="section-title">AWS にデータブローカーを展開するために必要な権限</block>
   <block id="0c976b99165500ae45a3c855e25dcab9" category="inline-link">ネットアップが提供するポリシーです</block>
   <block id="e07a5562f4316c82f42f0cceadb85346" category="paragraph">の導入に使用する AWS ユーザアカウント データブローカーの権限は、に含まれている必要があります<block ref="7a75c423e60de35145dc973b82d7b871" category="inline-link-rx"></block>。</block>
-  <block id="9b99759f27fdd4623c9ea015c92207fd" category="section-title">AWS データブローカーで独自の IAM ロールを使用するための要件</block>
   <block id="da5c81a4026a6c0e492776683df14992" category="paragraph">Cloud Sync は、データブローカーを導入するときに、データブローカーインスタンスの IAM ロールを作成します。必要に応じて、独自の IAM ロールを使用してデータブローカーを展開できます。組織に厳密なセキュリティポリシーがある場合は、このオプションを使用できます。</block>
   <block id="b8e7ab2062cb997e59199b1b7597c950" category="paragraph">IAM ロールは、次の要件を満たす必要があります。</block>
   <block id="187f2d3a34ab7f9d7fce1966c39206fe" category="list-text">EC2 サービスは、 IAM の役割を信頼できるエンティティとして引き受けることを許可されている必要があります。</block>
@@ -3390,9 +3367,7 @@
   <block id="5771fdfd9f843a750efdbb13e9276704" category="paragraph">AWS を Cloud Volumes Service 用にセットアップしておきます のいずれかに登録しておく必要があります<block ref="b4e3d74af85b05fca693589abeec4d57" category="inline-link-rx"></block>。</block>
   <block id="b25b082dfd6039e04b4f5fd22b71aa52" category="section-title">Cloud Volumes Service for AWS サブスクリプションを追加します</block>
   <block id="2884a4df3fcc2ab401c11924d9c37a56" category="paragraph">Cloud Volumes Service for AWS のサブスクリプションに基づいて、ボリュームの作業環境を作成する必要があります。</block>
-  <block id="a1f56b5f789fb3d6a8912a9e44ce80c0" category="section-title">クラウドボリュームを作成</block>
   <block id="e531c745388dcb9070304217129aba70" category="paragraph">このサブスクリプション用の既存のクラウドボリュームは、新しい作業環境に表示されます。定義しない場合は、 Cloud Manager から新しいボリュームを作成します。</block>
-  <block id="a9d788be36d21df25c24362c907e546a" category="section-title">クラウドボリュームをマウント</block>
   <block id="3def1478f4fe2be6d30bdb324c05d4a4" category="paragraph">ユーザがストレージの使用を開始できるように、新しいクラウドボリュームを AWS インスタンスにマウントします。</block>
   <block id="17bcf93007944955856f301d4559f3f8" category="paragraph">サービスに関する一般的な質問については、 Cloud Manager のチャットを使用してください。</block>
   <block id="5165f8dcc441652561153c961b6647c1" category="inline-link">ここでは、これらの手順について説明します</block>
@@ -3908,7 +3883,6 @@
   <block id="9e704e76a760053c0baca32c96d9c6a3" category="list-text">コネクター（ * Connector ）をクリックします。</block>
   <block id="33e248648a845f8d6e538dfb02e4620f" category="list-text">関連付けるコネクタの * ワークスペースの管理 * をクリックします。</block>
   <block id="211c1a963db0ec4433679bba9d1a1973" category="paragraph">ワークスペース管理者は、これらのコネクタを使用して Cloud Volumes ONTAP システムを作成できるようになりました。</block>
-  <block id="3f297ef15cde0668e93b35f2752fd4fd" category="section-title">次の手順</block>
   <block id="d299a01ec99cf98082c28b6218d90b06" category="paragraph">アカウントの設定が完了したので、ユーザーの削除、ワークスペース、コネクタ、およびサブスクリプションの管理によって、いつでもアカウントを管理できます。 <block ref="0db15a5a390b8cb62ea5abfd884f0980" category="inline-link-macro-rx"></block>。</block>
   <block id="6e870d10dae7f08688e7811df5bd21fe" category="summary">Cloud Volumes ONTAP システムは、 AWS や Azure からではなく、 Cloud Manager から削除することをお勧めします。</block>
   <block id="fa2caa41abfbcb236c5dbbf27fc28912" category="doc">Cloud Volumes ONTAP 作業環境を削除する</block>
@@ -4348,13 +4322,11 @@
   <block id="9b26c9f1ff8d3d31b65ece96e6593fe6" category="list-text"><block ref="9b26c9f1ff8d3d31b65ece96e6593fe6" category="inline-link-macro-rx"></block></block>
   <block id="b6122ca66d45c4dd150f5506ae4e690e" category="summary">データを Google Cloud Storage に階層化することで、オンプレミスの ONTAP クラスタの空きスペースを確保できます。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。</block>
   <block id="be0b62dd35badd1c098da00c97d5157d" category="doc">オンプレミスの ONTAP クラスタから Google Cloud Storage へデータを階層化する</block>
-  <block id="049f952b8e6cf7689afa066f1a9ea7ed" category="section-title">Google Cloud Storage へのデータの階層化を準備</block>
   <block id="4c6a9048ac276eb9391ebe2abd8e0c0d" category="paragraph">次のものが必要です。</block>
   <block id="8f2cf469fa541e24cda5b515b8a77670" category="list-text">ONTAP 9.6 以降を実行し、 Google Cloud Storage への HTTPS 接続を備えたオール SSD アグリゲートを含む AFF または FAS システム。</block>
   <block id="2deaed2300671ee7d90104d75a9f9c41" category="list-text">事前定義された Storage Admin ロールとストレージアクセスキーを持つサービスアカウント。</block>
   <block id="e020f6db5f627706b6bc9c4d66d7c52f" category="list-text">Google Cloud Platform VPC にインストールされるコネクタ。</block>
   <block id="01c6106eee9f2585bce4736ffc82f921" category="list-text">データセンター内の ONTAP クラスタ、 Google Cloud Storage 、およびクラウド階層化サービスへのアウトバウンド HTTPS 接続を可能にするコネクタのネットワーク。</block>
-  <block id="9a5f1dcfa03032ee140f73e2673dd4ad" category="section-title">階層化をセットアップする</block>
   <block id="09ea182ec53d591f63fdf78f1f7a84ae" category="paragraph">Cloud Manager で、オンプレミスの作業環境を選択し、 * 階層化の設定 * をクリックして、プロンプトに従って Google Cloud Storage にデータを階層化します。</block>
   <block id="e907b41f5f3d7332bee5a43fbbf78a08" category="section-title">ライセンスをセットアップする</block>
   <block id="ab2e64321f63b7ea8e6f487c9c08aa1f" category="paragraph">無償トライアルの終了後、従量課金制のサブスクリプション、 ONTAP 階層化ライセンス、またはその両方を組み合わせて使用して、クラウド階層化の料金を支払うことができます。</block>
@@ -4798,7 +4770,6 @@
   <block id="9a3287fcb26e5124ab289087c07c9388" category="list-text">ターゲット VPC からのアウトバウンドインターネットアクセスを有効にして、コネクタと Cloud Volumes ONTAP が複数のエンドポイントに接続できるようにします。</block>
   <block id="b2348a11f357c3478ffbcf0aab0b00ab" category="paragraph">コネクタはアウトバウンドのインターネットアクセスがないと Cloud Volumes ONTAP を管理できないため、この手順は重要です。アウトバウンド接続を制限する必要がある場合は、のエンドポイントのリストを参照してください <block ref="35fe9d5e499257a6c44e06c4316bf36f" category="inline-link-macro-rx"></block>。</block>
   <block id="f5f464565133d38cee4612464168ff9d" category="paragraph"><block ref="e5981a2578175836e4b7ae06337a00cd" category="inline-link-macro-rx"></block>。</block>
-  <block id="b2640d276819894e87137588e21cb75b" category="section-title">データ階層化用の GCP をセットアップします</block>
   <block id="56396a2ffd04b4ec56fea522b8f0838c" category="paragraph">Cloud Volumes ONTAP から低コストのオブジェクトストレージ（ Google Cloud Storage バケット）にコールドデータを階層化するには、 2 つの要件を満たす必要があります。</block>
   <block id="d6add8b6d1573dc2b0d456edec6d82cd" category="inline-link">プライベート Google アクセス用の Cloud Volumes ONTAP サブネットを設定します</block>
   <block id="d2907cc9adcfbea41e4dd52371c016a4" category="list-text"><block ref="2435466b99ebb077da49570ea0f39e4b" category="inline-link-rx"></block>。</block>
@@ -4811,7 +4782,6 @@
   <block id="05a09a4b4e485b8e6f4ba6e9b009933b" category="paragraph">ユーザロールを指定できます<block ref="8db44a13d0cd753c4bcc888127c4cd1e" category="inline-link-rx"></block>または<block ref="6bfcdb29c715b11ada48d3406b906ce0" category="inline-link-rx"></block>。</block>
   <block id="4efe66d06f786832274780be4c27d3de" category="paragraph">Cloud Volumes ONTAP の作業環境を作成した場合、後で階層化サービスアカウントを選択する必要があります。</block>
   <block id="70d18c6bed52dda8e071726bae44945d" category="paragraph">データの階層化を有効にせず、 Cloud Volumes ONTAP システムの作成時にサービスアカウントを選択した場合は、システムをオフにして、サービスアカウントを GCP コンソールから Cloud Volumes ONTAP に追加する必要があります。</block>
-  <block id="3824876226172edfe0f17e8022b60fda" category="section-title">Google Cloud API を有効にします</block>
   <block id="e478bf49f8034f2197e96520fa338da6" category="inline-link">プロジェクトで次の Google Cloud API を有効にします</block>
   <block id="37f0d0c26633509f71da353ca5443b0a" category="paragraph"><block ref="dc5737502524148f78bf03ba18318700" category="inline-link-rx"></block>。これらの API は、コネクタと Cloud Volumes ONTAP を導入するために必要です。</block>
   <block id="d82c8fcef9b6dd8fb6808c96dcbc5bb5" category="list-text">Cloud Deployment Manager V2 API</block>
@@ -4824,7 +4794,6 @@
   <block id="017c088f941f62cdbecfbf34e99a536d" category="list-text"><block ref="017c088f941f62cdbecfbf34e99a536d" category="inline-link-macro-rx"></block></block>
   <block id="2079bc33153a98975920a0db7f19f315" category="summary">AWS および Azure の一部の Cloud Volumes ONTAP 構成にはローカルの NVMe ストレージが含まれています。このストレージは、 Cloud Volumes ONTAP がパフォーマンスを向上させるために Flash Cache として使用します。</block>
   <block id="f1826d507ec43590779916360d0985cf" category="paragraph">AWS および Azure の一部の Cloud Volumes ONTAP 構成にはローカルの NVMe ストレージが含まれています。このストレージは、 Cloud Volumes ONTAP でパフォーマンスを向上させるために _Flash Cache _ として使用されます。</block>
-  <block id="e0c8b3ee252e2f32575e8c863dbc2dd2" category="section-title">Flash Cache とは</block>
   <block id="3a36e6b466e0265c25d241c486f64e02" category="paragraph">Flash Cache は、最近読み取られたユーザデータとネットアップのメタデータをリアルタイムでインテリジェントにキャッシングすることで、データへのアクセスを高速化します。データベース、 E メール、ファイルサービスなど、ランダムリードが大量に発生するワークロードに効果的です。</block>
   <block id="6cfcb94c758c3cb2f0daca06a93d0312" category="section-title">AWS でサポートされるインスタンス</block>
   <block id="cb9e3f8f6cb940e28841b92208cae9c3" category="paragraph">新規または既存の Cloud Volumes ONTAP Premium または BYOL システムがある EC2 インスタンスタイプを選択します。</block>
@@ -4901,16 +4870,13 @@
   <block id="64641b49197c5612464b74e30b52791b" category="summary">AWS または Azure で Cloud Compliance for Azure NetApp Files または Cloud Volumes ONTAP を使用するには、いくつかの手順を実行します。</block>
   <block id="f70bfb39126c31965fa3b9e676fa2baa" category="doc">『 Getting started with Cloud Compliance for Cloud Volumes ONTAP and Azure NetApp Files 』</block>
   <block id="d02a38f2893ab97ea331478720eb7f7e" category="paragraph">Cloud Volumes ONTAP または Azure NetApp Files 向けのクラウドコンプライアンスを開始するには、いくつかの手順を実行します。</block>
-  <block id="4d6fbfc1238abdfcbb45f1a08058ff2f" category="section-title">作業環境でクラウドへのコンプライアンスを実現</block>
   <block id="7c4cd17fe03266da8794f081c6b061da" category="paragraph">Cloud Compliance をクリックし、 * Configuration * タブを選択して、特定の作業環境のコンプライアンススキャンを有効にします。</block>
-  <block id="40733d51554cd03755a3c45936e9ba72" category="section-title">ボリュームへのアクセスを確認</block>
   <block id="cb69f1cc4d6db8aa9d9848f2243024a2" category="paragraph">Cloud Compliance が有効になったので、ボリュームにアクセスできることを確認します。</block>
   <block id="e3fc305a932d3d2abd174bac9b42732d" category="list-text">クラウドコンプライアンスインスタンスには、各 Cloud Volumes ONTAP サブネットまたは Azure NetApp Files サブネットへのネットワーク接続が必要です。</block>
   <block id="7c7226e9a80bf0a4032888ef63440547" category="list-text">Cloud Volumes ONTAP のセキュリティグループは、クラウドコンプライアンスインスタンスからのインバウンド接続を許可する必要があります。</block>
   <block id="34be4e847de3dc44a23f3545d879c123" category="list-text">NFS ボリュームのエクスポートポリシーで、 Cloud Compliance インスタンスからのアクセスを許可する必要があります。</block>
   <block id="b1c46e2accf63f430648a32bfa04dfe5" category="list-text">CIFS ボリュームをスキャンするには、 Cloud Compliance で Active Directory のクレデンシャルが必要です。</block>
   <block id="f437c4bbc48bf53c1c5228d68edf507d" category="paragraph">クラウドコンプライアンス * &gt; * スキャン設定 * &gt; * CIFS クレデンシャルの編集 * をクリックし、クレデンシャルを入力します。クレデンシャルは読み取り専用ですが、管理者のクレデンシャルを指定することで、 Cloud Compliance は昇格された権限が必要なデータを確実に読み取ることができます。</block>
-  <block id="b27f23d88cbeb8bf2a0d9c5fdd02bb11" category="section-title">スキャンするボリュームを設定します</block>
   <block id="bd6a0b4fe58c55d7e22a01cfd8c474a6" category="paragraph">スキャンするボリュームを選択すると、 Cloud Compliance でスキャンが開始されます。</block>
   <block id="a2ee3d69ca5431c2c6eae01551523699" category="section-title">作業環境での Cloud Compliance の有効化</block>
   <block id="cf4cb9aed3c0c0747130cf6cf29c6ce3" category="list-text">Cloud Manager の上部で、 * Cloud Compliance * をクリックし、 * Configuration * タブを選択します。</block>
@@ -4991,7 +4957,6 @@
   <block id="8298547bbbd227879ca27d72eedeb07a" category="list-text">ボリュームにカーソルを合わせ、 * ボリュームをマウント * を選択します。</block>
   <block id="14f7ba4cf15060bd06652c615c66c92e" category="paragraph"><block ref="14f7ba4cf15060bd06652c615c66c92e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="38aa5b57f82843fe74bb954a343bf4e0" category="list-text">指示に従ってボリュームをマウントします。</block>
-  <block id="93bed5a9ef977c118d1838ee3b9ad3dd" category="section-title">ボリュームのサイズとタグを編集する</block>
   <block id="8cbb6213062bff0f8ae5d9232049a4ae" category="paragraph">ボリュームの作成後、ボリュームのサイズやタグをいつでも変更できます。</block>
   <block id="8acb095feb0a7824e13dd4cff484b450" category="list-text">ボリュームにカーソルを合わせ、 * 編集 * を選択します。</block>
   <block id="c94fd6f55752bbd9d6ff1d91b90b2493" category="list-text">必要に応じてサイズとタグを変更します。</block>
@@ -5154,7 +5119,6 @@
   <block id="9a036c7eaca0f0813d22bd59bd333dc4" category="list-text">クラウドボリュームサービスと Azure NetApp Files を利用しているグローバルファイルキャッシュユーザを対象としたカスタマーサポートは、プロバイダからの標準サポートを通じて利用できます。Google カスタマーサポートまたは Microsoft カスタマーサポートにそれぞれお問い合わせください。</block>
   <block id="36c3a2947091078a94e6fda78dee8606" category="summary">Cloud Manager を使用すると、 IT エキスパートとクラウドアーキテクトは、ネットアップのクラウドソリューションを使用してハイブリッドマルチクラウドインフラを一元管理できます。</block>
   <block id="684c574c7f4f96c8a8169a7ac2bda18e" category="doc">Cloud Manager および Cloud Volumes ONTAP のドキュメント</block>
-  <block id="1fde0727b387439572ade83eecff4f68" category="section-title">新機能をご紹介します</block>
   <block id="674992420d1621f658d033fe6c1cb4fa" category="list-text"><block ref="674992420d1621f658d033fe6c1cb4fa" category="inline-link-macro-rx"></block></block>
   <block id="dcc605ce865f82b52df30a38895a0a28" category="inline-link-macro">Cloud Manager の新機能</block>
   <block id="edb072b4e9ed25ee40010488a956934f" category="list-text"><block ref="edb072b4e9ed25ee40010488a956934f" category="inline-link-macro-rx"></block></block>
@@ -5192,11 +5156,8 @@
   <block id="4272c70c15d6dbaad262853f7847bead" category="paragraph">Trident は、ネットアップが管理する、完全にサポートされているオープンソースプロジェクトです。Trident は、 Kubernetes と Persistent Volume フレームワークとネイティブに統合されており、ネットアップのストレージプラットフォームを任意に組み合わせて実行されるシステムからボリュームのプロビジョニングと管理をシームレスに行います。<block ref="8f1593831c6eb1f5af4cabdfeaa8b8ff" category="inline-link-rx"></block>。</block>
   <block id="21acf0236d5d1edafd3b71b711bde1e6" category="admonition">Kubernetes 機能は、オンプレミスの ONTAP クラスタではサポートされていません。Cloud Volumes ONTAP でのみサポートされています。</block>
   <block id="862dc153087687c59f8f0e5557334a93" category="paragraph">Kubernetes クラスタと Cloud Volumes ONTAP の接続、 Kubernetes クラスタとコネクタの間の接続、 1.14 以上の Kubernetes バージョン、クラスタ内の少なくとも 1 つのワーカーノードなど、環境が前提条件を満たしていることを確認します。 <block ref="b4daa5ef39b091baf7fa2ac3acaf6a75" category="inline-xref-macro-rx"></block>。</block>
-  <block id="f91c9e4115b16af2cd2ce338b54a61bc" category="section-title">Kubernetes クラスタを Cloud Manager に追加</block>
   <block id="078cfadf948fabde9d843c0725281900" category="paragraph">Cloud Manager で、 * Kubernetes * をクリックしてクラウドプロバイダの管理サービスからクラスタを直接検出するか、または kubeconfig ファイルを指定してクラスタをインポートします。</block>
-  <block id="a05f5ad82e28c9eb27573925fc851dc3" category="section-title">クラスタを Cloud Volumes ONTAP に接続します</block>
   <block id="ed10e82b70c8870cbc66e299150d450b" category="paragraph">Kubernetes クラスタを追加したら、 * 作業環境への接続 * をクリックして、クラスタを 1 つ以上の Cloud Volumes ONTAP システムに接続します。</block>
-  <block id="3131838ab26e8cd5c452aaac1467f3b4" category="section-title">永続ボリュームのプロビジョニングを開始します</block>
   <block id="c5ea1d5f2f35adec1d872ec686a8c040" category="paragraph">Kubernetes の標準のインターフェイスと構成要素を使用して、永続ボリュームを要求および管理できます。Cloud Manager では、 NFS ストレージクラスと iSCSI ストレージクラスが作成されます。このクラスは、永続的ボリュームのプロビジョニング時に使用できます。</block>
   <block id="02cc5fd16c59479a0130566a88ade673" category="inline-link">Trident で最初のボリュームをプロビジョニングする方法をご確認ください Kubernetes</block>
   <block id="b74e632fe213e6a2cd41d58fc6a3f9f4" category="paragraph"><block ref="d2c3102c16ee7ee6f7e5a01248fa7b5b" category="inline-link-rx"></block>。</block>
@@ -5797,12 +5758,9 @@
   <block id="e64a5fa09317d9145adf970bf6d4d2c0" category="summary">Cloud Volumes ONTAP のパフォーマンスの監視を開始するには、いくつかの手順を実行します。</block>
   <block id="ccaec1ec24b1c04fa3bf1d6e8b9aeb76" category="doc">AWS で Cloud Volumes ONTAP を監視しています</block>
   <block id="69a63f79de6b6cfe74003e252355c5e7" category="paragraph">AWS に Cloud Manager 3.8.4 以降を新規インストールしている必要があります。 AWS に Cloud Volumes ONTAP がインストールされている必要があります。また、 Cloud Insights の新規のお客様である必要があります。</block>
-  <block id="dc5d04044d27e0192aacefbd185d4f35" category="section-title">新規または既存のシステムで監視を有効にします</block>
   <block id="81cf96b7a3a7a2208f9d0015459ae5bb" category="list-text">新しい作業環境：作業環境を作成するときは、必ず監視を有効にしてください（デフォルトで有効になっています）。</block>
   <block id="7177e20d9e879af87a3791ebd8267cd4" category="list-text">既存の作業環境：作業環境を選択し、 * 監視の開始 * をクリックします。</block>
-  <block id="fc78fae55edd9650c6455e58681d3aae" category="section-title">パフォーマンスデータを表示します</block>
   <block id="e9505bfa1fdf9d5b80a391f1e2afc220" category="paragraph">「 * Monitoring 」をクリックし、ボリュームのパフォーマンスデータを表示します。</block>
-  <block id="163980d29cf36a56560287c1eeccee06" category="section-title">Cloud Insights に登録します</block>
   <block id="efc0f6b4c0cfb4f34dc9d7959a182ab8" category="paragraph">30 日間の無償トライアルの終了前にサブスクライブすると、 Cloud Manager と Cloud Insights で引き続きパフォーマンスデータを確認できます。<block ref="d10ae9a3e7f2768fab70c99eb20e74f8" category="inline-link-rx"></block>。</block>
   <block id="4b09bdd4ca435f6a4b77b142f9481573" category="paragraph">以下の要件を読み、サポートされている構成になっていることを確認してください。</block>
   <block id="2b78fc23921b0cd7de2d7e6e5ebc2b1a" category="list-text">サポートされる Cloud Manager のバージョン</block>
@@ -5980,7 +5938,6 @@
   <block id="18b234c5237750d23cdb75cb7c8d1b79" category="list-text"><block ref="18b234c5237750d23cdb75cb7c8d1b79" category="inline-link-rx"></block></block>
   <block id="097ccfbc39e7fb1f5073ac423983cad1" category="summary">データを StorageGRID に階層化することで、オンプレミスの ONTAP クラスタの空きスペースを確保できます。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。</block>
   <block id="075a50bfdbc0e76c495036f6c78ac1fb" category="doc">オンプレミスの ONTAP クラスタから StorageGRID へデータを階層化する</block>
-  <block id="24c40467d64d6258e4b21601d2694195" category="section-title">データを StorageGRID に階層化する準備をします</block>
   <block id="0c455fd03a923d322dc7b39d2a7892db" category="list-text">FAS 9.4 以降を実行しているオール SSD アグリゲートを含む AFF または ONTAP システム。ユーザ指定のポートから StorageGRID への接続に使用します。</block>
   <block id="5fce56af1e1158cc023bf250fa9ab688" category="list-text">StorageGRID 10.3 以降で、 S3 権限を持つ AWS アクセスキーが使用されています。</block>
   <block id="576fdb5dd15e14e6977927216a394612" category="list-text">オンプレミスにインストールされているコネクタ。</block>
@@ -6107,7 +6064,6 @@
   <block id="d1ac9671b7bcf06bf5d1080fe70853b0" category="paragraph">クラウド同期のパフォーマンスに関する質問は次のとおりです。</block>
   <block id="678b59fd02ed47602217c203bce0f237" category="section-title">同期関係の進行状況インジケータは何を表していますか。</block>
   <block id="792670d867962b1447fd0fc6a9a3969e" category="paragraph">同期関係は、データブローカーのネットワークアダプタのスループットを示しています。複数のデータブローカーを使用して同期パフォーマンスを高速化した場合、スループットはすべてのトラフィックの合計になります。このスループットは 20 秒ごとに更新されます。</block>
-  <block id="d2e5af98d120641c3665f862d5107d9e" category="section-title">パフォーマンスの問題が発生しています。同時転送の数を制限できますか。</block>
   <block id="a776e72f8845cd90953586e05ee36f50" category="paragraph">データブローカーは、一度に 4 つのファイルを同期できます。非常に大きなファイルがある場合（それぞれ数 TB ）、転送プロセスが完了するまでに時間がかかることがあり、パフォーマンスが低下する可能性があります。</block>
   <block id="753322bfc209704e3ab17c5cfe5d42d0" category="paragraph">同時転送の数を制限すると効果的です。mailto ： ng-cloudsync-support@netapp.com [ お問い合わせ ]</block>
   <block id="161df7898613d68dd3106bed369ab957" category="section-title">Azure NetApp Files でパフォーマンスが低いのはなぜですか？</block>
@@ -6151,9 +6107,7 @@
   <block id="5b7a625a0e8411e1ab6be1e4747af0df" category="doc">オンプレミスの ONTAP システムからへのデータのバックアップ クラウド</block>
   <block id="6f6a5a1139d8932914706890fc98d832" category="list-text">オンプレミスクラスタを検出し、 Cloud Manager の作業環境に追加しておきます。を参照してください <block ref="06e4d8f0b3ee668a3847b90d3a3a58a0" category="inline-link-macro-rx"></block> を参照してください。</block>
   <block id="bb52c786e9272a71b9868576e595093b" category="list-text">クラスタで ONTAP 9.7P5 以降を実行しています。</block>
-  <block id="d215bc4594bc6d7d5d9f0650ad866cc9" category="section-title">システムでクラウドへのバックアップを有効化</block>
   <block id="387fa05ceb8a9c93b8e3c53dcf20c55f" category="paragraph">作業環境を選択し、右パネルのクラウドへのバックアップサービスの横にある * アクティブ化 * をクリックして、セットアップウィザードに従います。</block>
-  <block id="d1ae916754af40a1752ffa49097de18d" category="section-title">クラウドプロバイダを選択し、プロバイダの詳細を入力します</block>
   <block id="120aa059e2b93f0841b70c7976b0544b" category="paragraph">プロバイダを選択し、プロバイダサブスクリプション、リージョン、およびリソースグループを選択します。また、ボリュームが配置されている ONTAP クラスタ内の IPspace を指定する必要があります。</block>
   <block id="2c5e573e396419ad3626bb25942af86c" category="paragraph"><block ref="2c5e573e396419ad3626bb25942af86c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="6a6f01cb73a44097eab7942c341b9682" category="inline-image-macro">クラウドへのバックアップ設定を示すスクリーンショット。バックアップのスケジュールと保持期間を選択できます。</block>
@@ -6229,7 +6183,6 @@
   <block id="136b9225629ddcb41ca0287acd73c865" category="paragraph">Cloud Manager によってライセンスが追加または更新され、 Backup to Cloud サービスがアクティブになります。</block>
   <block id="337d77a3955619de9a544f1026a547bf" category="summary">データを Amazon S3 に階層化することで、オンプレミスの ONTAP クラスタの空きスペースを確保します。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。</block>
   <block id="eebeeaff2ab28fb4166c53926ad0d0cb" category="doc">オンプレミスの ONTAP クラスタから Amazon S3 へデータを階層化する</block>
-  <block id="3b7749dd39ee760804c668772e669bbe" category="section-title">データを Amazon S3 に階層化する準備をします</block>
   <block id="d85305653518282e5b530ccef866e6e8" category="list-text">ONTAP 9.2 以降を実行し、 Amazon S3 への HTTPS 接続を備えたオール SSD アグリゲートを含む AFF または FAS システム。</block>
   <block id="88874fce87dd9edf63db978923d2d604" category="list-text">アクセスキーとを持つ AWS アカウント <block ref="c2b6a8c656d0c1ec20241b37b67a788f" category="inline-xref-macro-rx"></block> つまり、 ONTAP クラスタはアクセス頻度の低いデータを S3 との間で階層化できます。</block>
   <block id="8a906cdd797b7e3c6078a36f69907caa" category="list-text">AWS VPC またはオンプレミスにインストールされたコネクタ。</block>
@@ -6278,15 +6231,10 @@
   <block id="201e09e85ad81db8a19ef9f20c05d1a5" category="inline-link-macro">このビデオでは</block>
   <block id="81b4cc67e8f60e41997293efceba160b" category="paragraph">見る <block ref="182ef5a05e7c682b0210b8852ec20646" category="inline-link-macro-rx"></block> をクリックして、最初から最後までのステップを確認してください。</block>
   <block id="990f23665d21283cae7ae6a6366d2e03" category="paragraph">次の手順を実行すると、すぐに作業を開始できます。また、残りのセクションまでスクロールして詳細を確認することもできます。</block>
-  <block id="6382283fd45b13b5c983745731fec990" category="section-title">Cloud Volumes ONTAP を導入します</block>
   <block id="68a259a2f899389b305545678d80e0ea" category="paragraph">Azure または AWS に Cloud Volumes ONTAP を導入し、 SMB ファイル共有を設定詳細については、を参照してください <block ref="832a60a506926eaf40d71cc932044a5c" category="inline-link-macro-rx"></block> または <block ref="532bd026da9bcfd63efcb038941245ef" category="inline-link-macro-rx"></block>。</block>
-  <block id="406f62aa251fe088702d090da0faf7a1" category="section-title">グローバルファイルキャッシュ管理サーバーを展開します</block>
   <block id="0877004cfc484438f5a264dde3bb7914" category="paragraph">グローバルファイルキャッシュ管理サーバのインスタンスを、 Cloud Volumes ONTAP のインスタンスと同じ作業環境に導入します。</block>
-  <block id="d9b762ee5151400d1727e25846f5bedb" category="section-title">グローバルファイルキャッシュコアを展開します</block>
   <block id="0e7c4b1d0864abab13fd8a086a179f5b" category="paragraph">グローバルファイルキャッシュコアのインスタンスまたは複数のインスタンスを、 Cloud Volumes ONTAP のインスタンスと同じ作業環境に展開し、 Active Directory ドメインに参加させます。</block>
-  <block id="80d8c12664fdf01751e882f7cd7d4f5f" category="section-title">グローバルファイルキャッシュのライセンスを取得します</block>
   <block id="76ae4e1d88f70d49cbfb4c3ed7d5a033" category="paragraph">グローバルファイルキャッシュコアインスタンスに、グローバルファイルキャッシュライセンス管理サーバ（ LMS ）サービスを設定します。NSS のクレデンシャル、またはネットアップから提供されたお客様 ID を使用して、サブスクリプションをアクティブ化する必要があります。</block>
-  <block id="87122bbb40136e36662081a0db5c63fd" category="section-title">グローバルファイルキャッシュエッジインスタンスを配置します</block>
   <block id="175d4a7fba1f2c02d227a7916d20ff9d" category="inline-link-macro">グローバルファイルキャッシュエッジインスタンスの配置</block>
   <block id="fd9151016bdd942df929d46c957077f0" category="paragraph">を参照してください <block ref="507bdf5d9b69207409e6515279753df9" category="inline-link-macro-rx"></block> グローバルファイルキャッシュエッジインスタンスを各リモートロケーションに配置するには、次の手順を実行します。この手順は、 Cloud Manager では実行されません。</block>
   <block id="7be40d2cd621549d68e8fff4ffead179" category="section-title">ストレージプラットフォームとして Cloud Volumes ONTAP を導入</block>
@@ -6747,7 +6695,6 @@
   <block id="22414d0d0453cad56ad23381bf2640df" category="list-text">ボリュームごとに、をクリックします <block ref="8a7b4d9eeceba80332a45bd9abdd9ed5" category="inline-image-macro-rx" type="image"></block> アイコンをクリックし、階層化ポリシーを選択します。必要に応じてクーリング日数を調整し、 * 適用 * をクリックします。</block>
   <block id="495bc0e676e5d8cea46f01a061d72f09" category="admonition">オブジェクトストレージはクラスタの階層化の初期設定時にすでに設定されているため、設定する必要はありません。ONTAP はこれらのボリュームから同じオブジェクトストアにアクセス頻度の低いデータを階層化します。</block>
   <block id="b00f226fba029156e204faa0a32e13da" category="list-text">完了したら、 * 閉じる * をクリックします。</block>
-  <block id="6e4c88586fed564c2a533a5be0ddcf91" category="section-title">ボリュームの階層化ポリシーを変更する</block>
   <block id="ce5f253a7ab4076c754ecee500408697" category="paragraph">ボリュームの階層化ポリシーを変更すると、 ONTAP がコールドデータをオブジェクトストレージに階層化する方法が変更されます。変更はポリシーを変更した時点から始まります。変更されるのはボリュームに対する以降の階層化の動作のみです。</block>
   <block id="94c1e378d2c595d604fab0fc844d14b8" category="list-text">をクリックします <block ref="8a7b4d9eeceba80332a45bd9abdd9ed5" category="inline-image-macro-rx" type="image"></block> アイコンをクリックし、階層化ポリシーを選択します。必要に応じてクーリング日数を調整し、 * 適用 * をクリックします。</block>
   <block id="176eb530d68328d73cd752bcf53ad2be" category="section-title">アグリゲートの階層化設定の管理</block>
@@ -6802,13 +6749,10 @@
   <block id="952fab111baf3c2e73cf437b7cd22a55" category="summary">ホットデータ用の SSD または HDD の高パフォーマンス階層と、アクセス頻度の低いデータ用のオブジェクトストレージの大容量階層を組み合わせることで、 Cloud Volumes ONTAP のストレージコストを削減できます。</block>
   <block id="f4487922db30b6b199d60571e92576f1" category="paragraph">ホットデータ用の SSD または HDD の高パフォーマンス階層と、アクセス頻度の低いデータ用のオブジェクトストレージの大容量階層を組み合わせることで、 Cloud Volumes ONTAP のストレージコストを削減できます。概要については、を参照してください <block ref="c724ee9f84bb0e8fa565112910275d83" category="inline-link-macro-rx"></block>。</block>
   <block id="386a88fbab9b8c50cfcb5d0bba67b30f" category="paragraph">データ階層化を設定するには、次の手順を実行するだけです。</block>
-  <block id="86ad5905cc5b5dcbf6a3ff485ec8d229" category="section-title">サポートされている構成を選択します</block>
   <block id="ba918ba698486ee8a89a9f897fe04f16" category="paragraph">ほとんどの構成がサポートされています。最新バージョンを実行している Cloud Volumes ONTAP Standard 、 Premium 、または BYOL システムがある場合は、この方法を推奨します。 <block ref="0b0938edb8c7beded03783521b9fb004" category="inline-link-macro-rx"></block>。</block>
-  <block id="06d3481607558231341deee573470e0b" category="section-title">Cloud Volumes ONTAP とオブジェクトストレージ間の接続を確認します</block>
   <block id="dfa5ec33cd56c8ec3ba7043cbe7164b5" category="list-text">AWS では、 S3 への VPC エンドポイントが必要です。 <block ref="8bf18368a4d50e7d264c6ce0821cc35b" category="inline-xref-macro-rx"></block>。</block>
   <block id="551809d438dbf4c69bd03236f59465cb" category="list-text">Azure では、 Cloud Manager に必要な権限が付与されていれば何も実行する必要はありません。 <block ref="b95ed179d0a0b66246f2db10d9eda033" category="inline-xref-macro-rx"></block>。</block>
   <block id="b14188d12bf71a82c40e0277be844f22" category="list-text">GCP の場合、プライベート Google アクセスのサブネットを設定し、サービスアカウントを設定する必要があります。 <block ref="ae7c1d949803baa5d291fbd909b9d2e1" category="inline-xref-macro-rx"></block>。</block>
-  <block id="1eabdf61d5d5290de86aa1ce83194c03" category="section-title">ボリュームを作成、変更、またはレプリケートするときに階層化ポリシーを選択します</block>
   <block id="1a9e931f53a32cc1b5ceeebef21b8880" category="paragraph">ボリュームを作成、変更、またはレプリケートするときに、 Cloud Manager から階層化ポリシーを選択するよう求められます。</block>
   <block id="aee34f99cc65679272b711e8a3804b3b" category="inline-link-macro">読み取り / 書き込みボリュームでのデータの階層化</block>
   <block id="3161de5db0fdecb5c470d6a56eb5afee" category="list-text"><block ref="3161de5db0fdecb5c470d6a56eb5afee" category="inline-link-macro-rx"></block></block>
@@ -6874,13 +6818,9 @@
   <block id="5852b40c6f0b7bd4c3c86ecf8d8c1c84" category="paragraph">新しいアグリゲートでデータ階層化を有効にすることもできます <block ref="2177406352e5d01920db26f37f47363d" category="inline-link-macro-rx"></block> または <block ref="7669f8a3497eadac8f23ab7642a95bca" category="inline-xref-macro-rx"></block>。データ階層化が有効なアグリゲートがない場合、 Cloud Manager はボリュームの新しいアグリゲートを作成します。</block>
   <block id="fbaae2c51a88c361540d75265f1ae460" category="summary">Cloud Sync サービスを開始するには、いくつかの手順を実行します。</block>
   <block id="7552e2b54a17a33019d48e352cbe77a4" category="doc">Cloud Sync のクイックスタート</block>
-  <block id="ea20f7d50c69fd6c3c01c329f9319239" category="section-title">ソースとターゲットを準備します</block>
   <block id="f143dbcd4f35e1f63b6b7e9657115198" category="paragraph">ソースとターゲットがサポートされ、セットアップされていることを確認します。最も重要な要件は、データブローカーとソースとターゲットの間の接続を確認することです。 <block ref="f6f1e8e1ed286c7a006df4ad07baf80b" category="inline-link-macro-rx"></block>。</block>
-  <block id="3825d25fbdd8bfa73bea9dccd3b52c26" category="section-title">ネットアップデータブローカーの設置場所を準備します</block>
   <block id="6a640d6007996215b3ac26284458adbe" category="paragraph">Cloud Sync では、同期関係を作成する際のインストールプロセスをガイドします。同期関係を作成すると、クラウドにデータブローカーを導入したり、独自の Linux ホスト用のインストールスクリプトをダウンロードしたりできます。</block>
-  <block id="fd95beb937f9d641ec539cf4878ef48d" category="section-title">最初の同期関係を作成します</block>
   <block id="210dd2b798a973801744b2b280c5beb1" category="paragraph">にログインします<block ref="be757cbeb024c9da5b8b367da3bb80a9" category="inline-link-rx"></block>をクリックし、 * 同期 * をクリックして、ソースとターゲットの選択をドラッグアンドドロップします。プロンプトに従ってセットアップを完了します。 <block ref="c56a9e8c0d1e6cf66a040ca3b581e64c" category="inline-link-macro-rx"></block>。</block>
-  <block id="4502c9acaffeed98eaa8ad35ff290bd7" category="section-title">無料トライアルが終了したら、同期関係の料金をお支払いください</block>
   <block id="e5821905c970aab72824bfe3f9f493d7" category="paragraph">AWS または Azure から従量課金制または年間の支払いを申し込むことができます。または、ネットアップから直接ライセンスを購入することもできます。Cloud Sync のライセンス設定ページに移動して設定します。 <block ref="cf22383872a2f13a42a2e3b7746abe03" category="inline-link-macro-rx"></block>。</block>
   <block id="47a9dec41b05cb9452bf85a6b7a24260" category="summary">いくつかの手順で、 Cloud Volumes ONTAP for AWS を使い始めましょう。</block>
   <block id="2d951aeb8e37abb43416705103a35132" category="doc">Cloud Volumes ONTAP for AWS での作業の開始</block>
@@ -7520,7 +7460,6 @@
   <block id="be5b9196af1aaf35b4c37010db0b83b3" category="paragraph"><block ref="5c62373201416362de8292e16990a23c" category="inline-link-macro-rx"></block>。</block>
   <block id="d04dfaa744331ac37502cd7e1da7e4cb" category="sidebar-title">無料トライアルの終了後すぐに支払いをしない場合はどうすればよいですか？</block>
   <block id="06396044ae8f00acb30bd57de4d6bf59" category="paragraph">追加の関係を作成することはできません。既存の関係は削除されませんが、ライセンスを登録または入力するまでは変更を加えることはできません。</block>
-  <block id="6f3effbced02bf6278e3a16bc56601b0" category="section-title">AWS からの登録</block>
   <block id="7f1e5fcf21192da891eea1c1f4f6e6f0" category="paragraph">AWS を使用すると、従量課金制または年払いが可能です。</block>
   <block id="f06e94914580a228484d54783ffeb2bb" category="list-title">従量課金制の手順</block>
   <block id="f4e86f9d0f6800384c773bd03834297d" category="list-text">[ 同期 ] 、 [ ライセンス ] の順にクリックします。</block>
@@ -7532,7 +7471,6 @@
   <block id="b84483eacee20411f642e9b32a1532d3" category="list-text"><block ref="9a55e6c904391172078e71a0186ef751" category="inline-link-rx"></block>。</block>
   <block id="6ce481dcdc8134b6b4c81db0911f0267" category="list-text">[* 購読の続行 *] をクリックします。</block>
   <block id="1ee9033888539de2e81ddb29d255c405" category="list-text">契約オプションを選択し、 * 契約の作成 * をクリックします。</block>
-  <block id="52f71b65e8b2575ecbdcd630dd568078" category="section-title">Azure からのサブスクリプション</block>
   <block id="5b708f827f75588e652438e8d2977fb4" category="paragraph">Azure では、従量課金制または年間の支払いが可能です。</block>
   <block id="251910634a1b47d0359b6171382f3f9a" category="paragraph">関連するサブスクリプションの投稿者または所有者権限を持つ Azure ユーザーアカウント。</block>
   <block id="2164db8f01d0c0a0dc250abc3b9556f5" category="list-text">「 * Azure * 」を選択します。</block>
@@ -7540,7 +7478,6 @@
   <block id="981e7253aa8df6872dfd3d544c12ef23" category="paragraph">「毎月 * 」を選択すると、時間単位で支払います。または、「毎年」を選択すると、前払いした 1 年分の料金が支払われます。</block>
   <block id="23a902dd0c4b97b70f0c79f7c46ed483" category="list-text">展開が完了したら、通知ポップアップで SaaS リソースの名前をクリックします。</block>
   <block id="04175f98fb77c715f35a84f3004d8ed5" category="list-text">「アカウントの設定」をクリックして Cloud Sync に戻ります。</block>
-  <block id="01cc9c7cd06e97ce20ebea964dc79244" category="section-title">ネットアップからライセンスを購入し、 Cloud Sync に追加する</block>
   <block id="6dabde8f330be16cbc68c6ed11cd0dcb" category="paragraph">同期関係の料金を事前に支払うには、 1 つ以上のライセンスを購入して Cloud Sync サービスに追加する必要があります。</block>
   <block id="0f5161c9e18f97b653442fef34de1024" category="list-text">mailto ： ng-cloudsync-contact@netapp.com ？ subject= Cloud %20Sync%20Service%20-%20BYOL %20License%20Purchase%20Request までにライセンスを購入してください。 [Contacting NetApp] 。</block>
   <block id="47073df9c54bc93012bf8231b4da55fe" category="list-text">Cloud Manager で、 * Sync &gt; Licensing * をクリックします。</block>
@@ -7552,7 +7489,6 @@
   <block id="7e3c9594a3f6833ecddbf1cbe150528c" category="inline-image-macro">Cloud Central のログイン画面。</block>
   <block id="33ec64420d3361f9794053a9add38468" category="paragraph"><block ref="33ec64420d3361f9794053a9add38468" category="inline-image-macro-rx" type="image"></block></block>
   <block id="3dbeb1f4be4a6bfc83af63e943633f2c" category="summary">データを Azure BLOB ストレージに階層化することにより、オンプレミスの ONTAP クラスタの空きスペースを確保します。データ階層化には、ネットアップの Cloud Tiering サービスが採用されています。</block>
-  <block id="957364b59094743bfdbab75c269bbe14" category="section-title">Azure BLOB ストレージへのデータの階層化を準備する</block>
   <block id="09c3a47298cb1b2183702dd8bab5673a" category="list-text">ONTAP 9.4 以降を実行し、かつ Azure Blob Storage への HTTPS 接続を備えたオール SSD アグリゲートを含む AFF または FAS システム。</block>
   <block id="971990a0128297e61982fb657642391e" category="list-text">Azure VNet にインストールされるコネクタ。</block>
   <block id="a81db118acfbd6a1141871c99120b570" category="list-text">データセンター内の ONTAP クラスタ、 Azure BLOB ストレージ、およびクラウド階層化サービスへのアウトバウンド HTTPS 接続を可能にするコネクタのネットワーク。</block>
@@ -7743,11 +7679,8 @@
   <block id="90b4dd69e9064f99b3ebe400973d5224" category="paragraph"><block ref="9c9896fd31a93be26bce42c226a95f7e" category="inline-link-macro-rx"></block>。</block>
   <block id="836aeee2007aac18c035dd91372a749d" category="summary">Cloud Compliance でデータベーススキーマのスキャンを開始するには、いくつかの手順を実行します。</block>
   <block id="ce41a706cd7d768f91deb7b6d30a53a6" category="doc">データベーススキーマをスキャンしています</block>
-  <block id="643748e16cea45dc6b50bd34b156599e" category="section-title">データベースの前提条件を確認する</block>
   <block id="6ba6f62eaa922e3764dfb0e34527892f" category="paragraph">データベースがサポートされていること、およびデータベースへの接続に必要な情報があることを確認します。</block>
-  <block id="117276e96b89d072e0a833596332ef29" category="section-title">データベースサーバを追加します</block>
   <block id="18145622150e1a809831297a4332c742" category="paragraph">アクセスするデータベースサーバを追加します。</block>
-  <block id="a12cdf39bf2e9ffec8531b7773ae748d" category="section-title">スキーマを選択します</block>
   <block id="5a810676627d546e80218e706059b849" category="paragraph">スキャンするスキーマを選択します。</block>
   <block id="858dab6028691ee21ab79719c188f31c" category="paragraph">Cloud Compliance を有効にする前に、次の前提条件を確認し、サポートされている構成であることを確認してください。</block>
   <block id="1416008fc37354356eb0ecd95dfddc96" category="section-title">サポートされるデータベース</block>
@@ -7854,7 +7787,6 @@
   <block id="b73f462d1b9e7ff90a325153c831927c" category="paragraph">ユーザの関連付けを解除すると、 Cloud Central アカウント内のリソースにアクセスできなくなります。</block>
   <block id="6bd6a4807d0f305654a405a52bb8f189" category="list-text">[ ユーザーの関連付けを解除（ Disassociate User ） ] をクリックし、 [ 関連付けを解除（ Disassociate ） ] をクリックして</block>
   <block id="bc4502cc703c46a62bd856724adfc66e" category="paragraph">ユーザはこの Cloud Central アカウントのリソースにアクセスできなくなります。</block>
-  <block id="c467a2567dd5be7e777708d1616b892d" category="section-title">ワークスペース管理者のワークスペースの管理</block>
   <block id="8ecff25aa4ee2497099b60f83bd4dde7" category="paragraph">ワークスペース管理者は、いつでもワークスペースに関連付けたり、ワークスペースと関連付けを解除したりできます。ユーザーを関連付けると、ワークスペース内の作業環境を作成して表示できます。</block>
   <block id="9c3fb861370470582b50839e482bd5f9" category="list-text">ユーザーに関連付けるワークスペースを選択し、 * 適用 * をクリックします。</block>
   <block id="73974df54012eaea2a5f0b72e278983b" category="section-title">ワークスペースの管理</block>
@@ -7863,7 +7795,6 @@
   <block id="e6b782b96ee9fd72a275037e1f900b6f" category="list-text">新しいワークスペースを作成するには、 * 新しいワークスペースを追加 * をクリックします。</block>
   <block id="9606b9dd050f482ce022efaf9f3754c9" category="list-text">* 名前変更 * をクリックして、ワークスペースの名前を変更します。</block>
   <block id="ca4a2e09f147267af54ea5fd1d962c6a" category="list-text">ワークスペースを削除するには、 * 削除 * をクリックします。</block>
-  <block id="3bf33688db3de262b29d7aef6461deb2" category="section-title">コネクタのワークスペースを管理する</block>
   <block id="5b7f3201b874f913a16c68dec709654f" category="paragraph">ワークスペース管理者が Cloud Manager からワークスペースにアクセスできるように、コネクタをワークスペースに関連付ける必要があります。</block>
   <block id="cda68882da0fbacdfcd7b3b52e15c47f" category="list-text">コネクタに関連付けるワークスペースを選択し、 * 適用 * をクリックします。</block>
   <block id="95a0841b9a7d083d0e92b10bbb2d9538" category="section-title">サブスクリプションの管理</block>
@@ -8109,4 +8040,107 @@
   <block id="ac711435545c1b14c721179de8ab94a0" category="list-text">サポートされるボリュームとアグリゲート</block>
   <block id="cbd3171b775ecc9b275479726c41ccec" category="inline-link-macro">FabricPool でサポートされていない機能</block>
   <block id="80be9dc982f371739dd1f289a1ea008c" category="list-text">クラウド階層化が可能なボリュームの総数は、 ONTAP システムのボリュームの数よりも少なくなる可能性があります。これは、一部のアグリゲートからボリュームを階層化できないためです。たとえば、 SnapLock ボリュームや MetroCluster 構成からはデータを階層化できません。については、 ONTAP のドキュメントを参照してください <block ref="735d4f7c28454cb31dcb5e7ad1dd69d6" category="inline-link-macro-rx"></block>。</block>
+  <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">結果</block>
+  <block id="d59db7846bd10b6d60d21543df9faa9e" category="paragraph-title">必要なもの</block>
+  <block id="6e5bc02812454d72aa1b3361bc2f6c73" category="inline-image-macro">番号 1</block>
+  <block id="514cd509787cbab4e205428f74144f7f" category="section-title"><block ref="dc5de6e35d5028cc4c0b89b89e621258" category="inline-image-macro-rx" type="image"></block> データを Amazon S3 に階層化する準備をします</block>
+  <block id="3db14b7ee6183c9d58f1e9d5e8e63efd" category="inline-image-macro">番号 2</block>
+  <block id="86c142513d3fc5f40a5b0c2e354e838f" category="section-title"><block ref="8a21168e601d45e544969f8d2c358917" category="inline-image-macro-rx" type="image"></block> 階層化をセットアップする</block>
+  <block id="9f3ebc84fe13f3200262a9c4b7c9807d" category="inline-image-macro">番号3.</block>
+  <block id="61e07c226edc407cd9b5485effaf8e40" category="section-title"><block ref="436aa95806ef0877809848921c187b08" category="inline-image-macro-rx" type="image"></block> ライセンスをセットアップする</block>
+  <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">次の手順</block>
+  <block id="25bb6ac7ff79f9f75a38e828d5757ada" category="section-title"><block ref="dc5de6e35d5028cc4c0b89b89e621258" category="inline-image-macro-rx" type="image"></block> データを StorageGRID に階層化する準備をします</block>
+  <block id="9b1146da7e8885b360bcba1784bf6d6c" category="inline-image-macro">番号 1</block>
+  <block id="be4475d44b787a12f755fdcce268c239" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> 構成がサポートされていることを確認します</block>
+  <block id="6518735ebbb492ee2f8f5dfee52f3842" category="inline-image-macro">番号2.</block>
+  <block id="b2e8ab94b9a77185fe6b6dd83c9f59e6" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> 新規または既存のシステムでクラウドへのバックアップを有効化</block>
+  <block id="a4c574c9c96d1cf8d9986e0d17dbe38b" category="inline-image-macro">番号3.</block>
+  <block id="1bae9231315ec1091e557ac65da409f3" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> プロバイダの詳細を入力します</block>
+  <block id="fa8bdf405671f556729a131b30bab6af" category="inline-image-macro">番号4.</block>
+  <block id="a452de92a372d575a0b668ed846fc145" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> バックアップポリシーを定義</block>
+  <block id="6a604e45dcab200406f10c70d639255a" category="inline-image-macro">番号5.</block>
+  <block id="e6b70b7531f0a4e4a8b69d3956a0c77f" category="section-title"><block ref="c8b82927684b7195fa645497b5fcc719" category="inline-image-macro-rx" type="image"></block> バックアップするボリュームを選択します</block>
+  <block id="e8655d81e5341b6de5242894893cfd0f" category="inline-image-macro">番号6.</block>
+  <block id="805be66fd8cf052ebd8de5a5bd9e91c4" category="section-title"><block ref="37140c340d57bff74ec463795f4bc377" category="inline-image-macro-rx" type="image"></block> 必要に応じて、データをリストアします</block>
+  <block id="e98185375ffb2411ffabfc328cd245e7" category="section-title"><block ref="dc5de6e35d5028cc4c0b89b89e621258" category="inline-image-macro-rx" type="image"></block> Azure BLOB ストレージへのデータの階層化を準備する</block>
+  <block id="27bf0058af50fd43e46419d6324f0b88" category="inline-image-macro">数値 2.</block>
+  <block id="ce8a231bcbb32541c63e621cb121e157" category="section-title"><block ref="11146b70998fa0133f04749eadcadd53" category="inline-image-macro-rx" type="image"></block> 階層化をセットアップする</block>
+  <block id="bbdb28e0c385a29cad4cd3acd0870ca5" category="section-title">ボリュームの階層化ポリシーを変更する</block>
+  <block id="65d2a493f808659b28f7334ecc9fe29e" category="section-title">[s3] AWS S3バケットの要件</block>
+  <block id="8c398ecad8f5257d018a9dbbc98e011b" category="section-title">[[blob]] Azure BLOBストレージの要件</block>
+  <block id="5ab5c7141794d5f693f0b5374fcd61c3" category="section-title"><block ref="dc5de6e35d5028cc4c0b89b89e621258" category="inline-image-macro-rx" type="image"></block> Google Cloud Storage へのデータの階層化を準備</block>
+  <block id="48afbf061ebdaadeb58dc858b69a1052" category="section-title"><block ref="dc5de6e35d5028cc4c0b89b89e621258" category="inline-image-macro-rx" type="image"></block> ソースとターゲットを準備します</block>
+  <block id="377ca8c885c8d8b7612dbf6ce0ea5d6f" category="section-title"><block ref="8a21168e601d45e544969f8d2c358917" category="inline-image-macro-rx" type="image"></block> ネットアップデータブローカーの設置場所を準備します</block>
+  <block id="24d418de7deb7231eeb443678b0f0441" category="inline-image-macro">数字 3</block>
+  <block id="f0207b569fe3cbfd5eccfb2828e3f2b7" category="section-title"><block ref="9527607e7742b1b2d282b03d60bed8ef" category="inline-image-macro-rx" type="image"></block> 最初の同期関係を作成します</block>
+  <block id="6b47d8ab70c3ef6cbc8e75d29b5e2d7e" category="inline-image-macro">番号 4</block>
+  <block id="ac5a639d5962a25a6971d30167e47c47" category="section-title"><block ref="eaa50516809be1dcaf0dabd3af981bdd" category="inline-image-macro-rx" type="image"></block> 無料トライアルが終了したら、同期関係の料金をお支払いください</block>
+  <block id="d92025d25d4a2d6a7fd1c8dd346c3a78" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> Cloud Compliance インスタンスを導入します</block>
+  <block id="2a308ec65e0691e08ca910409399e926" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> 作業環境でクラウドへのコンプライアンスを実現</block>
+  <block id="673be64cc34cfe0793aff320631eec30" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> ボリュームへのアクセスを確認</block>
+  <block id="e95134d22ea5aa15300ed7e15b493afc" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> スキャンするボリュームを設定します</block>
+  <block id="f3d9abb903127694db460aa9c7f4d7be" category="paragraph-title">制限事項</block>
+  <block id="9bbb347fbd183c9b759619011e925584" category="section-title">[IAM ] AWSデータブローカーで独自のIAMロールを使用する必要があります</block>
+  <block id="70097ec71ef99a0b821b421778c3dc89" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> 新規または既存のシステムで監視を有効にします</block>
+  <block id="c13c14c9d94d99ddb8afb5df2017596d" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> パフォーマンスデータを表示します</block>
+  <block id="6fe3b577f9152959d54f0a18687fc614" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> Cloud Insights に登録します</block>
+  <block id="732388e21e523aa0634e9409e24bb44b" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> Cloud Volumes Service API を有効にします</block>
+  <block id="cbe36d012a95f25988e66e11ab902592" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> GCP サービスアカウントを作成し、クレデンシャルをダウンロードします</block>
+  <block id="1364a0c04b3bd8a020e2233da181d34c" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> GCP 向け Cloud Volumes Service 作業環境を作成します</block>
+  <block id="a4210618117a87f8b7ed7fa4c4b786f5" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> データベースの前提条件を確認する</block>
+  <block id="19845d6514c37d5561b2df3fb3c42709" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> Cloud Compliance インスタンスを導入します</block>
+  <block id="03e40e51de10c4fcfe185e3596c9fea9" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> データベースサーバを追加します</block>
+  <block id="62285cab7437c64e66969323f9b382a0" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> スキーマを選択します</block>
+  <block id="bde31567c14a78b82abddb195adfcef4" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> クラウド環境で S3 の要件を設定します</block>
+  <block id="251dfafdaab0977444cc7db6f14d9a0c" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> S3 作業環境でコンプライアンスをアクティブ化します</block>
+  <block id="9ace5ce0bac1f885633c4a6d9237ba85" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> スキャンするバケットを選択します</block>
+  <block id="5a08d7ee13e3d460c0abdc003e96de15" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> 前提条件を確認する</block>
+  <block id="06c9972a6973c3e844fd619e6820ca60" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> Kubernetes クラスタを Cloud Manager に追加</block>
+  <block id="7babb23bf41fb0be57d79d41976f67a6" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> クラスタを Cloud Volumes ONTAP に接続します</block>
+  <block id="a2a98c975ba9db610320c9f064248420" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> 永続ボリュームのプロビジョニングを開始します</block>
+  <block id="492e5546e60705134bff8d7f80511a8d" category="section-title">最新情報をご確認ください</block>
+  <block id="675d38d552c49bbf67606b2c5f1d5bed" category="section-title">Flash Cacheとは</block>
+  <block id="f436b6f8e34b590da0473e8f6c14ebb6" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> アクセス権のリクエスト</block>
+  <block id="7bb2f3bb3a53cdbde6126e8ec560df26" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> Azure AD アプリケーションをセットアップする</block>
+  <block id="8777339718fab90f3d89354d635602fc" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> Azure NetApp Files 作業環境を作成します</block>
+  <block id="ed14d70dad7ae627497350bc4e3868e5" category="section-title">[AWS] AWSからサブスクライブしています</block>
+  <block id="b6a5a78c3221a73b92bf2f602e64a9cc" category="section-title">[[azure]] Azureから購読しています</block>
+  <block id="4faa53699bc5575d520ebbbdbdcb3676" category="section-title">[[licenses]]ネットアップからライセンスを購入してCloud Sync に追加する</block>
+  <block id="49cb6dd519b346b8bd8a1d8215f8d5ba" category="section-title">開始するには、何が必要ですか</block>
+  <block id="ec2b9d242528edf315221ad2dddfe05f" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> システムでクラウドへのバックアップを有効化</block>
+  <block id="f35b3fb817bc1b6969d1e5fae485e458" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> クラウドプロバイダを選択し、プロバイダの詳細を入力します</block>
+  <block id="f265f2d996a2653c64b12be4162dbcb9" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> Cloud Volumes Service for AWS サブスクリプションを追加します</block>
+  <block id="324722d35dd7c88dc18af8dca459144c" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> クラウドボリュームを作成</block>
+  <block id="1098389531128dd1630a8691017ecab2" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> クラウドボリュームをマウント</block>
+  <block id="73d52017c88a2fcffc5b2dcbb683d5e4" category="section-title">パフォーマンスの問題が発生しています。同時転送の数を制限できますか。</block>
+  <block id="5e096b7a2c33e654f884053c567f3013" category="paragraph-title">これの仕組み</block>
+  <block id="2d024ab58a4f3aca200433e71bfbfb7d" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> バックアップポリシーを定義</block>
+  <block id="b1f04f72c0946a167d3665d8c8028079" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> バックアップするボリュームを選択します</block>
+  <block id="f54cfe8dccf99911b96d287f796ff8e6" category="section-title"><block ref="c8b82927684b7195fa645497b5fcc719" category="inline-image-macro-rx" type="image"></block> 必要に応じて、データをリストアします</block>
+  <block id="ada4f28c1d7a2b6deafbea15522101b4" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> サポートされている構成を選択します</block>
+  <block id="bf30ec6e5b418236529d5fb8a008f7a1" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> Cloud Volumes ONTAP とオブジェクトストレージ間の接続を確認します</block>
+  <block id="4f171aaed4814825b1b6cd26e8bca8be" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> ボリュームを作成、変更、またはレプリケートするときに階層化ポリシーを選択します</block>
+  <block id="396f48c649e3ff633d50433913feb87b" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> コネクタを作成します</block>
+  <block id="6aa6125970a0e976d1144591cce6cb48" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> 構成を計画</block>
+  <block id="eba81c0c0c62849b9a8e16bb40a9e522" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> ネットワークをセットアップします</block>
+  <block id="a249a27f98b564b1b8bb2e87ae36533a" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> AWS KMS を設定します</block>
+  <block id="67467aa7bd51d7bbe961339db94944ba" category="section-title"><block ref="c8b82927684b7195fa645497b5fcc719" category="inline-image-macro-rx" type="image"></block> Cloud Manager を使用して Cloud Volumes ONTAP を起動します</block>
+  <block id="fc6a1c4bfdea701c7028d4b2604689fb" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> Cloud Manager を使用して Cloud Volumes ONTAP を起動します</block>
+  <block id="6917f8aa30f339e0174c243dc60ca829" category="section-title"><block ref="dfda45ebcbf64ca08d06a80353e9cf6f" category="inline-image-macro-rx" type="image"></block> Cloud Volumes ONTAP を導入します</block>
+  <block id="13cebc5d87c25a25fa19353a7dfbd762" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> グローバルファイルキャッシュ管理サーバーを展開します</block>
+  <block id="ec11d0059bc2ac9fc8c2e43cab362ce6" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> グローバルファイルキャッシュコアを展開します</block>
+  <block id="dfc5eca62d14e5b7ffb6abcaed7c1e2f" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> グローバルファイルキャッシュのライセンスを取得します</block>
+  <block id="2767a73fa1d8353756d1ff7499837b1c" category="section-title"><block ref="c8b82927684b7195fa645497b5fcc719" category="inline-image-macro-rx" type="image"></block> グローバルファイルキャッシュエッジインスタンスを配置します</block>
+  <block id="d7fc8658f9e7754760fee0f4a1678e61" category="paragraph-title">次の手順</block>
+  <block id="9fddc3cde8f0b14e27df208452fe2b43" category="section-title"><block ref="b496ee93dbdd8d3b796a1af3fe777064" category="inline-image-macro-rx" type="image"></block> 前提条件を確認する</block>
+  <block id="df01c72ffc9521af557ac32cfdb66fd9" category="section-title"><block ref="f99fa24d03c6ef96c556af7cdf23810f" category="inline-image-macro-rx" type="image"></block> Cloud Compliance の導入</block>
+  <block id="9f5dd2f1cbabb0474ed015ae31acf7e4" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> Cloud Compliance サービスに登録</block>
+  <block id="ad5480f838ed67e92fecf7af3cef120d" category="paragraph-title">次のステップ</block>
+  <block id="049e8331ee41fb67d481185a274aa752" category="section-title">ボリュームのサイズとタグを編集する</block>
+  <block id="e66cf0363da426ff5fc40b5dff923ee7" category="paragraph-title">次の手順</block>
+  <block id="06c8c2436f0f1ff2acfef84c2fe6d052" category="section-title"><block ref="d0f5cff2b8e0ecc91e360a74276cf2dd" category="inline-image-macro-rx" type="image"></block> データ階層化用の GCP をセットアップします</block>
+  <block id="919a82e3f18e6877f4c7eb99f2965a6c" category="section-title"><block ref="c8b82927684b7195fa645497b5fcc719" category="inline-image-macro-rx" type="image"></block> Google Cloud API を有効にします</block>
+  <block id="8793b102a57051bc0a69b6370c03bf9c" category="section-title"><block ref="37140c340d57bff74ec463795f4bc377" category="inline-image-macro-rx" type="image"></block> Cloud Manager を使用して Cloud Volumes ONTAP を起動します</block>
+  <block id="5ccc745272c52ce1868d5bcf2b07705a" category="section-title">ワークスペース管理者のワークスペースの管理</block>
+  <block id="1cf32fb78afaf111cd4c8421dc8592a6" category="section-title">コネクタのワークスペースを管理する</block>
 </blocks>

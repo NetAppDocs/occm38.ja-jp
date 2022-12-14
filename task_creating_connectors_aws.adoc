@@ -38,6 +38,7 @@ https://mysupport.netapp.com/site/info/cloud-manager-policies["NetApp Cloud Mana
 . 前の手順で作成したポリシーを、 Cloud Manager からコネクタを作成する IAM ユーザに関連付けます。
 
 
+.結果
 AWS ユーザに、 Cloud Manager からコネクタを作成するために必要な権限が付与されました。Cloud Manager からプロンプトが表示されたら、このユーザの AWS アクセスキーを指定する必要があります。
 
 
@@ -83,4 +84,5 @@ NOTE: コネクタへの着信トラフィックは、開始しない限りあ�
 
 
 
+.完了後
 ワークスペース管理者がコネクタを使用して Cloud Volumes ONTAP システムを作成できるように、コネクタをワークスペースに関連付ける必要があります。アカウント管理者のみがいる場合は、コネクタをワークスペースに関連付ける必要はありません。アカウント管理者は、デフォルトで Cloud Manager のすべてのワークスペースにアクセスできます。 link:task_setting_up_cloud_central_accounts.html#associating-connectors-with-workspaces["詳細はこちら。"]。

@@ -77,4 +77,5 @@ image:screenshot_set_up_cloud_manager.gif["コネクタのセットアップ画�
 
 
 
+.結果
 これで、 Connector がインストールされ、 Cloud Central アカウントでセットアップされました。Cloud Manager は、新しい作業環境の作成時にこのコネクタを自動的に使用します。ただし、コネクタが複数ある場合は、が必要です link:task_managing_connectors.html["スイッチを切り替えます"]。

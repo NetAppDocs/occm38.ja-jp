@@ -20,27 +20,29 @@ summary: ホットデータ用の SSD または HDD の高パフォーマンス�
 
 
 
-==== サポートされている構成を選択します
+==== image:number1.png["番号 1"] サポートされている構成を選択します
 
 [role="quick-margin-para"]
 ほとんどの構成がサポートされています。最新バージョンを実行している Cloud Volumes ONTAP Standard 、 Premium 、または BYOL システムがある場合は、この方法を推奨します。 link:task_tiering.html#configurations-that-support-data-tiering["詳細はこちら。"]。
 
 
 
-==== Cloud Volumes ONTAP とオブジェクトストレージ間の接続を確認します
+==== image:number2.png["番号2."] Cloud Volumes ONTAP とオブジェクトストレージ間の接続を確認します
 
-* AWS では、 S3 への VPC エンドポイントが必要です。  to tier cold data to AWS S3,詳細はこちら。。
-* Azure では、 Cloud Manager に必要な権限が付与されていれば何も実行する必要はありません。  to tier cold data to Azure Blob storage,詳細はこちら。。
-* GCP の場合、プライベート Google アクセスのサブネットを設定し、サービスアカウントを設定する必要があります。  to tier cold data to a Google Cloud Storage bucket,詳細はこちら。。
+[role="quick-margin-list"]
+* AWS では、 S3 への VPC エンドポイントが必要です。 <<コールドデータを AWS S3 に階層化するための要件,詳細はこちら。>>。
+* Azure では、 Cloud Manager に必要な権限が付与されていれば何も実行する必要はありません。 <<コールドデータを Azure BLOB ストレージに階層化するための要件,詳細はこちら。>>。
+* GCP の場合、プライベート Google アクセスのサブネットを設定し、サービスアカウントを設定する必要があります。 <<コールドデータを Google Cloud Storage に階層化するための要件 バケット,詳細はこちら。>>。
 
 
 
 
-==== ボリュームを作成、変更、またはレプリケートするときに階層化ポリシーを選択します
+==== image:number3.png["番号3."] ボリュームを作成、変更、またはレプリケートするときに階層化ポリシーを選択します
 
 [role="quick-margin-para"]
 ボリュームを作成、変更、またはレプリケートするときに、 Cloud Manager から階層化ポリシーを選択するよう求められます。
 
+[role="quick-margin-list"]
 * link:task_tiering.html#tiering-data-from-read-write-volumes["読み取り / 書き込みボリュームでのデータの階層化"]
 * link:task_tiering.html#tiering-data-from-data-protection-volumes["データ保護ボリューム上のデータの階層化"]
 
@@ -205,4 +207,4 @@ Cloud Volumes ONTAP を導入したら、アクセスされていないアクセ
 
 いいえ、既存のアグリゲートではデータ階層化を有効にできません。データ階層化は新しいアグリゲートでのみ有効にできます。
 
-新しいアグリゲートでデータ階層化を有効にすることもできます link:task_provisioning_storage.html#creating-aggregates["アグリゲートを自分で作成する"] または  data from read-write volumes,データの階層化を有効にして新しいボリュームを作成します。データ階層化が有効なアグリゲートがない場合、 Cloud Manager はボリュームの新しいアグリゲートを作成します。
+新しいアグリゲートでデータ階層化を有効にすることもできます link:task_provisioning_storage.html#creating-aggregates["アグリゲートを自分で作成する"] または <<読み取り / 書き込みボリュームのデータの階層化,データの階層化を有効にして新しいボリュームを作成します>>。データ階層化が有効なアグリゲートがない場合、 Cloud Manager はボリュームの新しいアグリゲートを作成します。

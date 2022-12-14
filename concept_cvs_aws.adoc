@@ -57,28 +57,28 @@ Cloud Manager から Cloud Volumes Service for AWS のリージョンまたは�
 
 
 
-==== 構成がサポートされていることを確認します
+==== image:number1.png["番号 1"] 構成がサポートされていることを確認します
 
 [role="quick-margin-para"]
 AWS を Cloud Volumes Service 用にセットアップしておきます のいずれかに登録しておく必要があります https://aws.amazon.com/marketplace/search/results?x=0&y=0&searchTerms=netapp+cloud+volumes+service["AWS Marketplace で提供されているネットアップの Cloud Volumes Service ソリューション"^]。
 
 
 
-==== Cloud Volumes Service for AWS サブスクリプションを追加します
+==== image:number2.png["番号2."] Cloud Volumes Service for AWS サブスクリプションを追加します
 
 [role="quick-margin-para"]
 Cloud Volumes Service for AWS のサブスクリプションに基づいて、ボリュームの作業環境を作成する必要があります。
 
 
 
-==== クラウドボリュームを作成
+==== image:number3.png["番号3."] クラウドボリュームを作成
 
 [role="quick-margin-para"]
 このサブスクリプション用の既存のクラウドボリュームは、新しい作業環境に表示されます。定義しない場合は、 Cloud Manager から新しいボリュームを作成します。
 
 
 
-==== クラウドボリュームをマウント
+==== image:number4.png["番号4."] クラウドボリュームをマウント
 
 [role="quick-margin-para"]
 ユーザがストレージの使用を開始できるように、新しいクラウドボリュームを AWS インスタンスにマウントします。

@@ -49,6 +49,7 @@ https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-
 
 
 
+.結果
 GCP ユーザに Cloud Manager から Connector を作成するために必要な権限が付与され、 Connector VM のサービスアカウントが設定されます。
 
 
@@ -118,4 +119,5 @@ NOTE: コネクタへの着信トラフィックは、開始しない限りあ�
 
 
 
+.完了後
 ワークスペース管理者がコネクタを使用して Cloud Volumes ONTAP システムを作成できるように、コネクタをワークスペースに関連付ける必要があります。アカウント管理者のみがいる場合は、コネクタをワークスペースに関連付ける必要はありません。アカウント管理者は、デフォルトで Cloud Manager のすべてのワークスペースにアクセスできます。 link:task_setting_up_cloud_central_accounts.html#associating-connectors-with-workspaces["詳細はこちら。"]。

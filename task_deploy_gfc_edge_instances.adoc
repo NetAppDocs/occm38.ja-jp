@@ -130,4 +130,5 @@ Global File Cache インストールパッケージを更新するために必�
 . インストールが完了したら、プロンプトが表示されたらサーバをリブートします。
 
 
+.次の手順
 グローバルファイルキャッシュエッジの高度な設定の詳細については、を参照してください link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["『 NetApp Global File Cache User Guide 』を参照してください"^]。

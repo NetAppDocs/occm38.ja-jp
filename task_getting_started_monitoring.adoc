@@ -24,29 +24,30 @@ Cloud Volumes ONTAP のパフォーマンスの監視を開始するには、い
 
 
 
-==== 構成がサポートされていることを確認します
+==== image:number1.png["番号 1"] 構成がサポートされていることを確認します
 
 [role="quick-margin-para"]
 AWS に Cloud Manager 3.8.4 以降を新規インストールしている必要があります。 AWS に Cloud Volumes ONTAP がインストールされている必要があります。また、 Cloud Insights の新規のお客様である必要があります。
 
 
 
-==== 新規または既存のシステムで監視を有効にします
+==== image:number2.png["番号2."] 新規または既存のシステムで監視を有効にします
 
+[role="quick-margin-list"]
 * 新しい作業環境：作業環境を作成するときは、必ず監視を有効にしてください（デフォルトで有効になっています）。
 * 既存の作業環境：作業環境を選択し、 * 監視の開始 * をクリックします。
 
 
 
 
-==== パフォーマンスデータを表示します
+==== image:number3.png["番号3."] パフォーマンスデータを表示します
 
 [role="quick-margin-para"]
 「 * Monitoring 」をクリックし、ボリュームのパフォーマンスデータを表示します。
 
 
 
-==== Cloud Insights に登録します
+==== image:number4.png["番号4."] Cloud Insights に登録します
 
 [role="quick-margin-para"]
 30 日間の無償トライアルの終了前にサブスクライブすると、 Cloud Manager と Cloud Insights で引き続きパフォーマンスデータを確認できます。 https://docs.netapp.com/us-en/cloudinsights/concept_subscribing_to_cloud_insights.html["登録方法については、こちらをご覧ください"^]。
@@ -165,6 +166,7 @@ image:screenshot_cloud_insights.gif["監視タブの右上にある Cloud Insigh
 
 
 
+.結果
 Cloud Insights がブラウザの新しいタブで開きます。サポートが必要な場合は、を参照してください https://docs.netapp.com/us-en/cloudinsights["Cloud Insights のドキュメント"^]。
 
 

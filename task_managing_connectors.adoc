@@ -80,6 +80,7 @@ image:screenshot_connector_remove.gif["非アクティブなコネクタを削�
 . 確認するコネクタの名前を入力し、 [ 削除 ] をクリックします。
 
 
+.結果
 Cloud Manager によってレコードからコネクタが削除されます。
 
 

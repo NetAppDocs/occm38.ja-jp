@@ -328,7 +328,7 @@ Cloud Sync を使用すると、ソースからターゲットにデータを同
 
 
 
-=== AWS S3 バケット要件
+=== [s3] AWS S3バケットの要件
 
 AWS S3 バケットが次の要件を満たしていることを確認します。
 
@@ -375,7 +375,7 @@ image:screenshot_iam_role_arn.gif["ロール ARN を示す AWS IAM コンソー�
 
 
 
-=== Azure BLOB ストレージの要件
+=== [[blob]] Azure BLOBストレージの要件
 
 Azure BLOB ストレージが次の要件を満たしていることを確認します。
 

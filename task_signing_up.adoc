@@ -27,4 +27,5 @@ image:screenshot_cloud_central_signup.gif["Cloud Central のサインアップ�
 . E メールのリンクをクリックして、 E メールアドレスを確認します。
 
 
+.結果
 アクティブな Cloud Central ユーザログインが可能になりました。

@@ -16,6 +16,7 @@ summary: アカウント管理者は、 Cloud Manager で設定を有効にし�
 [role="lead"]
 アカウント管理者は、 Cloud Manager で設定を有効にして、 Azure メンテナンスイベント時の Cloud Volumes ONTAP ストレージフェイルオーバーの問題を回避できます。この設定を有効にすると、 Cloud Volumes ONTAP は CIFS ロックを拒否し、アクティブな CIFS セッションをリセットします。
 
+.このタスクについて
 Microsoft Azure では、仮想マシンに対して定期的なメンテナンスイベントをスケジュールします。Cloud Volumes ONTAP HA ペアのノードでメンテナンスイベントが発生すると、 HA ペアでストレージのテイクオーバーが開始されます。このメンテナンスイベントの間にアクティブな CIFS セッションがあると、 CIFS ファイルがロックされてストレージフェイルオーバーを実行できなくなる可能性があります。
 
 この設定を有効にすると、 Cloud Volumes ONTAP でロックが拒否され、アクティブな CIFS セッションがリセットされます。その結果、これらのメンテナンスイベントの間は HA ペアでストレージフェイルオーバーを実行できます。
@@ -23,6 +24,7 @@ Microsoft Azure では、仮想マシンに対して定期的なメンテナン�
 
 IMPORTANT: このプロセスは、 CIFS クライアントの処理を中断する可能性があります。CIFS クライアントからコミットされていないデータは失われる可能性があります。
 
+.必要なもの
 Cloud Manager の設定を変更する前に、コネクタを作成する必要があります。 link:concept_connectors.html#how-to-create-a-connector["詳細をご確認ください"]。
 
 .手順

@@ -23,6 +23,7 @@ Cloud Volumes ONTAP 9.7 以降では、外部キー管理ツールの設定後�
 
 Cloud Volumes ONTAP はオンボードキー管理をサポートしていません。
 
+.必要なもの
 Cloud Volumes ONTAP システムがネットアップサポートに登録されている必要があります。Cloud Manager 3.7.1 以降では、ネットアップサポートに登録されている各 Cloud Volumes ONTAP システムに NetApp Volume Encryption ライセンスが自動的にインストールされます。
 
 * link:task_adding_nss_accounts.html["Cloud Manager へのネットアップサポートサイトのアカウントの追加"]

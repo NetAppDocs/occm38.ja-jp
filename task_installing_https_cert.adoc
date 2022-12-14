@@ -65,6 +65,7 @@ image:screenshot_settings_icon.gif["Cloud Manager コンソールの右上にあ
 |===
 
 
+.結果
 Cloud Manager は、 CA 署名付き証明書を使用して、セキュアな HTTPS アクセスを提供するようになりました。次の図は、セキュアアクセス用に設定された Cloud Manager システムを示しています。
 
 image:screenshot_https_cert.gif["スクリーンショット：署名付き証明書をインストールした後の HTTPS セットアップページを表示します。このページには、証明書のプロパティと、証明書を更新するオプションが表示されます。"]
@@ -83,4 +84,5 @@ Cloud Manager 証明書の詳細が表示されます。有効期限も表示さ
 . [HTTPS 証明書の更新 ] をクリックし、手順に従って CSR を生成するか、独自の CA 署名証明書をインストールします。
 
 
+.結果
 Cloud Manager は新しい CA 署名付き証明書を使用して、セキュアな HTTPS アクセスを提供します。
