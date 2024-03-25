@@ -1,0 +1,4488 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>セキュリティ</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="セキュリティ" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/occm38/concept_security.html" />
+	<meta property="og:description" content="Cloud Volumes ONTAP は、データ暗号化をサポートし、ウィルスやランサムウェアからの保護を提供します。" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/occm38/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta http-equiv="nss-product" content="OnCommand Cloud Manager"/><meta name="description" content="Cloud Volumes ONTAP は、データ暗号化をサポートし、ウィルスやランサムウェアからの保護を提供します。">
+  <meta name="keywords" content=" security, encryption, antivirus, concepts, key managers, safenet, kms, keys, vscan, encrypt, aws, key management service, cmk, customer master key, data at rest, data-at-rest, netapp storage encryption, certificate signing request, csr, certificate, ca certificate, virus, scan, virus scan, certificate authority, netapp volume encryption, nve, volume encryption, key management server, ransomware, fpolicy, snapshots"><!-- Icons -->
+  <link rel="icon" href="/ja-jp/occm38/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/occm38/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/ja-jp/occm38/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/occm38/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/ja-jp/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/occm38/concept_security.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/occm38/concept_security.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/occm38/js/na-search.js'></script><script src='/ja-jp/occm38/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/ja-jp/occm38/js/custom-dropdown.js'></script>
+  <script src='/ja-jp/occm38/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/occm38/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/occm38/js/jszip.min.js'></script><script src='/ja-jp/occm38/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/ja-jp/occm38/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/ja/">
+                <image id="ie-header-logo" src="/ja-jp/occm38/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/ja/support-and-training/documentation/">ドキュメント</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/ja-jp/occm38/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">日本語</span>
+                    <img src="/ja-jp/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ja-jp/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/ja-jp/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/occm38/concept_security.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/ja-jp/occm38/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">すべてのNetApp</span>
+                    <img src="/ja-jp/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ja-jp/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/ja/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">サポート</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb-ja.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">ナレッジ ベース</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">トレーニング</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/ja-jp/occm38/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/ja-jp/occm38/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">すべてのドキュメント</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/ja-jp/occm38/">-->
+      Cloud Manager 3.8
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/ja-jp/occm38/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/ja-jp/occm38/search.html" 
+        data-type="widget"
+        data-placeholder="ドキュメントを検索"
+        data-no-results-found="{query}に一致する結果は見つかりませんでした"
+        data-did-you-mean="{suggestion}で検索しています。"
+        data-no-results-found-did-you-mean="{query}に一致する結果は見つかりませんでした。{suggestion}で検索しますか？"
+        data-results-found="{hitCount}件の結果が見つかりました"
+        data-error-message="エラーが発生しました。もう一度お試しください。"
+        data-error-reset="検索をリセット"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager のドキュメント"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/occm38/index.html">
+        Cloud Manager のドキュメント
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="リリースノート"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> リリースノート</div>-->
+         リリースノート
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドマネージャ"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> クラウドマネージャ</div>-->
+         クラウドマネージャ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="新機能"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_new_occm.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_new_occm.html">
+        新機能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SaaS への移行"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_saas.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_saas.html">
+        SaaS への移行
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既知の問題"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_issues.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_issues.html">
+        既知の問題
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既知の制限"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_limitations.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_limitations.html">
+        既知の制限
+      </a></li></ul></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="Cloud Volumes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/cloud-volumes-ontap/" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://docs.netapp.com/us-en/cloud-volumes-ontap/">
+        Cloud Volumes ONTAP
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="重要な変更"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_key_changes.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/occm38/reference_key_changes.html">
+        重要な変更
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager の使用を開始"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Manager の使用を開始</div>-->
+         Cloud Manager の使用を開始
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager の詳細をご確認ください"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_overview.html">
+        Cloud Manager の詳細をご確認ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワークの概要"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_networking.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/reference_networking.html">
+        ネットワークの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Central に登録します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_signing_up.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_signing_up.html">
+        Cloud Central に登録します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager にログインします"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_logging_in.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_logging_in.html">
+        Cloud Manager にログインします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Central アカウントをセットアップします"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Central アカウントをセットアップします</div>-->
+         Cloud Central アカウントをセットアップします
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Central アカウントについて詳しくは、こちらをご覧ください"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_cloud_central_accounts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_cloud_central_accounts.html">
+        Cloud Central アカウントについて詳しくは、こちらをご覧ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アカウントを設定します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_setting_up_cloud_central_accounts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_setting_up_cloud_central_accounts.html">
+        アカウントを設定します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="コネクタをセットアップします"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> コネクタをセットアップします</div>-->
+         コネクタをセットアップします
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="コネクタについて説明します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_connectors.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_connectors.html">
+        コネクタについて説明します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワーク要件"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_networking_cloud_manager.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_networking_cloud_manager.html">
+        ネットワーク要件
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS でコネクタを作成します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_creating_connectors_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_creating_connectors_aws.html">
+        AWS でコネクタを作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure でコネクタを作成します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_creating_connectors_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_creating_connectors_azure.html">
+        Azure でコネクタを作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP でコネクターを作成します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_creating_connectors_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_creating_connectors_gcp.html">
+        GCP でコネクターを作成します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="次の手順"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_whats_next.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/reference_whats_next.html">
+        次の手順
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP を管理します"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Volumes ONTAP を管理します</div>-->
+         Cloud Volumes ONTAP を管理します
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="詳細はこちら"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 詳細はこちら</div>-->
+         詳細はこちら
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概要"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_overview_cvo.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_overview_cvo.html">
+        概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージ"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ストレージ</div>-->
+         ストレージ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ディスクとアグリゲート"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_storage.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_storage.html">
+        ディスクとアグリゲート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データの階層化"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_data_tiering.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_data_tiering.html">
+        データの階層化
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージ管理"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_storage_management.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_storage_management.html">
+        ストレージ管理
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Flash Cache"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_flash_cache.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_flash_cache.html">
+        Flash Cache
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="WORM ストレージ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_worm.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_worm.html">
+        WORM ストレージ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ハイアベイラビリティペア"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ハイアベイラビリティペア</div>-->
+         ハイアベイラビリティペア
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS の HA ペア"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_ha.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_ha.html">
+        AWS の HA ペア
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure の HA ペア"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_ha_azure.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_ha_azure.html">
+        Azure の HA ペア
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="評価中"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_evaluating.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_evaluating.html">
+        評価中
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ライセンス"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_licensing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_licensing.html">
+        ライセンス
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="セキュリティ"
+      data-li-level="3#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_security.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_security.html">
+        セキュリティ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="パフォーマンス"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_performance.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_performance.html">
+        パフォーマンス
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="サポートされている構成"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html">
+        サポートされている構成
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="サポートされている地域"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="https://cloud.netapp.com/cloud-volumes-global-regions" 
+    ><a class="ie-sidebar-menuitem-3 " href="https://cloud.netapp.com/cloud-volumes-global-regions">
+        サポートされている地域
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="デフォルト設定"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_default_configs.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_default_configs.html">
+        デフォルト設定
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS を始めましょう"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> AWS を始めましょう</div>-->
+         AWS を始めましょう
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クイックスタート"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_getting_started_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_getting_started_aws.html">
+        クイックスタート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="構成を計画"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_planning_your_config.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_planning_your_config.html">
+        構成を計画
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワークをセットアップします"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ネットワークをセットアップします</div>-->
+         ネットワークをセットアップします
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワーク要件"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_networking_aws.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/reference_networking_aws.html">
+        ネットワーク要件
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 転送ゲートウェイを設定します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_setting_up_transit_gateway.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_setting_up_transit_gateway.html">
+        AWS 転送ゲートウェイを設定します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS のセキュリティグループルール"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_security_groups.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/reference_security_groups.html">
+        AWS のセキュリティグループルール
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS KMS を設定します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_setting_up_kms.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_setting_up_kms.html">
+        AWS KMS を設定します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS でシステムを起動します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_deploying_otc_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_deploying_otc_aws.html">
+        AWS でシステムを起動します
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="AWS C2S で作業を開始する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/occm/media/c2s.pdf" 
+    ><a class="ie-sidebar-menuitem-3 " href="https://docs.netapp.com/us-en/occm/media/c2s.pdf">
+        AWS C2S で作業を開始する
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure で始めましょう"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Azure で始めましょう</div>-->
+         Azure で始めましょう
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クイックスタート"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_getting_started_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_getting_started_azure.html">
+        クイックスタート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="構成を計画"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_planning_your_config_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_planning_your_config_azure.html">
+        構成を計画
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワークをセットアップします"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_networking_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_networking_azure.html">
+        ネットワークをセットアップします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure でシステムを起動します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_deploying_otc_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_deploying_otc_azure.html">
+        Azure でシステムを起動します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP を始めましょう"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> GCP を始めましょう</div>-->
+         GCP を始めましょう
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クイックスタート"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_getting_started_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_getting_started_gcp.html">
+        クイックスタート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="構成を計画"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_planning_your_config_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_planning_your_config_gcp.html">
+        構成を計画
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワークをセットアップします"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_networking_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_networking_gcp.html">
+        ネットワークをセットアップします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="お客様が管理する暗号化キーを使用します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_setting_up_gcp_encryption.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_setting_up_gcp_encryption.html">
+        お客様が管理する暗号化キーを使用します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP でシステムを起動します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_deploying_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_deploying_gcp.html">
+        GCP でシステムを起動します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージをプロビジョニングおよび管理する"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ストレージをプロビジョニングおよび管理する</div>-->
+         ストレージをプロビジョニングおよび管理する
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ボリューム、アグリゲート、および LUN を作成する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_provisioning_storage.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_provisioning_storage.html">
+        ボリューム、アグリゲート、および LUN を作成する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ボリュームおよびアグリゲートを管理する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_storage.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_managing_storage.html">
+        ボリュームおよびアグリゲートを管理する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アクセス頻度の低いデータをオブジェクトストレージに階層化します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_tiering.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_tiering.html">
+        アクセス頻度の低いデータをオブジェクトストレージに階層化します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Storage VM を管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_svms.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_managing_svms.html">
+        Storage VM を管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP を永続的ストレージとして使用する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_connecting_kubernetes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_connecting_kubernetes.html">
+        ONTAP を永続的ストレージとして使用する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットアップの暗号化機能でボリュームを暗号化"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_encrypting_volumes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_encrypting_volumes.html">
+        ネットアップの暗号化機能でボリュームを暗号化
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データのレプリケート"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_replicating_data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_replicating_data.html">
+        データのレプリケート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="パフォーマンスを監視"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> パフォーマンスを監視</div>-->
+         パフォーマンスを監視
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="モニタリングについて説明します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_monitoring.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_monitoring.html">
+        モニタリングについて説明します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_getting_started_monitoring.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_getting_started_monitoring.html">
+        はじめに
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ランサムウェアからの保護を強化"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_protecting_ransomware.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_protecting_ransomware.html">
+        ランサムウェアからの保護を強化
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="管理"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 管理</div>-->
+         管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="従量課金制システムを登録"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_registering.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_registering.html">
+        従量課金制システムを登録
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP をセットアップする"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_setting_up_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_setting_up_ontap_cloud.html">
+        Cloud Volumes ONTAP をセットアップする
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="BYOL ライセンスを管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_licenses.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_managing_licenses.html">
+        BYOL ライセンスを管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ソフトウェアを更新します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_updating_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_updating_ontap_cloud.html">
+        ソフトウェアを更新します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システム設定を変更する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_modifying_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_modifying_ontap_cloud.html">
+        システム設定を変更する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムを停止して起動します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_state.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_managing_state.html">
+        システムを停止して起動します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS のコストを監視"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_monitoring_costs.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_monitoring_costs.html">
+        AWS のコストを監視
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP に接続します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_connecting_to_otc.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_connecting_to_otc.html">
+        Cloud Volumes ONTAP に接続します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既存のシステムを追加"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_adding_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_adding_ontap_cloud.html">
+        既存のシステムを追加
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムを削除します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_deleting_working_env.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_deleting_working_env.html">
+        システムを削除します
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ファイルサービスを使用してボリュームをプロビジョニング"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ファイルサービスを使用してボリュームをプロビジョニング</div>-->
+         ファイルサービスを使用してボリュームをプロビジョニング
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure NetApp Files の特長"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Azure NetApp Files の特長</div>-->
+         Azure NetApp Files の特長
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure NetApp Files の詳細をご覧ください"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_azure_netapp_files.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_azure_netapp_files.html">
+        Azure NetApp Files の詳細をご覧ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure NetApp Files をセットアップする"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_manage_anf.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_manage_anf.html">
+        Azure NetApp Files をセットアップする
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ボリュームを作成および管理する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_manage_anf_volumes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_manage_anf_volumes.html">
+        ボリュームを作成および管理する
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for AWS"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Volumes Service for AWS</div>-->
+         Cloud Volumes Service for AWS
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for AWS の詳細については、こちらをご覧ください"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_cvs_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_cvs_aws.html">
+        Cloud Volumes Service for AWS の詳細については、こちらをご覧ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドボリュームを導入して管理"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_manage_cvs_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_manage_cvs_aws.html">
+        クラウドボリュームを導入して管理
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドボリュームの Snapshot を管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_manage_cloud_volumes_snapshots.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_manage_cloud_volumes_snapshots.html">
+        クラウドボリュームの Snapshot を管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="参照"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 参照</div>-->
+         参照
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="サービスレベルと割り当て容量"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_cvs_service_levels_and_quotas.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/reference_cvs_service_levels_and_quotas.html">
+        サービスレベルと割り当て容量
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Windows AD サーバ用の AWS セキュリティグループの設定"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_security_groups_windows_ad_servers.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/reference_security_groups_windows_ad_servers.html">
+        Windows AD サーバ用の AWS セキュリティグループの設定
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for GCP"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Volumes Service for GCP</div>-->
+         Cloud Volumes Service for GCP
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for GCP について説明します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_cvs_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/concept_cvs_gcp.html">
+        Cloud Volumes Service for GCP について説明します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for GCP をセットアップします"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_setup_cvs_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_setup_cvs_gcp.html">
+        Cloud Volumes Service for GCP をセットアップします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドボリュームを作成および管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_manage_cvs_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_manage_cvs_gcp.html">
+        クラウドボリュームを作成および管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドボリュームの Snapshot を管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_manage_cloud_volumes_gcp_snapshots.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_manage_cloud_volumes_gcp_snapshots.html">
+        クラウドボリュームの Snapshot を管理します
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP クラスタを管理します"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ONTAP クラスタを管理します</div>-->
+         ONTAP クラスタを管理します
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP クラスタを検出"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_discovering_ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_discovering_ontap.html">
+        ONTAP クラスタを検出
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP ボリュームを管理します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_provisioning_ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_provisioning_ontap.html">
+        ONTAP ボリュームを管理します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドへのバックアップ"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> クラウドへのバックアップ</div>-->
+         クラウドへのバックアップ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドへのバックアップの詳細をご確認ください"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_backup_to_cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_backup_to_cloud.html">
+        クラウドへのバックアップの詳細をご確認ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> はじめに</div>-->
+         はじめに
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon S3 にバックアップします"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_backup_to_s3.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_backup_to_s3.html">
+        Amazon S3 にバックアップします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure BLOB ストレージにバックアップします"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_backup_to_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_backup_to_azure.html">
+        Azure BLOB ストレージにバックアップします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="オンプレミスの ONTAP システムからバックアップ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_backup_from_onprem.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_backup_from_onprem.html">
+        オンプレミスの ONTAP システムからバックアップ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="バックアップの管理とデータのリストア"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_backups.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_managing_backups.html">
+        バックアップの管理とデータのリストア
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データをコピーして同期"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> データをコピーして同期</div>-->
+         データをコピーして同期
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドの同期についてご確認ください"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_cloud_sync.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_cloud_sync.html">
+        クラウドの同期についてご確認ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> はじめに</div>-->
+         はじめに
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クイックスタート"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_quick_start.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_sync_quick_start.html">
+        クイックスタート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ソースとターゲットを準備します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_sync_requirements.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_sync_requirements.html">
+        ソースとターゲットを準備します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワークを準備"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_sync_networking.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_sync_networking.html">
+        ネットワークを準備
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データブローカーのインストール方法"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> データブローカーのインストール方法</div>-->
+         データブローカーのインストール方法
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS にインストールします"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_installing_aws.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_sync_installing_aws.html">
+        AWS にインストールします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure にインストール"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_installing_azure.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_sync_installing_azure.html">
+        Azure にインストール
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP にインストールします"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_installing_gcp.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_sync_installing_gcp.html">
+        GCP にインストールします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Linux ホストにをインストールします"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_installing_linux.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_sync_installing_linux.html">
+        Linux ホストにをインストールします
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="同期関係を作成します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_creating_relationships.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_sync_creating_relationships.html">
+        同期関係を作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="同期関係の料金を支払う"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_licensing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_sync_licensing.html">
+        同期関係の料金を支払う
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="チュートリアル"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> チュートリアル</div>-->
+         チュートリアル
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="共有間で ACL をコピーする"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_copying_acls.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_sync_copying_acls.html">
+        共有間で ACL をコピーする
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="転送中の NFS データを暗号化"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_nfs_encryption.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_sync_nfs_encryption.html">
+        転送中の NFS データを暗号化
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="同期関係を管理します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_sync_managing_relationships.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_sync_managing_relationships.html">
+        同期関係を管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="API"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/api_sync.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/api_sync.html">
+        API
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="よく寄せられる質問"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/faq_sync.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/faq_sync.html">
+        よく寄せられる質問
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データプライバシーに関する分析情報を入手できます"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> データプライバシーに関する分析情報を入手できます</div>-->
+         データプライバシーに関する分析情報を入手できます
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Compliance の詳細をご確認ください"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_cloud_compliance.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_cloud_compliance.html">
+        Cloud Compliance の詳細をご確認ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> はじめに</div>-->
+         はじめに
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Compliance の導入"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_deploy_cloud_compliance.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_deploy_cloud_compliance.html">
+        Cloud Compliance の導入
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データソースでスキャンをアクティブ化します"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> データソースでスキャンをアクティブ化します</div>-->
+         データソースでスキャンをアクティブ化します
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP および Azure NetApp Files"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_getting_started_compliance.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_getting_started_compliance.html">
+        Cloud Volumes ONTAP および Azure NetApp Files
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon S3 バケット"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_scanning_s3.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_scanning_s3.html">
+        Amazon S3 バケット
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データベーススキーマ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_scanning_databases.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_scanning_databases.html">
+        データベーススキーマ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="オンプレミスの ONTAP データ"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_scanning_onprem.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_scanning_onprem.html">
+        オンプレミスの ONTAP データ
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データの可視化と管理を実現"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_controlling_private_data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_controlling_private_data.html">
+        データの可視化と管理を実現
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="レポートを生成します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_generating_compliance_reports.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_generating_compliance_reports.html">
+        レポートを生成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="dsar に応答します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_responding_to_dsar.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_responding_to_dsar.html">
+        dsar に応答します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドコンプライアンスを無効化"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_compliance.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_managing_compliance.html">
+        クラウドコンプライアンスを無効化
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="よく寄せられる質問"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/faq_cloud_compliance.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/faq_cloud_compliance.html">
+        よく寄せられる質問
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="リアルタイムのグローバルファイル共有を有効にします"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> リアルタイムのグローバルファイル共有を有効にします</div>-->
+         リアルタイムのグローバルファイル共有を有効にします
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="グローバルファイルキャッシュについて説明します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_gfc.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_gfc.html">
+        グローバルファイルキャッシュについて説明します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="グローバルファイルキャッシュの導入を開始する前に"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_before_you_begin_to_deploy_gfc.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_before_you_begin_to_deploy_gfc.html">
+        グローバルファイルキャッシュの導入を開始する前に
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_gfc_getting_started.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_gfc_getting_started.html">
+        はじめに
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="グローバルファイルキャッシュエッジの導入を開始する前に"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/download_gfc_resources.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/download_gfc_resources.html">
+        グローバルファイルキャッシュエッジの導入を開始する前に
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="グローバルファイルキャッシュエッジを導入します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_deploy_gfc_edge_instances.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_deploy_gfc_edge_instances.html">
+        グローバルファイルキャッシュエッジを導入します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="エンドユーザトレーニング"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_gfc_enduser_training.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_gfc_enduser_training.html">
+        エンドユーザトレーニング
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="追加情報"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_gfc_additional_information.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/reference_gfc_additional_information.html">
+        追加情報
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラウドコンピューティングのコストを最適化"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> クラウドコンピューティングのコストを最適化</div>-->
+         クラウドコンピューティングのコストを最適化
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="コンピューティングサービスの詳細については、こちらをご覧ください"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_compute.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_compute.html">
+        コンピューティングサービスの詳細については、こちらをご覧ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_getting_started_compute.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_getting_started_compute.html">
+        はじめに
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データをクラウドに階層化"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> データをクラウドに階層化</div>-->
+         データをクラウドに階層化
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Tiering の詳細をご確認ください"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_cloud_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/concept_cloud_tiering.html">
+        Cloud Tiering の詳細をご確認ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> はじめに</div>-->
+         はじめに
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データを Amazon S3 に階層化する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_tiering_onprem_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_tiering_onprem_aws.html">
+        データを Amazon S3 に階層化する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データを Azure BLOB ストレージに階層化する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_tiering_onprem_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_tiering_onprem_azure.html">
+        データを Azure BLOB ストレージに階層化する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データを Google Cloud Storage に階層化します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_tiering_onprem_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_tiering_onprem_gcp.html">
+        データを Google Cloud Storage に階層化します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データを StorageGRID に階層化します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_tiering_onprem_storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_tiering_onprem_storagegrid.html">
+        データを StorageGRID に階層化します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ライセンスをセットアップする"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_licensing_cloud_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_licensing_cloud_tiering.html">
+        ライセンスをセットアップする
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データの階層化を管理します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_managing_tiering.html">
+        データの階層化を管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="よく寄せられる質問"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/faq_cloud_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/faq_cloud_tiering.html">
+        よく寄せられる質問
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="参照"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 参照</div>-->
+         参照
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="サポートされている Amazon S3 ストレージのクラスとリージョン"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_aws_support.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_aws_support.html">
+        サポートされている Amazon S3 ストレージのクラスとリージョン
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="サポートされている Azure アクセス階層とリージョン"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_azure_support.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_azure_support.html">
+        サポートされている Azure アクセス階層とリージョン
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="サポートされている Google Cloud ストレージクラスとリージョン"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_google_support.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_google_support.html">
+        サポートされている Google Cloud ストレージクラスとリージョン
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon S3 バケットを表示します"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_viewing_amazon_s3.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/occm38/task_viewing_amazon_s3.html">
+        Amazon S3 バケットを表示します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager の管理"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Manager の管理</div>-->
+         Cloud Manager の管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システム ID を確認します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_finding_system_id.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_finding_system_id.html">
+        システム ID を確認します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="コネクタを管理します"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> コネクタを管理します</div>-->
+         コネクタを管理します
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既存のコネクタを管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_connectors.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_managing_connectors.html">
+        既存のコネクタを管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="コネクタを作成するさまざまな方法"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> コネクタを作成するさまざまな方法</div>-->
+         コネクタを作成するさまざまな方法
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Connector ホストの要件"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_cloud_mgr_reqs.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/reference_cloud_mgr_reqs.html">
+        Connector ホストの要件
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS Marketplace から作成します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_launching_aws_mktp.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_launching_aws_mktp.html">
+        AWS Marketplace から作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure Marketplace から作成"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_launching_azure_mktp.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_launching_azure_mktp.html">
+        Azure Marketplace から作成
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ソフトウェアを手動でインストールします"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_installing_linux.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_installing_linux.html">
+        ソフトウェアを手動でインストールします
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="デフォルト設定"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_connector_default_config.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_connector_default_config.html">
+        デフォルト設定
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クレデンシャルを管理する"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> クレデンシャルを管理する</div>-->
+         クレデンシャルを管理する
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> AWS</div>-->
+         AWS
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS クレデンシャルの詳細を確認します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_accounts_aws.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_accounts_aws.html">
+        AWS クレデンシャルの詳細を確認します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS クレデンシャルを管理する"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_adding_aws_accounts.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_adding_aws_accounts.html">
+        AWS クレデンシャルを管理する
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Azure</div>-->
+         Azure
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure のクレデンシャルについて説明します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_accounts_azure.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_accounts_azure.html">
+        Azure のクレデンシャルについて説明します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure クレデンシャルを管理します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_adding_azure_accounts.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_adding_azure_accounts.html">
+        Azure クレデンシャルを管理します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> GCP</div>-->
+         GCP
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP クレデンシャルについて説明します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/concept_accounts_gcp.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/concept_accounts_gcp.html">
+        GCP クレデンシャルについて説明します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP クレデンシャルを管理する"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_adding_gcp_accounts.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/occm38/task_adding_gcp_accounts.html">
+        GCP クレデンシャルを管理する
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットアップサポートサイトのクレデンシャル"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_adding_nss_accounts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/task_adding_nss_accounts.html">
+        ネットアップサポートサイトのクレデンシャル
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アカウントを管理します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_managing_cloud_central_accounts.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_managing_cloud_central_accounts.html">
+        アカウントを管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HTTPS 証明書をインストールします"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_installing_https_cert.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_installing_https_cert.html">
+        HTTPS 証明書をインストールします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="作業環境を削除します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_removing.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_removing.html">
+        作業環境を削除します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="プロキシを設定します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_configuring_proxy.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_configuring_proxy.html">
+        プロキシを設定します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure で CIFS ロックを無効にします"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/task_overriding_cifs_locks.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/task_overriding_cifs_locks.html">
+        Azure で CIFS ロックを無効にします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="参照"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 参照</div>-->
+         参照
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ユーザロール"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_user_roles.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_user_roles.html">
+        ユーザロール
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="権限"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_permissions.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_permissions.html">
+        権限
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS Marketplace ページ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_aws_marketplace.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/occm38/reference_aws_marketplace.html">
+        AWS Marketplace ページ
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="API と自動化を活用"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> API と自動化を活用</div>-->
+         API と自動化を活用
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="false" 
+      data-pdf-filename="API 開発者ガイド"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/occm/api.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://docs.netapp.com/us-en/occm/api.html">
+        API 開発者ガイド
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="DevOps ツールを使用して自動化"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_infrastructure_as_code.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/occm38/reference_infrastructure_as_code.html">
+        DevOps ツールを使用して自動化
+      </a></li></ul></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="の問題のトラブルシューティング"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services" 
+    ><a class="ie-sidebar-menuitem-1 " href="https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services">
+        の問題のトラブルシューティング
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="関連リンク"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_additional_info.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/occm38/reference_additional_info.html">
+        関連リンク
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="以前のバージョン"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_earlier_versions.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/occm38/reference_earlier_versions.html">
+        以前のバージョン
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="法的通知"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/concept_security.html" 
+      dale-entry-url="/reference_legal_notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/occm38/reference_legal_notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/ja-jp/occm38"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/ja-jp/occm38"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      
+  <div class="ie-info-disclaimer" id="downlevel-banner">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/ja-jp/occm38/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span>本製品の最新リリースがご利用いただけます。</span><br>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div>
+<div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/ja-jp/occm38/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">セキュリティ</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2022-05-03 06:04:29 +0000">05/03/2022</time>
+        
+    
+    
+        <span>共同作成者
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/ja-jp/occm38/images/discuss-sm.svg" alt="" class="github-icon" />変更を提案</span>
+        <img src="/ja-jp/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/ja-jp/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/occm38.ja-jp/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/ja-jp/occm38/concept_security.html&page-title=セキュリティ" class="page-nav-contribute-link" role="button">ドキュメントの変更をリクエスト</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/concept_security.adoc" class="page-nav-contribute-link" role="button">このページを編集</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >フィードバックを送るには</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/ja-jp/occm38/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/ja-jp/occm38/pdfs/fullsite-sidebar/Cloud_Manager_および_Cloud_Volumes_ONTAP_のドキュメント.pdf" >
+                    <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>このドキュメント ページのPDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/リリースノート.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            リリースノート
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/クラウドマネージャ.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            クラウドマネージャ
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Cloud_Manager_の使用を開始.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Manager の使用を開始
+          </a>
+          
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Cloud_Central_アカウントをセットアップします.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Central アカウントをセットアップします
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/コネクタをセットアップします.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            コネクタをセットアップします
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_ONTAP_を管理します.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Volumes ONTAP を管理します
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/詳細はこちら.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            詳細はこちら
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/ストレージ.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ストレージ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/ハイアベイラビリティペア.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ハイアベイラビリティペア
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/AWS_を始めましょう.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            AWS を始めましょう
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/ネットワークをセットアップします.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ネットワークをセットアップします
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Azure_で始めましょう.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Azure で始めましょう
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/GCP_を始めましょう.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            GCP を始めましょう
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/ストレージをプロビジョニングおよび管理する.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ストレージをプロビジョニングおよび管理する
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/パフォーマンスを監視.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            パフォーマンスを監視
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/管理.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/ファイルサービスを使用してボリュームをプロビジョニング.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ファイルサービスを使用してボリュームをプロビジョニング
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Azure_NetApp_Files_の特長.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Azure NetApp Files の特長
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_Service_for_AWS.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Volumes Service for AWS
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            参照
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Cloud_Volumes_Service_for_GCP.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Volumes Service for GCP
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/ONTAP_クラスタを管理します.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ONTAP クラスタを管理します
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/クラウドへのバックアップ.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            クラウドへのバックアップ
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            はじめに
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/データをコピーして同期.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            データをコピーして同期
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            はじめに
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/データブローカーのインストール方法.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            データブローカーのインストール方法
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/チュートリアル.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            チュートリアル
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/データプライバシーに関する分析情報を入手できます.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            データプライバシーに関する分析情報を入手できます
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            はじめに
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/データソースでスキャンをアクティブ化します.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            データソースでスキャンをアクティブ化します
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/リアルタイムのグローバルファイル共有を有効にします.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            リアルタイムのグローバルファイル共有を有効にします
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/クラウドコンピューティングのコストを最適化.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            クラウドコンピューティングのコストを最適化
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/データをクラウドに階層化.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            データをクラウドに階層化
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/はじめに.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            はじめに
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            参照
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Cloud_Manager_の管理.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Manager の管理
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/コネクタを管理します.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            コネクタを管理します
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/コネクタを作成するさまざまな方法.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            コネクタを作成するさまざまな方法
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/クレデンシャルを管理する.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            クレデンシャルを管理する
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/AWS.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            AWS
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/Azure.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Azure
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/GCP.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            GCP
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/参照.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            参照
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/occm38/pdfs/sidebar/API_と自動化を活用.pdf" 
+            
+          >
+            <img src="/ja-jp/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            API と自動化を活用
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/ja-jp/occm38/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>PDF版ドキュメントのセット<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Cloud Volumes ONTAP は、データ暗号化をサポートし、ウィルスやランサムウェアからの保護を提供します。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="保存データの暗号化">保存データの暗号化</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Volumes ONTAP は、次の暗号化テクノロジをサポートしています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ネットアップの暗号化ソリューション（ NVE および NAE ）</p>
+</li>
+<li>
+<p>AWS Key Management Service の略</p>
+</li>
+<li>
+<p>Azure Storage Service Encryption の略</p>
+</li>
+<li>
+<p>Google Cloud Platform のデフォルトの暗号化</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ネットアップの暗号化ソリューションは、 AWS 、 Azure 、 GCP のネイティブ暗号化と組み合わせて使用できます。この暗号化ソリューションでは、ハイパーバイザーレベルでデータが暗号化されます。これにより、機密性の高いデータには二重の暗号化が必要になる場合があります。暗号化されたデータにアクセスすると、暗号化されていないデータがハイパーバイザーレベルで 2 回（クラウドプロバイダのキーを使用）暗号化されてから、ネットアップの暗号化ソリューションを再度使用して（外部キー管理ツールのキーを使用）暗号化されます。</p>
+</div>
+<div class="sect2">
+<h3 id="ネットアップの暗号化ソリューション-nve-および-nae">ネットアップの暗号化ソリューション（ NVE および NAE ）</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP は、外部キー管理ツールを使用して、 NetApp Volume Encryption （ NVE ）と NetApp Aggregate Encryption （ NAE ）の両方をサポートします。NVE と NAE は、（ FIPS ） 140-2 に準拠したボリュームの保管データ暗号化を可能にするソフトウェアベースのソリューションです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NVE は、一度に 1 ボリュームずつ保管データを暗号化する。各データボリュームには、一意の暗号化キーがあります。</p>
+</li>
+<li>
+<p>NAE は NVE の拡張機能です。 NVE は各ボリュームのデータを暗号化し、ボリュームはアグリゲート全体でキーを共有します。NAE では、アグリゲート内のすべてのボリュームの共通ブロックも重複排除できます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>NVE と NAE はいずれも AES 256 ビット暗号化を使用します。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.netapp.com/us/media/ds-3899.pdf" target="_blank" rel="noopener">"NetApp Volume Encryption と NetApp Aggregate Encryption の詳細については、こちらをご覧ください"</a>。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 9.7 以降では、外部キー管理ツールの設定後に、新しいアグリゲートで NetApp Aggregate Encryption （ NAE ）がデフォルトで有効になります。NAE アグリゲートに含まれない新しいボリュームでは、 NetApp Volume Encryption （ NVE ）がデフォルトで有効になります（たとえば、外部キー管理ツールを設定する前に作成された既存のアグリゲートがある場合）。</p>
+</div>
+<div class="paragraph">
+<p>サポートされているキー管理ツールをセットアップするだけで済みます。セットアップ手順については、を参照してください <a href="task_encrypting_volumes.html">"ネットアップの暗号化ソリューションによるボリュームの暗号化"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aws-key-management-service-の略">AWS Key Management Service の略</h3>
+<div class="paragraph">
+<p>AWS で Cloud Volumes ONTAP システムを起動する場合、を使用してデータ暗号化を有効にできます <a href="http://docs.aws.amazon.com/kms/latest/developerguide/overview.html" target="_blank" rel="noopener">"AWS Key Management Service （ KMS ；キー管理サービス）"</a>。Cloud Manager は、 Customer Master Key （ CMK ）を使用してデータキーを要求します。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/occm38/images/tip.svg" alt="ヒント">
+</td>
+<td class="content">
+Cloud Volumes ONTAP システムの作成後に AWS のデータ暗号化方式を変更することはできません。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>この暗号化オプションを使用する場合は、 AWS KMS が適切に設定されていることを確認する必要があります。詳細については、を参照してください <a href="task_setting_up_kms.html">"AWS KMS のセットアップ"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-storage-service-encryption-の略">Azure Storage Service Encryption の略</h3>
+<div class="paragraph">
+<p><a href="https://azure.microsoft.com/en-us/documentation/articles/storage-service-encryption/" target="_blank" rel="noopener">"Azure Storage Service Encryption の略"</a> Azure の Cloud Volumes ONTAP データでは、保存データに対してデフォルトで有効になります。セットアップは必要ありません。</p>
+</div>
+<div class="paragraph">
+<p>別のアカウントの外部キーを使用して、シングルノード Cloud Volumes ONTAP システムの Azure 管理ディスクを暗号化できます。この機能は、 Cloud Manager API を使用してサポートされます。</p>
+</div>
+<div class="paragraph">
+<p>シングルノードシステムの作成時に API 要求に次の情報を追加するだけです。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"azureEncryptionParameters": {
+      "key": &lt;azure id of encryptionset&gt;
+  }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/occm38/images/note.svg" alt="メモ">
+</td>
+<td class="content">
+Cloud Volumes ONTAP HA ペアでは、お客様が管理するキーはサポートされません。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloud-platform-のデフォルトの暗号化">Google Cloud Platform のデフォルトの暗号化</h3>
+<div class="paragraph">
+<p><a href="https://cloud.google.com/security/encryption-at-rest/" target="_blank" rel="noopener">"Google Cloud Platform の保存データ暗号化機能"</a> Cloud Volumes ONTAP ではデフォルトで有効になっています。セットアップは必要ありません。</p>
+</div>
+<div class="paragraph">
+<p>Google Cloud Storage では常にデータが暗号化されてからディスクに書き込まれますが、 Cloud Manager API を使用して、 _cuser-managed 暗号化キー _ を使用する Cloud Volumes ONTAP システムを作成できます。これらは、 Cloud Key Management Service を使用して GCP で生成および管理するキーです。 <a href="task_setting_up_gcp_encryption.html">"詳細はこちら。"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ontap-のウィルススキャン">ONTAP のウィルススキャン</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ONTAP システムの統合アンチウイルス機能を使用すると、データがウイルスやその他の悪意のあるコードによって危険にさらされるのを防ぐことができます。</p>
+</div>
+<div class="paragraph">
+<p>ONTAP ウィルススキャン（ _vscan ）は、クラス最高のサードパーティ製ウィルス対策ソフトウェアと ONTAP 機能を組み合わせたもので、どのファイルをスキャンするか、いつスキャンするかを柔軟に制御できます。</p>
+</div>
+<div class="paragraph">
+<p>Vscan でサポートされるベンダー、ソフトウェア、およびバージョンについては、を参照してください <a href="http://mysupport.netapp.com/matrix" target="_blank" rel="noopener">"NetApp Interoperability Matrix を参照してください"</a>。</p>
+</div>
+<div class="paragraph">
+<p>ONTAP システムでウィルス対策機能を設定および管理する方法については、を参照してください <a href="http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-acg/home.html" target="_blank" rel="noopener">"ONTAP 9 ウィルス対策構成ガイド"</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ランサムウェアからの保護">ランサムウェアからの保護</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ランサムウェア攻撃は、ビジネス時間、リソース、評判を低下させる可能性があります。Cloud Manager では、ランサムウェアに対応したネットアップソリューションを実装できます。これにより、可視化、検出、修復のための効果的なツールが提供されます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Manager は、 Snapshot ポリシーで保護されていないボリュームを特定し、それらのボリュームのデフォルトの Snapshot ポリシーをアクティブ化できます。</p>
+<div class="paragraph">
+<p>Snapshot コピーは読み取り専用であり、ランサムウェアによる破損を防止します。単一のファイルコピーまたは完全なディザスタリカバリソリューションのイメージを作成する際の単位を提供することもできます。</p>
+</div>
+</li>
+<li>
+<p>Cloud Manager では、 ONTAP の FPolicy ソリューションを有効にすることで、一般的なランサムウェアのファイル拡張子をブロックすることもできます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_ransomware_protection.gif" alt="作業環境内から利用できる「ランサムウェア対策」ページを示すスクリーンショット画面には、 Snapshot ポリシーが適用されていないボリュームの数と、ランサムウェアのファイル拡張子をブロックする機能が表示されます。"></span></p>
+</div>
+<div class="paragraph">
+<p><a href="task_protecting_ransomware.html">"ネットアップのランサムウェア向けソリューションの実装方法をご確認ください"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/ja-jp/occm38/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/ja-jp/occm38/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">このページ</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">ご利用規約</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">プライバシー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">クッキー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">クッキーの設定</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">このページに関するフィードバックをお寄せください</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/occm38/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/occm38/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/occm38/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/occm38/js/ie-tabbed-blocks.js'></script>
+    <script src='/ja-jp/occm38/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
