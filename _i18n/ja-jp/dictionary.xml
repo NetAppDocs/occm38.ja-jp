@@ -3487,14 +3487,6 @@
   <block id="7c0081c8b734a7b5f9ce7c5d265ac4ee" category="list-text"><block ref="7c0081c8b734a7b5f9ce7c5d265ac4ee" category="inline-link-rx"></block></block>
   <block id="0bf65d2b559533c88cc79b3840d69e6d" category="inline-link">Cloud Manager 3.6</block>
   <block id="e53b2df33a1dac75704245860415ceff" category="list-text"><block ref="e53b2df33a1dac75704245860415ceff" category="inline-link-rx"></block></block>
-  <block id="ecc216112e51b5fcf9a16ded8dabf7d3" category="inline-link">Cloud Manager 3.5</block>
-  <block id="cfc918b9915ac614a17310f450bf2721" category="list-text"><block ref="cfc918b9915ac614a17310f450bf2721" category="inline-link-rx"></block></block>
-  <block id="e3d94d1f3408c8379bdf78d363454ce1" category="inline-link">Cloud Manager 3.4.</block>
-  <block id="38de804ea38bf38231c886d96da268e7" category="list-text"><block ref="38de804ea38bf38231c886d96da268e7" category="inline-link-rx"></block></block>
-  <block id="071d13764bfb9458bd760c388f1767ba" category="inline-link">Cloud Manager 3.3</block>
-  <block id="16402a155f06e6eb36ecc0f5c23fe0c3" category="list-text"><block ref="16402a155f06e6eb36ecc0f5c23fe0c3" category="inline-link-rx"></block></block>
-  <block id="5762b1cbe884ee9e94cfac52c83c4e93" category="inline-link">Cloud Manager 3.2</block>
-  <block id="512d31465e67eb0eaa423ce8c234959e" category="list-text"><block ref="512d31465e67eb0eaa423ce8c234959e" category="inline-link-rx"></block></block>
   <block id="98e243361a5fc5b92ef589f00fcfa177" category="summary">クラウドやリモートオフィスにグローバルファイルキャッシュを導入する前に、多くの要件について理解しておく必要があります。</block>
   <block id="e9b776ca4aec81050e673f885b2eac06" category="doc">グローバルファイルキャッシュの導入を開始する前に</block>
   <block id="cd738516a0c7368cddca5d2174fbd3ce" category="section-title">グローバルファイルキャッシュコアの設計上の考慮事項</block>
@@ -8143,4 +8135,8 @@
   <block id="8793b102a57051bc0a69b6370c03bf9c" category="section-title"><block ref="37140c340d57bff74ec463795f4bc377" category="inline-image-macro-rx" type="image"></block> Cloud Manager を使用して Cloud Volumes ONTAP を起動します</block>
   <block id="5ccc745272c52ce1868d5bcf2b07705a" category="section-title">ワークスペース管理者のワークスペースの管理</block>
   <block id="1cf32fb78afaf111cd4c8421dc8592a6" category="section-title">コネクタのワークスペースを管理する</block>
+  <block id="9b9477e579c3b44dd623d5a6e1ea8d78" category="section-title">BlueXP</block>
+  <block id="1514a9e798eb61fcbaf1fddb8eb82097" category="paragraph">NetApp BlueXPは、Cloud Managerを通じて提供される機能を拡張、強化します。</block>
+  <block id="ab226d70455b3dcdb3cf804792103d43" category="inline-link">BlueXPのドキュメントにアクセス</block>
+  <block id="50523074a17d5fe93be8e3f013a747de" category="paragraph"><block ref="50523074a17d5fe93be8e3f013a747de" category="inline-link-rx"></block></block>
 </blocks>
